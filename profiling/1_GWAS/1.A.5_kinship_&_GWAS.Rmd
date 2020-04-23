@@ -1,0 +1,36 @@
+---
+title: "Kinship calculation and GWAS"
+output: NULL
+date: 04-22-2020
+author: "Zhikai Yang & Gen Xu"
+---
+```{r setup}
+# , include=TRUE, warning=FALSE, echo=TRUE, error=FALSE
+knitr::opts_knit$set(root.dir=normalizePath('../../'))
+knitr::opts_chunk$set(warning=FALSE, message=FALSE, error=FALSE, echo=TRUE)
+```
+
+#kinship matrix from TASSEL
+```{bash}
+##Convert Hapmap to VCF using Tassel
+module load java/1.8
+module load tassel/5.2
+module load plink
+
+##Convert binary file to VCF using plink
+plink --bfile allchr_bisnp_n282_snpid_maf01_geno2_pruned --recode vcf-iid --out allchr_bisnp_n282_snpid_maf01_geno2_pruned
+
+
+
+run_pipeline.pl -Xms30g -Xmx120g -vcf allchr_bisnp_n282_snpid_maf01_geno2_pruned.vcf -KinshipPlugin -method Centered_IBS -endPlugin -export Centered_IBS_kinship.txt -exportType SqrMatrix
+
+```
+
+
+
+##GEMMA
+```{bash, eval=FALSE}
+/home/jyanglab/zhikaiyang/software/gemma -bfile /common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned -k /common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/Centered_IBS_kinship_GEMMA.txt -c /common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/PCA.txt -p /common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/Pheno_GEMMA_GDDSilk.txt -lmm 4 -n 1 -o /common/jyanglab/shared/Gen_Xu/282_GWAS_37_trait/output/GDDDaystoSilk -miss 0.9 -r2 1 -hwe 0 -maf 0.01
+```
+
+

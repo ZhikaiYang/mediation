@@ -1,0 +1,145 @@
+---
+title: "Post prunning statistics"
+output: NULL
+date: 04-22-2020
+author: "Zhikai Yang & Jinliang Yang"
+---
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+#library(tidyverse)
+```
+
+# Analysis of LD decay rate
+
+After SNP prunning, calculate some basic stats, i.e MAF, missingness, distribution, LD decay, PCs
+
+```{bash, eval=FALSE}
+#calculate MAF, Missingness
+module load plink
+
+plink -bfile allchr_bisnp_n282_snpid_maf01_geno2_pruned --freq --missing --out allchr_bisnp_n282_snpid_maf01_geno2_pruned
+
+
+```
+
+```{r}
+## Plot MAF and Missingness
+#should be done in high performance computing environment
+library("data.table")
+
+maf <- fread("largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned.frq", header=TRUE)
+lmiss <- fread("largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned.lmiss", header=TRUE)
+
+
+pdf("graphs/maf_lmiss_pruned.pdf", width = 10, height=5)
+par(mfrow=c(1,2))
+hist(maf$MAF, breaks=100, col="#cdb79e", main="MAF (SNP = 696548)", xlab="Minor Allele Freq")
+abline(v=0.01, lty=2, col="black", lwd=3)
+abline(v=0.05, lty=2, col="red", lwd=3)
+
+hist(lmiss$F_MISS, breaks=100, col="#cdb79e", main="Missingness (SNP = 696548)", xlab="Missing Rate")
+abline(v=0.6, lty=2, col="red", lwd=3)
+abline(v=0.2, lty=2, col="red", lwd=3)
+dev.off()
+
+```
+----
+```{bash, eval=FALSE}
+# LD decay
+plink --bfile allchr_bisnp_n282_snpid_maf01_geno2_pruned  --ld-window 10 --ld-window-kb 100 --r2 --ld-window-r2 0  --out allchr_bisnp_n282_snpid_maf01_geno2_pruned
+```
+
+```{r}
+## Plot LD decay
+#should be done in high performance computing environment
+
+library(data.table)
+ld <- fread("largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned.ld", data.table=FALSE)
+ld$dis <- ld$BP_B - ld$BP_A
+# summarize for each bp distance, the mean R2 
+ld <- as.data.table(ld)
+
+df <- ld[,.(meanr2=mean(R2), sd=sd(R2)), by=dis]
+write.table(df, "cache/ld_mean_sd_pruned.csv", sep=",", quote=FALSE)
+
+df <- read.csv("cache/ld_mean_sd_pruned.csv")
+library(ggplot2)
+
+pdf("graphs/LD_decay_pruned.pdf", width = 10, height=5)
+par(mfrow=c(1,2))
+p1 <- ggplot(df, aes(x=dis, y=meanr2)) +
+    #facet_grid(. ~ type) +
+    geom_point(size=2) +
+    geom_smooth(method='gam') +
+    theme_bw() +
+    xlab("physitcal distance") +
+    ylab("LD (r2)") +
+    theme(axis.text=element_text(size=12), axis.title=element_text(size=15) )
+  #########
+p1
+
+df <- as.data.frame(df)
+df <- subset(df, dis < 5000)
+p2 <- ggplot(df, aes(x=dis, y=meanr2)) +
+    #facet_grid(. ~ type) +
+    geom_point(size=2) +
+    geom_smooth(method='loess') +
+    theme_bw() +
+    xlab("physitcal distance") +
+    ylab("LD (r2)") +
+    theme(axis.text=element_text(size=12), axis.title=element_text(size=15) )
+  #########
+p2
+dev.off()
+```
+### PCs
+
+--pca [count] ['header'] ['tabs'] ['var-wts']
+
+--pca-cluster-names <name(s)...>
+--pca-clusters <filename>
+
+By default, --pca extracts the top 20 principal components of the variance-standardized relationship matrix; you can change the number by passing a numeric parameter. Eigenvectors are written to plink.eigenvec, and top eigenvalues are written to plink.eigenval. The 'header' modifier adds a header line to the .eigenvec file(s), and the 'tabs' modifier makes the .eigenvec file(s) tab- instead of space-delimited. You can request variant weights with the 'var-wts' modifier, and dump the matrix by using --pca in combination with --make-rel/--make-grm-gz/--make-grm-bin.
+
+```{bash, eval=FALSE}
+cd largedata/geno_282
+
+plink -bfile allchr_bisnp_n282_snpid_maf01_geno2_pruned --pca 'tabs' --out allchr_bisnp_n282_snpid_maf01_geno2_pruned
+```
+
+
+## Plot results of the PCA
+
+### Plot 3D PCA
+
+```{r}
+#should be done in high performance computing environment
+
+library(ggplot2)
+library(cowplot)
+library(plyr)
+
+df <- read.delim("largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned.eigenvec", header=FALSE)
+write.table(df, "cache/allchr_bisnp_n282_snpid_maf01_geno2_pruned.eigenvec", se="\t", row.names=FALSE, quote=FALSE)
+
+df <- read.delim("cache/allchr_bisnp_n282_snpid_maf01_geno2_pruned.eigenvec", header=TRUE)
+names(df)[3:5] <- c("PC1", "PC2", "PC3")
+
+
+
+#install.packages("scatterplot3d")
+library("scatterplot3d") # load
+
+fsize=16
+
+pdf("graphs/Fig_pca1-3_maize.pdf", width=10, height=10)
+scatterplot3d(df[,3:5], pch = 16, cex.symbol=1.2, color="#00BFC4", main="Maize Diversity Panel", angle=40)
+dev.off()
+
+```
+
+
+
+

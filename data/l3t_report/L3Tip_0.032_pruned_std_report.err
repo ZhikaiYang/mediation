@@ -1,0 +1,45 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:data.table’:
+
+    between, first, last
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: Matrix
+Loading required package: foreach
+Loaded glmnet 2.0-16
+
+
+Attaching package: ‘MASS’
+
+The following object is masked from ‘package:dplyr’:
+
+    select
+
+Loading required package: iterators
+There were 47 warnings (use warnings() to see them)
+There were 16 warnings (use warnings() to see them)
+Warning messages:
+1: In if (!is.na(res.test)) { :
+  the condition has length > 1 and only the first element will be used
+2: In if (!is.na(res.test)) { :
+  the condition has length > 1 and only the first element will be used
+Warning messages:
+1: In if (!is.na(res.test)) { :
+  the condition has length > 1 and only the first element will be used
+2: In if (!is.na(res.test)) { :
+  the condition has length > 1 and only the first element will be used
+Warning message:
+In if (!is.na(res.test)) { :
+  the condition has length > 1 and only the first element will be used
+Warning message:
+In if (!is.na(res.test)) { :
+  the condition has length > 1 and only the first element will be used

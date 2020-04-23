@@ -1,0 +1,104 @@
+---
+title: "Heavy SNP filteration using LD prunning"
+output: NULL
+date: 04-22-2020
+author: "Zhikai Yang & Jinliang Yang"
+---
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+#library(tidyverse)
+```
+
+# Analysis of LD decay rate
+
+In `plink`:
+By default, when a limited window report is requested, every pair of variants with at least (10-1) variants between them, or more than 1000 kilobases apart, is ignored. You can change the first threshold with --ld-window, and the second threshold with --ld-window-kb.
+
+```{bash, eval=FALSE}
+cd largedata/geno_282
+plink --bfile allchr_bisnp_n282_snpid_maf01_geno2  --ld-window 10 --ld-window-kb 100 --r2 --ld-window-r2 0  --out allchr_bisnp_n282_snpid_maf01_geno2
+```
+
+## Plot LD decay
+
+```{r}
+library(data.table)
+ld <- fread("largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2.ld", data.table=FALSE)
+ld$dis <- ld$BP_B - ld$BP_A
+# summarize for each bp distance, the mean R2 
+ld <- as.data.table(ld)
+
+df <- ld[,.(meanr2=mean(R2), sd=sd(R2)), by=dis]
+write.table(df, "cache/ld_mean_sd.csv", sep=",", quote=FALSE)
+
+df <- read.csv("cache/ld_mean_sd.csv")
+library(ggplot2)
+
+
+p1 <- ggplot(df, aes(x=dis, y=meanr2)) +
+    #facet_grid(. ~ type) +
+    geom_point(size=2) +
+    geom_smooth(method='gam') +
+    theme_bw() +
+    xlab("physitcal distance") +
+    ylab("LD (r2)") +
+    theme(axis.text=element_text(size=12), axis.title=element_text(size=15) )
+  #########
+p1
+
+df <- as.data.frame(df)
+df <- subset(df, dis < 5000)
+p2 <- ggplot(df, aes(x=dis, y=meanr2)) +
+    #facet_grid(. ~ type) +
+    geom_point(size=2) +
+    geom_smooth(method='loess') +
+    theme_bw() +
+    xlab("physitcal distance") +
+    ylab("LD (r2)") +
+    theme(axis.text=element_text(size=12), axis.title=element_text(size=15) )
+  #########
+pdf("graphs/LD_decay.pdf", width = 10, height=5)
+p2
+dev.off()
+```
+
+
+------------------------
+
+### LD Prunning:
+
+--indep requires three parameters: a window size in variant count or kilobase (if the 'kb' modifier is present) units, a variant count to shift the window at the end of each step, and a variance inflation factor (VIF) threshold. At each step, all variants in the current window with VIF exceeding the threshold are removed. See the PLINK 1.07 documentation for some discussion of parameter choices.
+
+--indep <window size>['kb'] <step size (variant ct)> <VIF threshold>
+
+`--indep-pairwise`: takes the same first two parameters as --indep. Its third parameter is a pairwise r2 threshold: at each step, pairs of variants in the current window with squared correlation greater than the threshold are noted, and variants are greedily pruned from the window until no such pairs remain. Since it does not need to keep the entire <window size> x <window size> correlation matrix in memory, it is usually capable of handling 6-digit window sizes well outside --indep's reach.
+
+
+```{bash, eval=FALSE}
+cd largedata/geno_282
+
+plink -bfile allchr_bisnp_n282_snpid_maf01_geno2 --indep-pairwise 100 kb 10 0.1 --out allchr_bisnp_n282_snpid_maf01_geno2_pr1
+# 696547
+
+plink -bfile allchr_bisnp_n282_snpid_maf01_geno2 --indep-pairwise 100 kb 10 0.032 --out allchr_bisnp_n282_snpid_maf01_geno2_pr1_0.032
+# 111961
+```
+
+
+### Extract the prune in SNPs
+
+```{bash, eval=FALSE}
+cd largedata/geno_282
+
+plink -bfile  allchr_bisnp_n282_snpid_maf01_geno2 --extract allchr_bisnp_n282_snpid_maf01_geno2_pr1.prune.in --make-bed --out allchr_bisnp_n282_snpid_maf01_geno2_pruned
+
+plink -bfile  allchr_bisnp_n282_snpid_maf01_geno2 --extract allchr_bisnp_n282_snpid_maf01_geno2_pr1_0.032.prune.in --make-bed --out allchr_bisnp_n282_snpid_maf01_geno2_0.032_pruned
+
+
+
+```
+
+
+

@@ -1,0 +1,117 @@
+---
+title: "Obtaining Genotypic data from Panzea Database for HMP3 and 282"
+output: html_notebook
+date: 04-01-2019
+author: "Jinliang Yang"
+---
+
+
+# Data downloading from Panzea:
+
+### How to find the data:
+
+1. [panzea website](https://www.panzea.org/genotypes)
+  - From the website, we use the following Cyverse address: `/iplant/home/shared/panzea/hapmap3/bam`
+  - download the unimputed: `/iplant/home/shared/panzea/hapmap3/hmp321/unimputed`
+
+2. Use [icommand](https://pods.iplantcollaborative.org/wiki/display/DS/Using+iCommands) to download:
+
+```{bash}
+module load irods
+# login Cyverse/iPlant
+iinit
+# input password.
+
+##some issue with irsync command below.I tried using absolute destination as well and the command doesn't seem to work as expected.
+##For some reason irsync command below is not doing what it is suppposed to do. I tried to provide absolute path to doenload as well. Used iget -K option to download each merged_flt_ad_c* files separately.
+
+icd /iplant/home/shared/panzea/hapmap3/hmp321/imputed/uplifted_APGv4
+
+cd /common/jyanglab/shared/dbcenter/282AMP_V4
+#irsync -rKV i:/iplant/home/shared/panzea/hapmap3/hmp321/imputed/uplifted_APGv4 .
+irsync -rKV i:/iplant/home/shared/panzea/hapmap3/hmp321/unimputed/282_libs_2015/uplifted_APGv4 /common/jyanglab/shared/dbcenter/282AMP_V4
+```
+
+
+
+## Genotypic data: HapMap3 data
+
+
+now the genotype data have been moved to `/common/jyanglab/shared/dbcenter/282AMP_V4`:
+
+To learn about what the __VCF file__ about, check [here](http://www.internationalgenome.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-40/). 
+
+Normally, we use chr10 to test the code because chr10 has the smallest size. 
+Let's use [bcftools](https://samtools.github.io/bcftools/bcftools.html#stats) and [plink](https://www.cog-genomics.org/plink2) to do the work.
+cd
+```{bash, eval=FALSE}
+# view the head of the chr10
+bcftools view /common/jyanglab/shared/dbcenter/282AMP_V4/hmp321_agpv4_chr10.vcf.gz -h
+bcftools view /common/jyanglab/shared/dbcenter/282AMP_V4/hmp321_agpv4_chr10.vcf.gz -r 10:1-20000
+
+bcftools stats /common/jyanglab/shared/dbcenter/282AMP_V4/hmp321_agpv4_chr10.vcf.gz > largedata/chr10_vcf_stats.txt
+
+# step1: keep only the biallelic SNPs
+bcftools view /common/jyanglab/shared/dbcenter/282AMP_V4/hmp321_agpv4_chr10.vcf.gz -m2 -M2 -v snps -Oz -o largedata/geno_282/chr10_bisnp_n282.vcf.gz
+
+# step2: Keep only the 282 diversity lines and converted into bed format:
+module load plink/1.90
+plink -vcf largedata/geno_282/chr10_bisnp_n282.vcf.gz --keep-allele-order --make-bed --out largedata/geno_282/chr10_bisnp_n282
+
+# step3: Set SNP id
+# Note: this is not working because the SNP in the orginal vcf.gz files have id, but the id it not following chr_position_ref_alt pattern.
+plink -bfile largedata/geno_282/chr10_bisnp_n282 --set-missing-var-ids @_#_\\$1_\\$2 --make-bed --out largedata/geno_282/chr10_bisnp_n282_snpid
+```
+
+
+
+
+```{r, eval=FALSE}
+library("huskeR")
+
+for(i in 1:9){
+  cmd <- c("cd largedata/geno_282/")
+  #ext <- paste0("pigz -d -p 16 merged_flt_c", i, ".vcf.gz")
+  #bgzip <- paste0("bgzip merged_flt_c", i, ".vcf -@ 16")
+  #idx <- paste0("tabix -p vcf merged_flt_c", i, ".vcf.gz")
+  
+  ## annotate VCF header becasue there is an error FORMAT=>INFO for AD
+  #b0 <- pasteq()0("bcftools annotate -h change_AD.txt merged_flt_c", i, ".vcf.gz -Oz -o merged_flt_ad_c", i, ".vcf.gz")
+  
+  ## 1. keep only the biallelic SNPs
+  # bcftools view /common/jyanglab/shared/dbcenter/282AMP_V4/hmp321_agpv4_chr10.vcf.gz -m2 -M2 -v snps -Oz -o largedata/geno_282/chr10_bisnp_n282.vcf.gz
+  b1 <- paste0("bcftools view /common/jyanglab/shared/dbcenter/282AMP_V4/hmp321_agpv4_chr", i, ".vcf.gz ", 
+               "-m2 -M2 -v snps -Oz -o ", "chr", i, "_bisnp_n282.vcf.gz") 
+  ## convert vcf.gz into SNP txt
+  #b2 <- paste0("bcftools query -S bkn_pvp_samples.txt",
+  #             " -f '%CHROM\t%POS\t%REF\t%ALT[\t%TGT]\n'",
+  #             " chr", i, "_bisnp_n35.vcf.gz > chr", i, "_gt_n35.txt")
+  
+  ## 2. Keep only the 282 diversity lines and converted into bed format:
+  # plink -vcf chr10_bisnp_n282.vcf.gz --keep-allele-order --make-bed --out chr10_bisnp_n282
+  b2 <- paste0("plink -vcf chr", i, "_bisnp_n282.vcf.gz --keep-allele-order --make-bed --out chr", i, "_bisnp_n282")
+  
+  ## 3. Set SNP id
+  # plink -bfile chr10_bisnp_n282 --set-missing-var-ids @_#_\\$1_\\$2 --make-bed --out chr10_bisnp_n282_snpid
+  b3 <- paste0("plink -bfile chr", i, "_bisnp_n282 --set-missing-var-ids @_#_\\$1_\\$2 --make-bed --out chr", i, "_bisnp_n282_snpid")
+  
+  shid <- paste0("slurm-script/run_", i, ".sh")
+  cmdout <- c(cmd, b1, b2, b3)
+  cat(cmdout, file=shid, sep="\n", append=FALSE)
+}
+
+
+###
+shcode <- paste("module load plink/1.90 bcftools/1.8", "sh slurm-script/run_$SLURM_ARRAY_TASK_ID.sh", sep="\n")
+
+set_array_job(shid = "slurm-script/run_plink.sh",
+  shcode = shcode, arrayjobs = "1-9", wd = NULL,
+  jobid = "plink", email = "zhikaiyang911@gmail.com", runinfo = c(TRUE, "jyanglab", "5", "10G", "8:00:00"))
+
+###>>> In this path: cd /common/jyanglab/jyang21/projects/mediation-analysis
+###>>> RUN: sbatch -p batch --licenses=common --ntasks=5 --mem 10G --time=8:00:00 slurm-script/run_plink.sh
+
+```
+
+
+At end end, move the data into `/common/jyanglab/jyang21/dbcenter/HapMap3/set282`.

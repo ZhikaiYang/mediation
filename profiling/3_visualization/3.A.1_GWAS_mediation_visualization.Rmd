@@ -1,0 +1,168 @@
+---
+title: "Take a look at flowering time results"
+output: NULL
+date: 04-22-2020
+author: "Zhikai Yang & Jinliang Yang"
+---
+
+```{r setup}
+# , include=TRUE, warning=FALSE, echo=TRUE, error=FALSE
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+
+
+```
+
+
+
+### Read in the GWAS results 
+
+```{r, eval=FALSE}
+#should be done in high performance computing environment
+library("data.table")
+pval <- fread("/common/jyanglab/shared/Gen_Xu/282_GWAS_37_trait/output/GDDDaystoSilk.assoc.txt", data.table=FALSE)
+pval$p <- -log10(pval$p_wald)
+
+res <- subset(pval, p > 4)
+fwrite(res, "largedata/GDDDaystoSilk.assoc_pval4.txt", sep=",", row.names=FALSE, quote=FALSE)
+
+
+
+```
+
+### Make Manhattan plot using huskeR package
+
+```{r}
+#devtools::install_github("yangjl/huskeR")
+library(huskeR)
+#?plot_mht
+library("data.table")
+
+inputdf <- fread("data/GDDDaystoSilk.assoc_pval4.txt", data.table=FALSE)
+names(inputdf)[3] <- "pos"
+
+
+snps <- fread("./data/allchr_bisnp_n282_snpid_maf01_geno2_0.032_pruned.bim", header = FALSE , data.table=FALSE)
+
+
+
+
+library(dplyr)
+
+
+
+
+###germinating shoot:
+
+
+hdf_eq_gs_0.032p_std_v3 <- data.frame(chr=c(6, 2, 1, 5, 3), pos=c(111944543, 4693195, 25392624, 98309006, 159022119), 
+                  gene=c("GRMZM2G000674", "GRMZM2G086801", "GRMZM2G107774", "GRMZM2G134439", "GRMZM2G171650"), 
+                  name=c("NA", "COP9 signalosome complex subunit 5b", "remorin1", "Trihelix-transcription factor 13", "MADS-transcription factor 69") )
+
+
+hdf_eq_gs_0.032p_std_v4 <- data.frame(chr=c(6, 2, 1, 5, 3), pos=c(115604345, 4655152, 25737164, 100768367, 160589989), 
+                  gene=c("Zm00001d037203 ", "Zm00001d002027", "Zm00001d028185", "Zm00001d015605", "Zm00001d042315"), 
+                  name=c("NA", "COP9 signalosome complex subunit 5b", "remorin1", "Trihelix-transcription factor 13", "MADS-transcription factor 69") )
+
+
+#Direct SNPs
+dsnps.eq.gs <- fread("./data/gs_report/id.eq_gddsilk_0.032_pruned_gs_dsnps.csv", header = FALSE , data.table=FALSE)
+dsnps.eq.gs <- as.matrix(dsnps.eq.gs)
+dsnps.eq.gs <- t(dsnps.eq.gs)
+dsnps.eq.gs <- as.vector(dsnps.eq.gs)
+
+hdf_eq_gs_0.032p_std_dsnps_sig<- filter(inputdf, rs %in% dsnps.eq.gs)
+
+hdf_eq_gs_0.032p_std_dsnps <- filter(snps, V2 %in% dsnps.eq.gs)
+hdf_eq_gs_0.032p_std_dsnps <- select(hdf_eq_gs_0.032p_std_dsnps, V1, V4, V2)
+colnames(hdf_eq_gs_0.032p_std_dsnps)<-c("chr", "pos","name")
+
+
+#Indirect SNPs
+isnps.eq.gs <- fread("./data/gs_report/id.eq_gddsilk_0.032_pruned_gs_indirect_snps.csv")
+MADS.isnps <- subset(isnps.eq.gs, medi %in% c("GRMZM2G171650"))
+MADS.isnps <- as.vector(as.matrix(MADS.isnps[,2]))
+
+hdf_eq_gs_0.032p_std_isnps_sig<- filter(inputdf, rs %in% MADS.isnps)
+
+hdf_eq_gs_0.032p_std_isnps <- filter(snps, V2 %in% MADS.isnps)
+hdf_eq_gs_0.032p_std_isnps <- select(hdf_eq_gs_0.032p_std_isnps, V1, V4, V2)
+colnames(hdf_eq_gs_0.032p_std_isnps)<-c("chr", "pos","name")
+
+plot_mht(inputdf, hdf=hdf_eq_gs_0.032p_std_v4, col2plot = "p", jmph = FALSE, pl = FALSE,
+  cl_file = "data/chr_length_B73v3.csv", cex = 0.5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="-log10(p-val)")
+
+plot_mht(inputdf, hdf=hdf_eq_gs_0.032p_std_dsnps, col2plot = "p", jmph = FALSE, pl = FALSE,
+  cl_file = "data/chr_length_B73v3.csv", cex = 0.5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="-log10(p-val)")
+
+
+plot_mht(inputdf, hdf=hdf_eq_gs_0.032p_std_isnps, col2plot = "p", jmph = FALSE, pl = FALSE,
+  cl_file = "data/chr_length_B73v3.csv", cex = 0.5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="-log10(p-val)")
+
+
+
+
+
+###germinating shoot:
+
+
+hdf_eq_l3t_0.032p_std_v3 <- data.frame(chr=c(2, 8, 2, 1, 10, 3), pos=c(231952642, 27670614, 73587237, 59594490, 18664337, 227566001), 
+                  gene=c("AC148152.3_FG005", "GRMZM2G014580", "GRMZM2G029531 ", "GRMZM2G052206 ", "GRMZM2G068382", "GRMZM2G368491 "), 
+                  name=c("2-oxoglutarate-dependent dioxygenase", "NA", "NA", "NA", "NA", "bZIP-transcription factor 21") )
+
+
+hdf_eq_l3t_0.032p_std_v4 <- data.frame(chr=c(2, 8, 2, 1, 10, 3), pos=c(238142057, 28567668,  74912641, 60337345, 18979829, 231391931), 
+                  gene=c("Zm00001d007718 ", "Zm00001d008984", "Zm00001d004004", "Zm00001d029143", "Zm00001d023756", "Zm00001d044546"), 
+                  name=c("2-oxoglutarate-dependent dioxygenase", "NA", "NA", "NA", "NA", "bZIP-transcription factor 21") )
+
+
+#Direct SNPs
+dsnps.eq.l3t <- fread("./data/l3t_report/id.eq_gddsilk_0.032_pruned_l3t_dsnps.csv", header = FALSE , data.table=FALSE)
+dsnps.eq.l3t <- as.matrix(dsnps.eq.l3t)
+dsnps.eq.l3t <- t(dsnps.eq.l3t)
+dsnps.eq.l3t <- as.vector(dsnps.eq.l3t)
+
+hdf_eq_l3t_0.032p_std_dsnps_sig<- filter(inputdf, rs %in% dsnps.eq.l3t)
+
+hdf_eq_l3t_0.032p_std_dsnps <- filter(snps, V2 %in% dsnps.eq.l3t)
+hdf_eq_l3t_0.032p_std_dsnps <- select(hdf_eq_l3t_0.032p_std_dsnps, V1, V4, V2)
+colnames(hdf_eq_l3t_0.032p_std_dsnps)<-c("chr", "pos","name")
+
+
+#Indirect SNPs
+isnps.eq.l3t <- fread("./data/l3t_report/id.eq_gddsilk_0.032_pruned_l3t_indirect_snps.csv")
+oxoglutarate_dependent_dioxygenase.isnps <- subset(isnps.eq.l3t, medi %in% c("AC148152.3_FG005"))
+oxoglutarate_dependent_dioxygenase.isnps <- as.vector(as.matrix(oxoglutarate_dependent_dioxygenase.isnps[,2]))
+
+hdf_eq_l3t_0.032p_std_isnps_sig<- filter(inputdf, rs %in% oxoglutarate_dependent_dioxygenase.isnps)
+
+hdf_eq_l3t_0.032p_std_isnps <- filter(snps, V2 %in% oxoglutarate_dependent_dioxygenase.isnps)
+hdf_eq_l3t_0.032p_std_isnps <- select(hdf_eq_l3t_0.032p_std_isnps, V1, V4, V2)
+colnames(hdf_eq_l3t_0.032p_std_isnps)<-c("chr", "pos","name")
+
+plot_mht(inputdf, hdf=hdf_eq_l3t_0.032p_std_v4, col2plot = "p", jmph = FALSE, pl = FALSE,
+  cl_file = "data/chr_length_B73v3.csv", cex = 0.5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="-log10(p-val)")
+
+plot_mht(inputdf, hdf=hdf_eq_l3t_0.032p_std_dsnps, col2plot = "p", jmph = FALSE, pl = FALSE,
+  cl_file = "data/chr_length_B73v3.csv", cex = 0.5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="-log10(p-val)")
+
+
+plot_mht(inputdf, hdf=hdf_eq_l3t_0.032p_std_isnps, col2plot = "p", jmph = FALSE, pl = FALSE,
+  cl_file = "data/chr_length_B73v3.csv", cex = 0.5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="-log10(p-val)")
+
+
+
+```
+

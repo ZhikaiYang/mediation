@@ -1,0 +1,20 @@
+[1]   295 37136
+[1]   265 37136
+[1] 277  22
+[1] 250   7
+[1] 0
+[1] 0
+[1] 0
+[1] "Shrinkage intensity: 0.01"
+   pmed.pure        v.tot        v.med        v.dir        n.med     pval.cut 
+3.717571e-02 8.122197e+05 3.019484e+04 6.973393e+05 2.000000e+00 5.000000e-02 
+    n.direct 
+1.400000e+01 
+   pmed.pure        v.tot        v.med        v.dir        n.med     pval.cut 
+1.689079e-01 5.324720e+05 8.993871e+04 3.852956e+05 6.000000e+00 5.000000e-02 
+    n.direct 
+1.300000e+01 
+pmed.pure     v.tot     v.med     v.dir     n.med  pval.cut 
+    0.000  9826.036     0.000  9826.036     0.000     0.050 
+pmed.pure     v.tot     v.med     v.dir     n.med  pval.cut 
+    0.000  8542.025     0.000  8542.025     0.000     0.050 

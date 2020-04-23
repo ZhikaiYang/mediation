@@ -1,0 +1,74 @@
+---
+title: "SNP Filiration using PLINK"
+output: NULL
+date: 04-22-2019
+author: "Zhikai Yang & Jinliang Yang"
+---
+
+
+### combine into one file with 10 chrs.
+
+```{bash, eval=FALSE}
+cd largedata/geno_282
+ls *_n282_snpid.log > chr1_10_set282.txt
+#use vi and then type: %s/.log//g
+
+# reqeust 200G memory to do the merging job
+module load plink
+plink --merge-list chr1_10_set282.txt --make-bed --out allchr_bisnp_n282_snpid
+
+plink -bfile allchr_bisnp_n282_snpid --freq --missing --out allchr_bisnp_n282_snpid
+# share the above file with Zhikai: /common/jyanglab/shared/Zhikai
+
+## move to work/tempdata to reduce disk usage on common
+mv chr* /lustre/work/jyanglab/jyang21/tempdata/set282_chrs
+
+```
+
+71.5 Million SNPs
+
+### Light Filtering
+
+## Plot MAF and Missingness
+
+Genomic data is now located here
+
+get the frq and lmiss data and plot them remotely and git pull to the local computer.
+
+
+```{r}
+library("data.table")
+
+maf <- fread("largedata/geno_282/allchr_bisnp_n282_snpid.frq", header=TRUE)
+lmiss <- fread("largedata/geno_282/allchr_bisnp_n282_snpid.lmiss", header=TRUE)
+
+
+pdf("graphs/maf_lmiss.pdf", width = 10, height=5)
+par(mfrow=c(1,2))
+hist(maf$MAF, breaks=100, col="#cdb79e", main="MAF (SNP = 71,477,398)", xlab="Minor Allele Freq")
+abline(v=0.01, lty=2, col="black", lwd=3)
+abline(v=0.05, lty=2, col="red", lwd=3)
+
+hist(lmiss$F_MISS, breaks=100, col="#cdb79e", main="Missingness (SNP = 71,477,398)", xlab="Missing Rate")
+abline(v=0.6, lty=2, col="red", lwd=3)
+abline(v=0.2, lty=2, col="red", lwd=3)
+dev.off()
+
+```
+
+
+------------------------------------------
+
+
+```{bash}
+
+plink -bfile allchr_bisnp_n282_snpid --maf 0.01 --geno 0.2 --snps-only --make-bed --out allchr_bisnp_n282_snpid_maf01_geno2
+## Total genotyping rate is 0.748398.
+## 31150411 variants removed due to missing genotype data (--geno).
+## 19602933 variants removed due to minor allele threshold(s)
+## (--maf/--max-maf/--mac/--max-mac).
+## 20724054 variants and 277 people pass filters and QC.
+```
+
+
+
