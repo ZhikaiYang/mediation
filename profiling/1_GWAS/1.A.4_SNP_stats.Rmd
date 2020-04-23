@@ -25,8 +25,10 @@ plink -bfile allchr_bisnp_n282_snpid_maf01_geno2_pruned --freq --missing --out a
 ```
 
 ```{r}
-## Plot MAF and Missingness
 #should be done in high performance computing environment
+
+## Plot MAF and Missingness
+
 library("data.table")
 
 maf <- fread("largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned.frq", header=TRUE)
@@ -52,8 +54,9 @@ plink --bfile allchr_bisnp_n282_snpid_maf01_geno2_pruned  --ld-window 10 --ld-wi
 ```
 
 ```{r}
-## Plot LD decay
 #should be done in high performance computing environment
+
+## Plot LD decay
 
 library(data.table)
 ld <- fread("largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned.ld", data.table=FALSE)

@@ -24,6 +24,8 @@ plink --bfile allchr_bisnp_n282_snpid_maf01_geno2  --ld-window 10 --ld-window-kb
 ## Plot LD decay
 
 ```{r}
+#should be done in high performance computing environment
+
 library(data.table)
 ld <- fread("largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2.ld", data.table=FALSE)
 ld$dis <- ld$BP_B - ld$BP_A

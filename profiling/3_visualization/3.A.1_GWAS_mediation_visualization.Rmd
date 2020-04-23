@@ -19,6 +19,7 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 
 ```{r, eval=FALSE}
 #should be done in high performance computing environment
+
 library("data.table")
 pval <- fread("/common/jyanglab/shared/Gen_Xu/282_GWAS_37_trait/output/GDDDaystoSilk.assoc.txt", data.table=FALSE)
 pval$p <- -log10(pval$p_wald)
@@ -89,17 +90,19 @@ hdf_eq_gs_0.032p_std_isnps <- filter(snps, V2 %in% MADS.isnps)
 hdf_eq_gs_0.032p_std_isnps <- select(hdf_eq_gs_0.032p_std_isnps, V1, V4, V2)
 colnames(hdf_eq_gs_0.032p_std_isnps)<-c("chr", "pos","name")
 
+#mediator genes ploted in manhattan plot
 plot_mht(inputdf, hdf=hdf_eq_gs_0.032p_std_v4, col2plot = "p", jmph = FALSE, pl = FALSE,
   cl_file = "data/chr_length_B73v3.csv", cex = 0.5,
   pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
   yaxis = NULL, ylab="-log10(p-val)")
 
+#direct snps ploted in manhattan plot
 plot_mht(inputdf, hdf=hdf_eq_gs_0.032p_std_dsnps, col2plot = "p", jmph = FALSE, pl = FALSE,
   cl_file = "data/chr_length_B73v3.csv", cex = 0.5,
   pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
   yaxis = NULL, ylab="-log10(p-val)")
 
-
+#indirect snps for gene MADS96  ploted in manhattan plot
 plot_mht(inputdf, hdf=hdf_eq_gs_0.032p_std_isnps, col2plot = "p", jmph = FALSE, pl = FALSE,
   cl_file = "data/chr_length_B73v3.csv", cex = 0.5,
   pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
@@ -109,7 +112,7 @@ plot_mht(inputdf, hdf=hdf_eq_gs_0.032p_std_isnps, col2plot = "p", jmph = FALSE, 
 
 
 
-###germinating shoot:
+###leaf tips:
 
 
 hdf_eq_l3t_0.032p_std_v3 <- data.frame(chr=c(2, 8, 2, 1, 10, 3), pos=c(231952642, 27670614, 73587237, 59594490, 18664337, 227566001), 
@@ -146,17 +149,20 @@ hdf_eq_l3t_0.032p_std_isnps <- filter(snps, V2 %in% oxoglutarate_dependent_dioxy
 hdf_eq_l3t_0.032p_std_isnps <- select(hdf_eq_l3t_0.032p_std_isnps, V1, V4, V2)
 colnames(hdf_eq_l3t_0.032p_std_isnps)<-c("chr", "pos","name")
 
+
+#mediator genes ploted in manhattan plot
 plot_mht(inputdf, hdf=hdf_eq_l3t_0.032p_std_v4, col2plot = "p", jmph = FALSE, pl = FALSE,
   cl_file = "data/chr_length_B73v3.csv", cex = 0.5,
   pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
   yaxis = NULL, ylab="-log10(p-val)")
 
+#direct snps ploted in manhattan plot
 plot_mht(inputdf, hdf=hdf_eq_l3t_0.032p_std_dsnps, col2plot = "p", jmph = FALSE, pl = FALSE,
   cl_file = "data/chr_length_B73v3.csv", cex = 0.5,
   pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
   yaxis = NULL, ylab="-log10(p-val)")
 
-
+#indirect snps for gene oxoglutarate_dependent_dioxygenase  ploted in manhattan plot
 plot_mht(inputdf, hdf=hdf_eq_l3t_0.032p_std_isnps, col2plot = "p", jmph = FALSE, pl = FALSE,
   cl_file = "data/chr_length_B73v3.csv", cex = 0.5,
   pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,

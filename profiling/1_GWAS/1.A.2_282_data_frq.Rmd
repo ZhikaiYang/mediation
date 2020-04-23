@@ -37,6 +37,7 @@ get the frq and lmiss data and plot them remotely and git pull to the local comp
 
 
 ```{r}
+#should be done in high performance computing environment
 library("data.table")
 
 maf <- fread("largedata/geno_282/allchr_bisnp_n282_snpid.frq", header=TRUE)
