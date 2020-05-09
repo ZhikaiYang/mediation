@@ -1,9 +1,9 @@
 #!/bin/sh
 #SBATCH --ntasks=16
 #SBATCH --nodes=1
-#SBATCH --mem=60gb
+#SBATCH --mem=150gb
 #SBATCH --time=12:00:00
-#SBATCH --partition=jyanglab
+#SBATCH --partition=batch
 #SBATCH --licenses=common
 #SBATCH --job-name=GShoot_0.032_pruned_std
 #SBATCH --mail-user=zhikaiyang911@gmail.com

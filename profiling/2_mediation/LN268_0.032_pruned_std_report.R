@@ -20,7 +20,7 @@ means<-apply(X[,2:ncol(X)], 2, mean)
 X <- X[, -(which(means<=1)+1)] #278 19357
 
 
-p <- fread("/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_0.032_pruned_NA_0_matrix.txt", data.table=FALSE)
+p <- fread("/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned_NA_0_matrix.txt", data.table=FALSE)
 p <- p[!is.na(p$GDDDaystoSilk),] #274 111963
 
 
@@ -256,21 +256,24 @@ reportINDirectSNPs <- function(mod,e2m,tst,pval.cut, Z, colnames_X){
   med = tst[['med.individual']]
   ix.output = (med$padj<=pval.cut)
   idx <- c(1:length(ix.output))[ix.output]
-  e2m.sig <- e2m[idx]
-  medid <- med$id[ix.output]
-  colnames_X <- colnames_X
-  mednames <- colnames_X[medid]
-  Znames <- colnames(Z)
-  #
-  output <- data.frame()
-  for(i in 1:length(med$id[ix.output])){
-    idxnsnps_i <- (e2m.sig[[i]]$coef != 0)
-    snpsnames_i <- Znames[idxnsnps_i]
-    med_snps <- data.frame(medi=rep(mednames[i], length(snpsnames_i)), snps_for_medi=snpsnames_i)
-    output <- rbind(output, med_snps)
+  if(length(idx)>=1){
+    e2m.sig <- e2m[idx]
+    medid <- med$id[ix.output]
+    colnames_X <- colnames_X
+    mednames <- colnames_X[medid]
+    Znames <- colnames(Z)
+    #
+    output <- data.frame()
+    for(i in 1:length(med$id[ix.output])){
+      idxnsnps_i <- (e2m.sig[[i]]$coef != 0)
+      snpsnames_i <- Znames[idxnsnps_i]
+      med_snps <- data.frame(medi=rep(mednames[i], length(snpsnames_i)), snps_for_medi=snpsnames_i)
+      output <- rbind(output, med_snps)
+    }
+    #
+  }else{
+    output <- data.frame()
   }
-  #
-  
   return(output)
 }
 
