@@ -20,66 +20,134 @@ gddtosilk$snps <- rep("p1m", nrow(gddtosilk))
 gddtosilk$trait <- rep("gddtosilk", nrow(gddtosilk))
 gddtosilk$tissue  <- factor(gddtosilk$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
 
+gddtosilk_p4msnps <- read.csv("data/med_proportion_gddtosilk_p4msnps_r.csv", header=TRUE)
+gddtosilk_p4msnps$snps <- rep("p4m", nrow(gddtosilk_p4msnps))
+gddtosilk_p4msnps$trait <- rep("gddtosilk", nrow(gddtosilk_p4msnps))
+gddtosilk_p4msnps$tissue  <- factor(gddtosilk_p4msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
 gddtosilk_p7msnps <- read.csv("data/med_proportion_gddtosilk_p7msnps_r.csv", header=TRUE)
 gddtosilk_p7msnps$snps <- rep("p7m", nrow(gddtosilk_p7msnps))
 gddtosilk_p7msnps$trait <- rep("gddtosilk", nrow(gddtosilk_p7msnps))
 gddtosilk_p7msnps$tissue  <- factor(gddtosilk_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
 
 daystosilk <- read.csv("data/med_proportion_daystosilk_0.032_pruned_r.csv", header=TRUE)
 daystosilk$snps <- rep("p1m", nrow(daystosilk))
 daystosilk$trait <- rep("daystosilk", nrow(daystosilk))
 daystosilk$tissue  <- factor(daystosilk$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
 
+daystosilk_p4msnps <- read.csv("data/med_proportion_daystosilk_p4msnps_r.csv", header=TRUE)
+daystosilk_p4msnps$snps <- rep("p4m", nrow(daystosilk_p4msnps))
+daystosilk_p4msnps$trait <- rep("daystosilk", nrow(daystosilk_p4msnps))
+daystosilk_p4msnps$tissue  <- factor(daystosilk_p4msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
 daystosilk_p7msnps <- read.csv("data/med_proportion_daystosilk_p7msnps_r.csv", header=TRUE)
 daystosilk_p7msnps$snps <- rep("p7m", nrow(daystosilk_p7msnps))
 daystosilk_p7msnps$trait <- rep("daystosilk", nrow(daystosilk_p7msnps))
 daystosilk_p7msnps$tissue  <- factor(daystosilk_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
 
 gddtotassel <- read.csv("data/med_proportion_gddtotassel_0.032_pruned_r.csv", header=TRUE)
 gddtotassel$snps <- rep("p1m", nrow(gddtotassel))
 gddtotassel$trait <- rep("gddtotassel", nrow(gddtotassel))
 gddtotassel$tissue  <- factor(gddtotassel$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
 
+gddtotassel_p4msnps <- read.csv("data/med_proportion_gddtotassel_p4msnps_r.csv", header=TRUE)
+gddtotassel_p4msnps$snps <- rep("p4m", nrow(gddtotassel_p4msnps))
+gddtotassel_p4msnps$trait <- rep("gddtotassel", nrow(gddtotassel_p4msnps))
+gddtotassel_p4msnps$tissue  <- factor(gddtotassel_p4msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
 gddtotassel_p7msnps <- read.csv("data/med_proportion_gddtotassel_p7msnps_r.csv", header=TRUE)
 gddtotassel_p7msnps$snps <- rep("p7m", nrow(gddtotassel_p7msnps))
 gddtotassel_p7msnps$trait <- rep("gddtotassel", nrow(gddtotassel_p7msnps))
 gddtotassel_p7msnps$tissue  <- factor(gddtotassel_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
 
 daystotassel <- read.csv("data/med_proportion_daystotassel_0.032_pruned_r.csv", header=TRUE)
 daystotassel$snps <- rep("p1m", nrow(daystotassel))
 daystotassel$trait <- rep("daystotassel", nrow(daystotassel))
 daystotassel$tissue  <- factor(daystotassel$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
 
+daystotassel_p4msnps <- read.csv("data/med_proportion_daystotassel_p4msnps_r.csv", header=TRUE)
+daystotassel_p4msnps$snps <- rep("p4m", nrow(daystotassel_p4msnps))
+daystotassel_p4msnps$trait <- rep("daystotassel", nrow(daystotassel_p4msnps))
+daystotassel_p4msnps$tissue  <- factor(daystotassel_p4msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
 daystotassel_p7msnps <- read.csv("data/med_proportion_daystotassel_p7msnps_r.csv", header=TRUE)
 daystotassel_p7msnps$snps <- rep("p7m", nrow(daystotassel_p7msnps))
 daystotassel_p7msnps$trait <- rep("daystotassel", nrow(daystotassel_p7msnps))
 daystotassel_p7msnps$tissue  <- factor(daystotassel_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+
+planth <- read.csv("data/med_proportion_planth_0.032_pruned_r.csv", header=TRUE)
+planth$snps <- rep("p1m", nrow(planth))
+planth$trait <- rep("planth", nrow(planth))
+planth$tissue  <- factor(planth$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+planth_p4msnps <- read.csv("data/med_proportion_planth_p4msnps_r.csv", header=TRUE)
+planth_p4msnps$snps <- rep("p4m", nrow(planth_p4msnps))
+planth_p4msnps$trait <- rep("planth", nrow(planth_p4msnps))
+planth_p4msnps$tissue  <- factor(planth_p4msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+planth_p7msnps <- read.csv("data/med_proportion_planth_p7msnps_r.csv", header=TRUE)
+planth_p7msnps$snps <- rep("p7m", nrow(planth_p7msnps))
+planth_p7msnps$trait <- rep("planth", nrow(planth_p7msnps))
+planth_p7msnps$tissue  <- factor(planth_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
 
 cobd <- read.csv("data/med_proportion_cobd_0.032_pruned_r.csv", header=TRUE)
 cobd$snps <- rep("p1m", nrow(cobd))
 cobd$trait <- rep("cobd", nrow(cobd))
 cobd$tissue  <- factor(cobd$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
 
+cobd_p4msnps <- read.csv("data/med_proportion_cobd_p4msnps_r.csv", header=TRUE)
+cobd_p4msnps$snps <- rep("p4m", nrow(cobd_p4msnps))
+cobd_p4msnps$trait <- rep("cobd", nrow(cobd_p4msnps))
+cobd_p4msnps$tissue  <- factor(cobd_p4msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
 cobd_p7msnps <- read.csv("data/med_proportion_cobd_p7msnps_r.csv", header=TRUE)
 cobd_p7msnps$snps <- rep("p7m", nrow(cobd_p7msnps))
 cobd_p7msnps$trait <- rep("cobd", nrow(cobd_p7msnps))
 cobd_p7msnps$tissue  <- factor(cobd_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+
+cobw <- read.csv("data/med_proportion_cobw_0.032_pruned_r.csv", header=TRUE)
+cobw$snps <- rep("p1m", nrow(cobw))
+cobw$trait <- rep("cobw", nrow(cobw))
+cobw$tissue  <- factor(cobw$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+cobw_p4msnps <- read.csv("data/med_proportion_cobw_p4msnps_r.csv", header=TRUE)
+cobw_p4msnps$snps <- rep("p4m", nrow(cobw_p4msnps))
+cobw_p4msnps$trait <- rep("cobw", nrow(cobw_p4msnps))
+cobw_p4msnps$tissue  <- factor(cobw_p4msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+cobw_p7msnps <- read.csv("data/med_proportion_cobw_p7msnps_r.csv", header=TRUE)
+cobw_p7msnps$snps <- rep("p7m", nrow(cobw_p7msnps))
+cobw_p7msnps$trait <- rep("cobw", nrow(cobw_p7msnps))
+cobw_p7msnps$tissue  <- factor(cobw_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
 
 tkv <- read.csv("data/med_proportion_tkv_0.032_pruned_r.csv", header=TRUE)
 tkv$snps <- rep("p1m", nrow(tkv))
 tkv$trait <- rep("tkv", nrow(tkv))
 tkv$tissue  <- factor(tkv$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
 
+tkv_p4msnps <- read.csv("data/med_proportion_tkv_p4msnps_r.csv", header=TRUE)
+tkv_p4msnps$snps <- rep("p4m", nrow(tkv_p4msnps))
+tkv_p4msnps$trait <- rep("tkv", nrow(tkv_p4msnps))
+tkv_p4msnps$tissue  <- factor(tkv_p4msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
 tkv_p7msnps <- read.csv("data/med_proportion_tkv_p7msnps_r.csv", header=TRUE)
 tkv_p7msnps$snps <- rep("p7m", nrow(tkv_p7msnps))
 tkv_p7msnps$trait <- rep("tkv", nrow(tkv_p7msnps))
 tkv_p7msnps$tissue  <- factor(tkv_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
 
-df <- rbind(gddtosilk, gddtosilk_p7msnps, daystosilk, daystosilk_p7msnps, gddtotassel, gddtotassel_p7msnps, daystotassel,daystotassel_p7msnps, cobd, cobd_p7msnps, tkv, tkv_p7msnps)
+df <- rbind(gddtosilk, gddtosilk_p4msnps, gddtosilk_p7msnps, daystosilk, daystosilk_p4msnps, daystosilk_p7msnps, gddtotassel, gddtotassel_p4msnps, gddtotassel_p7msnps, daystotassel, daystotassel_p4msnps, daystotassel_p7msnps, planth, planth_p4msnps, planth_p7msnps, cobd, cobd_p4msnps, cobd_p7msnps, cobw, cobw_p4msnps, cobw_p7msnps, tkv, tkv_p4msnps, tkv_p7msnps)
 
 library(dplyr)
 
 df_p1m <- filter(df, snps %in% c("p1m"))
+df_p4m <- filter(df, snps %in% c("p4m"))
 df_p7m <- filter(df, snps %in% c("p7m"))
 
 
@@ -121,14 +189,28 @@ geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
   scale_fill_brewer(palette="Paired")+ ggtitle("daystotassel")+
   theme_minimal()
 
-p15 <- ggplot(data=cobd, aes(x=tissue, y=pmed.pure, fill=method)) +
+p15 <- ggplot(data=planth, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("planth")+
+  theme_minimal()
+
+p16 <- ggplot(data=cobd, aes(x=tissue, y=pmed.pure, fill=method)) +
 geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
   #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
   #         position = position_dodge(0.9), size=3.5)+
   scale_fill_brewer(palette="Paired")+ ggtitle("cobd")+
   theme_minimal()
 
-p16 <- ggplot(data=tkv, aes(x=tissue, y=pmed.pure, fill=method)) +
+p17 <- ggplot(data=cobw, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("cobw")+
+  theme_minimal()
+
+p18 <- ggplot(data=tkv, aes(x=tissue, y=pmed.pure, fill=method)) +
 geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
   #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
   #         position = position_dodge(0.9), size=3.5)+
@@ -136,8 +218,8 @@ geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
   theme_minimal()
 
 
-ggarrange(p11, p13, p15, p12, p14, p16 , 
-          ncol = 3, nrow = 2)
+ggarrange(p11, p13, p15, p17, p12, p14, p16, p18, 
+          ncol = 4, nrow = 2)
 
 ```
 
@@ -174,27 +256,110 @@ geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
   scale_fill_brewer(palette="Paired")+ ggtitle("daystotassel_p7msnps")+
   theme_minimal()
 
-p25 <- ggplot(data=cobd_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+p25 <- ggplot(data=planth_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("planth_p7msnps")+
+  theme_minimal()
+
+p26 <- ggplot(data=cobd_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
 geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
   #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
   #         position = position_dodge(0.9), size=3.5)+
   scale_fill_brewer(palette="Paired")+ ggtitle("cobd_p7msnps")+
   theme_minimal()
 
-p26 <- ggplot(data=tkv_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+p27 <- ggplot(data=cobw_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("cobw_p7msnps")+
+  theme_minimal()
+
+p28 <- ggplot(data=tkv_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
 geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
   #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
   #         position = position_dodge(0.9), size=3.5)+
   scale_fill_brewer(palette="Paired")+ ggtitle("tkv_p7msnps")+
   theme_minimal()
 
-ggarrange(p21, p23, p25, p22, p24, p26 , 
-          ncol = 3, nrow = 2)
+ggarrange(p21, p23, p25, p27, p22, p24, p26, p28, 
+          ncol = 4, nrow = 2)
 
 
 
 
 ```
+
+### Visualization p4m
+```{r}
+
+p81 <- ggplot(data=gddtosilk_p4msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("gddtosilk_p4msnps")+
+  theme_minimal()
+
+p82 <- ggplot(data=daystosilk_p4msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("daystosilk_p4msnps")+
+  theme_minimal()
+
+
+p83 <- ggplot(data=gddtotassel_p4msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("gddtotassel_p4msnps")+
+  theme_minimal()
+
+p84 <- ggplot(data=daystotassel_p4msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("daystotassel_p4msnps")+
+  theme_minimal()
+
+p85 <- ggplot(data=planth_p4msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("planth_p4msnps")+
+  theme_minimal()
+
+p86 <- ggplot(data=cobd_p4msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("cobd_p4msnps")+
+  theme_minimal()
+
+p87 <- ggplot(data=cobw_p4msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("cobw_p4msnps")+
+  theme_minimal()
+
+p88 <- ggplot(data=tkv_p4msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("tkv_p4msnps")+
+  theme_minimal()
+
+ggarrange(p81, p83, p85, p87, p82, p84, p86, p88, 
+          ncol = 4, nrow = 2)
+
+
+
+
+```
+
 
 ###comparision between p1m and p7m (medfix0.5)
 ```{r}
@@ -202,7 +367,9 @@ gddtosilk <- filter(df, trait %in% c("gddtosilk"), method %in% c("medfix0.5"))
 daystosilk <- filter(df, trait %in% c("daystosilk"), method %in% c("medfix0.5"))
 gddtotassel <- filter(df, trait %in% c("gddtotassel"), method %in% c("medfix0.5"))
 daystotassel <- filter(df, trait %in% c("daystotassel"), method %in% c("medfix0.5"))
+planth <- filter(df, trait %in% c("planth"), method %in% c("medfix0.5"))
 cobd <- filter(df, trait %in% c("cobd"), method %in% c("medfix0.5"))
+cobw <- filter(df, trait %in% c("cobw"), method %in% c("medfix0.5"))
 tkv <- filter(df, trait %in% c("tkv"), method %in% c("medfix0.5"))
 
 
@@ -235,14 +402,29 @@ geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
   scale_fill_brewer(palette="Paired")+ ggtitle("daystotassel")+
   theme_minimal()
 
-p35 <- ggplot(data=cobd, aes(x=tissue, y=pmed.pure, fill=snps)) +
+p35 <- ggplot(data=planth, aes(x=tissue, y=pmed.pure, fill=snps)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("planth")+
+  theme_minimal()
+
+p36 <- ggplot(data=cobd, aes(x=tissue, y=pmed.pure, fill=snps)) +
 geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
   #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
   #         position = position_dodge(0.9), size=3.5)+
   scale_fill_brewer(palette="Paired")+ ggtitle("cobd")+
   theme_minimal()
 
-p36 <- ggplot(data=tkv, aes(x=tissue, y=pmed.pure, fill=snps)) +
+p37 <- ggplot(data=cobw, aes(x=tissue, y=pmed.pure, fill=snps)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("cobw")+
+  theme_minimal()
+
+
+p38 <- ggplot(data=tkv, aes(x=tissue, y=pmed.pure, fill=snps)) +
 geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
   #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
   #         position = position_dodge(0.9), size=3.5)+
@@ -250,8 +432,8 @@ geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
   theme_minimal()
 
 
-ggarrange(p31, p33, p35, p32, p34, p36 , 
-          ncol = 3, nrow = 2)
+ggarrange(p31, p33, p35, p37, p32, p34, p36, p38, 
+          ncol = 4, nrow = 2)
 
 
 
@@ -265,8 +447,11 @@ gddtosilk <- filter(df, trait %in% c("gddtosilk"), method %in% c("medfixbic"))
 daystosilk <- filter(df, trait %in% c("daystosilk"), method %in% c("medfixbic"))
 gddtotassel <- filter(df, trait %in% c("gddtotassel"), method %in% c("medfixbic"))
 daystotassel <- filter(df, trait %in% c("daystotassel"), method %in% c("medfixbic"))
+planth <- filter(df, trait %in% c("planth"), method %in% c("medfixbic"))
 cobd <- filter(df, trait %in% c("cobd"), method %in% c("medfixbic"))
+cobw <- filter(df, trait %in% c("cobw"), method %in% c("medfixbic"))
 tkv <- filter(df, trait %in% c("tkv"), method %in% c("medfixbic"))
+
 
 p41 <- ggplot(data=gddtosilk, aes(x=tissue, y=pmed.pure, fill=snps)) +
 geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
@@ -297,14 +482,29 @@ geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
   scale_fill_brewer(palette="Paired")+ ggtitle("daystotassel")+
   theme_minimal()
 
-p45 <- ggplot(data=cobd, aes(x=tissue, y=pmed.pure, fill=snps)) +
+p45 <- ggplot(data=planth, aes(x=tissue, y=pmed.pure, fill=snps)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("planth")+
+  theme_minimal()
+
+p46 <- ggplot(data=cobd, aes(x=tissue, y=pmed.pure, fill=snps)) +
 geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
   #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
   #         position = position_dodge(0.9), size=3.5)+
   scale_fill_brewer(palette="Paired")+ ggtitle("cobd")+
   theme_minimal()
 
-p46 <- ggplot(data=tkv, aes(x=tissue, y=pmed.pure, fill=snps)) +
+p47 <- ggplot(data=cobw, aes(x=tissue, y=pmed.pure, fill=snps)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("cobw")+
+  theme_minimal()
+
+
+p48 <- ggplot(data=tkv, aes(x=tissue, y=pmed.pure, fill=snps)) +
 geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
   #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
   #         position = position_dodge(0.9), size=3.5)+
@@ -312,8 +512,8 @@ geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$pmed.pure))+
   theme_minimal()
 
 
-ggarrange(p41, p43, p45, p42, p44, p46 , 
-          ncol = 3, nrow = 2)
+ggarrange(p41, p43, p45, p47, p42, p44, p46, p48, 
+          ncol = 4, nrow = 2)
 
 
 
@@ -326,7 +526,9 @@ gddtosilk <- filter(df, trait %in% c("gddtosilk"), method %in% c("medfix0.5"))
 daystosilk <- filter(df, trait %in% c("daystosilk"), method %in% c("medfix0.5"))
 gddtotassel <- filter(df, trait %in% c("gddtotassel"), method %in% c("medfix0.5"))
 daystotassel <- filter(df, trait %in% c("daystotassel"), method %in% c("medfix0.5"))
+planth <- filter(df, trait %in% c("planth"), method %in% c("medfix0.5"))
 cobd <- filter(df, trait %in% c("cobd"), method %in% c("medfix0.5"))
+cobw <- filter(df, trait %in% c("cobw"), method %in% c("medfix0.5"))
 tkv <- filter(df, trait %in% c("tkv"), method %in% c("medfix0.5"))
 
 
@@ -359,14 +561,29 @@ geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$n.med))+
   scale_fill_brewer(palette="Paired")+ ggtitle("daystotassel")+
   theme_minimal()
 
-p55 <- ggplot(data=cobd, aes(x=tissue, y=n.med, fill=snps)) +
+p55 <- ggplot(data=planth, aes(x=tissue, y=n.med, fill=snps)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$n.med))+
+  #geom_text(aes(label=n.med), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("planth")+
+  theme_minimal()
+
+p56 <- ggplot(data=cobd, aes(x=tissue, y=n.med, fill=snps)) +
 geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$n.med))+
   #geom_text(aes(label=n.med), vjust=1.6, color="white",
   #         position = position_dodge(0.9), size=3.5)+
   scale_fill_brewer(palette="Paired")+ ggtitle("cobd")+
   theme_minimal()
 
-p56 <- ggplot(data=tkv, aes(x=tissue, y=n.med, fill=snps)) +
+p57 <- ggplot(data=cobw, aes(x=tissue, y=n.med, fill=snps)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$n.med))+
+  #geom_text(aes(label=n.med), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("cobw")+
+  theme_minimal()
+
+
+p58 <- ggplot(data=tkv, aes(x=tissue, y=n.med, fill=snps)) +
 geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$n.med))+
   #geom_text(aes(label=n.med), vjust=1.6, color="white",
   #         position = position_dodge(0.9), size=3.5)+
@@ -374,8 +591,8 @@ geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$n.med))+
   theme_minimal()
 
 
-ggarrange(p51, p53, p55, p52, p54, p56 , 
-          ncol = 3, nrow = 2)
+ggarrange(p51, p53, p55, p57, p52, p54, p56, p58, 
+          ncol = 4, nrow = 2)
 
 
 
@@ -389,8 +606,11 @@ gddtosilk <- filter(df, trait %in% c("gddtosilk"), method %in% c("medfixbic"))
 daystosilk <- filter(df, trait %in% c("daystosilk"), method %in% c("medfixbic"))
 gddtotassel <- filter(df, trait %in% c("gddtotassel"), method %in% c("medfixbic"))
 daystotassel <- filter(df, trait %in% c("daystotassel"), method %in% c("medfixbic"))
+planth <- filter(df, trait %in% c("planth"), method %in% c("medfixbic"))
 cobd <- filter(df, trait %in% c("cobd"), method %in% c("medfixbic"))
+cobw <- filter(df, trait %in% c("cobw"), method %in% c("medfixbic"))
 tkv <- filter(df, trait %in% c("tkv"), method %in% c("medfixbic"))
+
 
 p61 <- ggplot(data=gddtosilk, aes(x=tissue, y=n.med, fill=snps)) +
 geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$n.med))+
@@ -421,14 +641,29 @@ geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$n.med))+
   scale_fill_brewer(palette="Paired")+ ggtitle("daystotassel")+
   theme_minimal()
 
-p65 <- ggplot(data=cobd, aes(x=tissue, y=n.med, fill=snps)) +
+p65 <- ggplot(data=planth, aes(x=tissue, y=n.med, fill=snps)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$n.med))+
+  #geom_text(aes(label=n.med), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("planth")+
+  theme_minimal()
+
+p66 <- ggplot(data=cobd, aes(x=tissue, y=n.med, fill=snps)) +
 geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$n.med))+
   #geom_text(aes(label=n.med), vjust=1.6, color="white",
   #         position = position_dodge(0.9), size=3.5)+
   scale_fill_brewer(palette="Paired")+ ggtitle("cobd")+
   theme_minimal()
 
-p66 <- ggplot(data=tkv, aes(x=tissue, y=n.med, fill=snps)) +
+p67 <- ggplot(data=cobw, aes(x=tissue, y=n.med, fill=snps)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$n.med))+
+  #geom_text(aes(label=n.med), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("cobw")+
+  theme_minimal()
+
+
+p68 <- ggplot(data=tkv, aes(x=tissue, y=n.med, fill=snps)) +
 geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$n.med))+
   #geom_text(aes(label=n.med), vjust=1.6, color="white",
   #         position = position_dodge(0.9), size=3.5)+
@@ -436,9 +671,8 @@ geom_bar(stat="identity", position=position_dodge())+ylim(0, max(df$n.med))+
   theme_minimal()
 
 
-ggarrange(p61, p63, p65, p62, p64, p66 , 
-          ncol = 3, nrow = 2)
-
+ggarrange(p61, p63, p65, p67, p62, p64, p66, p68, 
+          ncol = 4, nrow = 2)
 
 
 ```
@@ -447,15 +681,16 @@ ggarrange(p61, p63, p65, p62, p64, p66 ,
 
 ### Correlation between med.pure and Heritablity
 ```{r}
-df_h <- filter(df, trait %in% c("daystosilk", "daystotassel", "cobd", "tkv"))
+df_h <- filter(df, trait %in% c("daystosilk", "daystotassel", "planth", "cobd", "cobw", "tkv"))
 
-df_h$hp <- c(rep(0.70, 56),rep(0.71, 56), rep(0.42, 56), rep(0.23, 56)) 
+df_h$hp <- c(rep(0.70, 84),rep(0.71, 84), rep(0.56, 84), rep(0.42, 84), rep(0.42, 84), rep(0.23, 84)) 
 
-df_h$hl <- c(rep(0.94, 56),rep(0.94, 56), rep(0.78, 56), rep(0.59, 56)) 
+df_h$hl <- c(rep(0.94, 84),rep(0.94, 84), rep(0.92, 84), rep(0.78, 84), rep(0.78, 84), rep(0.59, 84)) 
 
-df_h$hlw <- c(rep(0.85, 56),rep(0.78, 56), rep(0.73, 56), rep(0.52, 56)) 
+df_h$hlw <- c(rep(0.85, 84),rep(0.78, 84), rep(0.90, 84), rep(0.73, 84), rep(0.73, 84), rep(0.52, 84)) 
 
-df_h$hc <- c(rep(0.96, 56),rep(0.97, 56), rep(0.79, 56), rep(0.62, 56)) 
+df_h$hc <- c(rep(0.96, 84),rep(0.97, 84), rep(0.93, 84), rep(0.79, 84), rep(0.79, 84), rep(0.62, 84)) 
+
 
 df_h$method_snps <- rep("fill", nrow(df_h))
 
@@ -503,48 +738,37 @@ p78 <- ggplot(df_h_medfix0.5_p1m, aes(x=hp, y=pmed.pure, color=tissue, shape=tis
   geom_point()+ ggtitle("medfix0.5_p1m") + 
   geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
 
+df_h_medfix0.5_p4m <- filter(df_h, method_snps %in% c("medfix0.5_p4m"))
+p79 <- ggplot(df_h_medfix0.5_p4m, aes(x=hp, y=pmed.pure, color=tissue, shape=tissue)) +
+  geom_point()+ ggtitle("medfix0.5_p4m") + 
+  geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
+
 df_h_medfix0.5_p7m <- filter(df_h, method_snps %in% c("medfix0.5_p7m"))
-p79 <- ggplot(df_h_medfix0.5_p7m, aes(x=hp, y=pmed.pure, color=tissue, shape=tissue)) +
+p710 <- ggplot(df_h_medfix0.5_p7m, aes(x=hp, y=pmed.pure, color=tissue, shape=tissue)) +
   geom_point()+ ggtitle("medfix0.5_p7m") + 
   geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
 
 df_h_medfixbic_p1m <- filter(df_h, method_snps %in% c("medfixbic_p1m"))
-p710 <- ggplot(df_h_medfixbic_p1m, aes(x=hp, y=pmed.pure, color=tissue, shape=tissue)) +
+p711 <- ggplot(df_h_medfixbic_p1m, aes(x=hp, y=pmed.pure, color=tissue, shape=tissue)) +
   geom_point()+ ggtitle("medfixbic_p1m") + 
   geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
 
+df_h_medfixbic_p4m <- filter(df_h, method_snps %in% c("medfixbic_p4m"))
+p712 <- ggplot(df_h_medfixbic_p4m, aes(x=hp, y=pmed.pure, color=tissue, shape=tissue)) +
+  geom_point()+ ggtitle("medfixbic_p4m") + 
+  geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
 
 df_h_medfixbic_p7m <- filter(df_h, method_snps %in% c("medfixbic_p7m"))
-p711 <- ggplot(df_h_medfixbic_p7m, aes(x=hp, y=pmed.pure, color=tissue, shape=tissue)) +
+p713 <- ggplot(df_h_medfixbic_p7m, aes(x=hp, y=pmed.pure, color=tissue, shape=tissue)) +
   geom_point()+ ggtitle("medfixbic_p7m") + 
   geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
 
 ggarrange(p71, p73, p75, p77, p72, p74 ,p76, p78,
           ncol = 4, nrow = 2)
 
-ggarrange(p78, p79, p710, p711,
-          ncol = 2, nrow = 2)
+ggarrange(p78, p79, p710, p711, p712, p713,
+          ncol = 3, nrow = 2)
 
-
-
-
-
-##gs
-#medfix0.5_p1m
-df_h_gs_medfix0.5_p1m <- filter(df_h_gs, method_snps %in% c("medfix0.5_p1m"))
-cor.test(df_h_gs_medfix0.5_p1m$pmed.pure, df_h_gs_medfix0.5_p1m$hp, method = "pearson")
-
-#medfix0.5_p7m
-df_h_gs_medfix0.5_p7m <- filter(df_h_gs, method_snps %in% c("medfix0.5_p7m"))
-cor.test(df_h_gs_medfix0.5_p7m$pmed.pure, df_h_gs_medfix0.5_p7m$hp, method = "pearson")
-
-#medfixbic_p1m
-df_h_gs_medfixbic_p1m <- filter(df_h_gs, method_snps %in% c("medfixbic_p1m"))
-cor.test(df_h_gs_medfixbic_p1m$pmed.pure, df_h_gs_medfixbic_p1m$hp, method = "pearson")
-
-#medfixbic_p7m
-df_h_gs_medfixbic_p7m <- filter(df_h_gs, method_snps %in% c("medfixbic_p7m"))
-cor.test(df_h_gs_medfixbic_p7m$pmed.pure, df_h_gs_medfixbic_p7m$hp, method = "pearson")
 
 
 
@@ -552,3 +776,291 @@ cor.test(df_h_gs_medfixbic_p7m$pmed.pure, df_h_gs_medfixbic_p7m$hp, method = "pe
 
 
 ```
+
+correlation test
+```{r}
+df_daystosilk <- filter(df_h, trait %in% c("daystosilk"))
+df_daystosilk <- arrange(df_daystosilk, tissue)
+df_cor <- data.frame(tissue = df_daystosilk$tissue, method_snps = df_daystosilk$method_snps, estimate = rep(0, nrow(df_daystosilk)), p_val = rep(0, nrow(df_daystosilk)))
+
+df_cor$tissue_method_snps = paste(as.character(df_cor$tissue) , as.character(df_cor$method_snps), sep= "_")
+
+##gs
+#medfix0.5_p1m
+df_h_gs_medfix0.5_p1m <- filter(df_h_gs, method_snps %in% c("medfix0.5_p1m"))
+idx = which (df_cor$tissue_method_snps == "gs_medfix0.5_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_gs_medfix0.5_p1m$pmed.pure, df_h_gs_medfix0.5_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_gs_medfix0.5_p1m$pmed.pure, df_h_gs_medfix0.5_p1m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p4m
+df_h_gs_medfix0.5_p4m <- filter(df_h_gs, method_snps %in% c("medfix0.5_p4m"))
+idx = which (df_cor$tissue_method_snps == "gs_medfix0.5_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_gs_medfix0.5_p4m$pmed.pure, df_h_gs_medfix0.5_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_gs_medfix0.5_p4m$pmed.pure, df_h_gs_medfix0.5_p4m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p7m
+df_h_gs_medfix0.5_p7m <- filter(df_h_gs, method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "gs_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_gs_medfix0.5_p7m$pmed.pure, df_h_gs_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_gs_medfix0.5_p7m$pmed.pure, df_h_gs_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p1m
+df_h_gs_medfixbic_p1m <- filter(df_h_gs, method_snps %in% c("medfixbic_p1m"))
+idx = which (df_cor$tissue_method_snps == "gs_medfixbic_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_gs_medfixbic_p1m$pmed.pure, df_h_gs_medfixbic_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_gs_medfixbic_p1m$pmed.pure, df_h_gs_medfixbic_p1m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p4m
+df_h_gs_medfixbic_p4m <- filter(df_h_gs, method_snps %in% c("medfixbic_p4m"))
+idx = which (df_cor$tissue_method_snps == "gs_medfixbic_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_gs_medfixbic_p4m$pmed.pure, df_h_gs_medfixbic_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_gs_medfixbic_p4m$pmed.pure, df_h_gs_medfixbic_p4m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p7m
+df_h_gs_medfixbic_p7m <- filter(df_h_gs, method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "gs_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_gs_medfixbic_p7m$pmed.pure, df_h_gs_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_gs_medfixbic_p7m$pmed.pure, df_h_gs_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+
+##groot
+#medfix0.5_p1m
+df_h_groot_medfix0.5_p1m <- filter(df_h_groot, method_snps %in% c("medfix0.5_p1m"))
+idx = which (df_cor$tissue_method_snps == "groot_medfix0.5_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_groot_medfix0.5_p1m$pmed.pure, df_h_groot_medfix0.5_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_groot_medfix0.5_p1m$pmed.pure, df_h_groot_medfix0.5_p1m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p4m
+df_h_groot_medfix0.5_p4m <- filter(df_h_groot, method_snps %in% c("medfix0.5_p4m"))
+idx = which (df_cor$tissue_method_snps == "groot_medfix0.5_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_groot_medfix0.5_p4m$pmed.pure, df_h_groot_medfix0.5_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_groot_medfix0.5_p4m$pmed.pure, df_h_groot_medfix0.5_p4m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p7m
+df_h_groot_medfix0.5_p7m <- filter(df_h_groot, method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "groot_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_groot_medfix0.5_p7m$pmed.pure, df_h_groot_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_groot_medfix0.5_p7m$pmed.pure, df_h_groot_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p1m
+df_h_groot_medfixbic_p1m <- filter(df_h_groot, method_snps %in% c("medfixbic_p1m"))
+idx = which (df_cor$tissue_method_snps == "groot_medfixbic_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_groot_medfixbic_p1m$pmed.pure, df_h_groot_medfixbic_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_groot_medfixbic_p1m$pmed.pure, df_h_groot_medfixbic_p1m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p4m
+df_h_groot_medfixbic_p4m <- filter(df_h_groot, method_snps %in% c("medfixbic_p4m"))
+idx = which (df_cor$tissue_method_snps == "groot_medfixbic_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_groot_medfixbic_p4m$pmed.pure, df_h_groot_medfixbic_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_groot_medfixbic_p4m$pmed.pure, df_h_groot_medfixbic_p4m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p7m
+df_h_groot_medfixbic_p7m <- filter(df_h_groot, method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "groot_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_groot_medfixbic_p7m$pmed.pure, df_h_groot_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_groot_medfixbic_p7m$pmed.pure, df_h_groot_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+##l3t
+#medfix0.5_p1m
+df_h_l3t_medfix0.5_p1m <- filter(df_h_l3t, method_snps %in% c("medfix0.5_p1m"))
+idx = which (df_cor$tissue_method_snps == "l3t_medfix0.5_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_l3t_medfix0.5_p1m$pmed.pure, df_h_l3t_medfix0.5_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_l3t_medfix0.5_p1m$pmed.pure, df_h_l3t_medfix0.5_p1m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p4m
+df_h_l3t_medfix0.5_p4m <- filter(df_h_l3t, method_snps %in% c("medfix0.5_p4m"))
+idx = which (df_cor$tissue_method_snps == "l3t_medfix0.5_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_l3t_medfix0.5_p4m$pmed.pure, df_h_l3t_medfix0.5_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_l3t_medfix0.5_p4m$pmed.pure, df_h_l3t_medfix0.5_p4m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p7m
+df_h_l3t_medfix0.5_p7m <- filter(df_h_l3t, method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "l3t_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_l3t_medfix0.5_p7m$pmed.pure, df_h_l3t_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_l3t_medfix0.5_p7m$pmed.pure, df_h_l3t_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p1m
+df_h_l3t_medfixbic_p1m <- filter(df_h_l3t, method_snps %in% c("medfixbic_p1m"))
+idx = which (df_cor$tissue_method_snps == "l3t_medfixbic_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_l3t_medfixbic_p1m$pmed.pure, df_h_l3t_medfixbic_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_l3t_medfixbic_p1m$pmed.pure, df_h_l3t_medfixbic_p1m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p4m
+df_h_l3t_medfixbic_p4m <- filter(df_h_l3t, method_snps %in% c("medfixbic_p4m"))
+idx = which (df_cor$tissue_method_snps == "l3t_medfixbic_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_l3t_medfixbic_p4m$pmed.pure, df_h_l3t_medfixbic_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_l3t_medfixbic_p4m$pmed.pure, df_h_l3t_medfixbic_p4m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p7m
+df_h_l3t_medfixbic_p7m <- filter(df_h_l3t, method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "l3t_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_l3t_medfixbic_p7m$pmed.pure, df_h_l3t_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_l3t_medfixbic_p7m$pmed.pure, df_h_l3t_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+##l3b
+#medfix0.5_p1m
+df_h_l3b_medfix0.5_p1m <- filter(df_h_l3b, method_snps %in% c("medfix0.5_p1m"))
+idx = which (df_cor$tissue_method_snps == "l3b_medfix0.5_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_l3b_medfix0.5_p1m$pmed.pure, df_h_l3b_medfix0.5_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_l3b_medfix0.5_p1m$pmed.pure, df_h_l3b_medfix0.5_p1m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p4m
+df_h_l3b_medfix0.5_p4m <- filter(df_h_l3b, method_snps %in% c("medfix0.5_p4m"))
+idx = which (df_cor$tissue_method_snps == "l3b_medfix0.5_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_l3b_medfix0.5_p4m$pmed.pure, df_h_l3b_medfix0.5_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_l3b_medfix0.5_p4m$pmed.pure, df_h_l3b_medfix0.5_p4m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p7m
+df_h_l3b_medfix0.5_p7m <- filter(df_h_l3b, method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "l3b_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_l3b_medfix0.5_p7m$pmed.pure, df_h_l3b_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_l3b_medfix0.5_p7m$pmed.pure, df_h_l3b_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p1m
+df_h_l3b_medfixbic_p1m <- filter(df_h_l3b, method_snps %in% c("medfixbic_p1m"))
+idx = which (df_cor$tissue_method_snps == "l3b_medfixbic_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_l3b_medfixbic_p1m$pmed.pure, df_h_l3b_medfixbic_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_l3b_medfixbic_p1m$pmed.pure, df_h_l3b_medfixbic_p1m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p4m
+df_h_l3b_medfixbic_p4m <- filter(df_h_l3b, method_snps %in% c("medfixbic_p4m"))
+idx = which (df_cor$tissue_method_snps == "l3b_medfixbic_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_l3b_medfixbic_p4m$pmed.pure, df_h_l3b_medfixbic_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_l3b_medfixbic_p4m$pmed.pure, df_h_l3b_medfixbic_p4m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p7m
+df_h_l3b_medfixbic_p7m <- filter(df_h_l3b, method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "l3b_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_l3b_medfixbic_p7m$pmed.pure, df_h_l3b_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_l3b_medfixbic_p7m$pmed.pure, df_h_l3b_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+##ld268
+#medfix0.5_p1m
+df_h_ld268_medfix0.5_p1m <- filter(df_h_ld268, method_snps %in% c("medfix0.5_p1m"))
+idx = which (df_cor$tissue_method_snps == "ld268_medfix0.5_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_ld268_medfix0.5_p1m$pmed.pure, df_h_ld268_medfix0.5_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_ld268_medfix0.5_p1m$pmed.pure, df_h_ld268_medfix0.5_p1m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p4m
+df_h_ld268_medfix0.5_p4m <- filter(df_h_ld268, method_snps %in% c("medfix0.5_p4m"))
+idx = which (df_cor$tissue_method_snps == "ld268_medfix0.5_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_ld268_medfix0.5_p4m$pmed.pure, df_h_ld268_medfix0.5_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_ld268_medfix0.5_p4m$pmed.pure, df_h_ld268_medfix0.5_p4m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p7m
+df_h_ld268_medfix0.5_p7m <- filter(df_h_ld268, method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "ld268_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_ld268_medfix0.5_p7m$pmed.pure, df_h_ld268_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_ld268_medfix0.5_p7m$pmed.pure, df_h_ld268_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p1m
+df_h_ld268_medfixbic_p1m <- filter(df_h_ld268, method_snps %in% c("medfixbic_p1m"))
+idx = which (df_cor$tissue_method_snps == "ld268_medfixbic_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_ld268_medfixbic_p1m$pmed.pure, df_h_ld268_medfixbic_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_ld268_medfixbic_p1m$pmed.pure, df_h_ld268_medfixbic_p1m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p4m
+df_h_ld268_medfixbic_p4m <- filter(df_h_ld268, method_snps %in% c("medfixbic_p4m"))
+idx = which (df_cor$tissue_method_snps == "ld268_medfixbic_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_ld268_medfixbic_p4m$pmed.pure, df_h_ld268_medfixbic_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_ld268_medfixbic_p4m$pmed.pure, df_h_ld268_medfixbic_p4m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p7m
+df_h_ld268_medfixbic_p7m <- filter(df_h_ld268, method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "ld268_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_ld268_medfixbic_p7m$pmed.pure, df_h_ld268_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_ld268_medfixbic_p7m$pmed.pure, df_h_ld268_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+##ln268
+#medfix0.5_p1m
+df_h_ln268_medfix0.5_p1m <- filter(df_h_ln268, method_snps %in% c("medfix0.5_p1m"))
+idx = which (df_cor$tissue_method_snps == "ln268_medfix0.5_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_ln268_medfix0.5_p1m$pmed.pure, df_h_ln268_medfix0.5_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_ln268_medfix0.5_p1m$pmed.pure, df_h_ln268_medfix0.5_p1m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p4m
+df_h_ln268_medfix0.5_p4m <- filter(df_h_ln268, method_snps %in% c("medfix0.5_p4m"))
+idx = which (df_cor$tissue_method_snps == "ln268_medfix0.5_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_ln268_medfix0.5_p4m$pmed.pure, df_h_ln268_medfix0.5_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_ln268_medfix0.5_p4m$pmed.pure, df_h_ln268_medfix0.5_p4m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p7m
+df_h_ln268_medfix0.5_p7m <- filter(df_h_ln268, method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "ln268_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_ln268_medfix0.5_p7m$pmed.pure, df_h_ln268_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_ln268_medfix0.5_p7m$pmed.pure, df_h_ln268_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p1m
+df_h_ln268_medfixbic_p1m <- filter(df_h_ln268, method_snps %in% c("medfixbic_p1m"))
+idx = which (df_cor$tissue_method_snps == "ln268_medfixbic_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_ln268_medfixbic_p1m$pmed.pure, df_h_ln268_medfixbic_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_ln268_medfixbic_p1m$pmed.pure, df_h_ln268_medfixbic_p1m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p4m
+df_h_ln268_medfixbic_p4m <- filter(df_h_ln268, method_snps %in% c("medfixbic_p4m"))
+idx = which (df_cor$tissue_method_snps == "ln268_medfixbic_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_ln268_medfixbic_p4m$pmed.pure, df_h_ln268_medfixbic_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_ln268_medfixbic_p4m$pmed.pure, df_h_ln268_medfixbic_p4m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p7m
+df_h_ln268_medfixbic_p7m <- filter(df_h_ln268, method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "ln268_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_ln268_medfixbic_p7m$pmed.pure, df_h_ln268_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_ln268_medfixbic_p7m$pmed.pure, df_h_ln268_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+##kern
+#medfix0.5_p1m
+df_h_kern_medfix0.5_p1m <- filter(df_h_kern, method_snps %in% c("medfix0.5_p1m"))
+idx = which (df_cor$tissue_method_snps == "kern_medfix0.5_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_kern_medfix0.5_p1m$pmed.pure, df_h_kern_medfix0.5_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_kern_medfix0.5_p1m$pmed.pure, df_h_kern_medfix0.5_p1m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p4m
+df_h_kern_medfix0.5_p4m <- filter(df_h_kern, method_snps %in% c("medfix0.5_p4m"))
+idx = which (df_cor$tissue_method_snps == "kern_medfix0.5_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_kern_medfix0.5_p4m$pmed.pure, df_h_kern_medfix0.5_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_kern_medfix0.5_p4m$pmed.pure, df_h_kern_medfix0.5_p4m$hp, method = "pearson"))[[4]]
+
+#medfix0.5_p7m
+df_h_kern_medfix0.5_p7m <- filter(df_h_kern, method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "kern_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_kern_medfix0.5_p7m$pmed.pure, df_h_kern_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_kern_medfix0.5_p7m$pmed.pure, df_h_kern_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p1m
+df_h_kern_medfixbic_p1m <- filter(df_h_kern, method_snps %in% c("medfixbic_p1m"))
+idx = which (df_cor$tissue_method_snps == "kern_medfixbic_p1m" )
+df_cor[idx,4] =  (cor.test(df_h_kern_medfixbic_p1m$pmed.pure, df_h_kern_medfixbic_p1m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_kern_medfixbic_p1m$pmed.pure, df_h_kern_medfixbic_p1m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p4m
+df_h_kern_medfixbic_p4m <- filter(df_h_kern, method_snps %in% c("medfixbic_p4m"))
+idx = which (df_cor$tissue_method_snps == "kern_medfixbic_p4m" )
+df_cor[idx,4] =  (cor.test(df_h_kern_medfixbic_p4m$pmed.pure, df_h_kern_medfixbic_p4m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_kern_medfixbic_p4m$pmed.pure, df_h_kern_medfixbic_p4m$hp, method = "pearson"))[[4]]
+
+#medfixbic_p7m
+df_h_kern_medfixbic_p7m <- filter(df_h_kern, method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "kern_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_h_kern_medfixbic_p7m$pmed.pure, df_h_kern_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_h_kern_medfixbic_p7m$pmed.pure, df_h_kern_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+p91 <- ggplot(data=df_cor, aes(x=tissue, y=p_val, fill=method_snps)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  geom_abline(slope=0, intercept=0.05,  col = "yellow",lty=2) +
+  geom_abline(slope=0, intercept=0.1,  col = "black",lty=2) +
+  scale_fill_brewer(palette="Paired")+ ggtitle("p-val vs tissue(method_snps)")+
+  theme_minimal()
+
+p91
+
+
+```
+
