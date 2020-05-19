@@ -1059,8 +1059,17 @@ geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))
   scale_fill_brewer(palette="Paired")+ ggtitle("p-val vs tissue(method_snps)")+
   theme_minimal()
 
-p91
 
+
+p92 <- ggplot(data=df_cor, aes(x=tissue, y=estimate, fill=method_snps)) +
+geom_bar(stat="identity", position=position_dodge())+
+  scale_fill_brewer(palette="Paired")+ ggtitle("estimate vs tissue(method_snps)")+
+  theme_minimal()
+
+
+
+ggarrange(p92, p91, 
+          ncol = 1, nrow = 2)
 
 ```
 
