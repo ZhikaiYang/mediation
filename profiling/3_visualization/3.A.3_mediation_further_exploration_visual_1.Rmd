@@ -1,0 +1,14 @@
+---
+title: "med_further_exploration_visual_1"
+author: "Zhikai Yang"
+date: "May 25th, 2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
