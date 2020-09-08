@@ -1,0 +1,721 @@
+---
+title: "med_further_exploration_visual_1"
+author: "Zhikai Yang"
+date: "June 1st, 2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+### read in data
+```{r}
+daystosilk_p7msnps <- read.csv("data/med_proportion_daystosilk_p7msnps_r.csv", header=TRUE)
+daystosilk_p7msnps$snps <- rep("p7m", nrow(daystosilk_p7msnps))
+daystosilk_p7msnps$trait <- rep("daystosilk", nrow(daystosilk_p7msnps))
+daystosilk_p7msnps$tissue  <- factor(daystosilk_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+daystotassel_p7msnps <- read.csv("data/med_proportion_daystotassel_p7msnps_r.csv", header=TRUE)
+daystotassel_p7msnps$snps <- rep("p7m", nrow(daystotassel_p7msnps))
+daystotassel_p7msnps$trait <- rep("daystotassel", nrow(daystotassel_p7msnps))
+daystotassel_p7msnps$tissue  <- factor(daystotassel_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+planth_p7msnps <- read.csv("data/med_proportion_planth_p7msnps_r.csv", header=TRUE)
+planth_p7msnps$snps <- rep("p7m", nrow(planth_p7msnps))
+planth_p7msnps$trait <- rep("planth", nrow(planth_p7msnps))
+planth_p7msnps$tissue  <- factor(planth_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+cobd_p7msnps <- read.csv("data/med_proportion_cobd_p7msnps_r.csv", header=TRUE)
+cobd_p7msnps$snps <- rep("p7m", nrow(cobd_p7msnps))
+cobd_p7msnps$trait <- rep("cobd", nrow(cobd_p7msnps))
+cobd_p7msnps$tissue  <- factor(cobd_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+cobw_p7msnps <- read.csv("data/med_proportion_cobw_p7msnps_r.csv", header=TRUE)
+cobw_p7msnps$snps <- rep("p7m", nrow(cobw_p7msnps))
+cobw_p7msnps$trait <- rep("cobw", nrow(cobw_p7msnps))
+cobw_p7msnps$tissue  <- factor(cobw_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+tkv_p7msnps <- read.csv("data/med_proportion_tkv_p7msnps_r.csv", header=TRUE)
+tkv_p7msnps$snps <- rep("p7m", nrow(tkv_p7msnps))
+tkv_p7msnps$trait <- rep("tkv", nrow(tkv_p7msnps))
+tkv_p7msnps$tissue  <- factor(tkv_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+earm_p7msnps <- read.csv("data/med_proportion_earm_p7msnps_r.csv", header=TRUE)
+earm_p7msnps$snps <- rep("p7m", nrow(earm_p7msnps))
+earm_p7msnps$trait <- rep("earm", nrow(earm_p7msnps))
+earm_p7msnps$tissue  <- factor(earm_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+ekpr_p7msnps <- read.csv("data/med_proportion_ekpr_p7msnps_r.csv", header=TRUE)
+ekpr_p7msnps$snps <- rep("p7m", nrow(ekpr_p7msnps))
+ekpr_p7msnps$trait <- rep("ekpr", nrow(ekpr_p7msnps))
+ekpr_p7msnps$tissue  <- factor(ekpr_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+ern_p7msnps <- read.csv("data/med_proportion_ern_p7msnps_r.csv", header=TRUE)
+ern_p7msnps$snps <- rep("p7m", nrow(ern_p7msnps))
+ern_p7msnps$trait <- rep("ern", nrow(ern_p7msnps))
+ern_p7msnps$tissue  <- factor(ern_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+cobl_p7msnps <- read.csv("data/med_proportion_cobl_p7msnps_r.csv", header=TRUE)
+cobl_p7msnps$snps <- rep("p7m", nrow(cobl_p7msnps))
+cobl_p7msnps$trait <- rep("cobl", nrow(cobl_p7msnps))
+cobl_p7msnps$tissue  <- factor(cobl_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+tpb_p7msnps <- read.csv("data/med_proportion_tpb_p7msnps_r.csv", header=TRUE)
+tpb_p7msnps$snps <- rep("p7m", nrow(tpb_p7msnps))
+tpb_p7msnps$trait <- rep("tpb", nrow(tpb_p7msnps))
+tpb_p7msnps$tissue  <- factor(tpb_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+tsl_p7msnps <- read.csv("data/med_proportion_tsl_p7msnps_r.csv", header=TRUE)
+tsl_p7msnps$snps <- rep("p7m", nrow(tsl_p7msnps))
+tsl_p7msnps$trait <- rep("tsl", nrow(tsl_p7msnps))
+tsl_p7msnps$tissue  <- factor(tsl_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+lw_p7msnps <- read.csv("data/med_proportion_lw_p7msnps_r.csv", header=TRUE)
+lw_p7msnps$snps <- rep("p7m", nrow(lw_p7msnps))
+lw_p7msnps$trait <- rep("lw", nrow(lw_p7msnps))
+lw_p7msnps$tissue  <- factor(lw_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+ll_p7msnps <- read.csv("data/med_proportion_ll_p7msnps_r.csv", header=TRUE)
+ll_p7msnps$snps <- rep("p7m", nrow(ll_p7msnps))
+ll_p7msnps$trait <- rep("ll", nrow(ll_p7msnps))
+ll_p7msnps$tissue  <- factor(ll_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+eh_p7msnps <- read.csv("data/med_proportion_eh_p7msnps_r.csv", header=TRUE)
+eh_p7msnps$snps <- rep("p7m", nrow(eh_p7msnps))
+eh_p7msnps$trait <- rep("eh", nrow(eh_p7msnps))
+eh_p7msnps$tissue  <- factor(eh_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+asi_p7msnps <- read.csv("data/med_proportion_asi_p7msnps_r.csv", header=TRUE)
+asi_p7msnps$snps <- rep("p7m", nrow(asi_p7msnps))
+asi_p7msnps$trait <- rep("asi", nrow(asi_p7msnps))
+asi_p7msnps$tissue  <- factor(asi_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+ula_p7msnps <- read.csv("data/med_proportion_ula_p7msnps_r.csv", header=TRUE)
+ula_p7msnps$snps <- rep("p7m", nrow(ula_p7msnps))
+ula_p7msnps$trait <- rep("ula", nrow(ula_p7msnps))
+ula_p7msnps$tissue  <- factor(ula_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+twkw_p7msnps <- read.csv("data/med_proportion_twkw_p7msnps_r.csv", header=TRUE)
+twkw_p7msnps$snps <- rep("p7m", nrow(twkw_p7msnps))
+twkw_p7msnps$trait <- rep("twkw", nrow(twkw_p7msnps))
+twkw_p7msnps$tissue  <- factor(twkw_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+knum_p7msnps <- read.csv("data/med_proportion_knum_p7msnps_r.csv", header=TRUE)
+knum_p7msnps$snps <- rep("p7m", nrow(knum_p7msnps))
+knum_p7msnps$trait <- rep("knum", nrow(knum_p7msnps))
+knum_p7msnps$tissue  <- factor(knum_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+kw_p7msnps <- read.csv("data/med_proportion_kw_p7msnps_r.csv", header=TRUE)
+kw_p7msnps$snps <- rep("p7m", nrow(kw_p7msnps))
+kw_p7msnps$trait <- rep("kw", nrow(kw_p7msnps))
+kw_p7msnps$tissue  <- factor(kw_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+
+oil_p7msnps <- read.csv("data/med_proportion_oil_p7msnps_r.csv", header=TRUE)
+oil_p7msnps$snps <- rep("p7m", nrow(oil_p7msnps))
+oil_p7msnps$trait <- rep("twkw", nrow(oil_p7msnps))
+oil_p7msnps$tissue  <- factor(oil_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+
+gddtosilk_p7msnps <- read.csv("data/med_proportion_gddtosilk_p7msnps_r.csv", header=TRUE)
+gddtosilk_p7msnps$snps <- rep("p7m", nrow(gddtosilk_p7msnps))
+gddtosilk_p7msnps$trait <- rep("gddtosilk", nrow(gddtosilk_p7msnps))
+gddtosilk_p7msnps$tissue  <- factor(gddtosilk_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+gddtotassel_p7msnps <- read.csv("data/med_proportion_gddtotassel_p7msnps_r.csv", header=TRUE)
+gddtotassel_p7msnps$snps <- rep("p7m", nrow(gddtotassel_p7msnps))
+gddtotassel_p7msnps$trait <- rep("gddtotassel", nrow(gddtotassel_p7msnps))
+gddtotassel_p7msnps$tissue  <- factor(gddtotassel_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+gddasi_p7msnps <- read.csv("data/med_proportion_gddasi_p7msnps_r.csv", header=TRUE)
+gddasi_p7msnps$snps <- rep("p7m", nrow(gddasi_p7msnps))
+gddasi_p7msnps$trait <- rep("gddasi", nrow(gddasi_p7msnps))
+gddasi_p7msnps$tissue  <- factor(gddasi_p7msnps$tissue, levels=c("gs", "groot", "l3t", "l3b", "ld268", "ln268", "kern"))
+
+
+
+df <- rbind(asi_p7msnps, daystotassel_p7msnps, daystosilk_p7msnps, gddasi_p7msnps, gddtotassel_p7msnps, gddtosilk_p7msnps, planth_p7msnps, eh_p7msnps, ll_p7msnps, lw_p7msnps, ula_p7msnps, tsl_p7msnps, tpb_p7msnps, cobd_p7msnps, cobl_p7msnps, cobw_p7msnps, ekpr_p7msnps, ern_p7msnps, earm_p7msnps, tkv_p7msnps, twkw_p7msnps)
+
+df$trait <- factor(df$trait, levels =c("asi", "daystotassel", "daystosilk", "gddasi", "gddtotassel", "gddtosilk", "planth", "eh", "ll", "lw", "ula", "tsl", "tpb", "cobd", "cobl", "cobw", "ekpr", "ern",  "earm",  "tkv", "twkw") )
+
+```
+
+### Visualization p7m
+```{r}
+library(ggplot2)
+library(ggpubr)
+library(dplyr)
+
+df_medfix0.5 <- filter(df, method %in% c("medfix0.5"))
+
+p11_p7m <- ggplot(data=df_medfix0.5[1:70,], aes(x=trait, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("medfix0.5")+
+  theme_minimal()
+
+p12_p7m <- ggplot(data=df_medfix0.5[71:147,], aes(x=trait, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("medfix0.5")+
+  theme_minimal()
+
+ggarrange(p11_p7m, p12_p7m, 
+          ncol = 1, nrow = 2)
+
+df_medfixbic <- filter(df, method %in% c("medfixbic"))
+df_medfixbic$category <- rep("c", 147)
+df_medfixbic$category[1:42] <- rep("Flowering")
+df_medfixbic$category[43:56] <- rep("Height and Development")
+df_medfixbic$category[57:77] <- rep("Leaf morphology")
+df_medfixbic$category[78:91] <- rep("Male inflorescence")
+df_medfixbic$category[92:126] <- rep("Female inflorescence")
+df_medfixbic$category[127:147] <- rep("Seed traits")
+
+
+p13_p7m <- ggplot(data=df_medfixbic[1:70,], aes(x=trait, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("medfixbic")+
+  theme_minimal()
+
+p14_p7m <- ggplot(data=df_medfixbic[71:147,], aes(x=trait, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("medfixbic")+
+  theme_minimal()
+
+ggarrange(p13_p7m, p14_p7m, 
+          ncol = 1, nrow = 2)
+
+ggarrange(p11_p7m, p12_p7m, p13_p7m, p14_p7m,
+          ncol = 1, nrow = 4)
+
+p1_1_p7m <- ggplot(data=df_medfixbic[1:42,], aes(x=trait, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("Flowering")+
+  theme_minimal()
+
+p1_2_p7m <- ggplot(data=df_medfixbic[43:56,], aes(x=trait, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("Height and Development")+
+  theme_minimal()
+
+p1_3_p7m <- ggplot(data=df_medfixbic[78:91,], aes(x=trait, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("Male inflorescence")+
+  theme_minimal()
+
+p1_4_p7m <- ggplot(data=df_medfixbic[92:126,], aes(x=trait, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("Female inflorescence")+
+  theme_minimal()
+
+p1_5_p7m <- ggplot(data=df_medfixbic[57:77,], aes(x=trait, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("Leaf morphology")+
+  theme_minimal()
+
+p1_6_p7m <- ggplot(data=df_medfixbic[127:147,], aes(x=trait, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("Seed traits")+
+  theme_minimal()
+
+ggarrange(p1_1_p7m, p1_2_p7m, p1_3_p7m, p1_4_p7m, p1_5_p7m, p1_6_p7m,
+          ncol = 1, nrow =6)
+
+```
+
+```{r}
+
+
+p21_p7m <- ggplot(data=df_medfix0.5[1:70,], aes(x=trait, y=n.med, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$n.med))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=n.med), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("medfix0.5")+
+  theme_minimal()
+
+p22_p7m <- ggplot(data=df_medfix0.5[71:133,], aes(x=trait, y=n.med, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$n.med))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=n.med), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("medfix0.5")+
+  theme_minimal()
+
+ggarrange(p21_p7m, p22_p7m, 
+          ncol = 1, nrow = 2)
+
+
+df_medfixbic <- filter(df, method %in% c("medfixbic"))
+
+p23_p7m <- ggplot(data=df_medfixbic[1:70,], aes(x=trait, y=n.med, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$n.med))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=n.med), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("medfixbic")+
+  theme_minimal()
+
+p24_p7m <- ggplot(data=df_medfixbic[71:133,], aes(x=trait, y=n.med, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$n.med))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=n.med), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("medfixbic")+
+  theme_minimal()
+
+ggarrange(p23_p7m, p24_p7m, 
+          ncol = 1, nrow = 2)
+
+
+ggarrange(p21_p7m, p22_p7m, p23_p7m, p24_p7m,
+          ncol = 1, nrow = 4)
+```
+
+### Correlation between med.pure and Heritablity
+```{r}
+df_medfix <- filter(df, method %in% c("medfix0.5", "medfixbic"))
+
+df_medfix$hp <- c(rep(0.33, 14), rep(0.71, 14), rep(0.70, 14), rep(0.56, 14), rep(0.59, 14), rep(0.60, 14), rep(0.59, 14), rep(0.50, 14), rep(0.62, 14), rep(0.66, 14), rep(0.42, 14), rep(0.37, 14), rep(0.43, 14), rep(0.24, 14), rep(0.26, 14), rep(0.42, 14), rep(0.23, 14), rep(0.35, 14), rep(0.29, 14)) 
+
+
+df_medfix$method_snps <- rep("fill", nrow(df_medfix))
+
+df_medfix$method_snps = paste(as.character(df_medfix$method) , as.character(df_medfix$snps), sep= "_")
+
+df_medfix <- filter(df_medfix, method %in% c("medfix0.5","medfixbic"))
+
+df_medfix_gs <- filter(df_medfix, tissue %in% c("gs"))
+p31_p7m <- ggplot(df_medfix_gs, aes(x=hp, y=pmed.pure, color=method_snps, shape=method_snps)) +
+  geom_point()+ ggtitle("gs") + 
+  geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
+
+df_medfix_groot <- filter(df_medfix, tissue %in% c("groot"))
+p32_p7m <- ggplot(df_medfix_groot, aes(x=hp, y=pmed.pure, color=method_snps, shape=method_snps)) +
+  geom_point()+ ggtitle("groot") + 
+  geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
+
+df_medfix_l3t <- filter(df_medfix, tissue %in% c("l3t"))
+p33_p7m <- ggplot(df_medfix_l3t, aes(x=hp, y=pmed.pure, color=method_snps, shape=method_snps)) +
+  geom_point()+ ggtitle("l3t") + 
+  geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
+
+df_medfix_l3b <- filter(df_medfix, tissue %in% c("l3b"))
+p34_p7m <- ggplot(df_medfix_l3b, aes(x=hp, y=pmed.pure, color=method_snps, shape=method_snps)) +
+  geom_point()+ ggtitle("l3b") + 
+  geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
+
+df_medfix_ld268 <- filter(df_medfix, tissue %in% c("ld268"))
+p35_p7m <- ggplot(df_medfix_ld268, aes(x=hp, y=pmed.pure, color=method_snps, shape=method_snps)) +
+  geom_point()+ ggtitle("ld268") + 
+  geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
+
+df_medfix_ln268 <- filter(df_medfix, tissue %in% c("ln268"))
+p36_p7m <- ggplot(df_medfix_ln268, aes(x=hp, y=pmed.pure, color=method_snps, shape=method_snps)) +
+  geom_point()+ ggtitle("ln268") + 
+  geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
+
+df_medfix_kern <- filter(df_medfix, tissue %in% c("kern"))
+p37_p7m <- ggplot(df_medfix_kern, aes(x=hp, y=pmed.pure, color=method_snps, shape=method_snps)) +
+  geom_point()+ ggtitle("kern") + 
+  geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
+
+df_medfixbic_p7m <- filter(df_medfix, method_snps %in% c("medfixbic_p7m"))
+p38_p7m <- ggplot(df_medfixbic_p7m, aes(x=hp, y=pmed.pure, color=tissue, shape=tissue)) +
+  geom_point()+ ggtitle("medfixbic_p7m") + 
+  geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
+  
+df_medfixbic_p7m <- filter(df_medfix, method_snps %in% c("medfixbic_p7m"))
+p39_p7m <- ggplot(df_medfixbic_p7m, aes(x=hp, y=pmed.pure, color=tissue, shape=tissue)) +
+  geom_point()+ ggtitle("medfixbic_p7m") + 
+  geom_smooth(method=lm ,se=FALSE, fullrange=TRUE)
+
+
+ggarrange(p31_p7m, p33_p7m, p35_p7m, p37_p7m, p32_p7m, p34_p7m ,p36_p7m, p38_p7m,
+          ncol = 4, nrow = 2)
+
+ggarrange(p38_p7m, p39_p7m,
+          ncol = 1, nrow = 2)
+
+
+```
+
+correlation test
+```{r}
+df_daystosilk <- filter(df_medfix, trait %in% c("daystosilk"))
+df_daystosilk <- arrange(df_daystosilk, tissue)
+df_cor <- data.frame(tissue = df_daystosilk$tissue, method_snps = df_daystosilk$method_snps, estimate = rep(0, nrow(df_daystosilk)), p_val = rep(0, nrow(df_daystosilk)))
+
+df_cor$tissue_method_snps = paste(as.character(df_cor$tissue) , as.character(df_cor$method_snps), sep= "_")
+
+##gs
+
+#medfix0.5_p7m
+df_gs_medfix0.5_p7m <- filter(df_medfix, tissue %in% c("gs"), method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "gs_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_gs_medfix0.5_p7m$pmed.pure, df_gs_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_gs_medfix0.5_p7m$pmed.pure, df_gs_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+
+#medfixbic_p7m
+df_gs_medfixbic_p7m <- filter(df_medfix, tissue %in% c("gs"), method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "gs_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_gs_medfixbic_p7m$pmed.pure, df_gs_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_gs_medfixbic_p7m$pmed.pure, df_gs_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+
+##groot
+
+#medfix0.5_p7m
+df_groot_medfix0.5_p7m <- filter(df_medfix, tissue %in% c("groot"), method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "groot_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_groot_medfix0.5_p7m$pmed.pure, df_groot_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_groot_medfix0.5_p7m$pmed.pure, df_groot_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+
+#medfixbic_p7m
+df_groot_medfixbic_p7m <- filter(df_medfix, tissue %in% c("groot"), method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "groot_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_groot_medfixbic_p7m$pmed.pure, df_groot_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_groot_medfixbic_p7m$pmed.pure, df_groot_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+##l3t
+
+#medfix0.5_p7m
+df_l3t_medfix0.5_p7m <- filter(df_medfix, tissue %in% c("l3t"), method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "l3t_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_l3t_medfix0.5_p7m$pmed.pure, df_l3t_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_l3t_medfix0.5_p7m$pmed.pure, df_l3t_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+
+#medfixbic_p7m
+df_l3t_medfixbic_p7m <- filter(df_medfix, tissue %in% c("l3t"), method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "l3t_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_l3t_medfixbic_p7m$pmed.pure, df_l3t_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_l3t_medfixbic_p7m$pmed.pure, df_l3t_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+##l3b
+
+#medfix0.5_p7m
+df_l3b_medfix0.5_p7m <- filter(df_medfix, tissue %in% c("l3b"), method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "l3b_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_l3b_medfix0.5_p7m$pmed.pure, df_l3b_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_l3b_medfix0.5_p7m$pmed.pure, df_l3b_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+
+#medfixbic_p7m
+df_l3b_medfixbic_p7m <- filter(df_medfix, tissue %in% c("l3b"), method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "l3b_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_l3b_medfixbic_p7m$pmed.pure, df_l3b_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_l3b_medfixbic_p7m$pmed.pure, df_l3b_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+##ld268
+
+#medfix0.5_p7m
+df_ld268_medfix0.5_p7m <- filter(df_medfix, tissue %in% c("ld268"), method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "ld268_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_ld268_medfix0.5_p7m$pmed.pure, df_ld268_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_ld268_medfix0.5_p7m$pmed.pure, df_ld268_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+
+#medfixbic_p7m
+df_ld268_medfixbic_p7m <- filter(df_medfix, tissue %in% c("ld268"), method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "ld268_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_ld268_medfixbic_p7m$pmed.pure, df_ld268_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_ld268_medfixbic_p7m$pmed.pure, df_ld268_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+##ln268
+
+#medfix0.5_p7m
+df_ln268_medfix0.5_p7m <- filter(df_medfix, tissue %in% c("ln268"), method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "ln268_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_ln268_medfix0.5_p7m$pmed.pure, df_ln268_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_ln268_medfix0.5_p7m$pmed.pure, df_ln268_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+
+#medfixbic_p7m
+df_ln268_medfixbic_p7m <- filter(df_medfix, tissue %in% c("ln268"), method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "ln268_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_ln268_medfixbic_p7m$pmed.pure, df_ln268_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_ln268_medfixbic_p7m$pmed.pure, df_ln268_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+##kern
+
+#medfix0.5_p7m
+df_kern_medfix0.5_p7m <- filter(df_medfix, tissue %in% c("kern"), method_snps %in% c("medfix0.5_p7m"))
+idx = which (df_cor$tissue_method_snps == "kern_medfix0.5_p7m" )
+df_cor[idx,4] =  (cor.test(df_kern_medfix0.5_p7m$pmed.pure, df_kern_medfix0.5_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_kern_medfix0.5_p7m$pmed.pure, df_kern_medfix0.5_p7m$hp, method = "pearson"))[[4]]
+
+
+#medfixbic_p7m
+df_kern_medfixbic_p7m <- filter(df_medfix, tissue %in% c("kern"), method_snps %in% c("medfixbic_p7m"))
+idx = which (df_cor$tissue_method_snps == "kern_medfixbic_p7m" )
+df_cor[idx,4] =  (cor.test(df_kern_medfixbic_p7m$pmed.pure, df_kern_medfixbic_p7m$hp, method = "pearson"))[[3]]
+df_cor[idx,3] =  (cor.test(df_kern_medfixbic_p7m$pmed.pure, df_kern_medfixbic_p7m$hp, method = "pearson"))[[4]]
+
+
+
+p41_p7m <- ggplot(data=df_cor, aes(x=tissue, y=p_val, fill=method_snps)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  geom_abline(slope=0, intercept=0.05,  col = "yellow",lty=2) +
+  geom_abline(slope=0, intercept=0.1,  col = "black",lty=2) +
+  scale_fill_brewer(palette="Paired")+ ggtitle("p-val vs tissue(method_snps)")+
+  theme_minimal()
+
+
+
+p42_p7m <- ggplot(data=df_cor, aes(x=tissue, y=estimate, fill=method_snps)) +
+geom_bar(stat="identity", position=position_dodge())+
+  scale_fill_brewer(palette="Paired")+ ggtitle("estimate vs tissue(method_snps)")+
+  theme_minimal()
+
+
+
+ggarrange(p42_p7m, p41_p7m, 
+          ncol = 1, nrow = 2)
+
+```
+p4m vs p7m
+```{r}
+ggarrange(p11, p12, p11_p7m, p12_p7m, 
+          ncol = 1, nrow = 4)
+
+ggarrange(p13, p14, p13_p7m, p14_p7m, 
+          ncol = 1, nrow = 4)
+
+ggarrange(p21, p22, p21_p7m, p22_p7m, 
+          ncol = 1, nrow = 4)
+
+ggarrange(p23, p24, p23_p7m, p24_p7m, 
+          ncol = 1, nrow = 4)
+
+ggarrange(p38, p39, p38_p7m, p39_p7m,
+          ncol = 1, nrow = 4)
+
+ggarrange(p42, p41, p42_p7m, p41_p7m, 
+          ncol = 1, nrow = 4)
+```
+
+#all traits done
+```{r}
+
+p12 <- ggplot(data=gddtosilk_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("gdd to silk")+
+  theme_minimal()
+
+p3 <- ggplot(data=daystosilk_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("days to silk")+
+  theme_minimal()
+
+
+p13 <- ggplot(data=gddtotassel_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("gdd to tassel")+
+  theme_minimal()
+
+p4 <- ggplot(data=daystotassel_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("days to tassel")+
+  theme_minimal()
+
+p23 <- ggplot(data=planth_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("plant height")+
+  theme_minimal()
+
+p1 <- ggplot(data=cobd_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("cob diameter")+
+  theme_minimal()
+
+p2 <- ggplot(data=cobw_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("cob mass")+
+  theme_minimal()
+
+p35 <- ggplot(data=tkv_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("total kernel volume")+
+  theme_minimal()
+
+p6 <- ggplot(data=eh_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("ear height")+
+  theme_minimal()
+
+p7 <- ggplot(data=cobl_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("cob length")+
+  theme_minimal()
+
+p8 <- ggplot(data=ekpr_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("number of kernel per row")+
+  theme_minimal()
+
+p9 <- ggplot(data=ern_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("ear row number")+
+  theme_minimal()
+
+p10 <- ggplot(data=earm_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("ear mass")+
+  theme_minimal()
+
+p11 <- ggplot(data=gddasi_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("gdd anthesis to silk interval")+
+  theme_minimal()
+
+p15 <- ggplot(data=ll_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("leaf length")+
+  theme_minimal()
+
+p16 <- ggplot(data=lw_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("leaf width")+
+  theme_minimal()
+
+p19 <- ggplot(data=oil_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("oil")+
+  theme_minimal()
+
+p33 <- ggplot(data=tpb_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("tassel primary branches")+
+  theme_minimal()
+
+p32 <- ggplot(data=tsl_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("tassel length")+
+  theme_minimal()
+
+p36 <- ggplot(data=ula_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("upper leaf angle")+
+  theme_minimal()
+
+p37 <- ggplot(data=twkw_p7msnps, aes(x=tissue, y=pmed.pure, fill=method)) +
+geom_bar(stat="identity", position=position_dodge())+ylim(0, 1)+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("twenty kernel weight")+
+  theme_minimal()
+
+
+
+
+#flowering
+ggarrange(p3, p4, p12, p13, p11,
+          ncol = 2, nrow = 3)
+
+#height and development
+ggarrange(p23, p6,
+          ncol = 1, nrow = 2)
+
+#male infloresence
+ggarrange(p32, p33,
+          ncol = 2, nrow = 1)
+
+#female infloresence
+ggarrange(p9, p1,  p8, p7,
+          ncol = 2, nrow = 3)
+
+
+#leaf morphorlogy
+ggarrange(p36, p15, p16,
+          ncol = 1, nrow = 3)
+
+#seed traits
+ggarrange(p10, p2, p35, p37,
+          ncol = 2, nrow = 2)
+
+p19
+
+```
+
