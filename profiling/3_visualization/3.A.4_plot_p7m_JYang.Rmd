@@ -1,0 +1,89 @@
+---
+title: "Plot PVM"
+author: "Jinliang Yang"
+date: "09-08-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+### read in data
+
+```{r}
+
+f <- list.files(path="data/", pattern="p7msnps_r", full.names = T)
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$snp <- "p7m"
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$trait  <- gsub(".*proportion_|_p7m.*", "", out$file)
+
+```
+
+### Assign category
+
+Zhikai, double-check the trait category assignment!
+```{r}
+library(ggplot2)
+# library(ggpubr)
+library(dplyr)
+
+df <- subset(out, method %in% "medfixbic")
+df$trait <- as.character(df$trait)
+
+### assign category: 
+df$cat <- "1"
+df[df$trait %in% c("asi", "daystosilk", "daystotassel", "gddasi", "gddtosilk", "gddtoassel"), ]$cat <- "Flowering"
+df[df$trait %in% c("eh", "planth"), ]$cat <- "Development"
+df[df$trait %in% c("ll", "lw", "ula"), ]$cat <- "Leaf morphology"
+df[df$trait %in% c("cobd", "cobl", "cobw", "knum", "ern"), ]$cat <- "Inflorescence"
+df[df$trait %in% c("earm", "tkv", "twkw"), ]$cat <- "Seed traits"
+
+table(df$cat)
+```
+
+
+### Visualization p7m
+
+```{r}
+library(ggplot2)
+# library(ggpubr)
+library(dplyr)
+
+fsize=18
+df$ne <- factor(df$ne, levels = c("50000", "1e+05", "5e+05", "1e+06"))
+
+df1 <- subset(df, cat %in% "Flowering")
+p1 <- ggplot(df1, aes(x=tissue, y=pmed.pure, fill=trait)) +
+    geom_bar(stat="identity", position=position_dodge()) +
+    # facet_grid( cat ~ .) +
+    xlab("") +
+    ylab("Variance Mediated (100%)") +
+    # geom_errorbar(aes(ymin=mn-sd, ymax=mn+sd), width=.2,
+    #             position=position_dodge(.9)) +
+    # https://www.color-hex.com/color-palette/73961
+    #scale_fill_manual(values=c("#cc4141", "#72114b", "#e1cd07", "#5f9057", "#114c63")) +
+    #labs(fill = "Dose (mg)") +
+    #scale_x_discrete(labels=c("-log10(mu)","-log10(nu)", "Ne*s")) +
+    theme(legend.position = "top", plot.title = element_text(size=20), axis.text=element_text(size=15),
+          strip.text.x = element_text(size = 20, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+                legend.title = element_text(size=fsize, face="bold"),
+                legend.text = element_text(size=fsize))
+  #########
+
+p1
+```
+
+
