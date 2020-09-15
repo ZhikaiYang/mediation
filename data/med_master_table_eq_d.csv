@@ -1,0 +1,67 @@
+chr,gene4,start4,end4,name,trait,tissue
+2,Zm00001d003291,38955003,38958609,tgz21;transglutaminase21:,daystosilk,gs
+2,Zm00001d003291,38955003,38958609,tgz21;transglutaminase21:,daystotassel,gs
+2,Zm00001d005461,175015114,175016058,Protein transport protein SEC13 homolog B,daystosilk,l3t
+2,Zm00001d005461,175015114,175016058,Protein transport protein SEC13 homolog B,daystotassel,l3t
+2,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,cobd,l3t
+2,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,earm,ld268
+2,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,eh,ld268
+2,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,ern,ld268
+2,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,planth,ld268
+2,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,tpb,ln268
+2,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,ula,gs
+2,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,ula,ld268
+2,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,ula,ln268
+2,Zm00001d007718,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.,tpb,l3b
+2,Zm00001d007718,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.,twkw,l3t
+8,Zm00001d011100,139023538,139026280,Eukaryotic translation initiation factor 3 subunit F,eh,ln268
+8,Zm00001d011100,139023538,139026280,Eukaryotic translation initiation factor 3 subunit F,planth,ln268
+5,Zm00001d013828,21546382,21565664,Switch 2,daystosilk,gs
+5,Zm00001d013828,21546382,21565664,Switch 2,daystotassel,gs
+5,Zm00001d015116,76324123,76328085,,earm,l3b
+5,Zm00001d015116,76324123,76328085,,ula,kern
+7,Zm00001d020768,131675954,131676955,Barren stalk fastigiate1-related-1%3B DNA-binding protein,eh,gs
+7,Zm00001d020768,131675954,131676955,Barren stalk fastigiate1-related-1%3B DNA-binding protein,planth,gs
+7,Zm00001d020791,132829319,132830404,RING-H2 finger protein ATL5F,eh,gs
+7,Zm00001d020791,132829319,132830404,RING-H2 finger protein ATL5F,planth,gs
+10,Zm00001d024430,70581048,70587119,Putative leucine-rich repeat receptor-like protein kinase family protein,daystosilk,kern
+10,Zm00001d024430,70581048,70587119,Putative leucine-rich repeat receptor-like protein kinase family protein,daystotassel,kern
+10,Zm00001d024430,70581048,70587119,Putative leucine-rich repeat receptor-like protein kinase family protein,gddtosilk,kern
+10,Zm00001d025589,123303091,123307977,Transcription factor HY5-like,cobd,gs
+10,Zm00001d025589,123303091,123307977,Transcription factor HY5-like,earm,gs
+1,Zm00001d028112,23147728,23150781,ADP-ribosylation factor-like protein 8B,cobl,l3t
+1,Zm00001d028112,23147728,23150781,ADP-ribosylation factor-like protein 8B,cobl,ld268
+1,Zm00001d028112,23147728,23150781,ADP-ribosylation factor-like protein 8B,ekpr,l3t
+1,Zm00001d029850,89958471,89961843,Rop guanine nucleotide exchange factor 2,daystosilk,l3b
+1,Zm00001d029850,89958471,89961843,Rop guanine nucleotide exchange factor 2,daystotassel,l3b
+1,Zm00001d032692,234744151,234747377,MATH domain containing protein; Os10g0478500 protein,tpb,l3b
+1,Zm00001d032692,234744151,234747377,MATH domain containing protein; Os10g0478500 protein,tpb,ld268
+1,Zm00001d032692,234744151,234747377,MATH domain containing protein; Os10g0478500 protein,tpb,ln268
+6,Zm00001d036608,94231654,94235649,Glycosyl hydrolases family 31  protein,ll,l3t
+6,Zm00001d036608,94231654,94235649,Glycosyl hydrolases family 31  protein,planth,l3t
+6,Zm00001d036782,100779503,100782592,,daystosilk,l3b
+6,Zm00001d036782,100779503,100782592,,daystotassel,l3b
+6,Zm00001d037203,115605845,115608609,Tetratricopeptide repeat (TPR)-like superfamily protein,daystosilk,gs
+6,Zm00001d037203,115605845,115608609,Tetratricopeptide repeat (TPR)-like superfamily protein,gddtosilk,gs
+3,Zm00001d040048,24757160,24757639,,eh,gs
+3,Zm00001d040048,24757160,24757639,,planth,gs
+3,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,daystosilk,gs
+3,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,daystotassel,gs
+3,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,tpb,gs
+3,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,ula,kern
+3,Zm00001d044619,233472506,233476348,,earm,ln268
+3,Zm00001d044619,233472506,233476348,,tkv,ln268
+3,Zm00001d044657,234224132,234238691,ENTH/VHS family protein,ula,gs
+3,Zm00001d044657,234224132,234238691,ENTH/VHS family protein,ula,l3t
+9,Zm00001d046378,85537115,85537531,,daystosilk,ld268
+9,Zm00001d046378,85537115,85537531,,daystotassel,ld268
+9,Zm00001d046378,85537115,85537531,,gddtosilk,ld268
+9,Zm00001d048402,155629914,155633305,HR-like lesion-inducing protein-related,cobw,gs
+9,Zm00001d048402,155629914,155633305,HR-like lesion-inducing protein-related,tkv,groot
+4,Zm00001d048669,3057594,3060877,Auxin-induced beta-glucosidase%3B Putative O-Glycosyl hydrolase superfamily protein,cobl,ln268
+4,Zm00001d048669,3057594,3060877,Auxin-induced beta-glucosidase%3B Putative O-Glycosyl hydrolase superfamily protein,earm,ln268
+4,Zm00001d051814,170342940,170346103,Endoglucanase 11,daystosilk,groot
+4,Zm00001d051814,170342940,170346103,Endoglucanase 11,daystotassel,groot
+4,Zm00001d051814,170342940,170346103,Endoglucanase 11,gddtotassel,groot
+4,Zm00001d052591,193980224,193982206,B3 domain-containing protein,ekpr,gs
+4,Zm00001d052591,193980224,193982206,B3 domain-containing protein,tkv,gs

@@ -180,6 +180,30 @@ df_medfixbic$category[78:91] <- rep("Male inflorescence")
 df_medfixbic$category[92:126] <- rep("Female inflorescence")
 df_medfixbic$category[127:147] <- rep("Seed traits")
 
+df_medfixbic$traits <- rep("na")
+df_medfixbic$traits[1:7] <- rep("anthesis to silk interval")
+df_medfixbic$traits[8:14] <- rep("days to tassel")
+df_medfixbic$traits[15:21]<- rep("days to silk")
+df_medfixbic$traits[22:28] <- rep("gdd anthesis to silk interval")
+df_medfixbic$traits[29:35] <- rep("gdd to tassel")
+df_medfixbic$traits[36:42]<- rep("gdd to silk")
+df_medfixbic$traits[43:49] <- rep("plant height")
+df_medfixbic$traits[50:56] <- rep("ear height")
+df_medfixbic$traits[57:63]<- rep("leaf length")
+df_medfixbic$traits[64:70] <- rep("leaf width")
+df_medfixbic$traits[71:77] <- rep("uper leaf angle")
+df_medfixbic$traits[78:84]<- rep("tassel length")
+df_medfixbic$traits[85:91] <- rep("tassel primary branches")
+df_medfixbic$traits[92:98] <- rep("cob diameter")
+df_medfixbic$traits[99:105]<- rep("cob length")
+df_medfixbic$traits[106:112] <- rep("cob mass")
+df_medfixbic$traits[113:119] <- rep("number of kernel per row")
+df_medfixbic$traits[120:126]<- rep("ear row number")
+df_medfixbic$traits[127:133] <- rep("ear mass")
+df_medfixbic$traits[134:140] <- rep("total kernel volume")
+df_medfixbic$traits[141:147]<- rep("twenty kernel weight")
+
+
 
 p13_p7m <- ggplot(data=df_medfixbic[1:70,], aes(x=trait, y=pmed.pure, fill=tissue)) +
 geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
@@ -244,6 +268,54 @@ geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))
   theme_minimal()
 
 p1_6_p7m <- ggplot(data=df_medfixbic[127:147,], aes(x=trait, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("Seed traits")+
+  theme_minimal()
+
+p1_1_p7m <- ggplot(data=df_medfixbic[1:42,], aes(x=traits, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("Flowering")+
+  theme_minimal()
+
+p1_2_p7m <- ggplot(data=df_medfixbic[43:56,], aes(x=traits, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("Height and Development")+
+  theme_minimal()
+
+p1_3_p7m <- ggplot(data=df_medfixbic[78:91,], aes(x=traits, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("Male inflorescence")+
+  theme_minimal()
+
+p1_4_p7m <- ggplot(data=df_medfixbic[92:126,], aes(x=traits, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("Female inflorescence")+
+  theme_minimal()
+
+p1_5_p7m <- ggplot(data=df_medfixbic[57:77,], aes(x=traits, y=pmed.pure, fill=tissue)) +
+geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
+  theme(text = element_text(size=40))+
+  #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
+  #         position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+ ggtitle("Leaf morphology")+
+  theme_minimal()
+
+p1_6_p7m <- ggplot(data=df_medfixbic[127:147,], aes(x=traits, y=pmed.pure, fill=tissue)) +
 geom_bar(stat="identity", position=position_dodge())+ ylim(0, max(df$pmed.pure))+
   theme(text = element_text(size=40))+
   #geom_text(aes(label=pmed.pure), vjust=1.6, color="white",
