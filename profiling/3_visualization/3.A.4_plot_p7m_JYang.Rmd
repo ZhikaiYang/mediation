@@ -44,7 +44,8 @@ df$trait <- as.character(df$trait)
 
 ### assign category: 
 df$cat <- "1"
-df[df$trait %in% c("asi", "daystosilk", "daystotassel", "gddasi", "gddtosilk", "gddtoassel"), ]$cat <- "Flowering"
+# df[df$trait %in% c("asi", "daystosilk", "daystotassel", "gddasi", "gddtosilk", "gddtoassel"), ]$cat <- "Flowering"
+df[df$trait %in% c("asi", "daystosilk", "daystotassel"), ]$cat <- "Flowering"
 df[df$trait %in% c("eh", "planth"), ]$cat <- "Development"
 df[df$trait %in% c("ll", "lw", "ula"), ]$cat <- "Leaf morphology"
 df[df$trait %in% c("cobd", "cobl", "cobw", "knum", "ern"), ]$cat <- "Inflorescence"
@@ -62,28 +63,152 @@ library(ggplot2)
 library(dplyr)
 
 fsize=18
-df$ne <- factor(df$ne, levels = c("50000", "1e+05", "5e+05", "1e+06"))
+df$tissue <- factor(df$tissue, levels = c("kern", "groot", "gs", "l3b", "l3t", "ld268", "ln268"),
+                    labels =c("Kernels after pollination", "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night"))
 
+```
+
+
+```{r}
 df1 <- subset(df, cat %in% "Flowering")
-p1 <- ggplot(df1, aes(x=tissue, y=pmed.pure, fill=trait)) +
-    geom_bar(stat="identity", position=position_dodge()) +
-    # facet_grid( cat ~ .) +
-    xlab("") +
-    ylab("Variance Mediated (100%)") +
-    # geom_errorbar(aes(ymin=mn-sd, ymax=mn+sd), width=.2,
-    #             position=position_dodge(.9)) +
-    # https://www.color-hex.com/color-palette/73961
-    #scale_fill_manual(values=c("#cc4141", "#72114b", "#e1cd07", "#5f9057", "#114c63")) +
-    #labs(fill = "Dose (mg)") +
-    #scale_x_discrete(labels=c("-log10(mu)","-log10(nu)", "Ne*s")) +
-    theme(legend.position = "top", plot.title = element_text(size=20), axis.text=element_text(size=15),
-          strip.text.x = element_text(size = 20, face = "bold"),
-          axis.title=element_text(size=fsize, face="bold"),
-                legend.title = element_text(size=fsize, face="bold"),
-                legend.text = element_text(size=fsize))
-  #########
 
+p1 <- ggplot(df1, aes(y=tissue, x=pmed.pure, fill=tissue)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=2, notch=FALSE) +
+    scale_fill_manual(values=rep("#69b3a2", 7), guide=FALSE) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("") +
+    ggtitle("Flowering Time Traits") +
+    theme_classic() +
+    scale_x_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          # axis.text.x = element_text(angle = 20),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
 p1
+
+
+```
+
+```{r}
+df2 <- subset(df, cat %in% "Seed traits")
+p2 <- ggplot(df2, aes(y=tissue, x=pmed.pure, fill=tissue)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=2, notch=FALSE) +
+    scale_fill_manual(values=rep("#cdc0b0", 7), guide=FALSE) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("Proportion of variance mediated") +
+    ylab("") +
+    ggtitle("Seed Traits") +
+    theme_classic() +
+    scale_x_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          # axis.text.x = element_text(angle = 20),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+p2
+```
+
+```{r}
+df3 <- subset(df, cat %in% "Leaf morphology")
+
+p3 <- ggplot(df3, aes(y=tissue, x=pmed.pure, fill=tissue)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=2, notch=FALSE) +
+    scale_fill_manual(values=rep("#69b3a2", 7), guide=FALSE) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("Proportion of variance mediated") +
+    ylab("") +
+    ggtitle("Leaf morphology") +
+    theme_classic() +
+    scale_x_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          # axis.text.x = element_text(angle = 20),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+p3
+```
+
+```{r}
+df4 <- subset(df, cat %in% "Inflorescence")
+
+p4 <- ggplot(df4, aes(y=tissue, x=pmed.pure, fill=tissue)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=2, notch=FALSE) +
+    scale_fill_manual(values=rep("#69b3a2", 7), guide=FALSE) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("Proportion of variance mediated") +
+    ylab("") +
+    ggtitle("Inflorescence") +
+    theme_classic() +
+    scale_x_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          # axis.text.x = element_text(angle = 20),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+p4
+```
+
+
+```{r}
+df5 <- subset(df, cat %in% "Development")
+p5 <- ggplot(df5, aes(y=tissue, x=pmed.pure, fill=tissue)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=2, notch=FALSE) +
+    scale_fill_manual(values=rep("#69b3a2", 7), guide=FALSE) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("Proportion of variance mediated") +
+    ylab("") +
+    ggtitle("Development") +
+    theme_classic() +
+    scale_x_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          # axis.text.x = element_text(angle = 20),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+p5
+```
+
+
+
+
+```{r}
+library(cowplot)
+
+pdf("graphs/pvm_flowering_seed.pdf", width = 7, height= 8)
+plot_grid(p1, p2, labels = "AUTO", nrow=2, ncol=1, label_size = 20, align = "v")
+dev.off()
 ```
 
 
