@@ -34,6 +34,29 @@ out$trait  <- gsub(".*proportion_|_p7m.*", "", out$file)
 ### Assign category
 
 Zhikai, double-check the trait category assignment!
+
+df_medfixbic$traits[1:7] <- rep("anthesis to silk interval")
+df_medfixbic$traits[8:14] <- rep("days to tassel")
+df_medfixbic$traits[15:21]<- rep("days to silk")
+df_medfixbic$traits[22:28] <- rep("gdd anthesis to silk interval")
+df_medfixbic$traits[29:35] <- rep("gdd to tassel")
+df_medfixbic$traits[36:42]<- rep("gdd to silk")
+df_medfixbic$traits[43:49] <- rep("plant height")
+df_medfixbic$traits[50:56] <- rep("ear height")
+df_medfixbic$traits[57:63]<- rep("leaf length")
+df_medfixbic$traits[64:70] <- rep("leaf width")
+df_medfixbic$traits[71:77] <- rep("uper leaf angle")
+df_medfixbic$traits[78:84]<- rep("tassel length")
+df_medfixbic$traits[85:91] <- rep("tassel primary branches")
+df_medfixbic$traits[92:98] <- rep("cob diameter")
+df_medfixbic$traits[99:105]<- rep("cob length")
+df_medfixbic$traits[106:112] <- rep("cob mass")
+df_medfixbic$traits[113:119] <- rep("number of kernel per row")
+df_medfixbic$traits[120:126]<- rep("ear row number")
+df_medfixbic$traits[127:133] <- rep("ear mass")
+df_medfixbic$traits[134:140] <- rep("total kernel volume")
+df_medfixbic$traits[141:147]<- rep("twenty kernel weight")
+
 ```{r}
 library(ggplot2)
 # library(ggpubr)
@@ -45,27 +68,55 @@ df$trait <- as.character(df$trait)
 ### assign category: 
 df$cat <- "1"
 # df[df$trait %in% c("asi", "daystosilk", "daystotassel", "gddasi", "gddtosilk", "gddtoassel"), ]$cat <- "Flowering"
-df[df$trait %in% c("asi", "daystosilk", "daystotassel"), ]$cat <- "Flowering"
+#df[df$trait %in% c("asi", "daystosilk", "daystotassel"), ]$cat <- "Flowering Time"
+df[df$trait %in% c("asi", "daystosilk", "daystotassel"), ]$cat <- "Flowering Time"
 df[df$trait %in% c("eh", "planth"), ]$cat <- "Development"
 df[df$trait %in% c("ll", "lw", "ula"), ]$cat <- "Leaf morphology"
-df[df$trait %in% c("cobd", "cobl", "cobw", "knum", "ern"), ]$cat <- "Inflorescence"
-df[df$trait %in% c("earm", "tkv", "twkw"), ]$cat <- "Seed traits"
+df[df$trait %in% c("tpb", "tsl"), ]$cat <- "Female Inflorescence"
+df[df$trait %in% c("cobd", "cobl", "cobw",  "ern", "ekpr"), ]$cat <- "Male Inflorescence"
+df[df$trait %in% c("earm", "tkv", "twkw","knum", "kw"), ]$cat <- "Seed traits"
 
 table(df$cat)
+
 ```
 
 
 ### Visualization p7m
 
 ```{r}
-library(ggplot2)
-# library(ggpubr)
-library(dplyr)
 
 fsize=18
-df$tissue <- factor(df$tissue, levels = c("kern", "groot", "gs", "l3b", "l3t", "ld268", "ln268"),
-                    labels =c("Kernels after pollination", "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night"))
+df$tissue <- factor(df$tissue, levels = c( "groot", "gs", "l3b", "l3t", "ld268", "ln268","kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 
+
+df0 <- subset(df, cat != "1")
+pall <- ggplot(df0, aes(x=tissue, y=pmed.pure, fill=cat)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=1, notch=FALSE) +
+    # scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("Proportion of variance mediated") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = c(0.2, 0.8), 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/pvm_all_traits.pdf", width = 9, height= 6)
+pall
+dev.off()
 ```
 
 
@@ -210,5 +261,41 @@ pdf("graphs/pvm_flowering_seed.pdf", width = 7, height= 8)
 plot_grid(p1, p2, labels = "AUTO", nrow=2, ncol=1, label_size = 20, align = "v")
 dev.off()
 ```
+```{r}
+df12 <- rbind(df1, df2)
+
+df12$cat <- factor(df12$cat, levels = c("Flowering", "Seed traits"),
+                    labels =c("Flowering Time", "Seed traits"))
+
+
+p12 <- ggplot(df12, aes(y=tissue, x=pmed.pure, fill=cat)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=1, notch=FALSE) +
+    scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("Proportion of variance mediated") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_x_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          # axis.text.x = element_text(angle = 20),
+          legend.position = c(0.7, 0.7), 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+p12
+
+
+pdf("graphs/pvm_flowering_seedv2.pdf", width = 7, height= 5)
+p12
+dev.off()
+```
+
 
 
