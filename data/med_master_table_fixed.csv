@@ -1,0 +1,249 @@
+chr,gene3,gene4,start4,end4,name,trait,tissue,snp_size,med_method,pop
+2,GRMZM2G032977,Zm00001d002035,4821035,4823880,Endonuclease 2,cobd,gs,p7msnps,fixed,282
+2,GRMZM2G395114,Zm00001d002038,4861458,4865979,ast91;anti-sigma factor antagonist domain of sulfate transporter91:,ll,ln268,p7msnps,fixed,282
+2,GRMZM2G054225,Zm00001d002125,6290891,6302652,nrpd2/e2;nuclear RNA polymerase D2/E2: This gene was found by both the Chandler Lab (as mop2) and the Hollick lab (as rmr7).,asi,ln268,p7msnps,fixed,282
+2,GRMZM5G897776,Zm00001d002256,9055230,9066450,Starch synthase 3 chloroplastic/amyloplastic,eh,l3t,p7msnps,fixed,282
+2,GRMZM5G853854,Zm00001d002261,9094317,9098515,Peroxisomal (S)-2-hydroxy-acid oxidase GLO1,ll,groot,p7msnps,fixed,282
+2,GRMZM2G007256,Zm00001d002318,10183847,10184694,,lw,l3b,p7msnps,fixed,282
+2,GRMZM2G078440,Zm00001d002857,24834213,24837594,OSJNBa0074L08.19 protein; OSJNBa0081C01.7 protein;  protein,ula,l3t,p7msnps,fixed,282
+2,GRMZM2G118950,Zm00001d003025,29747763,29749475,amt3;ammonium transporter3:,eh,l3t,p7msnps,fixed,282
+2,GRMZM2G082191,Zm00001d003101,32083280,32088714,Probable leucine-rich repeat receptor-like protein kinase,twkw,groot,p7msnps,fixed,282
+2,GRMZM2G170101,Zm00001d003108,32464010,32470101,aprt1;adenine phosphoribosyltransferase1:,earm,l3b,p7msnps,fixed,282
+2,GRMZM2G063262,Zm00001d003262,38268766,38273283,Steroid nuclear receptor ligand-binding,cobw,kern,p7msnps,fixed,282
+2,GRMZM2G045005,Zm00001d003291,38955003,38958609,tgz21;transglutaminase21:,daystosilk,gs,p7msnps,fixed,282
+2,GRMZM2G045005,Zm00001d003291,38955003,38958609,tgz21;transglutaminase21:,daystotassel,gs,p7msnps,fixed,282
+2,GRMZM2G119272,Zm00001d004015,75789250,75791994,,tkv,kern,p7msnps,fixed,282
+2,GRMZM2G056695,Zm00001d004640,124660879,124683534,Sec23/Sec24 protein transport family protein,tkv,ln268,p7msnps,fixed,282
+2,GRMZM2G018436,Zm00001d005028,154629678,154631157,NAC domain-containing protein 77,cobw,l3t,p7msnps,fixed,282
+2,GRMZM2G074567,Zm00001d005461,175015114,175016058,Protein transport protein SEC13 homolog B,daystosilk,l3t,p7msnps,fixed,282
+2,GRMZM2G018955,Zm00001d005503,176562853,176567171,,daystosilk,l3t,p7msnps,fixed,282
+2,GRMZM2G018955,Zm00001d005503,176562853,176567171,,ll,l3t,p7msnps,fixed,282
+2,GRMZM2G138178,Zm00001d005573,178919567,178933420,Mediator of RNA polymerase II transcription subunit 25,cobl,groot,p7msnps,fixed,282
+2,GRMZM2G111204,Zm00001d005584,179525467,179531907,Protein SAWADEE HOMEODOMAIN HOMOLOG 2,twkw,ld268,p7msnps,fixed,282
+2,GRMZM2G037150,Zm00001d005631,181237525,181241171,Dendritic cell-derived ubiquitin-like protein,ll,l3b,p7msnps,fixed,282
+2,AC198353.5_FG004,Zm00001d005972,194430643,194444880,,cobw,l3t,p7msnps,fixed,282
+2,GRMZM2G114107,Zm00001d006246,202741786,202747195,La-related protein 1C,ern,l3b,p7msnps,fixed,282
+2,GRMZM2G042981,Zm00001d006797,216892700,216916575,GUP1,tkv,groot,p7msnps,fixed,282
+2,GRMZM2G148194,Zm00001d006868,218291718,218297633,Peroxisomal (S)-2-hydroxy-acid oxidase GLO4,ula,ln268,p7msnps,fixed,282
+2,GRMZM2G128771,Zm00001d006905,219137890,219140587,Ras-related protein RABH1e,twkw,ld268,p7msnps,fixed,282
+2,GRMZM2G009097,Zm00001d007347,229287652,229288562,Expressed protein;  protein,ll,gs,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,cobd,l3t,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,cobl,l3t,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,daystotassel,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,earm,l3b,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,earm,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,eh,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,ern,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,gddtosilk,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,ll,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,planth,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,ula,gs,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,ula,ln268,p7msnps,fixed,282
+2,AC148152.3_FG005,Zm00001d007718,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.,ern,l3b,p7msnps,fixed,282
+2,AC148152.3_FG005,Zm00001d007718,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.,lw,l3b,p7msnps,fixed,282
+2,AC148152.3_FG005,Zm00001d007718,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.,tpb,l3b,p7msnps,fixed,282
+2,AC148152.3_FG005,Zm00001d007718,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.,twkw,l3t,p7msnps,fixed,282
+2,AC148152.3_FG001,Zm00001d007725,238219444,238221798,Ankyrin repeat family protein,ekpr,groot,p7msnps,fixed,282
+2,GRMZM2G105652,Zm00001d007760,239075728,239093048,Exocyst complex component EXO84B,asi,gs,p7msnps,fixed,282
+2,GRMZM5G827174,Zm00001d007845,240825166,240826893,Formin-like protein 18,asi,ld268,p7msnps,fixed,282
+8,GRMZM2G378906,Zm00001d008218,1585465,1591623,Coatomer subunit beta,lw,ln268,p7msnps,fixed,282
+8,GRMZM2G020148,Zm00001d008305,4713419,4715161,TRAM LAG1 and CLN8 (TLC) lipid-sensing domain containing protein,asi,ln268,p7msnps,fixed,282
+8,GRMZM2G328094,Zm00001d008377,6768030,6769106,Putative alcohol dehydrogenase superfamily protein,cobl,groot,p7msnps,fixed,282
+8,GRMZM2G322047,Zm00001d008425,8351568,8355320,Putative homeodomain-like transcription factor superfamily protein,eh,l3b,p7msnps,fixed,282
+8,GRMZM2G012601,Zm00001d009236,45786196,45790440,Ubiquitin-like-specific protease ESD4,lw,groot,p7msnps,fixed,282
+8,GRMZM2G345039,Zm00001d009522,68814240,68819306,rph1;RNase PH homolog: endosperm cDNA 5C06F11 similar to E. coli tRNA processing enzyme,daystotassel,ld268,p7msnps,fixed,282
+8,GRMZM2G141353,Zm00001d009687,75918222,75919097,Plant basic secretory protein (BSP) family protein,earm,ln268,p7msnps,fixed,282
+8,GRMZM2G093186,Zm00001d009964,92639578,92640662,rgp2;ras-related protein RGP2:,earm,ld268,p7msnps,fixed,282
+8,GRMZM2G160556,Zm00001d010126,100366359,100381929,Arginyl-tRNA--protein transferase 1,lw,ld268,p7msnps,fixed,282
+8,GRMZM2G386229,Zm00001d010313,109187145,109191635,inosine-uridine preferring nucleoside hydrolase family protein,eh,l3t,p7msnps,fixed,282
+8,GRMZM5G831519,Zm00001d010603,121650264,121651522,PRA1 family protein B4,asi,groot,p7msnps,fixed,282
+8,GRMZM2G011491,Zm00001d010880,131986532,131992085,Pentatricopeptide repeat-containing protein  mitochondrial,ekpr,l3t,p7msnps,fixed,282
+8,GRMZM2G098153,Zm00001d011100,139023538,139026280,Eukaryotic translation initiation factor 3 subunit F,planth,ln268,p7msnps,fixed,282
+8,GRMZM2G059117,Zm00001d011834,162301393,162305275,Putative leucine-rich repeat receptor-like protein kinase family protein,asi,gs,p7msnps,fixed,282
+8,GRMZM5G884972,Zm00001d012137,168708662,168716908,Protein kinase,ll,l3t,p7msnps,fixed,282
+8,GRMZM2G328341,Zm00001d012450,174728877,174730604,,tpb,l3b,p7msnps,fixed,282
+8,GRMZM2G132251,Zm00001d012581,176870352,176874678,Serine/threonine-protein kinase WNK (With No Lysine)-related,cobl,kern,p7msnps,fixed,282
+8,GRMZM2G079468,Zm00001d012654,178002681,178009554,2-oxoglutarate (2OG) and Fe(II)-dependent oxygenase superfamily protein,cobw,l3t,p7msnps,fixed,282
+5,GRMZM2G012229,Zm00001d012852,1099259,1101829,RPM1-interacting protein 4,eh,groot,p7msnps,fixed,282
+5,GRMZM2G147809,Zm00001d013303,8163573,8168474,Protein binding protein,tpb,l3b,p7msnps,fixed,282
+5,GRMZM2G104316,Zm00001d013383,10154694,10160262,BTB/POZ domain-containing protein,daystosilk,ln268,p7msnps,fixed,282
+5,GRMZM2G068984,Zm00001d013456,12056763,12061089,FKBP-type peptidyl-prolyl cis-trans isomerase 5 isoform 2,daystotassel,ld268,p7msnps,fixed,282
+5,GRMZM2G067306,Zm00001d013730,18815334,18827255,5S rRNA binding protein,planth,ld268,p7msnps,fixed,282
+5,GRMZM2G403218,Zm00001d013768,19733215,19740908,Expressed protein;  protein,ekpr,l3b,p7msnps,fixed,282
+5,GRMZM2G024054,Zm00001d013827,21505251,21508854,TRF-like 5,cobw,ld268,p7msnps,fixed,282
+5,GRMZM2G146041,Zm00001d013828,21546382,21565664,Switch 2,daystosilk,gs,p7msnps,fixed,282
+5,GRMZM2G146041,Zm00001d013828,21546382,21565664,Switch 2,daystotassel,gs,p7msnps,fixed,282
+5,GRMZM2G153178,Zm00001d015116,76324123,76328085,,earm,l3b,p7msnps,fixed,282
+5,GRMZM2G153178,Zm00001d015116,76324123,76328085,,ula,kern,p7msnps,fixed,282
+5,AC192244.3_FG007,Zm00001d015182,78509736,78512881,Bifunctional coenzyme A synthase,asi,ln268,p7msnps,fixed,282
+5,GRMZM2G134439,Zm00001d015605,100769867,100773584,Putative metallo-beta-lactamase homeodomain-containing protein,daystosilk,gs,p7msnps,fixed,282
+5,GRMZM2G158736,Zm00001d015611,101017647,101019586,Cyclin-dependent kinases regulatory subunit 1,gddasi,groot,p7msnps,fixed,282
+5,GRMZM2G006107,Zm00001d015729,114029491,114040449,Peptidyl-prolyl cis-trans isomerase CYP95,daystotassel,ld268,p7msnps,fixed,282
+5,GRMZM2G012200,Zm00001d015997,138120817,138128265,,daystotassel,l3b,p7msnps,fixed,282
+5,GRMZM2G405459,Zm00001d016185,148955813,148957970,Peroxidase 52,cobl,l3b,p7msnps,fixed,282
+5,GRMZM2G135691,Zm00001d016458,163038114,163057963,PREFOLDIN 1,planth,gs,p7msnps,fixed,282
+5,GRMZM6G446684,Zm00001d016940,180591548,180591832,CLE family OsCLE401 protein,planth,l3b,p7msnps,fixed,282
+5,GRMZM2G398500,Zm00001d017458,196447385,196451878,Methylglutaconyl-CoA hydratase,tpb,ln268,p7msnps,fixed,282
+5,GRMZM2G094705,Zm00001d017460,196476868,196485851,Ubiquitin carboxyl-terminal hydrolase 3,ern,gs,p7msnps,fixed,282
+5,GRMZM2G481604,Zm00001d017811,207513991,207515469,Pentatricopeptide repeat (PPR) superfamily protein,daystotassel,l3b,p7msnps,fixed,282
+5,GRMZM2G480364,Zm00001d017991,211551863,211552138,,ern,l3b,p7msnps,fixed,282
+5,GRMZM2G130459,Zm00001d018050,213161649,213165885,AP2-like ethylene-responsive transcription factor AIL1,cobl,l3t,p7msnps,fixed,282
+5,GRMZM2G059958,Zm00001d018102,214210975,214213524,,cobl,l3b,p7msnps,fixed,282
+5,GRMZM2G134552,Zm00001d018235,217143410,217145496,CONTAINS InterPro DOMAIN/s: WRC (InterPro:IPR014977); Has 219 Blast hits to 219 proteins in 19 species: Archae - 0; Bacteria - 0; Metazoa - 3; Fungi - 0; Plants - 215; Viruses - 0; Other Eukaryotes - 1 (source: NCBI BLink).,asi,groot,p7msnps,fixed,282
+5,GRMZM2G463904,Zm00001d018261,217575060,217588003,LRR receptor-like serine/threonine-protein kinase ERECTA,ekpr,l3t,p7msnps,fixed,282
+5,GRMZM2G018573,Zm00001d018355,219132562,219138725,homolog of yeast autophagy 18 (ATG18) B,gddasi,kern,p7msnps,fixed,282
+7,GRMZM2G162316,Zm00001d019461,34780057,34788091,DNAJ heat shock N-terminal domain-containing protein,ll,gs,p7msnps,fixed,282
+7,GRMZM2G140394,Zm00001d019522,39731035,39735223,Ankyrin repeat family protein,eh,l3b,p7msnps,fixed,282
+7,GRMZM2G123119,Zm00001d019734,54535486,54536259,Ethylene-responsive transcription factor 1B,cobw,ln268,p7msnps,fixed,282
+7,GRMZM2G106950,Zm00001d020008,85218743,85225209,Indole-3-glycerol phosphate synthase chloroplastic,daystosilk,ln268,p7msnps,fixed,282
+7,GRMZM2G363052,Zm00001d020043,88466229,88469073,Ethylene-responsive transcription factor ERF117,ern,kern,p7msnps,fixed,282
+7,GRMZM2G072406,Zm00001d020583,123675725,123676681,Galactosyltransferase family protein,twkw,groot,p7msnps,fixed,282
+7,GRMZM2G462883,Zm00001d020707,129503427,129504287,Probable carboxylesterase 2,planth,ld268,p7msnps,fixed,282
+7,GRMZM2G029096,Zm00001d020768,131675954,131676955,Barren stalk fastigiate1-related-1%3B DNA-binding protein,eh,gs,p7msnps,fixed,282
+7,GRMZM2G140559,Zm00001d020770,131820907,131823805,MADS box interactor-like,asi,ln268,p7msnps,fixed,282
+7,GRMZM2G140559,Zm00001d020770,131820907,131823805,MADS box interactor-like,cobl,groot,p7msnps,fixed,282
+7,GRMZM2G037627,Zm00001d020791,132829319,132830404,RING-H2 finger protein ATL5F,eh,gs,p7msnps,fixed,282
+7,GRMZM2G037627,Zm00001d020791,132829319,132830404,RING-H2 finger protein ATL5F,planth,gs,p7msnps,fixed,282
+7,GRMZM2G108133,Zm00001d021119,143115379,143119792,Beta-glucosidase 11,gddtotassel,groot,p7msnps,fixed,282
+7,GRMZM2G147459,Zm00001d021306,148361780,148365833,ER lumen protein retaining receptor family protein,twkw,ld268,p7msnps,fixed,282
+7,GRMZM2G374971,Zm00001d021901,165699754,165700437,sip1;stress-induced protein1: cDNA sequence homologous to thaumatin-like protein,ll,kern,p7msnps,fixed,282
+7,GRMZM2G099207,Zm00001d022247,173562438,173564183,calcium ion binding,cobd,kern,p7msnps,fixed,282
+7,GRMZM2G009804,Zm00001d022403,176841474,176842085,Glutaredoxin family protein,daystotassel,kern,p7msnps,fixed,282
+7,GRMZM2G009804,Zm00001d022403,176841474,176842085,Glutaredoxin family protein,gddtosilk,kern,p7msnps,fixed,282
+7,GRMZM2G017894,Zm00001d022428,177456153,177465116,Probable galacturonosyltransferase 7,tkv,l3t,p7msnps,fixed,282
+7,GRMZM2G414141,Zm00001d022564,180078570,180085192,BRCT domain-containing protein,cobl,l3t,p7msnps,fixed,282
+10,GRMZM2G014282,Zm00001d023392,4495323,4511091,ABC transporter G family member 37,tkv,groot,p7msnps,fixed,282
+10,GRMZM2G118286,Zm00001d023538,9347497,9371362,Long chain acyl-CoA synthetase 9 chloroplastic,tsl,l3b,p7msnps,fixed,282
+10,GRMZM2G402493,Zm00001d023577,10635893,10636069,,asi,ln268,p7msnps,fixed,282
+10,GRMZM2G008247,Zm00001d024037,38844199,38849055,Beta-glucosidase2,ern,l3t,p7msnps,fixed,282
+10,GRMZM2G056697,Zm00001d024083,42507737,42511403,,tsl,ln268,p7msnps,fixed,282
+10,GRMZM2G431030,Zm00001d024403,69000124,69004820,OSJNBa0041A02.21 protein;  protein,twkw,ld268,p7msnps,fixed,282
+10,GRMZM2G369260,Zm00001d024509,74928701,74929729,polymerase delta 4,eh,l3t,p7msnps,fixed,282
+10,GRMZM5G848692,Zm00001d024788,88367424,88377930,Agenet domain-containing protein,ern,ld268,p7msnps,fixed,282
+10,GRMZM2G069784,Zm00001d024995,98278337,98280161,Expressed protein;  protein,ern,groot,p7msnps,fixed,282
+10,GRMZM2G359298,Zm00001d025103,104219161,104224390,amo1;amine oxidase1: single copy rice cDNA rz69,gddtosilk,kern,p7msnps,fixed,282
+10,GRMZM2G007120,Zm00001d025542,121760585,121762717,Gamma-glutamylcyclotransferase 2-3,asi,gs,p7msnps,fixed,282
+10,GRMZM2G425920,Zm00001d025589,123303091,123307977,Transcription factor HY5-like,earm,gs,p7msnps,fixed,282
+10,GRMZM2G057437,Zm00001d025639,124749908,124758178,Sterile alpha motif (SAM) domain-containing protein,ern,ld268,p7msnps,fixed,282
+10,GRMZM2G046952,Zm00001d025901,133326341,133328048,FIP1,ekpr,l3b,p7msnps,fixed,282
+10,GRMZM2G003124,Zm00001d026122,138963838,138968153,Syntaxin-81,tsl,ln268,p7msnps,fixed,282
+10,GRMZM5G843302,Zm00001d026156,139980859,139983545,Putative glycerol-3-phosphate transporter 1,twkw,l3t,p7msnps,fixed,282
+10,GRMZM2G007899,Zm00001d026187,140544510,140545281,,ekpr,l3b,p7msnps,fixed,282
+10,GRMZM2G091331,Zm00001d026252,142052895,142054459,Probable WRKY transcription factor 11,ekpr,l3t,p7msnps,fixed,282
+10,GRMZM2G057698,Zm00001d026260,142285582,142291449,,twkw,ld268,p7msnps,fixed,282
+10,GRMZM2G143071,Zm00001d026396,145140791,145148851,Formation of crista junctions protein 1,cobd,ld268,p7msnps,fixed,282
+10,GRMZM2G177491,Zm00001d026406,145323560,145324304,,daystosilk,l3b,p7msnps,fixed,282
+10,GRMZM2G173413,Zm00001d026635,149245574,149250456,Allantoinase,tsl,gs,p7msnps,fixed,282
+1,GRMZM2G426802,Zm00001d027351,3482848,3487232,Signal transducer,oil,gs,p7msnps,fixed,282
+1,GRMZM2G329159,Zm00001d027677,10875911,10878329,Metal regulatory transcription factor 1,cobd,kern,p7msnps,fixed,282
+1,GRMZM2G119933,Zm00001d027872,16011197,16017413,transferases;tRNA (5-methylaminomethyl-2-thiouridylate)-methyltransferases,eh,groot,p7msnps,fixed,282
+1,GRMZM2G042171,Zm00001d028164,24946609,24951403,Sulfate transporter 2.2,cobw,l3t,p7msnps,fixed,282
+1,GRMZM2G344388,Zm00001d028273,28802882,28804087,Mitogen-activated protein kinase kinase 9,ll,ln268,p7msnps,fixed,282
+1,GRMZM2G136513,Zm00001d028484,36588522,36592955,Disease resistance protein RPS5,ekpr,l3b,p7msnps,fixed,282
+1,GRMZM2G049190,Zm00001d028539,38638860,38643914,Sulfoquinovosyl transferase SQD2,cobl,kern,p7msnps,fixed,282
+1,GRMZM2G052206,Zm00001d029143,60338845,60344732,Transposon protein,daystosilk,l3t,p7msnps,fixed,282
+1,GRMZM2G038598,Zm00001d029151,60743343,60747986,UDP-glucose 4-epimerase 4,ula,kern,p7msnps,fixed,282
+1,GRMZM2G071157,Zm00001d029850,89958471,89961843,Rop guanine nucleotide exchange factor 2,daystosilk,l3b,p7msnps,fixed,282
+1,GRMZM2G110198,Zm00001d030256,117002474,117006192,alpha/beta-Hydrolases superfamily protein,eh,groot,p7msnps,fixed,282
+1,GRMZM2G044354,Zm00001d030620,148968958,148978546,Protein OS-9 homolog,tkv,gs,p7msnps,fixed,282
+1,GRMZM2G429759,Zm00001d030796,160087365,160092610,Serine-threonine protein kinase plant-type,tkv,gs,p7msnps,fixed,282
+1,AF546187.1_FG011,Zm00001d030856,163637977,163639965,Cytochrome P450 CYP81N4,twkw,gs,p7msnps,fixed,282
+1,GRMZM5G831313,Zm00001d030962,169327810,169330606,FAD/NAD(P)-binding oxidoreductase family protein,tkv,ln268,p7msnps,fixed,282
+1,GRMZM2G136366,Zm00001d031265,184286253,184295887,S-adenosyl-L-methionine-dependent methyltransferases superfamily protein,tkv,l3t,p7msnps,fixed,282
+1,GRMZM2G176962,Zm00001d031279,184897760,184900636,,eh,groot,p7msnps,fixed,282
+1,GRMZM2G016088,Zm00001d031496,192002834,192004606,DUF1997 family protein,daystotassel,l3b,p7msnps,fixed,282
+1,GRMZM2G016088,Zm00001d031496,192002834,192004606,DUF1997 family protein,gddtosilk,l3b,p7msnps,fixed,282
+1,GRMZM2G153945,Zm00001d031689,198655372,198659835,PTI1-like tyrosine-protein kinase 3,tpb,l3t,p7msnps,fixed,282
+1,GRMZM2G472671,Zm00001d031717,199251192,199251956,Transcription factor bHLH28,asi,ln268,p7msnps,fixed,282
+1,GRMZM2G001803,Zm00001d031764,201106050,201111798,IAA-alanine resistance protein 1,ll,l3t,p7msnps,fixed,282
+1,GRMZM2G146286,Zm00001d032328,222602363,222608275,Protein Dr1 homolog,planth,kern,p7msnps,fixed,282
+1,GRMZM2G104012,Zm00001d032609,232008769,232013983,Ser/Thr protein phosphatase family,twkw,ld268,p7msnps,fixed,282
+1,GRMZM2G042704,Zm00001d032692,234744151,234747377,MATH domain containing protein; Os10g0478500 protein,tpb,l3b,p7msnps,fixed,282
+1,GRMZM2G081515,Zm00001d032696,234983258,234983899,Protein LIGHT-DEPENDENT SHORT HYPOCOTYLS 3,tkv,gs,p7msnps,fixed,282
+1,GRMZM2G008607,Zm00001d032781,237933326,237950976,,lw,ln268,p7msnps,fixed,282
+1,GRMZM2G103657,Zm00001d033232,255276609,255280338,Pollen Ole e 1 allergen and extensin family protein,twkw,ld268,p7msnps,fixed,282
+1,GRMZM2G037152,Zm00001d033637,269339444,269340280,GNS1/SUR4 membrane protein family,asi,gs,p7msnps,fixed,282
+1,GRMZM5G810275,Zm00001d033646,269551595,269556064,Pinin/SDK/memA/ protein conserved region containing protein,daystotassel,ld268,p7msnps,fixed,282
+1,GRMZM2G010054,Zm00001d033734,272416586,272421931,Coatomer subunit alpha-1,tkv,ld268,p7msnps,fixed,282
+1,GRMZM2G055802,Zm00001d034673,299503736,299505297,Bowman-Birk type trypsin inhibitor,tsl,ln268,p7msnps,fixed,282
+1,GRMZM5G832651,Zm00001d034879,304583080,304585959,GC-rich sequence DNA-binding factor-like protein,tkv,gs,p7msnps,fixed,282
+6,GRMZM2G447745,Zm00001d035470,28271626,28278463,Putative MYB DNA-binding domain superfamily protein,tpb,gs,p7msnps,fixed,282
+6,GRMZM2G112238,Zm00001d035559,33094851,33096433,Expressed protein; Mannose-specific jacalin-related lectin;  protein,ula,kern,p7msnps,fixed,282
+6,GRMZM2G353905,Zm00001d035841,54772197,54798925,Callose synthase 5,asi,ln268,p7msnps,fixed,282
+6,GRMZM2G041171,Zm00001d036026,66938426,66943967,,tkv,kern,p7msnps,fixed,282
+6,GRMZM2G151200,Zm00001d036396,86737071,86740900,RNA pseudouridine synthase 2 chloroplastic,gddasi,groot,p7msnps,fixed,282
+6,GRMZM2G102421,Zm00001d036481,90056629,90062992,NEDD8-conjugating enzyme Ubc12,cobl,kern,p7msnps,fixed,282
+6,GRMZM2G089491,Zm00001d036708,98284028,98286043,Protein transport protein SEC61 gamma subunit,ern,kern,p7msnps,fixed,282
+6,GRMZM2G131070,Zm00001d036759,99946589,99956871,Phox (PX) domain-containing protein,cobd,l3t,p7msnps,fixed,282
+6,GRMZM2G131070,Zm00001d036759,99946589,99956871,Phox (PX) domain-containing protein,cobw,l3t,p7msnps,fixed,282
+6,GRMZM2G064374,Zm00001d036825,102823171,102829865,Nuclear pore complex protein NUP155,ekpr,gs,p7msnps,fixed,282
+6,GRMZM2G012685,Zm00001d037080,111637292,111640270,Putative leucine-rich repeat receptor-like protein kinase family protein,cobw,l3t,p7msnps,fixed,282
+6,GRMZM2G000674,Zm00001d037203,115605845,115608609,Tetratricopeptide repeat (TPR)-like superfamily protein,daystosilk,gs,p7msnps,fixed,282
+6,GRMZM2G000674,Zm00001d037203,115605845,115608609,Tetratricopeptide repeat (TPR)-like superfamily protein,daystotassel,gs,p7msnps,fixed,282
+6,GRMZM2G031210,Zm00001d037927,142228724,142235961,LYR motif-containing protein 7 isoform 2,cobd,l3t,p7msnps,fixed,282
+6,GRMZM2G066485,Zm00001d037946,143056934,143084269,pld13;phospholipase D13:,eh,groot,p7msnps,fixed,282
+6,GRMZM2G012724,Zm00001d038023,145529821,145531626,Putative WRKY DNA-binding domain superfamily protein,tpb,l3b,p7msnps,fixed,282
+6,GRMZM2G023105,Zm00001d038039,145912636,145942513,Putative VHS/GAT domain containing family protein,cobl,kern,p7msnps,fixed,282
+6,GRMZM2G179346,Zm00001d038139,149203856,149206407,DNA-directed RNA polymerase II subunit 7,ula,l3t,p7msnps,fixed,282
+6,GRMZM2G000816,Zm00001d038299,153761010,153764311,Solute carrier family 35 member F1,cobw,ld268,p7msnps,fixed,282
+6,GRMZM2G037048,Zm00001d038306,154116776,154122027,cytoplasmic membrane protein,tsl,ln268,p7msnps,fixed,282
+6,GRMZM2G121229,Zm00001d038853,165894363,165897634,,twkw,ld268,p7msnps,fixed,282
+6,GRMZM2G073551,Zm00001d039179,171880132,171881868,Pentatricopeptide repeat-containing protein,ekpr,l3t,p7msnps,fixed,282
+3,GRMZM2G305834,Zm00001d039825,15958238,15958636,,ern,kern,p7msnps,fixed,282
+3,GRMZM2G171650,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,daystosilk,gs,p7msnps,fixed,282
+3,GRMZM2G171650,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,daystotassel,gs,p7msnps,fixed,282
+3,GRMZM2G171650,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,ll,gs,p7msnps,fixed,282
+3,GRMZM2G171650,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,tpb,gs,p7msnps,fixed,282
+3,GRMZM2G171650,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,ula,kern,p7msnps,fixed,282
+3,GRMZM2G150859,Zm00001d042660,175804463,175806077,,cobw,ln268,p7msnps,fixed,282
+3,GRMZM2G400602,Zm00001d042684,176820832,176823217,Protein NRT1/ PTR FAMILY 5.10,asi,gs,p7msnps,fixed,282
+3,GRMZM2G129428,Zm00001d042686,176925627,176927183,Protein SENSITIVE TO PROTON RHIZOTOXICITY 1,ekpr,l3t,p7msnps,fixed,282
+3,GRMZM2G141185,Zm00001d042712,177902537,177928714,,ekpr,l3t,p7msnps,fixed,282
+3,GRMZM2G309660,Zm00001d043425,199386458,199395287,,ekpr,l3t,p7msnps,fixed,282
+3,GRMZM2G468111,Zm00001d043610,205115325,205115651,,asi,ln268,p7msnps,fixed,282
+3,GRMZM2G041729,Zm00001d044389,226830791,226834279,cbl5;calcineurin B-like5:,gddasi,groot,p7msnps,fixed,282
+3,GRMZM2G001415,Zm00001d044597,233000050,233002653,Polymerase/histidinol phosphatase-like,ern,l3t,p7msnps,fixed,282
+3,GRMZM2G138496,Zm00001d044657,234224132,234238691,ENTH/VHS family protein,ula,gs,p7msnps,fixed,282
+3,GRMZM2G138496,Zm00001d044657,234224132,234238691,ENTH/VHS family protein,ula,l3t,p7msnps,fixed,282
+9,GRMZM2G081239,Zm00001d044826,4090119,4093538,nip2c;NOD26-like membrane intrinsic protein2:,tpb,l3t,p7msnps,fixed,282
+9,GRMZM2G000231,Zm00001d044907,6897020,6904501,alpha/beta-Hydrolases superfamily protein,asi,ln268,p7msnps,fixed,282
+9,GRMZM2G160842,Zm00001d045182,15338520,15348572,Adenylyltransferase and sulfurtransferase MOCS3 1 Molybdopterin-synthase adenylyltransferase Molybdopterin-synthase sulfurtransferase,tkv,l3b,p7msnps,fixed,282
+9,GRMZM2G048557,Zm00001d045500,24646435,24651266,ribosomal protein L29 family protein,ll,groot,p7msnps,fixed,282
+9,GRMZM2G076303,Zm00001d045808,40484708,40494877,WW domain-containing protein,lw,kern,p7msnps,fixed,282
+9,GRMZM2G009335,Zm00001d046378,85537115,85537531,,daystosilk,ld268,p7msnps,fixed,282
+9,GRMZM2G087806,Zm00001d046590,97452571,97463456,Protein S-acyltransferase 24,cobd,l3b,p7msnps,fixed,282
+9,GRMZM2G087806,Zm00001d046590,97452571,97463456,Protein S-acyltransferase 24,cobd,l3t,p7msnps,fixed,282
+9,GRMZM2G320206,Zm00001d047211,122171041,122173225,Putative metacaspase family protein,tkv,l3t,p7msnps,fixed,282
+9,GRMZM2G151934,Zm00001d047837,142882570,142887070,Protein DA1-related 2,twkw,l3t,p7msnps,fixed,282
+9,GRMZM2G433117,Zm00001d048236,152956403,152965893,dentin sialophosphoprotein-related,cobl,l3b,p7msnps,fixed,282
+9,AC149828.2_FG004,Zm00001d048273,153653506,153653898,DUF1677 family protein,tkv,l3t,p7msnps,fixed,282
+9,AC149475.2_FG002,Zm00001d048402,155629914,155633305,HR-like lesion-inducing protein-related,cobw,gs,p7msnps,fixed,282
+9,AC149475.2_FG002,Zm00001d048402,155629914,155633305,HR-like lesion-inducing protein-related,tkv,groot,p7msnps,fixed,282
+9,AC149475.2_FG002,Zm00001d048402,155629914,155633305,HR-like lesion-inducing protein-related,tkv,gs,p7msnps,fixed,282
+9,AC149475.2_FG003,Zm00001d048403,155635584,155640617,Proteasome subunit alpha type,eh,kern,p7msnps,fixed,282
+9,AC149475.2_FG007,Zm00001d048407,155701484,155702161,L-ornithine N5-acetyltransferase NATA1,ula,l3b,p7msnps,fixed,282
+9,GRMZM2G171994,Zm00001d048451,156650453,156652270,Pentatricopeptide repeat-containing protein,tsl,groot,p7msnps,fixed,282
+4,GRMZM2G146192,Zm00001d048669,3057594,3060877,Auxin-induced beta-glucosidase%3B Putative O-Glycosyl hydrolase superfamily protein,cobl,ln268,p7msnps,fixed,282
+4,GRMZM2G146192,Zm00001d048669,3057594,3060877,Auxin-induced beta-glucosidase%3B Putative O-Glycosyl hydrolase superfamily protein,earm,ln268,p7msnps,fixed,282
+4,GRMZM2G027021,Zm00001d048944,10376067,10385318,GTP-binding protein hflX,cobw,l3t,p7msnps,fixed,282
+4,GRMZM2G024482,Zm00001d049351,27710140,27712814,Thioesterase superfamily protein,cobw,ld268,p7msnps,fixed,282
+4,GRMZM2G400135,Zm00001d049615,37684173,37689709,NHL domain-containing protein,cobd,l3t,p7msnps,fixed,282
+4,GRMZM2G059325,Zm00001d049738,42140172,42142733,Transmembrane protein 18,daystotassel,ld268,p7msnps,fixed,282
+4,GRMZM2G174149,Zm00001d049760,43396449,43401512,RNA pseudouridine synthase 3 mitochondrial,twkw,kern,p7msnps,fixed,282
+4,GRMZM2G121942,Zm00001d050056,62778364,62779875,Splicing factor 3B subunit 5/RDS3 complex subunit 10,ll,gs,p7msnps,fixed,282
+4,GRMZM2G082180,Zm00001d050284,78468137,78471732,tRNA modification GTPase trmE,ern,kern,p7msnps,fixed,282
+4,GRMZM2G111923,Zm00001d051232,149360114,149365666,,cobd,l3t,p7msnps,fixed,282
+4,GRMZM2G432060,Zm00001d051302,152451610,152452209,SAUR11-auxin-responsive SAUR family member,eh,l3b,p7msnps,fixed,282
+4,GRMZM2G174511,Zm00001d051380,156492223,156492837,Probable lipid phosphate phosphatase beta,daystosilk,gs,p7msnps,fixed,282
+4,GRMZM2G084035,Zm00001d051516,161110193,161112086,F-box domain containing protein,tpb,gs,p7msnps,fixed,282
+4,GRMZM2G125991,Zm00001d051814,170342940,170346103,Endoglucanase 11,gddtotassel,groot,p7msnps,fixed,282
+4,GRMZM2G146207,Zm00001d051893,173860945,173865145,Tetratricopeptide repeat (TPR)-like superfamily protein,tpb,gs,p7msnps,fixed,282
+4,GRMZM2G111451,Zm00001d052027,176841004,176843283,,oil,gs,p7msnps,fixed,282
+4,GRMZM2G039263,Zm00001d052056,177955969,177961410,T-complex protein 1 subunit alpha,ern,l3t,p7msnps,fixed,282
+4,GRMZM2G179733,Zm00001d052392,188988474,188990386,TRAF-like superfamily protein,ekpr,groot,p7msnps,fixed,282
+4,GRMZM2G328742,Zm00001d052591,193980224,193982206,B3 domain-containing protein,ekpr,gs,p7msnps,fixed,282
+4,GRMZM2G328742,Zm00001d052591,193980224,193982206,B3 domain-containing protein,tkv,gs,p7msnps,fixed,282
+4,GRMZM2G118385,Zm00001d052911,204480764,204485845,RWD domain-containing protein,ll,l3t,p7msnps,fixed,282
+4,GRMZM2G067910,Zm00001d053259,222860694,222874686,Probable protein phosphatase 2C 74,ll,l3b,p7msnps,fixed,282
+4,GRMZM2G003157,Zm00001d053861,242512382,242522531,Putative translation elongation factor family protein,gddasi,groot,p7msnps,fixed,282
+4,GRMZM2G174568,Zm00001d053931,243761987,243766788,Peroxisome biogenesis protein 16,ll,ln268,p7msnps,fixed,282

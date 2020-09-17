@@ -1,0 +1,33 @@
+---
+title: "Master Med genes"
+author: "Jinliang Yang"
+date: "09-17-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+### read in data
+
+```{r}
+mg <- read.csv("data/med_master_table_fixed.csv")
+
+f <- subset(mg, trait %in% c("asi", "daystosilk", "daystotassel"))
+f1 <- subset(f, tissue %in% "ln268")
+```
+
+
+```{r}
+# /common/jyanglab/shared/dbcenter/Kremling_Nature3RNASeq282_March2018/Expression_matrix/df_STAR_HTSeq_counts_B73_match_based_on_genet_dist_DESeq2_normed_fpm_rounded_origNames_and_Altnames.txt
+rna <- 
+```
+
+
+
+

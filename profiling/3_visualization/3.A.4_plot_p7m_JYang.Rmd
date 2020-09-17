@@ -74,7 +74,7 @@ df[df$trait %in% c("eh", "planth"), ]$cat <- "Development"
 df[df$trait %in% c("ll", "lw", "ula"), ]$cat <- "Leaf morphology"
 df[df$trait %in% c("tpb", "tsl"), ]$cat <- "Female Inflorescence"
 df[df$trait %in% c("cobd", "cobl", "cobw",  "ern", "ekpr"), ]$cat <- "Male Inflorescence"
-df[df$trait %in% c("earm", "tkv", "twkw","knum", "kw"), ]$cat <- "Seed traits"
+df[df$trait %in% c("earm", "tkv", "twkw", "kw","knum"), ]$cat <- "Seed traits"
 
 table(df$cat)
 
