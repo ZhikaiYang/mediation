@@ -1,0 +1,123 @@
+---
+title: "Master Med genes: tissue specificity"
+author: "Jinliang Yang"
+date: "09-18-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+### read in data
+
+The 16 candidate genes
+
+```{r}
+mg <- read.csv("data/med_master_table_fixed.csv")
+### flowering time and Female Inflorescence
+f <- subset(mg, trait %in% c("asi", "daystosilk", "daystotassel", "tpb", "tsl"))
+f1 <- subset(f, tissue %in% "ln268")
+```
+
+The master FPM file
+
+```{r}
+# /common/jyanglab/shared/dbcenter/Kremling_Nature3RNASeq282_March2018/Expression_matrix/df_STAR_HTSeq_counts_B73_match_based_on_genet_dist_DESeq2_normed_fpm_rounded_origNames_and_Altnames.txt
+library("data.table")
+rna <- fread("/common/jyanglab/shared/dbcenter/Kremling_Nature3RNASeq282_March2018/Expression_matrix/df_STAR_HTSeq_counts_B73_match_based_on_genet_dist_DESeq2_normed_fpm_rounded_origNames_and_Altnames.txt", header=TRUE, data.table=FALSE)
+# 1960 37136
+
+idx <- which(names(rna) %in% f1$gene3)
+myr <- rna[, c(1:9, idx)]
+
+write.table(myr, "cache/goi.csv", sep=",", row.names = FALSE, quote=FALSE)
+```
+
+------------------
+
+Back to the local computer!
+
+
+```{r}
+library("data.table")
+
+goi <- fread("cache/goi.csv", header=TRUE, data.table=FALSE)
+table(goi$TissueWODate)
+```
+
+```{r}
+day <- subset(goi, TissueWODate %in% "LMAD")[, -1:-8]
+day <- day[!duplicated(day$AmesName), ] 
+# removed 7 duplicated ones
+
+night <- subset(goi, TissueWODate %in% "LMAN")[, -1:-8]
+night <- night[!duplicated(night$AmesName), ] 
+# removed 15 duplicated ones
+
+df <- merge(day, night, by="AmesName")
+
+
+out <- data.frame()
+n <- ncol(day)
+for(i in 2:n){
+  p <- t.test(df[, i], df[, i+n-1], paired=TRUE)$p.value
+  # do a FDR correction!
+  tem <- data.frame(id1=names(df)[i], id2=names(df)[i+n-1], pval=p)
+  out <- rbind(out, tem)
+}
+
+```
+
+```{r}
+library(ggplot2)
+library(tidyr)
+
+#### calculate ratio of day/night
+df2 <- df[,1:2]
+for(i in 2:n){
+  df2$newcol <- df[, i]/df[, i+n-1]
+  names(df2)[ncol(df2)] <- gsub("\\..", "", names(df)[i])
+}
+df2 <- df2[, -2]
+
+d <- gather(df2, key="gene", value=ratio, 2:ncol(df2))
+
+### Order by median values
+library(plyr)
+tem <- ddply(d, .(gene), summarise,
+             median=median(log10(ratio), na.rm = T))
+tem <- tem[order(tem$median, decreasing = T),]
+
+d$gene <- factor(d$gene, levels = tem$gene)
+
+pall <- ggplot(d, aes(y=gene, x=log10(ratio))) +
+    geom_violin(trim = FALSE, fill='#A4A4A4') + 
+    geom_boxplot(width = 0.2) +
+    xlab("log10(day/night)") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    geom_vline(xintercept=0, linetype="dashed", color = "red") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+
+pdf("graphs/night_mediators.pdf", width = 6, height= 5)
+pall
+dev.off()
+```
+
