@@ -34,7 +34,7 @@ df <- merge(day, night, by="AmesName")
 ```
 
 Compute different between day and night
-- FC not signficant!
+- log is signficant!
 
 ```{r}
 library(tidyr)
@@ -128,11 +128,11 @@ cor.test(dp$GRMZM2G140559, dp$GDDDaystoSilk)
 ```{r}
 library(ggplot2)
 
-p <- ggplot(np, aes(x=GRMZM2G140559, y=DaystoSilk)) +
+p <- ggplot(np, aes(x=log(GRMZM2G140559), y=AnthesistoSilkInterval)) +
     geom_point() +
     geom_smooth(method=lm) +
-    xlab("") +
-    ylab("log10(FPM)") +
+    xlab("log(FPM)") +
+    ylab("Anthesis to Silk Interval") +
     ggtitle("") +
     theme_classic() +
     #labs(color = "") +
@@ -150,7 +150,7 @@ p <- ggplot(np, aes(x=GRMZM2G140559, y=DaystoSilk)) +
 p
 
 
-pdf("graphs/fpm_by_tissue.pdf", width = 8, height= 6)
+pdf("graphs/regression_flowering_FPM.pdf", width = 8, height= 6)
 p
 dev.off()
 ```

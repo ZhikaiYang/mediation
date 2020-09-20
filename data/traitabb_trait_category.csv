@@ -1,0 +1,22 @@
+trait,category,traits
+asi,Flowering,anthesis to silk interval
+daystotassel,Flowering,days to tassel
+daystosilk,Flowering,days to silk
+gddasi,Flowering,gdd anthesis to silk interval
+gddtotassel,Flowering,gdd to tassel
+gddtosilk,Flowering,gdd to silk
+planth,Height and Development,plant height
+eh,Height and Development,ear height
+ll,Leaf morphology,leaf length
+lw,Leaf morphology,leaf width
+ula,Leaf morphology,uper leaf angle
+tsl,Male inflorescence,tassel length
+tpb,Male inflorescence,tassel primary branches
+cobd,Female inflorescence,cob diameter
+cobl,Female inflorescence,cob length
+cobw,Female inflorescence,cob mass
+ekpr,Female inflorescence,number of kernel per row
+ern,Female inflorescence,ear row number
+earm,Seed traits,ear mass
+tkv,Seed traits,total kernel volume
+twkw,Seed traits,twenty kernel weight
