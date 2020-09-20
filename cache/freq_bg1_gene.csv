@@ -1,0 +1,53 @@
+chr,gene3,gene4,start4,end4,name,trait,tissue,snp_size,med_method,pop
+2,GRMZM2G045005,Zm00001d003291,38955003,38958609,tgz21;transglutaminase21:,daystosilk,gs,p7msnps,fixed,282
+2,GRMZM2G045005,Zm00001d003291,38955003,38958609,tgz21;transglutaminase21:,daystotassel,gs,p7msnps,fixed,282
+2,GRMZM2G018955,Zm00001d005503,176562853,176567171,,daystosilk,l3t,p7msnps,fixed,282
+2,GRMZM2G018955,Zm00001d005503,176562853,176567171,,ll,l3t,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,cobd,l3t,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,cobl,l3t,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,daystotassel,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,earm,l3b,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,earm,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,eh,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,ern,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,gddtosilk,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,ll,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,planth,ld268,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,ula,gs,p7msnps,fixed,282
+2,AC148152.3_FG008,Zm00001d007716,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic,ula,ln268,p7msnps,fixed,282
+2,AC148152.3_FG005,Zm00001d007718,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.,ern,l3b,p7msnps,fixed,282
+2,AC148152.3_FG005,Zm00001d007718,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.,lw,l3b,p7msnps,fixed,282
+2,AC148152.3_FG005,Zm00001d007718,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.,tpb,l3b,p7msnps,fixed,282
+2,AC148152.3_FG005,Zm00001d007718,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.,twkw,l3t,p7msnps,fixed,282
+5,GRMZM2G146041,Zm00001d013828,21546382,21565664,Switch 2,daystosilk,gs,p7msnps,fixed,282
+5,GRMZM2G146041,Zm00001d013828,21546382,21565664,Switch 2,daystotassel,gs,p7msnps,fixed,282
+5,GRMZM2G153178,Zm00001d015116,76324123,76328085,phospholipid hydroperoxide glutathione peroxidase,earm,l3b,p7msnps,fixed,282
+5,GRMZM2G153178,Zm00001d015116,76324123,76328085,phospholipid hydroperoxide glutathione peroxidase,ula,kern,p7msnps,fixed,282
+7,GRMZM2G140559,Zm00001d020770,131820907,131823805,MADS box interactor-like,asi,ln268,p7msnps,fixed,282
+7,GRMZM2G140559,Zm00001d020770,131820907,131823805,MADS box interactor-like,cobl,groot,p7msnps,fixed,282
+7,GRMZM2G037627,Zm00001d020791,132829319,132830404,RING-H2 finger protein ATL5F,eh,gs,p7msnps,fixed,282
+7,GRMZM2G037627,Zm00001d020791,132829319,132830404,RING-H2 finger protein ATL5F,planth,gs,p7msnps,fixed,282
+7,GRMZM2G009804,Zm00001d022403,176841474,176842085,Glutaredoxin family protein,daystotassel,kern,p7msnps,fixed,282
+7,GRMZM2G009804,Zm00001d022403,176841474,176842085,Glutaredoxin family protein,gddtosilk,kern,p7msnps,fixed,282
+1,GRMZM2G016088,Zm00001d031496,192002834,192004606,DUF1997 family protein,daystotassel,l3b,p7msnps,fixed,282
+1,GRMZM2G016088,Zm00001d031496,192002834,192004606,DUF1997 family protein,gddtosilk,l3b,p7msnps,fixed,282
+6,GRMZM2G131070,Zm00001d036759,99946589,99956871,Phox (PX) domain-containing protein,cobd,l3t,p7msnps,fixed,282
+6,GRMZM2G131070,Zm00001d036759,99946589,99956871,Phox (PX) domain-containing protein,cobw,l3t,p7msnps,fixed,282
+6,GRMZM2G000674,Zm00001d037203,115605845,115608609,Tetratricopeptide repeat (TPR)-like superfamily protein,daystosilk,gs,p7msnps,fixed,282
+6,GRMZM2G000674,Zm00001d037203,115605845,115608609,Tetratricopeptide repeat (TPR)-like superfamily protein,daystotassel,gs,p7msnps,fixed,282
+3,GRMZM2G171650,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,daystosilk,gs,p7msnps,fixed,282
+3,GRMZM2G171650,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,daystotassel,gs,p7msnps,fixed,282
+3,GRMZM2G171650,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,ll,gs,p7msnps,fixed,282
+3,GRMZM2G171650,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,tpb,gs,p7msnps,fixed,282
+3,GRMZM2G171650,Zm00001d042315,160591489,160591701,MADS-box transcription factor 56,ula,kern,p7msnps,fixed,282
+3,GRMZM2G138496,Zm00001d044657,234224132,234238691,ENTH/VHS family protein,ula,gs,p7msnps,fixed,282
+3,GRMZM2G138496,Zm00001d044657,234224132,234238691,ENTH/VHS family protein,ula,l3t,p7msnps,fixed,282
+9,GRMZM2G087806,Zm00001d046590,97452571,97463456,Protein S-acyltransferase 24,cobd,l3b,p7msnps,fixed,282
+9,GRMZM2G087806,Zm00001d046590,97452571,97463456,Protein S-acyltransferase 24,cobd,l3t,p7msnps,fixed,282
+9,AC149475.2_FG002,Zm00001d048402,155629914,155633305,HR-like lesion-inducing protein-related,cobw,gs,p7msnps,fixed,282
+9,AC149475.2_FG002,Zm00001d048402,155629914,155633305,HR-like lesion-inducing protein-related,tkv,groot,p7msnps,fixed,282
+9,AC149475.2_FG002,Zm00001d048402,155629914,155633305,HR-like lesion-inducing protein-related,tkv,gs,p7msnps,fixed,282
+4,GRMZM2G146192,Zm00001d048669,3057594,3060877,Auxin-induced beta-glucosidase%3B Putative O-Glycosyl hydrolase superfamily protein,cobl,ln268,p7msnps,fixed,282
+4,GRMZM2G146192,Zm00001d048669,3057594,3060877,Auxin-induced beta-glucosidase%3B Putative O-Glycosyl hydrolase superfamily protein,earm,ln268,p7msnps,fixed,282
+4,GRMZM2G328742,Zm00001d052591,193980224,193982206,B3 domain-containing protein,ekpr,gs,p7msnps,fixed,282
+4,GRMZM2G328742,Zm00001d052591,193980224,193982206,B3 domain-containing protein,tkv,gs,p7msnps,fixed,282
