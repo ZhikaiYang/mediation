@@ -1,0 +1,139 @@
+---
+title: "Indirect SNPs"
+author: "Jinliang Yang"
+date: "09-20-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+### Summarize indirect SNPs
+
+From Zhikai:
+"/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/code2020/traits"
+they are in each trait folder
+files names ending by indirect_snps.csv
+or dsnps.csv
+
+
+
+```{r}
+# /common/jyanglab/shared/dbcenter/Kremling_Nature3RNASeq282_March2018/Expression_matrix/df_STAR_HTSeq_counts_B73_match_based_on_genet_dist_DESeq2_normed_fpm_rounded_origNames_and_Altnames.txt
+library("data.table")
+
+files <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/code2020/traits",
+                   pattern="indirect_snps",recursive = TRUE, full.names=T)
+
+p7m <- files[grep("p7msnps", files)]
+
+
+out <- data.frame()
+for(i in 1:length(p7m)){
+  f <- fread(p7m[i], data.table=FALSE, header=TRUE)
+  f$file <- p7m[i]
+  out <- rbind(out, f)
+}
+
+out$file <- gsub(".*\\/", "", out$file)
+out$trait <- gsub("_p7msnps_.*", "", out$file)
+out$method <- gsub("_.*", "", out$trait)
+out$trait <- gsub(".*_", "", out$trait)
+
+out$tissue <- gsub(".*_p7msnps_", "", out$file)
+out$tissue <- gsub("_.*", "", out$tissue)
+
+table(out$tissue)
+fwrite(out, "cache/indirect_SNPs_p7msnps.csv", sep=",", row.names=FALSE, quote=FALSE)
+```
+
+------------------
+
+Back to the local computer!
+
+
+```{r}
+library("data.table")
+
+id <- fread("cache/indirect_SNPs_p7msnps.csv", header=TRUE, data.table=FALSE)
+
+# Unique mediators
+length(unique(id$medi)) #447
+
+tb <- data.frame(table(id$snps_for_medi))
+tb <- tb[order(tb$Freq, decreasing = T),]
+sub <- subset(tb, Freq > 1)
+dim(sub)
+```
+
+
+### Quick Manhattan plot
+
+- Zhi
+
+```{r}
+library("huskeR")
+
+
+tb$Var1 <- gsub("-", "_", tb$Var1)
+tb$chr <- as.numeric(as.character(gsub("_.*", "", tb$Var1)))
+tb$pos <- as.numeric(as.character(gsub(".*_", "", tb$Var1)))
+
+png("graphs/indirect_freq_plot.png", width=11, height=4.25, units="in", res=300)
+plot_mht(inputdf=tb, col2plot="Freq", jmph=FALSE, cl_file="data/chr_length_B73v4.csv", pl=TRUE,
+         ylab="Indirect SNPs Freq",  cex = 0.6)
+dev.off()
+```
+
+
+### Check the most freq indirect SNPs
+
+```{r}
+tb <- data.frame(table(id$snps_for_medi))
+tb <- tb[order(tb$Freq, decreasing = T),]
+
+
+med_id3 <- subset(id, snps_for_medi %in% tb$Var1[3])
+
+med_id1 <- subset(id, snps_for_medi %in% tb$Var1[1])
+med_id2 <- subset(id, snps_for_medi %in% tb$Var1[2])
+
+med_id4 <- subset(id, snps_for_medi %in% tb$Var1[4])
+
+
+med_id5 <- subset(id, snps_for_medi %in% tb$Var1[5])
+med_id6 <- subset(id, snps_for_medi %in% tb$Var1[6])
+
+med_id7 <- subset(id, snps_for_medi %in% tb$Var1[7])
+
+
+```
+
+
+
+```{r}
+curvedarrow(from = pos[1, ] + c(0, 0.05), to = pos[i+1, ] + c(0, 0.05),
+              curve = -0.25, arr.adj = 1, arr.pos = 0.5, 
+              arr.type = "triangle", arr.col = "blue")
+
+
+library("diagram")
+openplotmat(main = "curvedarrow")
+
+pos <- coordinates(pos = 4, my = 0.2)
+text(pos, LETTERS[1:4], cex = 2)
+
+for (i in 1:3) 
+  curvedarrow(from = pos[1, ] + c(0,-0.05), to = pos[i+1, ] + c(0,-0.05),
+              curve = 0.5, arr.pos = 1)
+for (i in 1:3) 
+  curvedarrow(from = pos[1, ] + c(0, 0.05), to = pos[i+1, ] + c(0, 0.05),
+              curve = -0.25, arr.adj = 1, arr.pos = 0.5, 
+              arr.type = "triangle", arr.col = "blue")
+```
+
