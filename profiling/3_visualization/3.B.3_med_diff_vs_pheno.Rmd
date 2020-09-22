@@ -1,0 +1,157 @@
+---
+title: "Master Med genes: tissue specificity"
+author: "Jinliang Yang"
+date: "09-18-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+Merge day and night data
+```{r}
+library("data.table")
+
+goi <- fread("cache/goi.csv", header=TRUE, data.table=FALSE)
+table(goi$TissueWODate)
+
+day <- subset(goi, TissueWODate %in% "LMAD")[, -1:-6]
+day <- day[!duplicated(day$AmesName), ] 
+day <- day[, -2]
+# removed 7 duplicated ones
+
+night <- subset(goi, TissueWODate %in% "LMAN")[, -1:-8]
+night <- night[!duplicated(night$AmesName), ] 
+# removed 15 duplicated ones
+
+df <- merge(day, night, by="AmesName")
+
+```
+
+Compute different between day and night
+- log is signficant!
+
+```{r}
+library(tidyr)
+
+#### calculate ratio of day/night
+df2 <- df[,1:2]
+n <- ncol(day)
+for(i in 3:n){
+  df2$newcol <- df[, i] - df[, i+n-2]
+  names(df2)[ncol(df2)] <- gsub("\\..", "", names(df)[i])
+}
+
+
+df2 <- df2[order(df2$GRMZM2G140559, decreasing=TRUE),]
+```
+
+
+```{r}
+pheno <- read.delim("data/geno_trait.txt")
+
+pg <- merge(df2, pheno, by.x="RawPhenotypeNames", by.y="genotype")
+
+cor.test(log(pg$GRMZM2G140559), pg$DaysToTassel)
+cor.test(log(pg$GRMZM2G140559), pg$DaystoSilk)
+cor.test(log(pg$GRMZM2G140559), pg$AnthesistoSilkInterval)
+cor.test(log(pg$GRMZM2G140559), pg$GDDAnthesis.SilkingInterval)
+cor.test(log(pg$GRMZM2G140559), pg$GDDDaystoTassel)
+cor.test(log(pg$GRMZM2G140559), pg$GDDDaystoSilk)
+
+
+```
+
+
+
+Compute fold change between day and night
+- FC not signficant!
+
+```{r}
+library(tidyr)
+
+#### calculate ratio of day/night
+df2 <- df[,1:2]
+n <- ncol(day)
+for(i in 3:n){
+  df2$newcol <- df[, i]/df[, i+n-2]
+  names(df2)[ncol(df2)] <- gsub("\\..", "", names(df)[i])
+}
+
+
+df2 <- df2[order(df2$GRMZM2G140559, decreasing=TRUE),]
+```
+
+Merge with phenotypic data
+
+```{r}
+pheno <- read.delim("data/geno_trait.txt")
+
+pg <- merge(df2, pheno, by.x="RawPhenotypeNames", by.y="genotype")
+
+cor.test(log(pg$GRMZM2G140559), pg$DaysToTassel)
+cor.test(log(pg$GRMZM2G140559), pg$GDDAnthesis.SilkingInterval)
+cor.test(log(pg$GRMZM2G140559), pg$GDDDaystoTassel)
+cor.test(log(pg$GRMZM2G140559), pg$AnthesistoSilkInterval)
+
+night <- subset(goi, TissueWODate %in% "LMAN")[, -1:-6]
+np <- merge(night, pheno, by.x="RawPhenotypeNames", by.y="genotype")
+
+cor.test(np$GRMZM2G140559, np$DaysToTassel)
+cor.test(np$GRMZM2G140559, np$DaystoSilk)
+cor.test(np$GRMZM2G140559, np$AnthesistoSilkInterval)
+cor.test(np$GRMZM2G140559, np$GDDAnthesis.SilkingInterval)
+cor.test(np$GRMZM2G140559, np$GDDDaystoTassel)
+cor.test(np$GRMZM2G140559, np$GDDDaystoSilk)
+
+day <- subset(goi, TissueWODate %in% "LMAD")[, -1:-6]
+dp <- merge(day, pheno, by.x="RawPhenotypeNames", by.y="genotype")
+
+cor.test(dp$GRMZM2G140559, dp$DaysToTassel)
+cor.test(dp$GRMZM2G140559, dp$DaystoSilk)
+cor.test(dp$GRMZM2G140559, dp$AnthesistoSilkInterval)
+cor.test(dp$GRMZM2G140559, dp$GDDAnthesis.SilkingInterval)
+cor.test(dp$GRMZM2G140559, dp$GDDDaystoTassel)
+cor.test(dp$GRMZM2G140559, dp$GDDDaystoSilk)
+
+```
+
+
+
+# Plot the results
+
+```{r}
+library(ggplot2)
+
+p <- ggplot(np, aes(x=log(GRMZM2G140559), y=AnthesistoSilkInterval)) +
+    geom_point() +
+    geom_smooth(method=lm) +
+    xlab("log(FPM)") +
+    ylab("Anthesis to Silk Interval") +
+    ggtitle("") +
+    theme_classic() +
+    #labs(color = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    #geom_vline(xintercept=0, linetype="dashed", color = "red") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=18, face="bold"),
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.position = "none", 
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.title = element_text(size=18, face="bold"),
+          legend.text = element_text(size=18))
+p
+
+
+pdf("graphs/regression_flowering_FPM.pdf", width = 8, height= 6)
+p
+dev.off()
+```
+

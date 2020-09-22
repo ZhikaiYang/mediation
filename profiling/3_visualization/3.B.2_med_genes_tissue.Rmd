@@ -50,74 +50,62 @@ goi <- fread("cache/goi.csv", header=TRUE, data.table=FALSE)
 table(goi$TissueWODate)
 ```
 
+Compute average expression level by tissue
 ```{r}
-day <- subset(goi, TissueWODate %in% "LMAD")[, -1:-8]
-day <- day[!duplicated(day$AmesName), ] 
-# removed 7 duplicated ones
+library(tidyr)
+library(plyr)
 
-night <- subset(goi, TissueWODate %in% "LMAN")[, -1:-8]
-night <- night[!duplicated(night$AmesName), ] 
-# removed 15 duplicated ones
+sub <- goi[, c(3, 10:25)]
+df <- gather(sub, key="gene", value="fpm", 2:ncol(sub))
+dim(subset(df, TissueWODate %in% "LMAD" & gene %in% "AC192244.3_FG007"))
+# 210   3
 
-df <- merge(day, night, by="AmesName")
-
-
-out <- data.frame()
-n <- ncol(day)
-for(i in 2:n){
-  p <- t.test(df[, i], df[, i+n-1], paired=TRUE)$p.value
-  # do a FDR correction!
-  tem <- data.frame(id1=names(df)[i], id2=names(df)[i+n-1], pval=p)
-  out <- rbind(out, tem)
-}
+# average gene expression across 200 lines by tissue type
+avg <- ddply(df, .(gene , TissueWODate), summarise,
+                  avg = mean(fpm, na.rm=TRUE))
 
 ```
 
+
+# Plot the results
+
 ```{r}
 library(ggplot2)
-library(tidyr)
 
-#### calculate ratio of day/night
-df2 <- df[,1:2]
-for(i in 2:n){
-  df2$newcol <- df[, i]/df[, i+n-1]
-  names(df2)[ncol(df2)] <- gsub("\\..", "", names(df)[i])
-}
-df2 <- df2[, -2]
+avg$TissueWODate <- factor(avg$TissueWODate, levels = c( "GRoot", "GShoot", "L3Base", "L3Mid", "L3Tip", "LMAD", "LMAN", "Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base","Leaf 3 Middle", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 
-d <- gather(df2, key="gene", value=ratio, 2:ncol(df2))
+## gene list from previous list
+glist <- out[order(out$pval),]
+glist$id <- gsub("\\..", "", glist$id1)
 
-### Order by median values
-library(plyr)
-tem <- ddply(d, .(gene), summarise,
-             median=median(log10(ratio), na.rm = T))
-tem <- tem[order(tem$median, decreasing = T),]
+# df2 <- subset(avg, gene %in% c("GRMZM2G140559", "GRMZM2G054225", "RMZM2G037048", "GRMZM2G020148", "GRMZM2G000231"))
 
-d$gene <- factor(d$gene, levels = tem$gene)
-
-pall <- ggplot(d, aes(y=gene, x=log10(ratio))) +
-    geom_violin(trim = FALSE, fill='#A4A4A4') + 
-    geom_boxplot(width = 0.2) +
-    xlab("log10(day/night)") +
-    ylab("") +
+df2 <- subset(avg, gene %in% glist$id[1:6])
+p <- ggplot(df2, aes(x=TissueWODate, y=log10(avg), group=gene, color=gene)) +
+    geom_line() + 
+    geom_point() +
+    xlab("") +
+    ylab("log10(FPM)") +
     ggtitle("") +
     theme_classic() +
-    labs(fill = "") +
+    labs(color = "") +
     #scale_y_continuous(limits = c(-0.01, 1)) +
-    geom_vline(xintercept=0, linetype="dashed", color = "red") +
+    #geom_vline(xintercept=0, linetype="dashed", color = "red") +
     theme(plot.title = element_text(size=20, face = "bold"), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
-          axis.title=element_text(size=fsize, face="bold"),
+          axis.title=element_text(size=18, face="bold"),
           #axis.text.x = element_text(angle = 20, hjust=0.6),
-          legend.position = "none", 
-          legend.title = element_text(size=fsize, face="bold"),
-          legend.text = element_text(size=fsize))
-pall
+          legend.position = c(0.8,0.9), 
+          axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.title = element_text(size=18, face="bold"),
+          legend.text = element_text(size=18))
+p
 
 
-pdf("graphs/night_mediators.pdf", width = 6, height= 5)
-pall
+pdf("graphs/fpm_by_tissue.pdf", width = 8, height= 6)
+p
 dev.off()
 ```
 
