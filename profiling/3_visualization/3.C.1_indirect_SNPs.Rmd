@@ -111,29 +111,49 @@ med_id6 <- subset(id, snps_for_medi %in% tb$Var1[6])
 
 med_id7 <- subset(id, snps_for_medi %in% tb$Var1[7])
 
+med_top10 <- subset(id, snps_for_medi %in% tb$Var1[1:10])
+
 
 ```
 
 
-
 ```{r}
-curvedarrow(from = pos[1, ] + c(0, 0.05), to = pos[i+1, ] + c(0, 0.05),
-              curve = -0.25, arr.adj = 1, arr.pos = 0.5, 
-              arr.type = "triangle", arr.col = "blue")
+
+mg <- read.csv("data/med_master_table_fixed.csv")
+
+mgt <- data.frame(table(mg$gene3))
+mgt <- mgt[order(mgt$Freq, decreasing = T),]
+
+hlgene <- subset(mg, gene3 %in% mgt$Var1[1])
+
+### from the top10 indirect SNPs, which ones contain the FG008
+fg008 <- subset(med_top10, medi %in% hlgene$gene3)
+### deduplicated
+fg008 <- fg008[!duplicated(fg008$snps_for_medi),]
+
+fg008$chr <- as.numeric(as.character(gsub("-.*", "", fg008$snps_for_medi)))
+fg008$pos <- as.numeric(as.character(gsub(".*-", "", fg008$snps_for_medi)))
+
+cl <- read.csv("data/chr_length_B73v4.csv")
+fg008 <- newpos(d=fg008, GAP=5e+06, cl)
+
+names(hlgene)[4] <- "pos"
+hlgene <- newpos(d=hlgene, GAP=5e+06, cl)
+
+fg008$end <- 550111694
+names(fg008)[9] <- "start"
+
+tb$Var1 <- gsub("-", "_", tb$Var1)
+tb$chr <- as.numeric(as.character(gsub("_.*", "", tb$Var1)))
+tb$pos <- as.numeric(as.character(gsub(".*_", "", tb$Var1)))
 
 
-library("diagram")
-openplotmat(main = "curvedarrow")
 
-pos <- coordinates(pos = 4, my = 0.2)
-text(pos, LETTERS[1:4], cex = 2)
+out = data.frame(start=0, end=120616133)
+plot_mht_ellipse(inputdf=tb, edf=fg008, col2plot="Freq", jmph=FALSE, cl_file="data/chr_length_B73v4.csv", pl=TRUE,
+         ylab="Indirect SNPs Freq",  cex = 0.6)
 
-for (i in 1:3) 
-  curvedarrow(from = pos[1, ] + c(0,-0.05), to = pos[i+1, ] + c(0,-0.05),
-              curve = 0.5, arr.pos = 1)
-for (i in 1:3) 
-  curvedarrow(from = pos[1, ] + c(0, 0.05), to = pos[i+1, ] + c(0, 0.05),
-              curve = -0.25, arr.adj = 1, arr.pos = 0.5, 
-              arr.type = "triangle", arr.col = "blue")
+
+
 ```
 
