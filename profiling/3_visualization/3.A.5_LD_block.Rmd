@@ -1,0 +1,78 @@
+---
+title: "LDheatmap"
+output: NULL
+date: 05-22-2019
+author: "Zhikai Yang"
+---
+
+```{r setup}
+# , include=TRUE, warning=FALSE, echo=TRUE, error=FALSE
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+
+
+```
+
+First trial of LDheatmap
+```{r}
+library(LDheatmap)
+data("CEUData")
+MyHeatmap <- LDheatmap(CEUSNP, CEUDist, LDmeasure="r", title="Pairwise LD in r^2", add.map=TRUE, SNP.name=c("rs2283092", "rs6979287"), color=grey.colors(20), name="myLDgrob", add.key=TRUE)
+
+
+#modification of heat map statically
+
+require(grid)
+LD.grob1 <- editGrob(MyHeatmap$LDheatmapGrob, gPath("heatMap", "title"), gp = gpar(cex=1.25, col="blue"))
+LD.grob2 <- editGrob(LD.grob1, gPath("geneMap","title"), gp = gpar(cex=0.8, col="orange"))
+LD.grob3 <- editGrob(LD.grob2, gPath("Key","title"), gp = gpar(cex=1.25, col="red"))
+
+grid.newpage()
+grid.draw(LD.grob3)
+```
+
+Mutltiple heat maps on a single device(code need to operate interactively)
+```{r}
+VP1<-viewport(x=0, y=0, width=0.5, height=1, just=c("left","bottom"), name="vp1")
+pushViewport(VP1)
+LD1 <- LDheatmap(MyHeatmap, color=grey.colors(20), title="Pairwise LD in grey.colors(20)", SNP.name="rs6979572", name="ld1", newpage=FALSE)
+upViewport()
+VP2<-viewport(x=0.5, y=0, width=0.5, height=1, just=c("left","bottom"), name="vp2")
+pushViewport(VP2)
+LD2<-LDheatmap(MyHeatmap, color=heat.colors(20), title="Pairwise LD in heat.colors(20)", SNP.name="rs6979572", name="ld2", newpage=FALSE)
+upViewport()
+grid.edit(gPath("ld1", "heatMap", "heatmap"), gp=gpar(col="white", lwd=2))
+grid.edit(gPath("ld2", "geneMap", "title"), gp=gpar(col="blue"))
+
+
+data("CHBJPTData")
+pop<-factor(c(rep("chinese", 45), rep("japanese", 45)))
+
+library(lattice)
+xyplot(1:nrow(CHBJPTSNP) ~ 1:nrow(CHBJPTSNP)|pop, type="n", scales=list(draw=FALSE), xlab="", ylab="", panel=function(x,y,subscripts,...){LDheatmap(CHBJPTSNP[subscripts,], CHBJPTDist, newpage=FALSE)})
+```
+```{r}
+myLDplot=function(file,LD=F,out=F){
+  library("genetics")
+  library("LDheatmap")
+  
+  data=read.table(file,head=T,com="",sep="\t",row=1,na.string="NN")##row -> nrow?
+  gene=data[,11:ncol(data)]
+  gene=t(data.frame(gene))
+  gty=makeGenotypes(gene,sep="")
+  
+  rgb.palette= colorRampPalette(rev(c("blue","orange" ,"red")), space = "rgb")
+  png(file=sub("txt","png",file),res=300,width=2000,height=2000)
+  myld=LDheatmap(gty,genetic.distances=data$pos,flip=T,color=rgb.palette(18), SNP.name=c("3-159052983", "3-159192847"))
+  dev.off()
+  
+  if(LD){
+    write.table(myld$LDmatrix,file=sub(".txt","_LD.txt",file),sep=" t",quote=F)
+  }
+  if(out){ myld}else{NULL}
+}
+
+
+myLDplot("./largedata/test.txt", LD=T)
+```
+
