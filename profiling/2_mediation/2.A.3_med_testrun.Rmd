@@ -1,0 +1,35 @@
+---
+title: "Prepare data for Med analysis: learned from Zhikai"
+author: "Jinliang Yang"
+date: "09-23-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+
+```{r}
+library(glmnet)
+library(MASS)
+library(rrBLUP)
+library(parallel)
+library(doParallel)
+library(CompQuadForm)
+source('lib/highmed2019.r')
+source('lib/fromSKAT.R')
+source('lib/MedWrapper.R')
+
+
+
+```
+
+
+
+
+

@@ -1,12 +1,3 @@
-library(glmnet)
-library(MASS)
-library(rrBLUP)
-library(parallel)
-library(doParallel)
-library(CompQuadForm)
-source('highmed2019.r')
-source('fromSKAT.R')
-
 
 ###' New wrapper functions for each method, they source the function script highmed2019.r
 

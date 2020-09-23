@@ -5,6 +5,7 @@ require(parallel)
 require(doParallel)
 require(CompQuadForm)
 ### Utility functions
+### COPYRIGHT: QI ZHANG
 
 myginv <- function (X, tol = sqrt(.Machine$double.eps)){
             if (length(dim(X)) > 2L || !(is.numeric(X) || is.complex(X)))
