@@ -1,0 +1,190 @@
+---
+title: "Prepare data for Med analysis: learned from Zhikai"
+author: "Jinliang Yang"
+date: "09-23-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+### RNA-seq data
+
+
+```{r}
+rna_filtering <- function(rna, cutoff_var = 0.05, cutoff_mean = 1){
+  # The purpose of this function is to split the RNA-seq data into different parts by tissue type.
+  # And then filter the variance <= cutoff_var and mean <= cutoff_mean!
+  
+  # rna: data.frame of the RNA-seq read count. [data.frame object]
+  # cutoff_var: cutoff for variances among the samples. [num, = 0.05] 
+  # cutoff_mean: cutoff for means among the genotypes. [num, = 1]
+  
+  tissue <- table(rna$TissueWODate)
+  tissue <- tissue[tissue > 100]
+  ts <- data.frame(tissue)
+  
+  for(i in 1:length(tissue)){
+    gs <- subset(rna, TissueWODate %in% ts$Var1[i])
+    #dim(gs) # 295 37136
+    message(sprintf("###>>> working on [ %s trait] with dim [ row: %s, col: %s ]", ts$Var1[i], nrow(gs), ncol(gs)))
+    # remove the duplicated ones
+    gs0 <- gs[!duplicated(gs$HMP32Name), ]
+    message(sprintf("###>>> after removing duplicated records, [ row: %s, col: %s ] remaning", nrow(gs0), ncol(gs0)))
+    #dim(gs0) #278 37136
+
+    #determine the first column of the gene expression
+    idx1 <- which(names(gs0) == "AC148152.3_FG001")
+
+    M <- gs0[, c(6, idx1:ncol(gs0))]
+    M$HMP32Name <- gsub("282set_", "", M$HMP32Name)
+
+    variances <- apply(M[, 2:ncol(M)], 2, var)
+    M <- M[, -(which(variances <= 0.05) + 1)] # 278 25038
+    message(sprintf("###>>> after removing [variances < %s], [ row: %s, col: %s ] remaning", cutoff_var, nrow(M), ncol(M)-1))
+   
+    means <- apply(M[,2:ncol(M)], 2, mean)
+    M <- M[, -(which(means <=1 ) + 1)] #278 19357
+    message(sprintf("###>>> after removing [mean < %s], [ row: %s, col: %s ] remaning", cutoff_mean, nrow(M), ncol(M)-1))
+    
+    outfile <- paste0("largedata/RNA-seq/filtered_", ts$Var1[i], ".csv")
+    message(sprintf("###>>> output results to [ %s ]", outfile))
+    message(sprintf("\n"))
+    names(M)[1] <- "genotype"
+    fwrite(M, outfile, sep=",", row.names=FALSE, quote=FALSE)
+  }
+}
+```
+
+
+```{r}
+library(data.table)
+
+rna <- fread("/common/jyanglab/shared/dbcenter/Kremling_Nature3RNASeq282_March2018/Expression_matrix/df_STAR_HTSeq_counts_B73_match_based_on_genet_dist_DESeq2_normed_fpm_rounded_origNames_and_Altnames.txt", data.table=FALSE)
+
+rna_filtering(rna, cutoff_var = 0.05, cutoff_mean = 1)
+  
+```
+
+###>>> working on [ GRoot trait] with dim [ row: 291, col: 37136 ]
+###>>> after removing duplicated records, [ row: 273, col: 37136 ] remaning
+###>>> after removing [variances < 0.05], [ row: 273, col: 25600 ] remaning
+###>>> after removing [mean < 1], [ row: 273, col: 19206 ] remaning
+###>>> output results to [ largedata/RNA-seq/filtered_GRoot.csv ]
+
+
+###>>> working on [ GShoot trait] with dim [ row: 295, col: 37136 ]
+###>>> after removing duplicated records, [ row: 278, col: 37136 ] remaning
+###>>> after removing [variances < 0.05], [ row: 278, col: 25037 ] remaning
+###>>> after removing [mean < 1], [ row: 278, col: 19356 ] remaning
+###>>> output results to [ largedata/RNA-seq/filtered_GShoot.csv ]
+
+
+###>>> working on [ Kern trait] with dim [ row: 254, col: 37136 ]
+###>>> after removing duplicated records, [ row: 229, col: 37136 ] remaning
+###>>> after removing [variances < 0.05], [ row: 229, col: 24579 ] remaning
+###>>> after removing [mean < 1], [ row: 229, col: 18226 ] remaning
+###>>> output results to [ largedata/RNA-seq/filtered_Kern.csv ]
+
+
+###>>> working on [ L3Base trait] with dim [ row: 302, col: 37136 ]
+###>>> after removing duplicated records, [ row: 263, col: 37136 ] remaning
+###>>> after removing [variances < 0.05], [ row: 263, col: 25048 ] remaning
+###>>> after removing [mean < 1], [ row: 263, col: 19108 ] remaning
+###>>> output results to [ largedata/RNA-seq/filtered_L3Base.csv ]
+
+
+###>>> working on [ L3Tip trait] with dim [ row: 295, col: 37136 ]
+###>>> after removing duplicated records, [ row: 265, col: 37136 ] remaning
+###>>> after removing [variances < 0.05], [ row: 265, col: 26764 ] remaning
+###>>> after removing [mean < 1], [ row: 265, col: 18546 ] remaning
+###>>> output results to [ largedata/RNA-seq/filtered_L3Tip.csv ]
+
+
+###>>> working on [ LMAD trait] with dim [ row: 210, col: 37136 ]
+###>>> after removing duplicated records, [ row: 204, col: 37136 ] remaning
+###>>> after removing [variances < 0.05], [ row: 204, col: 25804 ] remaning
+###>>> after removing [mean < 1], [ row: 204, col: 18304 ] remaning
+###>>> output results to [ largedata/RNA-seq/filtered_LMAD.csv ]
+
+
+###>>> working on [ LMAN trait] with dim [ row: 276, col: 37136 ]
+###>>> after removing duplicated records, [ row: 260, col: 37136 ] remaning
+###>>> after removing [variances < 0.05], [ row: 260, col: 25630 ] remaning
+###>>> after removing [mean < 1], [ row: 260, col: 18453 ] remaning
+###>>> output results to [ largedata/RNA-seq/filtered_LMAN.csv ]
+
+
+### SNP data
+
+including PCs
+
+```{r}
+p <- fread("/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned_NA_0_matrix.txt", data.table=FALSE)
+p <- p[!is.na(p$GDDDaystoSilk),] #274 111963
+
+
+pc <- fread("/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned.eigenvec", data.table = FALSE)
+dim(pc) #277
+
+X2 <- merge(pc[, 2:4], X[, 1:3],  by.x="V2", by.y="HMP32Name")
+df <- merge(X2, p[, 1:3], by.x="V2", by.y="Genotype")
+dim(df)#250
+df <- df[order(df$V2),]
+gid <- df$V2
+
+
+p <- p[order(p$Genotype),]            
+y <- p[p$Genotype %in% gid, 1:2]
+sum(y$Genotype != gid) # must be 0
+y <- as.matrix(y[,-1])
+
+row.names(y) <- gid
+
+### Z
+Z <- as.matrix(p[p$Genotype %in% gid, -1:-2])
+row.names(Z) <- gid
+
+### X
+X <- X[order(X$HMP32Name),]
+X <- X[X$HMP32Name %in% gid, ]
+sum(X$HMP32Name != gid) # must be 0
+X <- as.matrix(X[, -1])
+row.names(X) <- gid
+
+### X0
+pc <- pc[order(pc$V2), ]
+pc <- pc[pc$V2 %in% gid, -1]
+sum(pc$V2 != gid) # must be 0
+X0 <- pc[, 2:4]
+row.names(X0) <- gid
+
+###remove genes with expression correlation with phenotype lower than 0.05
+cors<-apply(X, 2, function(X) cor(X, y))
+X  <- X[, -(which((cors<=0.05) & (cors>=-0.05) ))] #255 12570
+
+library(dplyr)
+X <- as.data.frame(X)
+X <- mutate_all(X, scale)
+row.names(X) <- gid
+X <- as.matrix(X)
+
+X0 <- as.matrix(X0)
+
+
+
+fwrite(as.list(colnames(X)), "largedata/geno/colnamesX_gs.csv", sep=",", row.names=FALSE, quote=FALSE)
+fwrite(as.list(colnames(Z)), "largedata/geno/colnamesZ_gs.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+
+```
+
+
+
+
+

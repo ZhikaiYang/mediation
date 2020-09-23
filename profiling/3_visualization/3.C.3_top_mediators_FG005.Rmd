@@ -205,11 +205,5 @@ dev.off()
 ```
 
 
-```{r}
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
 
-BiocManager::install("snpStats")
-devtools::install_github("yangjl/LDheatmap")
-```
 
