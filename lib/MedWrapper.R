@@ -11,7 +11,8 @@ source('fromSKAT.R')
 ###' New wrapper functions for each method, they source the function script highmed2019.r
 
 adlassoMixWrapper <- function(Z,X,X0,y,kernel='linear',ncores=1,pmax=length(y)-2){  
-  #This function is a wrapper function that runs the adaptive lasso for linear mixed model for a sequence of penalty parameter lambda, and output the result that minimizes BIC
+  # This function is a wrapper function that runs the adaptive lasso for linear mixed model 
+  # for a sequence of penalty parameter lambda, and output the result that minimizes BIC
   if(kernel=='shrink_EJ'){
     K = A.mat(Z,shrink=list(method="EJ"))
   }
