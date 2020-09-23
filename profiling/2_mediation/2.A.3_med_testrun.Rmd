@@ -25,6 +25,99 @@ source('lib/highmed2019.r')
 source('lib/fromSKAT.R')
 source('lib/MedWrapper.R')
 
+library(dplyr)
+library("data.table")
+
+
+slurm_med_wrapper <- function(ti=2, cutoff_pm=0.05,
+  phenofile = "data/geno_trait.txt",
+  genofile = "largedata/geno/allchr_bisnp_n282_snpid_maf01_geno2_pruned_NA_0_matrix.txt",
+  rnafile = "largedata/RNA-seq/filtered_GRoot.csv",
+  pcfile="largedata/allchr_bisnp_n282_snpid_maf01_geno2_pruned.eigenvec"
+  ){
+  # ti: the ith trait. [int, =2]
+  # cutoff_pm: remove genes with expression correlation with phenotype lower than this cutoff. [num, = 0.05]
+  
+  
+  ### phentoypic data
+  pheno <- read.delim(phenofile, header=T)
+  ### working on the ith phenotype
+  ph <- pheno[, c(1, ti)]
+  ph <- ph[!is.na(ph[,ti]),]
+  
+  rna <- fread(rnafile, data.table=FALSE)
+
+  geno <- fread(genofile, data.table=FALSE)
+  names(geno)[1] <- "genotype"
+  # 275 696549
+
+  pc <- fread(pcfile, data.table=FALSE)
+  names(pc)[2] <- "genotype"
+
+  ### find the common set of genotypes by merging them togather
+  df <- Reduce(function(x, y) merge(x, y, by="genotype"), list(ph, rna[, 1:2], geno[, 1:2], pc[,1:2]))
+  
+  ### stat for output
+  sout <- data.frame(trait=names(pheno)[ti], rna=rnafile, ngeno=nrow(df))
+
+  df1 <- merge(df[, 1:2], rna, by="genotype")
+  # must be 0
+  if(sum(df$genotype != df1$genotype) != 0){
+    stop("Error! RNA-seq genotype id not matching df")
+  } 
+
+  ### remove genes with expression correlation with phenotype lower than 0.05
+  y <- df1[,2]
+  X <- df1[, -1:-2]
+  cors <- apply(X, 2, function(X) cor(X, y))
+  X  <- X[, -(which((cors <= cutoff_pm) & (cors >= -cutoff_pm) ))] #255 12570
+
+  X <- as.data.frame(X)
+  X <- mutate_all(X, scale)
+  #row.names(X) <- gid
+  X <- as.matrix(X)
+  sout$nM <- ncol(X) #num of M (mediators) after normalization!
+  
+  ### first 3 PC were used for the analysis
+  X0 <- merge(df[,1:2], pc[, 2:5], by="genotype")
+  # must be 0
+  if(sum(df$genotype != X0$genotype) != 0){
+    stop("Error! PC genotype id not matching df")
+  } 
+  X0 <- as.matrix(X0[, -1:-2])
+  sout$nPC <- ncol(X0)
+  
+  Z <- merge(df[, 1:2], geno[, -2], by="genotype")
+  # must be 0
+  if(sum(df$genotype != Z$genotype) != 0){
+    stop("Error! SNP genotype id not matching df")
+  } 
+  Z <- as.matrix(Z[, -1:-2])
+  sout$nZ <- ncol(Z)
+  
+  ###' run the estimation step for MedFix
+  vs.fixed = adlasso2typeWrapper(y, X0, X, Z, ncores=8) 
+  mod.fixed = vs.fixed[['model']]  # extract the model that minimizes BIC
+
+  
+}
+
+
+
+
+
+
+
+
+# y: a vector of phenotype
+# X0: principle components
+# X: mediators
+# Z: genotype matrix
+
+
+mod.eq = vs.fixed[['mod.eq']] # extract the model that assign equal penalty on the two data types.
+e2m.fixed= e2mFixed(mod.fixed,ncores=ncores) # for mod.fixed, run the mediator models for the mediators with non-zero estimated coefficient in the outcome model
+e2m.eq= e2mFixed(mod.eq,ncores=ncores) # for mod.eq, run the mediator models for the mediators with non-zero estimated coefficient in the outcome model
 
 
 ```

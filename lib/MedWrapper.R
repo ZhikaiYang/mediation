@@ -51,7 +51,7 @@ adlasso2typeWrapper <- function(y,X0,X,Z,pz=seq(0.01,0.99,length.out=20),pmax=le
   out.all = foreach(ppzz=pz) %dopar% {
     library(glmnet)
     library(MASS)
-    source('highmed2019.r')
+    source('lib/highmed2019.r')
     adlasso.2type(y,X,Z,ppzz,X0,pmax=pmax)
   }
   stopCluster(cl)
@@ -98,7 +98,7 @@ e2mFixed <- function(mod,ncores=8){
     Ball = foreach(ii=1:ns) %dopar% {
       library(glmnet)
       library(MASS)
-      source('highmed2019.r')
+      source('lib/highmed2019.r')
       ## ii = 1
       vs.lasso = adLasso(X=Z,y=Xnz[,ii],X0=X0)
       all.lasso = bic.glmnet(vs.lasso,cbind(1,cbind(X0,Z)),Xnz[,ii],p0=p0)
