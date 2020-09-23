@@ -1,5 +1,5 @@
 ---
-title: "Master Med genes: top mediator genes"
+title: "Master Med genes: top mediator genes, FG005"
 author: "Jinliang Yang"
 date: "09-22-2020"
 output: NULL
@@ -13,41 +13,16 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir=normalizePath('../../')) 
 ```
 
-### read in data
-
-select the top mediators!
+### Master mediator genes
 
 ```{r}
+library("data.table")
 mg <- read.csv("data/med_master_table_fixed.csv")
 
-## freq of the mediators
-mgt <- data.frame(table(mg$gene3))
-mgt <- mgt[order(mgt$Freq, decreasing = T),]
+fg5 <- subset(mg, gene3 %in% "AC148152.3_FG005")
 ```
 
-The master FPM file
-
 ```{r}
-# /common/jyanglab/shared/dbcenter/Kremling_Nature3RNASeq282_March2018/Expression_matrix/df_STAR_HTSeq_counts_B73_match_based_on_genet_dist_DESeq2_normed_fpm_rounded_origNames_and_Altnames.txt
-library("data.table")
-rna <- fread("/common/jyanglab/shared/dbcenter/Kremling_Nature3RNASeq282_March2018/Expression_matrix/df_STAR_HTSeq_counts_B73_match_based_on_genet_dist_DESeq2_normed_fpm_rounded_origNames_and_Altnames.txt", header=TRUE, data.table=FALSE)
-# 1960 37136
-
-### select the top 4 with Freq >2
-idx <- which(names(rna) %in% mgt$Var1[1:4])
-myr <- rna[, c(1:9, idx)]
-
-write.table(myr, "cache/top4_mediators.csv", sep=",", row.names = FALSE, quote=FALSE)
-```
-
-------------------
-
-Back to the local computer!
-
-
-```{r}
-library("data.table")
-
 top4 <- fread("cache/top4_mediators.csv", header=TRUE, data.table=FALSE)
 table(top4$TissueWODate)
 ```
@@ -59,7 +34,7 @@ library(plyr)
 
 sub <- top4[, c(3, 10:13)]
 df <- gather(sub, key="gene", value="fpm", 2:ncol(sub))
-dim(subset(df, TissueWODate %in% "LMAD" & gene %in% "AC148152.3_FG008"))
+dim(subset(df, TissueWODate %in% "LMAD" & gene %in% "AC148152.3_FG005"))
 # 210   3
 
 # average gene expression across 200 lines by tissue type
@@ -119,7 +94,7 @@ ts <- merge(top4, mt, by.x="RawPhenotypeNames", by.y="Genotype")
 tem2 <- data.frame(table(ts2$TissueWODate))
 
 
-cortest <- function(ts, mode=1){
+cortest <- function(ts, mode=1, geneid="AC148152.3_FG005"){
   ## do tissue by tissue
   t <- data.frame(table(ts$TissueWODate))
   out <- data.frame()
@@ -128,19 +103,21 @@ cortest <- function(ts, mode=1){
     for(j in 14:ncol(ts)){
       if(mode == 1){
         # exp vs. metabolite
-        pval <- cor.test(sub[, 11], sub[,j])$p.value
+        pval <- cor.test(sub[, geneid], sub[,j])$p.value
       }else if(mode ==2){
         # log(exp) vs. metabolite
-        pval <- cor.test(log(sub[, 11]), sub[,j])$p.value
+        sub <- sub[!is.infinite(log(sub[, geneid])),]
+        pval <- cor.test(log(sub[, geneid]), sub[,j])$p.value
       }else if(mode ==3){
         # exp vs. log(metabolite)
-        pval <- cor.test(sub[, 11], log(sub[,j]))$p.value
+        pval <- cor.test(sub[, geneid], log(sub[,j]))$p.value
       }else if(mode == 4){
         # log(exp) vs. log(metabolite)
-        pval <- cor.test(log(sub[, 11]), log(sub[,j]))$p.value
+        sub <- sub[!is.infinite(log(sub[, geneid])),]
+        pval <- cor.test(log(sub[, geneid]), log(sub[,j]))$p.value
       }
       
-      tem <- data.frame(gene=names(sub)[11], metabolite=names(sub)[j], pval=pval, tissue = t$Var1[i])
+      tem <- data.frame(gene=geneid, metabolite=names(sub)[j], pval=pval, tissue = t$Var1[i])
       out <- rbind(out, tem)
     }
   }
@@ -151,22 +128,20 @@ cortest <- function(ts, mode=1){
 }
 
 # exp vs. metabolite
-outdf1 <- cortest(ts, mode=1)
-###>>> [ 1 ] metabolites < 0.05
+outdf1 <- cortest(ts, mode=1,geneid="AC148152.3_FG005")
+###>>> [ 4 ] metabolites < 0.05
 
 # log(exp) vs. metabolite
-outdf2 <- cortest(ts, mode=2)
-###>>> [ 8 ] metabolites < 0.05
+outdf2 <- cortest(ts, mode=2,geneid="AC148152.3_FG005")
+###>>> [ 2 ] metabolites < 0.05
 
 # exp vs. log(metabolite)
-outdf3 <- cortest(ts, mode=3)
-###>>> [ 0 ] metabolites < 0.05
+outdf3 <- cortest(ts, mode=3,geneid="AC148152.3_FG005")
+###>>> [ 2 ] metabolites < 0.05
 
 # log(exp) vs. log(metabolite)
-outdf4 <- cortest(ts, mode=4)
-###>>> [ 6 ] metabolites < 0.05
-
-
+outdf4 <- cortest(ts, mode=4,geneid="AC148152.3_FG005")
+###>>> [ 2 ] metabolites < 0.05
 
 ```
 
@@ -176,12 +151,12 @@ outdf4 <- cortest(ts, mode=4)
 ```{r}
 library(ggplot2)
 
-sub <- subset(ts, TissueWODate %in% "L3Tip" )
-p2 <- ggplot(sub, aes(x=log(AC148152.3_FG008), y=X.5960..aspartic.acid.2..13.207.)) +
+sub <- subset(ts, TissueWODate %in% "GShoot" )
+p2 <- ggplot(sub, aes(x=log(AC148152.3_FG005), y=X.1001..phenethylamine..13.742.)) +
     geom_point() +
     geom_smooth(method=lm) +
-    xlab("log(AC148152.3_FG008)") +
-    ylab("aspartic acid") +
+    xlab("log(AC148152.3_FG005)") +
+    ylab("phenethylamine") +
     ggtitle("") +
     theme_classic() +
     #labs(color = "") +
@@ -199,7 +174,7 @@ p2 <- ggplot(sub, aes(x=log(AC148152.3_FG008), y=X.5960..aspartic.acid.2..13.207
 p2
 
 
-pdf("graphs/regression_aspacid_FPM.pdf", width = 8, height= 6)
+pdf("graphs/regression_phenethylamine_FG005.pdf", width = 8, height= 6)
 p2
 dev.off()
 ```
