@@ -13,11 +13,19 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 
 ```
 
+```{r}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("snpStats")
+devtools::install_github("yangjl/LDheatmap")
+```
+
 First trial of LDheatmap
 ```{r}
 library(LDheatmap)
 data("CEUData")
-MyHeatmap <- LDheatmap(CEUSNP, CEUDist, LDmeasure="r", title="Pairwise LD in r^2", add.map=TRUE, SNP.name=c("rs2283092", "rs6979287"), color=grey.colors(20), name="myLDgrob", add.key=TRUE)
+MyHeatmap <- LDheatmap(CEUSNP, CEUDist, LDmeasure="r", title="Pairwise LD in r^2", add.map=TRUE, SNP.name=c("rs2283092", "rs6979287"), color=grey.colors(20),flip=T, name="myLDgrob", add.key=TRUE)
 
 
 #modification of heat map statically
