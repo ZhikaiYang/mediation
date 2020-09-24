@@ -13,7 +13,16 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 ```
 
 
-### Landrace
+### Run an array job!
+
+```{r}
+rfile <- list.files(path="largedata/RNA-seq/", pattern="csv", full.names=TRUE)
+trait <- read.delim("data/geno_trait.txt", header=T)
+  
+df <- data.frame(rnafile=rep(rfile, each=40), trait=rep(2:41, times=7))
+write.table(df, "largedata/df_job_control.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+```
 
 ```{r}
 library("huskeR")

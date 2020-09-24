@@ -24,6 +24,11 @@ cp /common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/al
 ```
 
 
+
+
+-----
+ignore the below code!
+
 ```{r}
 p <- fread("/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned_NA_0_matrix.txt", data.table=FALSE)
 dim(p) #274 696549
