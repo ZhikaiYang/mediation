@@ -12,7 +12,7 @@ slurm_med_wrapper <- function(ti=2, cutoff_pm=0.05, ncores=12,
   pheno <- read.delim(phenofile, header=T)
   ### working on the ith phenotype
   ph <- pheno[, c(1, ti)]
-  ph <- ph[!is.na(ph[,ti]),]
+  ph <- ph[!is.na(ph[,2]),]
   
   rna <- fread(rnafile, data.table=FALSE)
   
