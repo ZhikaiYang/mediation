@@ -27,7 +27,7 @@ source('lib/slurm_wrapper.R')
 
 df <- read.csv("largedata/df_job_control.csv")
 
-slurm_med_wrapper(ti=as.numeric(as.character(df$trait[JOBID])), cutoff_pm=0.05, ncores=32,
+slurm_med_wrapper(ti=as.numeric(as.character(df$trait[JOBID])), cutoff_pm=0.05, ncores=16,
                   phenofile = "data/geno_trait.txt",
                   genofile = "largedata/geno/allchr_bisnp_n282_snpid_maf01_geno2_pruned_NA_0_matrix.txt",
                   rnafile = as.character(df$rnafile[JOBID]),
