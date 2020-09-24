@@ -22,7 +22,7 @@ library("data.table")
 source('lib/highmed2019.r')
 source('lib/fromSKAT.R')
 source('lib/MedWrapper.R')
-source('lib/reporter.R')
+source('lib/reporters.R')
 
 df <- read.csv("largedata/df_job_control.csv")
 

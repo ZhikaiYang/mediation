@@ -18,7 +18,7 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 ```{r}
 library("huskeR")
 run_Rcode(inputdf=data.frame(file=1:2, out=NA), outdir="slurm-script", cmdno = 1, 
-          rcodes = "profiling/2_mediation/2.B.2_run_med_arrayjob.R",
+          rcodes = "profiling/2_mediation/2.B.1_setup_med_job.R",
           rversion="3.6",
           base_shid = "med_test",
           email="yangjl0930@gmail.com", 
