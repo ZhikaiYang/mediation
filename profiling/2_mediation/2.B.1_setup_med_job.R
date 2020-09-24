@@ -23,6 +23,7 @@ source('lib/highmed2019.r')
 source('lib/fromSKAT.R')
 source('lib/MedWrapper.R')
 source('lib/reporters.R')
+source('lib/slurm_wrapper.R')
 
 df <- read.csv("largedata/df_job_control.csv")
 
