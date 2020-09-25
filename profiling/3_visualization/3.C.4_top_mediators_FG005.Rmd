@@ -1,5 +1,5 @@
 ---
-title: "Master Med genes: top mediator genes"
+title: "FG005: bx13 gene"
 author: "Jinliang Yang"
 date: "09-22-2020"
 output: NULL
