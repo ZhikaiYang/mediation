@@ -111,6 +111,8 @@ med_id6 <- subset(id, snps_for_medi %in% tb$Var1[6])
 
 med_id7 <- subset(id, snps_for_medi %in% tb$Var1[7])
 
+med_id7 <- subset(id, snps_for_medi %in% tb$Var1[7])
+
 med_top10 <- subset(id, snps_for_medi %in% tb$Var1[1:10])
 
 

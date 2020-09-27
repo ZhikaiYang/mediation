@@ -23,6 +23,9 @@ mg <- read.csv("data/med_master_table_fixed.csv")
 ## freq of the mediators
 mgt <- data.frame(table(mg$gene3))
 mgt <- mgt[order(mgt$Freq, decreasing = T),]
+
+submg1 <- subset(mg, gene3 %in% "AC148152.3_FG008")
+submg3 <- subset(mg, gene3 %in% "AC148152.3_FG005")
 ```
 
 The master FPM file
@@ -50,6 +53,22 @@ library("data.table")
 
 top4 <- fread("cache/top4_mediators.csv", header=TRUE, data.table=FALSE)
 table(top4$TissueWODate)
+
+gshoot <- subset(top4, TissueWODate %in% "GShoot")
+
+gshoot <- subset(top4, TissueWODate %in% "L3Tip")
+
+hist(log(gshoot$AC148152.3_FG005))
+abline(v=log(mean(subset(gshoot, RawPhenotypeNames %in% "B73")$AC148152.3_FG005)), col="red")
+abline(v=log(mean(subset(gshoot, RawPhenotypeNames %in% "GA209")$AC148152.3_FG005)), col="red")
+abline(v=log(mean(subset(gshoot, RawPhenotypeNames %in% "T234")$AC148152.3_FG005)), col="red")
+abline(v=log(mean(subset(gshoot, RawPhenotypeNames %in% "H84")$AC148152.3_FG005)), col="blue")
+abline(v=log(mean(subset(gshoot, RawPhenotypeNames %in% "H49")$AC148152.3_FG005)), col="blue")
+abline(v=log(mean(subset(gshoot, RawPhenotypeNames %in% "NC350")$AC148152.3_FG005)), col="blue")
+abline(v=log(mean(subset(gshoot, RawPhenotypeNames %in% "4226")$AC148152.3_FG005)), col="yellow")
+abline(v=log(mean(subset(gshoot, RawPhenotypeNames %in% "L317")$AC148152.3_FG005)), col="yellow")
+
+
 ```
 
 Compute average expression level by tissue
