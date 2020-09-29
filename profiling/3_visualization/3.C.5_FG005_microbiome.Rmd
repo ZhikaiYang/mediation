@@ -1,0 +1,117 @@
+---
+title: "FG005: bx13 gene"
+author: "Jinliang Yang"
+date: "09-25-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+
+RNA-seq data for the top4 mediators.
+
+```{r}
+library("data.table")
+
+top4 <- fread("cache/top4_mediators.csv", header=TRUE, data.table=FALSE)
+table(top4$TissueWODate)
+
+top4$RNA_TaxaName <- toupper(top4$RNA_TaxaName)
+```
+
+# gene expression vs. microbiome data
+
+Need to loop more the genotype names!
+
+```{r}
+
+cortest <- function(ts){
+  ## do tissue by tissue
+  t <- data.frame(table(ts$TissueWODate))
+  out <- data.frame()
+  for(i in 1:nrow(t)){
+    sub <- subset(ts, TissueWODate %in% t$Var1[i] )
+    for(j in 15:ncol(ts)){
+      tem <- subset(sub, !is.na(sub[,j]))
+      exp <- scale(sub[, 10])
+      asv <- scale(sub[,j])
+      df <- data.frame(exp=exp, asv=asv)
+      if(sum(!is.na(df$asv)) > 10){
+        pval <- cor.test(exp, asv)$p.value
+        pout <- data.frame(gene=names(sub)[10], asv=names(sub)[j], pval=pval, tissue = t$Var1[i])
+        out <- rbind(out, pout)
+      }
+    }
+  }
+  out$qval <- p.adjust(out$pval, method="fdr")
+  out <- out[order(out$qval, decreasing = F),]
+  message(sprintf("###>>> [ %s ] metabolites < 0.05", nrow(subset(out, qval < 0.05))))
+  return(out)
+}
+
+m <- read.csv("largedata/microbiome_blup_1522.csv")
+m1 <- subset(m, N %in% "+N")
+m2 <- subset(m, N %in% "-N")
+
+### merge tissue by tissue
+tem1 <- data.frame(table(top4$TissueWODate))
+
+ts1 <- merge(top4, m1, by.x="RawPhenotypeNames", by.y="genotype")
+tem2 <- data.frame(table(ts1$TissueWODate))
+
+ts2 <- merge(top4, m2, by.x="RawPhenotypeNames", by.y="genotype")
+
+# exp vs. metabolite
+outdf1 <- cortest(ts=ts1)
+###>>> [ 31 ] metabolites < 0.05
+
+# log(exp) vs. metabolite
+outdf2 <- cortest(ts2)
+###>>> [ 13 ] metabolites < 0.05
+
+out3 <- merge(outdf1[1:31, ], outdf2[1:13, ], by="asv")
+```
+
+
+# Plot relationship with metabolite data
+
+```{r}
+library(ggplot2)
+
+sub <- subset(ts1, TissueWODate %in% "Kern" )
+p2 <- ggplot(sub, aes(x=log(AC148152.3_FG005), y=asv_001614)) +
+    geom_point() +
+    geom_smooth(method=lm) +
+    xlab("log(AC148152.3_FG008)") +
+    ylab("aspartic acid") +
+    ggtitle("") +
+    theme_classic() +
+    #labs(color = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    #geom_vline(xintercept=0, linetype="dashed", color = "red") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=18, face="bold"),
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.position = "none", 
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.title = element_text(size=18, face="bold"),
+          legend.text = element_text(size=18))
+p2
+
+
+pdf("graphs/regression_aspacid_FPM.pdf", width = 8, height= 6)
+p2
+dev.off()
+```
+
+
+
+

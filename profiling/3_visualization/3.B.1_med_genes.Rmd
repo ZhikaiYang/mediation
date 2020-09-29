@@ -24,6 +24,15 @@ f <- subset(mg, trait %in% c("asi", "daystosilk", "daystotassel", "tpb", "tsl"))
 f1 <- subset(f, tissue %in% "ln268")
 ```
 
+Check if there is any cripsr genes
+
+```{r}
+c <- read.delim("largedata/CRISPR_genes.txt", header=FALSE)
+
+out <- merge(mg, c, by.x="gene3", by.y="V3")
+```
+
+
 
 ```{r}
 # /common/jyanglab/shared/dbcenter/Kremling_Nature3RNASeq282_March2018/Expression_matrix/df_STAR_HTSeq_counts_B73_match_based_on_genet_dist_DESeq2_normed_fpm_rounded_origNames_and_Altnames.txt
