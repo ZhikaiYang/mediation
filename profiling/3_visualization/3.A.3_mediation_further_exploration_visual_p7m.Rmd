@@ -791,3 +791,14 @@ p19
 
 ```
 
+
+```{r}
+library(data.table)
+med_master_table_fixed <- fread("largedata/med_master_table_fixed.csv", ,header = T, data.table = F)
+trait_category <- df_medfixbic[,11:12]
+trait_category <- unique(trait_category)
+med_master_table_fixed <- merge(med_master_table_fixed, trait_category, by = "trait")
+fwrite(med_master_table_fixed, "largedata/med_master_table_fixed1.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+```
+
