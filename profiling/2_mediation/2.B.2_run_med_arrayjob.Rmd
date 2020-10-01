@@ -17,23 +17,23 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 
 ```{r}
 rfile <- list.files(path="largedata/RNA-seq", pattern="csv", full.names=TRUE)
-trait <- read.delim("data/geno_trait.txt", header=T)
+trait <- read.delim("data/metabolite_rep1_genotype_namecorrect.txt", header=T)
   
-df <- data.frame(rnafile=rep(rfile, each=40), trait=rep(2:41, times=7))
-write.table(df, "largedata/df_job_control.csv", sep=",", row.names=FALSE, quote=FALSE)
+df <- data.frame(rnafile=rep(rfile, each=66), trait=rep(2:67, times=7))
+write.table(df, "largedata/df_job_control_m.csv", sep=",", row.names=FALSE, quote=FALSE)
 
 ```
 
 ```{r}
 library("huskeR")
-run_Rcode(inputdf=data.frame(file=4:13, out=NA), outdir="slurm-script", cmdno = 5, 
+run_Rcode(inputdf=data.frame(file=1:33, out=NA), outdir="slurm-script", cmdno = 3, 
           rcodes = "profiling/2_mediation/2.B.1_setup_med_job.R",
           rversion="3.5",
           base_shid = "med_test",
           email="zhikaiyang911@gmail.com", 
-          runinfo = c(FALSE, "jyanglab", 16, "60G", "6:00:00"))
+          runinfo = c(FALSE, "jyanglab", 16, "200G", "8:00:00"))
 ###>>> In this path: cd /common/jyanglab/jyang21/projects/mediation
-###>>> RUN: sbatch -p batch --licenses=common --nodes=1 --ntasks=16 --mem 200G --time=6:00:00 slurm-script/med_test_array.sh
+###>>> RUN: sbatch -p jyanglab --licenses=common --nodes=1 --ntasks=16 --mem 60G --time=6:00:00 slurm-script/med_test_array.sh
 ```
 
 
