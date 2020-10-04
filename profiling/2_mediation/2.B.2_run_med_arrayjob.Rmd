@@ -26,14 +26,14 @@ write.table(df, "largedata/df_job_control_m.csv", sep=",", row.names=FALSE, quot
 
 ```{r}
 library("huskeR")
-run_Rcode(inputdf=data.frame(file=1:33, out=NA), outdir="slurm-script", cmdno = 3, 
+run_Rcode(inputdf=data.frame(file=34:462, out=NA), outdir="slurm-script", cmdno = 11, 
           rcodes = "profiling/2_mediation/2.B.1_setup_med_job.R",
           rversion="3.5",
           base_shid = "med_test",
           email="zhikaiyang911@gmail.com", 
-          runinfo = c(FALSE, "batch", 16, "200G", "8:00:00"))
+          runinfo = c(FALSE, "batch", 16, "200G", "12:00:00"))
 ###>>> In this path: cd /common/jyanglab/jyang21/projects/mediation
-###>>> RUN: sbatch -p batch --licenses=common --nodes=1 --ntasks=16 --mem 200G --time=8:00:00 slurm-script/med_test_array.sh
+###>>> RUN: sbatch -p batch --licenses=common --nodes=1 --ntasks=16 --mem 200G --time=12:00:00 slurm-script/med_test_array.sh
 ```
 
 
