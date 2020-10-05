@@ -25,7 +25,7 @@ source('lib/MedWrapper.R')
 source('lib/reporters.R')
 source('lib/slurm_wrapper.R')
 
-df <- read.csv("largedata/df_job_control_m.csv")
+df <- read.csv("largedata/df_job_control_m_unrun.csv")
 
 slurm_med_wrapper(ti=as.numeric(as.character(df$trait[JOBID])), cutoff_pm=0.05, ncores=16,
                   phenofile = "data/metabolite_rep1_genotype_namecorrect.txt",
