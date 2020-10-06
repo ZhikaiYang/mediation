@@ -121,7 +121,7 @@ dev.off()
 
 
 ```{r}
-df1 <- subset(df, cat %in% "Flowering")
+df1 <- subset(df, cat %in% "Flowering Time")
 
 p1 <- ggplot(df1, aes(y=tissue, x=pmed.pure, fill=tissue)) +
     #geom_bar(stat="identity", position=position_dodge()) +
@@ -200,7 +200,7 @@ p3
 ```
 
 ```{r}
-df4 <- subset(df, cat %in% "Inflorescence")
+df4 <- subset(df, cat %in% "Inflorescence") #Female or Male
 
 p4 <- ggplot(df4, aes(y=tissue, x=pmed.pure, fill=tissue)) +
     #geom_bar(stat="identity", position=position_dodge()) +
