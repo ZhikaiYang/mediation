@@ -210,8 +210,8 @@ library(tidyr)
 #### calculate ratio of gshoot/groot
 df2 <- df_sr[,1:2]
 for(i in 2:n){
-  df2$newcol <- df[, i]/df[, i+n-1]
-  names(df2)[ncol(df2)] <- gsub("\\..", "", names(df)[i])
+  df2$newcol <- df_sr[, i]/df_sr[, i+n-1]
+  names(df2)[ncol(df2)] <- gsub("\\..", "", names(df_sr)[i])
 }
 df2 <- df2[, -2]
 
