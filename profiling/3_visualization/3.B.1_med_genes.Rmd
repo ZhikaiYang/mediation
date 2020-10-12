@@ -25,6 +25,36 @@ f1 <- subset(f, tissue %in% "ln268")
 ```
 
 
+### read in data metabolites on HCC
+
+```{r}
+library(data.table)
+f <- list.files(path="largedata/med_output", pattern="fixed_mediator_X", full.names = T)
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$trait  <- gsub(".*mediator_|_ts.*", "", out$file)
+out$tissue  <- gsub(".*_ts_|.csv", "", out$file)
+fwrite(out[,-7],"largedata/mediator_out_metabolites.txt", sep="\t", row.names = F, quote = F)
+```
+
+
+
+Check if there is any cripsr genes
+
+```{r}
+c <- read.delim("largedata/CRISPR_genes.txt", header=FALSE)
+
+out <- merge(mg, c, by.x="gene3", by.y="V3")
+```
+
+
+
 ```{r}
 # /common/jyanglab/shared/dbcenter/Kremling_Nature3RNASeq282_March2018/Expression_matrix/df_STAR_HTSeq_counts_B73_match_based_on_genet_dist_DESeq2_normed_fpm_rounded_origNames_and_Altnames.txt
 library("data.table")
@@ -70,6 +100,59 @@ for(i in 2:n){
 }
 
 ```
+
+#paired t-test for whole genome: agronomic and metabolic traits on HCC
+```{r}
+setwd('/common/jyanglab/zhikaiyang/projects/mediation')
+
+library("data.table")
+rna <- fread("/common/jyanglab/shared/dbcenter/Kremling_Nature3RNASeq282_March2018/Expression_matrix/df_STAR_HTSeq_counts_B73_match_based_on_genet_dist_DESeq2_normed_fpm_rounded_origNames_and_Altnames.txt", header=TRUE, data.table=FALSE)
+idx <- which(names(rna) == "AC148152.3_FG001")
+goi <- rna[, c(1:9, idx:ncol(rna))]
+day <- subset(goi, TissueWODate %in% "LMAD")[, -1:-8]
+day <- day[!duplicated(day$AmesName), ] 
+# removed 7 duplicated ones
+
+night <- subset(goi, TissueWODate %in% "LMAN")[, -1:-8]
+night <- night[!duplicated(night$AmesName), ] 
+# removed 15 duplicated ones
+
+df <- merge(day, night, by="AmesName")
+
+
+out <- data.frame()
+n <- ncol(day)
+for(i in 2:n){
+  p <- t.test(df[, i], df[, i+n-1], paired=TRUE)$p.value
+  # do a FDR correction!
+  tem <- data.frame(id1=names(df)[i], id2=names(df)[i+n-1], pval=p)
+  out <- rbind(out, tem)
+}
+fwrite(out, "largedata/wholegc_out.txt",sep="\t", na = "NA" , row.names=FALSE, quote=FALSE)
+
+
+#diff between gshoot and groot
+
+groot <- subset(goi, TissueWODate %in% "GRoot")[, -1:-8]
+groot <- groot[!duplicated(groot$AmesName), ] 
+
+gshoot <- subset(goi, TissueWODate %in% "GShoot")[, -1:-8]
+gshoot <- gshoot[!duplicated(gshoot$AmesName), ] 
+
+df_sr <- merge(gshoot, groot, by="AmesName")
+
+out <- data.frame()
+n <- ncol(gshoot)
+for(i in 2:n){
+  p <- t.test(df_sr[, i], df_sr[, i+n-1], paired=TRUE)$p.value
+  # do a FDR correction!
+  tem <- data.frame(id1=names(df_sr)[i], id2=names(df_sr)[i+n-1], pval=p)
+  out <- rbind(out, tem)
+}
+fwrite(out, "largedata/wholegc_out_gshoot_vs_groot.txt",sep="\t", na = "NA" , row.names=FALSE, quote=FALSE)
+
+```
+
 
 ```{r}
 library(ggplot2)
@@ -119,6 +202,54 @@ pall
 dev.off()
 ```
 
+#metabolic traits on HCC
+```{r}
+library(ggplot2)
+library(tidyr)
+
+#### calculate ratio of gshoot/groot
+df2 <- df_sr[,1:2]
+for(i in 2:n){
+  df2$newcol <- df_sr[, i]/df_sr[, i+n-1]
+  names(df2)[ncol(df2)] <- gsub("\\..", "", names(df_sr)[i])
+}
+df2 <- df2[, -2]
+
+d <- gather(df2, key="gene", value=ratio, 2:ncol(df2))
+
+### Order by median values
+library(plyr)
+tem <- ddply(d, .(gene), summarise,
+             median=median(log10(ratio), na.rm = T))
+tem <- tem[order(tem$median, decreasing = T),]
+
+d$gene <- factor(d$gene, levels = tem$gene)
+
+pall <- ggplot(d, aes(y=gene, x=log10(ratio))) +
+    geom_violin(trim = FALSE, fill='#A4A4A4') + 
+    geom_boxplot(width = 0.2) +
+    xlab("log10(gshoot/groot)") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    geom_vline(xintercept=0, linetype="dashed", color = "red") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+
+pdf("graphs/gshoot_mediators.pdf", width = 6, height= 5)
+pall
+dev.off()
+```
 
 
 #likelyhood ratio test

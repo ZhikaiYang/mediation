@@ -16,23 +16,24 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 ### Run an array job!
 
 ```{r}
-rfile <- list.files(path="largedata/RNA-seq/", pattern="csv", full.names=TRUE)
+rfile <- list.files(path="largedata/RNA-seq", pattern="csv", full.names=TRUE)
 trait <- read.delim("data/geno_trait.txt", header=T)
   
 df <- data.frame(rnafile=rep(rfile, each=40), trait=rep(2:41, times=7))
-write.table(df, "largedata/df_job_control.csv", sep=",", row.names=FALSE, quote=FALSE)
-
+write.table(df, "largedata/df_job_control_arg.csv", sep=",", row.names=FALSE, quote=FALSE)
+write.table(df, "largedata/df_job_control_arg.csv", sep=",", row.names=FALSE,quote=FALSE)
 ```
 
 ```{r}
 library("huskeR")
-run_Rcode(inputdf=data.frame(file=1:2, out=NA), outdir="slurm-script", cmdno = 1, 
+run_Rcode(inputdf=data.frame(file=1:280, out=NA), outdir="slurm-script", cmdno = 4, 
           rcodes = "profiling/2_mediation/2.B.1_setup_med_job.R",
-          rversion="3.6",
+          rversion="3.5",
           base_shid = "med_test",
-          email="yangjl0930@gmail.com", 
-          runinfo = c(TRUE, "batch", 16, "150G", "12:00:00"))
-#
+          email="zhikaiyang911@gmail.com", 
+          runinfo = c(FALSE, "batch", 16, "200G", "12:00:00"))
+###>>> In this path: cd /common/jyanglab/jyang21/projects/mediation
+###>>> RUN: sbatch -p batch --licenses=common --nodes=1 --ntasks=16 --mem 200G --time=12:00:00 slurm-script/med_test_array.sh
 ```
 
 

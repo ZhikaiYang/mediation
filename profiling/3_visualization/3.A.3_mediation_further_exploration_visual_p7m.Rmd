@@ -791,3 +791,42 @@ p19
 
 ```
 
+#gene category enrichment
+```{r}
+library(data.table)
+med_master_table_fixed <- fread("largedata/med_master_table_fixed.csv" , header = T, data.table = F)
+trait_category <- df_medfixbic[,11:12]
+trait_category <- unique(trait_category)
+med_master_table_fixed <- merge(med_master_table_fixed, trait_category, by = "trait")
+fwrite(med_master_table_fixed, "largedata/med_master_table_fixed1.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+go_fi <- fread("largedata/Female_inflorescence.txt", header = T, data.table = F)
+go_hd <- fread("largedata/Height_and_Development.txt", header = T, data.table = F)
+go_fl <- fread("largedata/Flowering.txt", header = T, data.table = F)
+go_lm <- fread("largedata/Leaf_morphology.txt", header = T, data.table = F)
+go_mi <- fread("largedata/Male_inflorescence.txt",header = T, data.table = F)
+go_st <- fread("largedata/Seed_traits.txt", header = T, data.table = F)
+
+go_fi$category <- rep("Female_inflorescence", nrow(go_fi))
+go_hd$category <- rep("Height_and_Development", nrow(go_hd))
+go_fl$category <- rep("Flowering", nrow(go_fl))
+go_lm$category <- rep("Leaf_morphology", nrow(go_lm))
+go_mi$category <- rep("Male_inflorescence",nrow(go_mi))
+go_st$category <- rep("Seed_traits", nrow(go_st))
+
+go <- rbind(go_fi, go_hd, go_fl, go_lm, go_mi, go_st)
+go_sig <- filter(go, FDR <= 0.05)
+go_sig$neglog <- -log(go_sig$pvalue)
+
+fsize=18
+ggplot(data=go_sig, aes(x=Term, y=neglog, fill=category)) +
+geom_bar(stat="identity", position=position_dodge())+
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+```
+

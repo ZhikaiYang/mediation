@@ -31,6 +31,24 @@ out$trait  <- gsub(".*proportion_|_p7m.*", "", out$file)
 
 ```
 
+### read in data metabolites on HCC
+
+```{r}
+library(data.table)
+f <- list.files(path="largedata/med_output", pattern="fixed.pcut_sum_X", full.names = T)
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$trait  <- gsub(".*sum_|_ts.*", "", out$file)
+out$tissue  <- gsub(".*_ts_|.csv", "", out$file)
+fwrite(out[,-8],"largedata/sum_out_metabolites.txt", sep="\t", row.names = F, quote = F)
+```
+
 ### Assign category
 
 Zhikai, double-check the trait category assignment!
@@ -72,11 +90,24 @@ df$cat <- "1"
 df[df$trait %in% c("asi", "daystosilk", "daystotassel"), ]$cat <- "Flowering Time"
 df[df$trait %in% c("eh", "planth"), ]$cat <- "Development"
 df[df$trait %in% c("ll", "lw", "ula"), ]$cat <- "Leaf morphology"
-df[df$trait %in% c("tpb", "tsl"), ]$cat <- "Female Inflorescence"
-df[df$trait %in% c("cobd", "cobl", "cobw",  "ern", "ekpr"), ]$cat <- "Male Inflorescence"
-df[df$trait %in% c("earm", "tkv", "twkw", "kw","knum"), ]$cat <- "Seed traits"
+df[df$trait %in% c("tpb", "tsl"), ]$cat <- "Male Inflorescence"
+df[df$trait %in% c("cobd", "cobl", "ern", "ekpr"), ]$cat <- "Female Inflorescence"
+df[df$trait %in% c("earm", "cobw", "tkv", "twkw", "kw","knum"), ]$cat <- "Seed traits"
 
 table(df$cat)
+
+```
+
+### Assign category metabolites
+```{r}
+library(ggplot2)
+# library(ggpubr)
+library(dplyr)
+
+df_m <- fread("largedata/sum_out_metabolites.txt", header= T, data.table=F)
+
+### assign category: 
+df_m$cat <- "metabolite"
 
 ```
 
@@ -121,7 +152,7 @@ dev.off()
 
 
 ```{r}
-df1 <- subset(df, cat %in% "Flowering")
+df1 <- subset(df, cat %in% "Flowering Time")
 
 p1 <- ggplot(df1, aes(y=tissue, x=pmed.pure, fill=tissue)) +
     #geom_bar(stat="identity", position=position_dodge()) +
@@ -200,7 +231,7 @@ p3
 ```
 
 ```{r}
-df4 <- subset(df, cat %in% "Inflorescence")
+df4 <- subset(df, cat %in% "Inflorescence") #Female or Male
 
 p4 <- ggplot(df4, aes(y=tissue, x=pmed.pure, fill=tissue)) +
     #geom_bar(stat="identity", position=position_dodge()) +
@@ -296,6 +327,36 @@ pdf("graphs/pvm_flowering_seedv2.pdf", width = 7, height= 5)
 p12
 dev.off()
 ```
+
+### Visualization metabolites
+```{r}
+
+
+pm <- ggplot(df_m, aes(y=tissue, x=pmed.pure, fill=tissue)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=2, notch=FALSE) +
+    scale_fill_manual(values=rep("#69b3a2", 7), guide=FALSE) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("") +
+    ggtitle("Metabolic Traits") +
+    theme_classic() +
+    scale_x_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          # axis.text.x = element_text(angle = 20),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pm
+
+
+```
+
 
 
 
