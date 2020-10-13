@@ -257,10 +257,10 @@ dev.off()
 wholegc_out <- fread("largedata/wholegc_out.txt",data.table = F)
 sum(is.na(wholegc_out$pval))
 wholegc_out <- wholegc_out[!is.na(wholegc_out$pval),]
-Nsig <- sum(p.adjust(wholegc_out$pval, method = "fdr", n=nrow(wholegc_out)) < 0.05) 
-nsig <- sum(p.adjust(out$pval, method = "fdr", n=nrow(wholegc_out)) < 0.05) 
-p <- sum(p.adjust(wholegc_out$pval, method = "fdr", n=nrow(wholegc_out)) < 0.05)/nrow(wholegc_out)
-obsfreq <- c(sum(p.adjust(out$pval, method = "fdr", n=nrow(wholegc_out)) < 0.05), nrow(f1)-nsig)
+Nsig <- sum(p.adjust(wholegc_out$pval, method = "fdr", n=nrow(wholegc_out)) < 0.05) # whole genome diff expressed genes
+nsig <- sum(p.adjust(out$pval, method = "fdr", n=nrow(wholegc_out)) < 0.05) # diff expressed genes out of 16 mediator genes identified in ln268
+p <- Nsig/nrow(wholegc_out)
+obsfreq <- c(nsig, nrow(f1)-nsig)
 nullprobs <- c(p, 1-p)
 chisq.test(obsfreq,p=nullprobs)
 ```
