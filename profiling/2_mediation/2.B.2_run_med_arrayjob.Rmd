@@ -24,16 +24,6 @@ write.table(df, "largedata/df_job_control_arg.csv", sep=",", row.names=FALSE, qu
 write.table(df, "largedata/df_job_control_arg.csv", sep=",", row.names=FALSE,quote=FALSE)
 ```
 
-### Run an array job for population 368!
-
-```{r}
-rfile <- list.files(path="largedata/RNA-seq", pattern="P368", full.names=TRUE)
-trait <- read.delim("data/blup_368_traits_final_NA.txt", header=T)
-  
-df <- data.frame(rnafile=rep(rfile, each=17), trait=rep(2:18, times=1))
-write.table(df, "largedata/df_job_control_arg_P368.csv", sep=",", row.names=FALSE, quote=FALSE)
-write.table(df, "largedata/df_job_control_arg_P368.csv", sep=",", row.names=FALSE,quote=FALSE)
-```
 
 
 ```{r}
@@ -48,6 +38,19 @@ run_Rcode(inputdf=data.frame(file=1:280, out=NA), outdir="slurm-script", cmdno =
 ###>>> RUN: sbatch -p batch --licenses=common --nodes=1 --ntasks=16 --mem 200G --time=12:00:00 slurm-script/med_test_array.sh
 ```
 
+
+
+
+### Run an array job for population 368!
+
+```{r}
+rfile <- list.files(path="largedata/RNA-seq", pattern="P368", full.names=TRUE)
+trait <- read.delim("data/blup_368_traits_final_NA.txt", header=T)
+  
+df <- data.frame(rnafile=rep(rfile, each=17), trait=rep(2:18, times=1))
+write.table(df, "largedata/df_job_control_arg_P368.csv", sep=",", row.names=FALSE, quote=FALSE)
+write.table(df, "largedata/df_job_control_arg_P368.csv", sep=",", row.names=FALSE,quote=FALSE)
+```
 
 ###run for population 368
 ```{r}
