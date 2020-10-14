@@ -119,7 +119,20 @@ rna_filtering(rna, cutoff_var = 0.05, cutoff_mean = 1)
 ###>>> after removing [mean < 1], [ row: 260, col: 18453 ] remaning
 ###>>> output results to [ largedata/RNA-seq/filtered_LMAN.csv ]
 
+### prepare RNA-seq data for population 368
+```{r}
+library(data.table)
 
+rna <- fread("/common/jyanglab/zhikaiyang/projects/Transcriptome/Expression_kernel_finalNormalized_28850.txt", header=T, data.table=FALSE)
+accession <- colnames(rna)
+gene <- rna$Gene_ID
+rna <- t(rna[,2:ncol(rna)])
+rna <- as.data.frame(rna)
+rna <- cbind(accession[2:length(accession)], rna)
+colnames(rna) <- c("genotype", gene)
+rna$genotype <- as.character(rna$genotype)
+fwrite(rna, "largedata/RNA-seq/filtered_P368.Kern.csv", sep=",", row.names=FALSE, quote=FALSE)
+```
 
 
 

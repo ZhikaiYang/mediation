@@ -22,7 +22,29 @@ copy from Zhikai's folder!
 cp /common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned_NA_0_matrix.txt largedata/geno
 cp /common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned.eigenvec largedata
 ```
+###preparing files for population 368
+```{bash}
+cp /common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/code2020/traits/tpb_p7msnps_368/All_Merged_1.25M_MAF0.05_AGPV4.eigenvec largedata/All_Merged_1.25M_MAF0.05_AGPV4.eigenvec
+cp /common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/code2020/traits/tpb_p7msnps_368/tpb_p7msnps_368_kern_matrix.txt largedata/geno/tpb_p7msnps_368_kern_matrix.txt
+```
 
+###preparing files for population 368
+```{r}
+library(data.table)
+
+trait=fread("data/blup_368_traits_final_NA.txt", header=T,data.table=F)
+geno_order <- fread("largedata/geno_order_368.txt", header=T,data.table=F)
+colnames(geno_order)[1] = "genotype"
+trait=merge(geno_order, trait, by="genotype")
+
+fwrite(trait[,-2],"data/blup_368_traits_final_NA.txt",sep="\t", na = "NA" ,col.names = T,row.names = F,quote=F)
+
+
+pc <- fread("largedata/All_Merged_1.25M_MAF0.05_AGPV4.eigenvec", header=F,data.table=F)
+pc = merge(geno_order, pc, by.x="genotype", by.y = "V1")
+fwrite(pc[,-2],"largedata/All_Merged_1.25M_MAF0.05_AGPV4.eigenvec",sep="\t", na = "NA" ,col.names = F,row.names = F,quote=F)
+
+```
 
 
 
