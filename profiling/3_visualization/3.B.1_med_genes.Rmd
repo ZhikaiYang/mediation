@@ -217,6 +217,9 @@ df2 <- df2[, -2]
 
 d <- gather(df2, key="gene", value=ratio, 2:ncol(df2))
 
+#mediators detected more than once in gshoot
+d <- subset(d, gene %in% t5_m_gshoot$Var1[1:10])
+
 ### Order by median values
 library(plyr)
 tem <- ddply(d, .(gene), summarise,
@@ -261,6 +264,77 @@ Nsig <- sum(p.adjust(wholegc_out$pval, method = "fdr", n=nrow(wholegc_out)) < 0.
 nsig <- sum(p.adjust(out$pval, method = "fdr", n=nrow(wholegc_out)) < 0.05) # diff expressed genes out of 16 mediator genes identified in ln268
 p <- Nsig/nrow(wholegc_out)
 obsfreq <- c(nsig, nrow(f1)-nsig)
+nullprobs <- c(p, 1-p)
+chisq.test(obsfreq,p=nullprobs)
+```
+
+### NEW RUN Mediators on HCC
+
+```{r}
+
+f <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/", pattern="mediator_", full.names = T)
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$file  <- gsub(".*\\/", "", out$file)
+# method
+out$method <- gsub("_.*", "", out$file)
+# tissue type
+out$tissue <- gsub(".*_ts_|.csv", "", out$file)
+table(out$tissue)
+# trait
+out$trait <- gsub(".*mediator_|_ts.*", "", out$file)
+table(out$trait)
+
+write.table(out, "cache/mediators_23296rows.csv", sep=",", row.names=FALSE, quote=FALSE)
+```
+
+
+### Filter non-significant ones
+
+```{r}
+m <- read.csv("cache/mediators_23296rows.csv")
+m5 <- subset(m, padj < 0.05)
+# nrow(m5) 2751
+m1 <- subset(m, padj < 0.01)
+# 1567
+
+t5 <- as.data.frame(table(m5$id))
+t5 <- t5[order(t5$Freq, decreasing=T),]
+```
+
+### focus on only the metabolite traits
+
+```{r}
+idx <- grep("X\\.", m5$trait)
+mt <- m5[idx, ]
+idx <- grep("res.fixed", mt$method)
+mt <- mt[idx,]
+mt <- mt[order(mt$padj, decreasing = F),]
+idx <- grep("GShoot", mt$tissue)
+mt_gshoot <- mt[idx,]
+t5_m_gshoot <- as.data.frame(table(mt_gshoot$id))
+t5_m_gshoot <- t5_m_gshoot[order(t5_m_gshoot$Freq, decreasing=T),]
+```
+
+#likelyhood ratio test metabolites
+```{r}
+wholegc_out_m <- fread("largedata/wholegc_out_gshoot_vs_groot.txt",data.table = F)
+sum(is.na(wholegc_out_m$pval))
+wholegc_out_m <- wholegc_out_m[!is.na(wholegc_out_m$pval),]
+Nsig <- sum(p.adjust(wholegc_out_m$pval, method = "fdr", n=nrow(wholegc_out_m)) < 0.05) # whole genome diff expressed genes
+
+wholegc_out_m$id  <- gsub("\\.x", "", wholegc_out_m$id1)
+out <- subset(wholegc_out_m, id %in% t5_m_gshoot$Var1)
+
+nsig <- sum(p.adjust(out$pval, method = "fdr", n=nrow(wholegc_out_m)) < 0.05) # diff expressed genes out of 16 mediator genes identified in ln268
+p <- Nsig/nrow(wholegc_out_m)
+obsfreq <- c(nsig, nrow(out)-nsig)
 nullprobs <- c(p, 1-p)
 chisq.test(obsfreq,p=nullprobs)
 ```

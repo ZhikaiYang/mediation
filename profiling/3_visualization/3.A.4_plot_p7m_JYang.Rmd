@@ -109,6 +109,10 @@ df_m <- fread("largedata/sum_out_metabolites.txt", header= T, data.table=F)
 ### assign category: 
 df_m$cat <- "metabolite"
 
+df_m_gshoot <- subset(df_m, tissue %in% "GShoot")
+df_m_groot <- subset(df_m, tissue %in% "GRoot")
+df_m_gsr <- merge(df_m_gshoot[,c(1,8,9)], df_m_groot[,c(1,8,9)], by = "trait")
+t.test(df_m_gsr$pmed.pure.x, df_m_gsr$pmed.pure.y, alternative = "greater", paired = T)
 ```
 
 
