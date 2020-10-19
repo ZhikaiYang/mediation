@@ -275,7 +275,16 @@ d <- gather(df2, key="gene", value=ratio, 2:ncol(df2))
 
 #mediators detected more than once in gshoot
 d <- subset(d, gene %in% t5_m_gshoot$Var1[1:10])
+d <- d[-which(is.na(d$ratio)),]
+d <- d[-which(d$ratio == "Inf"),]
+d <- d[-which(d$ratio == 0),]
 
+```
+
+
+### on PC
+
+```{r}
 ### Order by median values
 library(plyr)
 tem <- ddply(d, .(gene), summarise,
@@ -308,6 +317,7 @@ pall
 pdf("graphs/gshoot_mediators.pdf", width = 6, height= 5)
 pall
 dev.off()
+
 ```
 
 
