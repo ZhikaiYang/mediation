@@ -202,6 +202,62 @@ pall
 dev.off()
 ```
 
+
+### NEW RUN Mediators on HCC
+
+```{r}
+
+f <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/", pattern="mediator_", full.names = T)
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$file  <- gsub(".*\\/", "", out$file)
+# method
+out$method <- gsub("_.*", "", out$file)
+# tissue type
+out$tissue <- gsub(".*_ts_|.csv", "", out$file)
+table(out$tissue)
+# trait
+out$trait <- gsub(".*mediator_|_ts.*", "", out$file)
+table(out$trait)
+
+write.table(out, "cache/mediators_23296rows.csv", sep=",", row.names=FALSE, quote=FALSE)
+```
+
+
+### Filter non-significant ones
+
+```{r}
+m <- read.csv("cache/mediators_23296rows.csv")
+m5 <- subset(m, padj < 0.05)
+# nrow(m5) 2751
+m1 <- subset(m, padj < 0.01)
+# 1567
+
+t5 <- as.data.frame(table(m5$id))
+t5 <- t5[order(t5$Freq, decreasing=T),]
+```
+
+### focus on only the metabolite traits
+
+```{r}
+idx <- grep("X\\.", m5$trait)
+mt <- m5[idx, ]
+idx <- grep("res.fixed", mt$method)
+mt <- mt[idx,]
+mt <- mt[order(mt$padj, decreasing = F),]
+idx <- grep("GShoot", mt$tissue)
+mt_gshoot <- mt[idx,]
+t5_m_gshoot <- as.data.frame(table(mt_gshoot$id))
+t5_m_gshoot <- t5_m_gshoot[order(t5_m_gshoot$Freq, decreasing=T),]
+```
+
+
 #metabolic traits on HCC
 ```{r}
 library(ggplot2)
@@ -268,59 +324,6 @@ nullprobs <- c(p, 1-p)
 chisq.test(obsfreq,p=nullprobs)
 ```
 
-### NEW RUN Mediators on HCC
-
-```{r}
-
-f <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/", pattern="mediator_", full.names = T)
-
-out <- data.frame()
-for(i in 1:length(f)){
-  tem <- read.csv(f[i], header=TRUE)
-  tem$file <- f[i]
-  out <- rbind(out, tem)
-}
-
-out$file  <- gsub(".*\\/", "", out$file)
-# method
-out$method <- gsub("_.*", "", out$file)
-# tissue type
-out$tissue <- gsub(".*_ts_|.csv", "", out$file)
-table(out$tissue)
-# trait
-out$trait <- gsub(".*mediator_|_ts.*", "", out$file)
-table(out$trait)
-
-write.table(out, "cache/mediators_23296rows.csv", sep=",", row.names=FALSE, quote=FALSE)
-```
-
-
-### Filter non-significant ones
-
-```{r}
-m <- read.csv("cache/mediators_23296rows.csv")
-m5 <- subset(m, padj < 0.05)
-# nrow(m5) 2751
-m1 <- subset(m, padj < 0.01)
-# 1567
-
-t5 <- as.data.frame(table(m5$id))
-t5 <- t5[order(t5$Freq, decreasing=T),]
-```
-
-### focus on only the metabolite traits
-
-```{r}
-idx <- grep("X\\.", m5$trait)
-mt <- m5[idx, ]
-idx <- grep("res.fixed", mt$method)
-mt <- mt[idx,]
-mt <- mt[order(mt$padj, decreasing = F),]
-idx <- grep("GShoot", mt$tissue)
-mt_gshoot <- mt[idx,]
-t5_m_gshoot <- as.data.frame(table(mt_gshoot$id))
-t5_m_gshoot <- t5_m_gshoot[order(t5_m_gshoot$Freq, decreasing=T),]
-```
 
 #likelyhood ratio test metabolites
 ```{r}
