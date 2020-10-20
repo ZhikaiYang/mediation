@@ -155,3 +155,199 @@ p
 dev.off()
 ```
 
+
+
+
+
+
+
+###   Metabolites:   ###
+
+
+Merge day and night data
+```{r}
+library("data.table")
+
+goi_m <- fread("cache/goi_m.csv", header=TRUE, data.table=FALSE)
+table(goi$TissueWODate)
+
+
+groot <- subset(goi_m, TissueWODate %in% "GRoot")[, -1:-8]
+groot <- groot[!duplicated(groot$AmesName), ] 
+
+gshoot <- subset(goi_m, TissueWODate %in% "GShoot")[, -1:-6]
+gshoot <- gshoot[!duplicated(gshoot$AmesName), ] 
+gshoot <- gshoot[,-2]
+
+df_sr <- merge(gshoot, groot, by="AmesName")
+
+```
+
+Compute different between day and night
+- log is signficant!
+
+```{r}
+library(tidyr)
+
+#### calculate ratio of day/night
+df2_sr <- df_sr[,1:2]
+n <- ncol(gshoot)
+for(i in 3:n){
+  df2_sr$newcol <- df_sr[, i] - df_sr[, i+n-2]
+  names(df2_sr)[ncol(df2_sr)] <- gsub("\\..", "", names(df_sr)[i])
+}
+
+
+df2_sr <- df2_sr[order(df2_sr$AC148152_FG005, decreasing=TRUE),]
+```
+
+
+```{r}
+pheno_m <- read.delim("data/metabolite_rep1_genotype_namecorrect.txt")
+
+pg_sr <- merge(df2_sr, pheno_m, by.x="RawPhenotypeNames", by.y="genotype")
+
+pn <- subset(mt_gshoot, id %in% "AC148152.3_FG005")[,c(1,5,10)] 
+
+idx <- which(colnames(pg_sr) %in% pn$trait)
+
+for (i in idx) {
+  cor.test(log(pg_sr$AC148152_FG005), pg_sr[,i])
+}
+
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[1]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[2]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[3]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[4]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[5]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[6]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[7]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[8]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[9]])
+
+```
+
+
+
+Compute fold change between day and night
+- FC not signficant!
+
+```{r}
+library(tidyr)
+
+#### calculate ratio of day/night
+df2_sr <- df_sr[,1:2]
+n <- ncol(gshoot)
+for(i in 3:n){
+  df2_sr$newcol <- df_sr[, i]/df_sr[, i+n-2]
+  names(df2_sr)[ncol(df2_sr)] <- gsub("\\..", "", names(df_sr)[i])
+}
+
+
+df2_sr <- df2_sr[order(df2_sr$AC148152_FG005, decreasing=TRUE),]
+```
+
+Merge with phenotypic data
+
+
+```{r}
+pheno_m <- read.delim("data/metabolite_rep1_genotype_namecorrect.txt")
+
+pg_sr <- merge(df2_sr, pheno_m, by.x="RawPhenotypeNames", by.y="genotype")
+
+pn <- subset(mt_gshoot, id %in% "AC148152.3_FG005")[,c(1,5,10)] 
+
+idx <- which(colnames(pg_sr) %in% pn$trait)
+
+
+
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[1]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[2]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[3]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[4]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[5]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[6]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[7]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[8]])
+cor.test(log(pg_sr$AC148152_FG005), pg_sr[,idx[9]])
+
+```
+
+```{r}
+pg_sr <- merge(gshoot, pheno_m, by.x="RawPhenotypeNames", by.y="genotype")
+idx <- which(colnames(pg_sr) %in% pn$trait)
+
+cor.test(log(pg_sr$AC148152.3_FG005), pg_sr[,idx[1]])
+cor.test(log(pg_sr$AC148152.3_FG005), pg_sr[,idx[2]])
+cor.test(log(pg_sr$AC148152.3_FG005), pg_sr[,idx[3]])
+cor.test(log(pg_sr$AC148152.3_FG005), pg_sr[,idx[4]])
+cor.test(log(pg_sr$AC148152.3_FG005), pg_sr[,idx[5]])
+cor.test(log(pg_sr$AC148152.3_FG005), pg_sr[,idx[6]])
+cor.test(log(pg_sr$AC148152.3_FG005), pg_sr[,idx[7]])
+cor.test(log(pg_sr$AC148152.3_FG005), pg_sr[,idx[8]])
+cor.test(log(pg_sr$AC148152.3_FG005), pg_sr[,idx[9]])
+```
+
+
+
+# Plot the results
+
+```{r}
+library(ggplot2)
+
+p <- ggplot(pg_sr, aes(x=log(AC148152.3_FG005), y=X.1060..pyruvic.acid..6.714)) +
+    geom_point() +
+    geom_smooth(method=lm) +
+    xlab("log(FPM)") +
+    ylab("pyruvic.acid") +
+    ggtitle("") +
+    theme_classic() +
+    #labs(color = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    #geom_vline(xintercept=0, linetype="dashed", color = "red") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=18, face="bold"),
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.position = "none", 
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.title = element_text(size=18, face="bold"),
+          legend.text = element_text(size=18))
+p
+
+
+pdf("graphs/regression_pyruvic.acid_FPM.pdf", width = 8, height= 6)
+p
+dev.off()
+```
+```{r}
+library(ggplot2)
+
+p <- ggplot(pg_sr, aes(x=log(AC148152.3_FG005), y=X.5988..Sucrose..23.988..s100)) +
+    geom_point() +
+    geom_smooth(method=lm) +
+    xlab("log(FPM)") +
+    ylab("Sucrose") +
+    ggtitle("") +
+    theme_classic() +
+    #labs(color = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    #geom_vline(xintercept=0, linetype="dashed", color = "red") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=18, face="bold"),
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.position = "none", 
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.title = element_text(size=18, face="bold"),
+          legend.text = element_text(size=18))
+p
+
+
+pdf("graphs/regression_Sucrose_FPM.pdf", width = 8, height= 6)
+p
+dev.off()
+```
+

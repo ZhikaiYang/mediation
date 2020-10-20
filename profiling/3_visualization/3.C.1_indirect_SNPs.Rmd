@@ -159,3 +159,105 @@ plot_mht_ellipse(inputdf=tb, edf=fg008, col2plot="Freq", jmph=FALSE, cl_file="da
 
 ```
 
+
+
+
+
+
+
+
+###   Metabolites   ###
+
+```{r}
+library("data.table")
+
+files <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output",
+                   pattern="indirect_X",recursive = TRUE, full.names=T)
+
+out <- data.frame()
+for(i in 1:length(files)){
+  f <- fread(files[i], data.table=FALSE, header=TRUE)
+  f$file <- files[i]
+  out <- rbind(out, f)
+}
+
+
+out$file <- gsub(".*\\/", "", out$file)
+out$trait <- gsub(".*[0-9]+\\.\\.", "", out$file)
+out$trait <- gsub("\\.\\.[0-9]+.*", "", out$trait)
+
+out$method <- gsub("_.*", "", out$file)
+
+out$tissue <- gsub(".*_ts_", "", out$file)
+out$tissue <- gsub("\\.csv", "", out$tissue)
+
+table(out$tissue)
+fwrite(out, "cache/indirect_SNPs_m.csv", sep=",", row.names=FALSE, quote=FALSE)
+```
+
+
+Back to the local computer!
+
+
+```{r}
+library("data.table")
+
+id <- fread("cache/indirect_SNPs_p7msnps.csv", header=TRUE, data.table=FALSE)
+
+# Unique mediators
+length(unique(id$medi)) #447
+
+tb <- data.frame(table(id$snps_for_medi))
+tb <- tb[order(tb$Freq, decreasing = T),]
+sub <- subset(tb, Freq > 1)
+dim(sub)
+```
+
+
+### Quick Manhattan plot
+
+- Zhi
+
+```{r}
+library("huskeR")
+
+
+tb$Var1 <- gsub("-", "_", tb$Var1)
+tb$chr <- as.numeric(as.character(gsub("_.*", "", tb$Var1)))
+tb$pos <- as.numeric(as.character(gsub(".*_", "", tb$Var1)))
+
+png("graphs/indirect_freq_plot.png", width=11, height=4.25, units="in", res=300)
+plot_mht(inputdf=tb, col2plot="Freq", jmph=FALSE, cl_file="data/chr_length_B73v4.csv", pl=TRUE,
+         ylab="Indirect SNPs Freq",  cex = 0.6)
+dev.off()
+```
+
+
+### Check the most freq indirect SNPs
+
+```{r}
+tb <- data.frame(table(id$snps_for_medi))
+tb <- tb[order(tb$Freq, decreasing = T),]
+
+
+med_id3 <- subset(id, snps_for_medi %in% tb$Var1[3])
+
+med_id1 <- subset(id, snps_for_medi %in% tb$Var1[1])
+med_id2 <- subset(id, snps_for_medi %in% tb$Var1[2])
+
+med_id4 <- subset(id, snps_for_medi %in% tb$Var1[4])
+
+
+med_id5 <- subset(id, snps_for_medi %in% tb$Var1[5])
+med_id6 <- subset(id, snps_for_medi %in% tb$Var1[6])
+
+med_id7 <- subset(id, snps_for_medi %in% tb$Var1[7])
+
+med_id7 <- subset(id, snps_for_medi %in% tb$Var1[7])
+
+med_top10 <- subset(id, snps_for_medi %in% tb$Var1[1:10])
+
+
+```
+
+
