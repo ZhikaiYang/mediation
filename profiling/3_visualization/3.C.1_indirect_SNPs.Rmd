@@ -172,7 +172,7 @@ plot_mht_ellipse(inputdf=tb, edf=fg008, col2plot="Freq", jmph=FALSE, cl_file="da
 library("data.table")
 
 files <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output",
-                   pattern="indirect_X",recursive = TRUE, full.names=T)
+                   pattern="indirect_X\\.",recursive = TRUE, full.names=T)
 
 out <- data.frame()
 for(i in 1:length(files)){
@@ -183,8 +183,8 @@ for(i in 1:length(files)){
 
 
 out$file <- gsub(".*\\/", "", out$file)
-out$trait <- gsub(".*[0-9]+\\.\\.", "", out$file)
-out$trait <- gsub("\\.\\.[0-9]+.*", "", out$trait)
+out$trait <- gsub(".*X\\.[0-9]+\\.\\.", "", out$file)
+out$trait <- gsub("\\.\\.[0-9]+\\.[0-9]+_ts.*", "", out$trait)
 
 out$method <- gsub("_.*", "", out$file)
 
@@ -202,15 +202,17 @@ Back to the local computer!
 ```{r}
 library("data.table")
 
-id <- fread("cache/indirect_SNPs_p7msnps.csv", header=TRUE, data.table=FALSE)
-
+id <- fread("cache/indirect_SNPs_m.csv", header=TRUE, data.table=FALSE)
+id <- subset(id, method == "res.fixed")
+id$trait <- gsub("\\.\\.s100.*", "", id$trait)
 # Unique mediators
-length(unique(id$medi)) #447
+length(unique(id$medi)) #892
 
 tb <- data.frame(table(id$snps_for_medi))
 tb <- tb[order(tb$Freq, decreasing = T),]
 sub <- subset(tb, Freq > 1)
 dim(sub)
+
 ```
 
 
@@ -226,7 +228,7 @@ tb$Var1 <- gsub("-", "_", tb$Var1)
 tb$chr <- as.numeric(as.character(gsub("_.*", "", tb$Var1)))
 tb$pos <- as.numeric(as.character(gsub(".*_", "", tb$Var1)))
 
-png("graphs/indirect_freq_plot.png", width=11, height=4.25, units="in", res=300)
+png("graphs/indirect_freq_plot_m.png", width=11, height=4.25, units="in", res=300)
 plot_mht(inputdf=tb, col2plot="Freq", jmph=FALSE, cl_file="data/chr_length_B73v4.csv", pl=TRUE,
          ylab="Indirect SNPs Freq",  cex = 0.6)
 dev.off()
@@ -257,7 +259,11 @@ med_id7 <- subset(id, snps_for_medi %in% tb$Var1[7])
 
 med_top10 <- subset(id, snps_for_medi %in% tb$Var1[1:10])
 
+tb_top10 <- data.frame(table(med_top10$medi))
+tb_top10 <- tb_top10[order(tb_top10$Freq, decreasing = T),]
 
+
+bx13 <- subset(id, medi == "AC148152.3_FG005")
 ```
 
 
