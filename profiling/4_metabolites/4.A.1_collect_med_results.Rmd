@@ -69,11 +69,17 @@ If focus on only the metabolite traits
 ```{r}
 idx <- grep("X\\.", m5$trait)
 mt <- m5[idx, ]
+mt <- subset(mt, method == "res.fixed") 
 
 tp <- as.data.frame(table(mt$id))
 tp <- tp[order(tp$Freq, decreasing = T),]
 
+library(data.table)
+fwrite(as.list(tp[,1]), "largedata/mediators_m.txt", sep = "\n", row.names = F, quote = F )
+
 fg005 <- subset(mt, id %in% "AC148152.3_FG005")
+
+fg005 <- subset(m, id %in% "AC148152.3_FG005")
 ```
 
 
