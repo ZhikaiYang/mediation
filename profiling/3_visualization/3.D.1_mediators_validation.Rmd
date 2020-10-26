@@ -102,5 +102,55 @@ chisq.test(obsfreq,p=nullprobs)
 ```
 
 
+### Mediators
+
+```{r}
+
+f368 <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/", pattern="mediator_P368", full.names = T)
+
+out <- data.frame()
+for(i in 1:length(f368)){
+  tem <- read.csv(f368[i], header=TRUE)
+  tem$file <- f368[i]
+  out <- rbind(out, tem)
+}
+
+out$file  <- gsub(".*\\/", "", out$file)
+# method
+out$method <- gsub("_.*", "", out$file)
+# tissue type
+out$tissue <- gsub(".*_ts_P368\\.|.csv", "", out$file)
+table(out$tissue)
+# trait
+out$trait <- gsub(".*mediator_P368\\.|_ts.*", "", out$file)
+table(out$trait)
+
+write.table(out, "cache/mediators_P368.csv", sep=",", row.names=FALSE, quote=FALSE)
+```
+
+
+### Filter non-significant ones
+
+```{r}
+m_kern <- subset(m, tissue == "Kern")
+
+m_368 <- read.csv("cache/mediators_P368.csv")
+
+intersect(m_kern$id[which(m_kern$method == "res.eq")], m_368$id[which(m_368$method == "res.eq")])
+#[1] "GRMZM2G305834" "GRMZM2G179679"
+intersect(m_kern$id[which(m_kern$method == "res.fixed")], m_368$id[which(m_368$method == "res.fixed")])
+#character(0)
+GRMZM2G305834_kern <- subset(m_kern[which(m_kern$method == "res.eq"),], id == "GRMZM2G305834")
+GRMZM2G305834_368 <- subset(m_368[which(m_368$method == "res.eq"),], id == "GRMZM2G305834")
+
+
+m5_368 <- subset(m_368, padj < 0.05)
+# nrow(m5) 2751
+m1_368 <- subset(m_368, padj < 0.01)
+# 1567
+
+t5_368 <- as.data.frame(table(m5_368$id))
+t5_368 <- t5_368[order(t5_368$Freq, decreasing=T),]
+```
 
 
