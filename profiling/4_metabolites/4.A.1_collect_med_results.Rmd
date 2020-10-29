@@ -62,6 +62,9 @@ m1 <- subset(m, padj < 0.01)
 
 t5 <- as.data.frame(table(m5$id))
 t5 <- t5[order(t5$Freq, decreasing=T),]
+
+t5 <- subset(t5, Freq > 4)
+write.table(t5, "cache/top_mediators.csv", sep=",", row.names=FALSE, quote=FALSE)
 ```
 
 If focus on only the metabolite traits
