@@ -257,7 +257,7 @@ gwas_overlap_eq$p_val_chi = 0.0
 gwas_overlap_eq$p_val_chi_adj = 0.0
 gwas_overlap_eq$statistic_chi = 0.0
 for (i in 1:nrow(gwas_overlap_eq)) {
-  t = chisq.test(c(gwas_overlap_eq$num_o[i], gwas_overlap_eq$N_dsnps[i]),p=c(gwas_overlap_eq$p_sig[i], 1-gwas_overlap_eq$p_sig[i]))
+  t = chisq.test(c(gwas_overlap_eq$num_o[i], gwas_overlap_eq$N_dsnps[i]-gwas_overlap_eq$num_o[i]),p=c(gwas_overlap_eq$p_sig[i], 1-gwas_overlap_eq$p_sig[i]))
   gwas_overlap_eq$statistic_chi[i] = t$statistic
   gwas_overlap_eq$p_val_chi[i] = t$p.value
   gwas_overlap_eq$p_val_chi_adj[i] = p.adjust(gwas_overlap_eq$p_val_chi[i], method = "fdr", n= nrow(gwas_overlap_eq))
@@ -267,7 +267,7 @@ gwas_overlap_fixed$p_val_chi = 0.0
 gwas_overlap_fixed$p_val_chi_adj = 0.0
 gwas_overlap_fixed$statistic_chi = 0.0
 for (i in 1:nrow(gwas_overlap_fixed)) {
-  t = chisq.test(c(gwas_overlap_fixed$num_o[i], gwas_overlap_fixed$N_dsnps[i]),p=c(gwas_overlap_fixed$p_sig[i], 1-gwas_overlap_fixed$p_sig[i]))
+  t = chisq.test(c(gwas_overlap_fixed$num_o[i], gwas_overlap_fixed$N_dsnps[i]-gwas_overlap_fixed$num_o[i]),p=c(gwas_overlap_fixed$p_sig[i], 1-gwas_overlap_fixed$p_sig[i]))
   gwas_overlap_fixed$statistic_chi[i] = t$statistic
   gwas_overlap_fixed$p_val_chi[i] = t$p.value
   gwas_overlap_fixed$p_val_chi_adj[i] = p.adjust(gwas_overlap_fixed$p_val_chi[i], method = "fdr", n= nrow(gwas_overlap_fixed))
