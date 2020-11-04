@@ -7,7 +7,7 @@ out=gsub("assoc.txt","sig.region.txt",ff)
 ff = paste("/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/output/", ff, sep="")
 d1=fread(ff,head=T,data.table=F)
 d1=d1[d1[,13]<=1e-5,]
-s=d1[,3]-50000;e=d1[,3]+50000
+s=d1[,3]-5000;e=d1[,3]+5000
 p=d1$p_wald
 d1=cbind(d1$chr,s,e,p)
 bk=1
@@ -29,7 +29,7 @@ for(k in index)
 {
   d2=d1[d1[,5]==k,,drop=F]
   m=min(d2[,4])
-  mp=d1[which(d1[,4]==m),2][1]+50000
+  mp=d1[which(d1[,4]==m),2][1]+5000
   interval=c(d2[1,1],d2[1,2],max(d2[,3]),m,mp,nrow(d2))
   ro=rbind(ro,interval)
 }
