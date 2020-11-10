@@ -286,5 +286,43 @@ write.table(gwas_overlap_eq, "largedata/dsnps_vs_gwas/gwas_100kb_overlap_eq.csv"
 write.table(gwas_overlap_fixed, "largedata/dsnps_vs_gwas/gwas_100kb_overlap_fixed.csv", sep=",", row.names=FALSE, quote=FALSE)
 
 
+gwas_overlap_eq_100kb =  fread( "largedata/dsnps_vs_gwas/gwas_100kb_overlap_eq.csv")
+gwas_overlap_fixed_100kb =  fread( "largedata/dsnps_vs_gwas/gwas_100kb_overlap_fixed.csv")
+
+gwas_overlap_eq_50kb =  fread( "largedata/dsnps_vs_gwas/gwas_50kb_overlap_eq.csv")
+gwas_overlap_fixed_50kb =  fread( "largedata/dsnps_vs_gwas/gwas_50kb_overlap_fixed.csv")
+
+gwas_overlap_eq_10kb =  fread( "largedata/dsnps_vs_gwas/gwas_10kb_overlap_eq.csv")
+gwas_overlap_fixed_10kb =  fread( "largedata/dsnps_vs_gwas/gwas_10kb_overlap_fixed.csv")
+
+gwas_overlap_eq_5kb =  fread( "largedata/dsnps_vs_gwas/gwas_5kb_overlap_eq.csv")
+gwas_overlap_fixed_5kb =  fread( "largedata/dsnps_vs_gwas/gwas_5kb_overlap_fixed.csv")
+
+
+
+
+
+par(mfrow=c(2,4))
+
+hist(gwas_overlap_eq_100kb$p_val_chi_adj[- which(gwas_overlap_eq_100kb$p_val_chi_adj > 0.05)], main = "100kb Medfix.0.5", xlab = "adjusted p-value")
+
+hist(gwas_overlap_eq_50kb$p_val_chi_adj[- which(gwas_overlap_eq_50kb$p_val_chi_adj > 0.05)], main = "50kb Medfix.0.5", xlab = "adjusted p-value")
+
+hist(gwas_overlap_eq_10kb$p_val_chi_adj[- which(gwas_overlap_eq_10kb$p_val_chi_adj > 0.05)], main = "10kb Medfix.0.5", xlab = "adjusted p-value")
+
+hist(gwas_overlap_eq_5kb$p_val_chi_adj[- which(gwas_overlap_eq_5kb$p_val_chi_adj > 0.05)], main = "5kb Medfix.0.5", xlab = "adjusted p-value")
+
+
+hist(gwas_overlap_fixed_100kb$p_val_chi_adj[- which(gwas_overlap_fixed_100kb$p_val_chi_adj > 0.05)], main = "100kb Medfix.bic", xlab = "adjusted p-value")
+
+hist(gwas_overlap_fixed_50kb$p_val_chi_adj[- which(gwas_overlap_fixed_50kb$p_val_chi_adj > 0.05)], main = "50kb Medfix.bic", xlab = "adjusted p-value")
+
+hist(gwas_overlap_fixed_10kb$p_val_chi_adj[- which(gwas_overlap_fixed_10kb$p_val_chi_adj > 0.05)], main = "10kb Medfix.bic", xlab = "adjusted p-value")
+
+hist(gwas_overlap_fixed_5kb$p_val_chi_adj[- which(gwas_overlap_fixed_5kb$p_val_chi_adj > 0.05)], main = "5kb Medfix.bic", xlab = "adjusted p-value")
+
+
+
+
 ```
 

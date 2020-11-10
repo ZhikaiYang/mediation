@@ -109,7 +109,7 @@ pall <- ggplot(gup5k_overlap_eq, aes(x=tissue, y=o_ratio, fill=category)) +
     # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
     # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
     xlab("") +
-    ylab("Overlap ratio with GWAS signals") +
+    ylab("Overlap ratio with gene upstream 5kb") +
     ggtitle("") +
     theme_classic() +
     labs(fill = "") +
