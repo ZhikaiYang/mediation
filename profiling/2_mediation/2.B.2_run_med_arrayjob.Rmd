@@ -17,25 +17,25 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 
 ```{r}
 rfile <- list.files(path="largedata/RNA-seq", pattern="csv", full.names=TRUE)
-trait <- read.delim("data/geno_trait.txt", header=T)
-  
-df <- data.frame(rnafile=rep(rfile, each=40), trait=rep(2:41, times=7))
-write.table(df, "largedata/df_job_control_arg.csv", sep=",", row.names=FALSE, quote=FALSE)
-write.table(df, "largedata/df_job_control_arg.csv", sep=",", row.names=FALSE,quote=FALSE)
+trait <- read.delim("data/blup_N_300_tax_groups.txt", header=T)
+rfile = rfile[1:7] # remove P368
+df <- data.frame(rnafile=rep(rfile, each=300), trait=rep(2:301, times=7))
+write.table(df, "largedata/df_job_control_N_300T.csv", sep=",", row.names=FALSE, quote=FALSE)
+write.table(df, "largedata/df_job_control_N_300T.csv", sep=",", row.names=FALSE,quote=FALSE)
 ```
 
 
 
 ```{r}
 library("huskeR")
-run_Rcode(inputdf=data.frame(file=1:280, out=NA), outdir="slurm-script", cmdno = 4, 
+run_Rcode(inputdf=data.frame(file=1:2100, out=NA), outdir="slurm-script", cmdno = 10, 
           rcodes = "profiling/2_mediation/2.B.1_setup_med_job.R",
           rversion="3.5",
           base_shid = "med_test",
           email="zhikaiyang911@gmail.com", 
-          runinfo = c(FALSE, "batch", 16, "200G", "12:00:00"))
+          runinfo = c(FALSE, "batch", 16, "200G", "30:00:00"))
 ###>>> In this path: cd /common/jyanglab/jyang21/projects/mediation
-###>>> RUN: sbatch -p batch --licenses=common --nodes=1 --ntasks=16 --mem 200G --time=12:00:00 slurm-script/med_test_array.sh
+###>>> RUN: sbatch -p batch --licenses=common --nodes=1 --ntasks=16 --mem 200G --time=30:00:00 slurm-script/med_test_array.sh
 ```
 
 

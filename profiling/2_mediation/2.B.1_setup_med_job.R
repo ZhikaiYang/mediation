@@ -25,13 +25,13 @@ source('lib/MedWrapper.R')
 source('lib/reporters.R')
 source('lib/slurm_wrapper.R')
 
-df <- read.csv("largedata/df_job_control_arg_P368.csv")
+df <- read.csv("largedata/df_job_control_N_300T.csv")
 
 slurm_med_wrapper(ti=as.numeric(as.character(df$trait[JOBID])), cutoff_pm=0.05, ncores=16,
-                  phenofile = "data/blup_368_traits_final_NA.txt",
-                  genofile = "largedata/geno/tpb_p7msnps_368_kern_matrix.txt",
+                  phenofile = "data/blup_N_300_tax_groups.txt",
+                  genofile = "largedata/geno/gddtosilk_p7msnps_matrix.txt",
                   rnafile = as.character(df$rnafile[JOBID]),
-                  pcfile="largedata/All_Merged_1.25M_MAF0.05_AGPV4.eigenvec",
+                  pcfile="largedata/allchr_bisnp_n282_snpid_maf01_geno2_pruned.eigenvec",
                   outdir="largedata/med_output")
 
 #####
