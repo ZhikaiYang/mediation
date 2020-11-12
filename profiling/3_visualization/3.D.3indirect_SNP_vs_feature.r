@@ -147,11 +147,6 @@ out_p7m$seq = as.integer(as.character(out_p7m$seq))
 snps_p7msnps$seq = as.integer(as.character(snps_p7msnps$seq))
 
 
-out_p7m$snp = "not_exist"
-for (i in 1:nrow(out_p7m)) {
-  t = intersect(which(snps_p7msnps$seq == out_p7m$seq[i]), which(snps_p7msnps$Pos == out_p7m$pos[i])) 
-  out_p7m$snp[i] = snps_p7msnps$snp[t]
-}
 
 print("p7msnps_gup5k")
 print(nrow(unique(out_p7m[,7:8])))
