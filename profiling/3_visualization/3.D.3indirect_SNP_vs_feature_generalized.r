@@ -13,7 +13,7 @@ table(gff$feature)
 
 #####change by features########################################################################################
 f_gene <- subset(gff, feature %in% "gene")
-f_gene$geneid <- gsub(".*gene:|;biotype.*", "", g$att)
+f_gene$geneid <- gsub(".*gene:|;biotype.*", "", f_gene$att)
 #####change by features########################################################################################
 
 
