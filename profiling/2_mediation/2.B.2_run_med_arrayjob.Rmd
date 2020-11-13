@@ -34,7 +34,7 @@ run_Rcode(inputdf=data.frame(file=1:2100, out=NA), outdir="slurm-script", cmdno 
           base_shid = "med_test",
           email="zhikaiyang911@gmail.com", 
           runinfo = c(FALSE, "batch", 16, "200G", "30:00:00"))
-###>>> In this path: cd /common/jyanglab/jyang21/projects/mediation
+###>>> In this path: cd /common/jyanglab/zhikaiyang/projects/mediation
 ###>>> RUN: sbatch -p batch --licenses=common --nodes=1 --ntasks=16 --mem 200G --time=30:00:00 slurm-script/med_test_array.sh
 ```
 
