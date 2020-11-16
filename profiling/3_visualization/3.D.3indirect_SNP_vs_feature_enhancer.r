@@ -24,7 +24,6 @@ int34shoot$start2 = as.integer(int34shoot$start2)
 int34shoot$end1 = as.integer(int34shoot$end1)
 int34shoot$end2 = as.integer(int34shoot$end2)
 
-fwrite(f_gene, "largedata/isnps_vs_feature/f_gene.txt", sep="\t", row.names = FALSE, quote=FALSE)
 
 
 library("GenomicRanges")
@@ -78,6 +77,9 @@ colnames(tem2) = c("chr", "start", "end")
 enhancer = rbind(tem1, tem2)
 
 
+isnps_uni$seq = as.character(isnps_uni$seq)
+isnps_uni$snps_for_medi = as.character(isnps_uni$snps_for_medi)
+
 
 grc <- with(isnps_uni, GRanges(seqnames=seq, IRanges(start=Pos, end=Pos)))
 
@@ -94,11 +96,10 @@ out2 <- as.data.frame(grc[tb[,2]])
 ### for each genomic feature, find the sites with non-missing data
 colnames(out2)[1:2] = c("seq", "pos")
 #out <- cbind(out1, out2[, 1:2]) 
-out2$seqnames = as.integer(as.character(out2$seqnames))
-#out$seq = as.integer(as.character(out$seq))
+#out$seqnames = as.integer(as.character(out$seqnames))
+out2$seq = as.integer(as.character(out2$seq))
 
 isnps_uni$seq = as.integer(as.character(isnps_uni$seq))
-isnps_uni$snps_for_medi = as.character(isnps_uni$snps_for_medi)
 
 isnps$seq = as.integer(as.character(isnps$seq))
 

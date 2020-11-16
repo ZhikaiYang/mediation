@@ -180,13 +180,14 @@ dev.off()
 #p7msnps_gup5k: 77704, 0.111556
 #p7msnps_gdown5k: 76409, 0.1096968
 #p7msnps_f_gene: 65479, 0.09400514
-#p7msnps_int34shoot: 7767 0.01115072
+#p7msnps_int327shoot: 7767 0.01115072
+#p7msnps_int34shoot: 3195 0.004586912
 ```{r}
 
 #####change by features########################################################################################
-int34shoot_overlap_eq$p_f_null = 0.01115072
+int34shoot_overlap_eq$p_f_null = 0.004586912
  
-int34shoot_overlap_fixed$p_f_null = 0.01115072
+int34shoot_overlap_fixed$p_f_null = 0.004586912
 
 #####change by features########################################################################################
 
