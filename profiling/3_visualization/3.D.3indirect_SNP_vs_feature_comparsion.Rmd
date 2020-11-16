@@ -182,13 +182,14 @@ dev.off()
 #p7msnps_f_gene: 65479, 0.09400514
 #p7msnps_int327shoot: 7767 0.01115072
 #p7msnps_int34shoot: 3195 0.004586912
-#p7msnps_int34ear: 8181 0.01174508
+#p7msnps_int327ear: 8181 0.01174508
+#p7msnps_int34ear: 2631 0.003777204
 ```{r}
 
 #####change by features########################################################################################
-int34ear_overlap_eq$p_f_null = 0.01174508
+int34ear_overlap_eq$p_f_null = 0.003777204
  
-int34ear_overlap_fixed$p_f_null = 0.01174508
+int34ear_overlap_fixed$p_f_null = 0.003777204
 
 #####change by features########################################################################################
 
