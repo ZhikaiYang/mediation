@@ -22,13 +22,13 @@ library(data.table)
 isnps <- fread("largedata/isnps_vs_feature/isnps_55257rows.csv")
 
 #####change by features########################################################################################
-isnps_int327ear <- fread("largedata/isnps_vs_feature/isnps_in_int327ear.txt")
+isnps_int34ear <- fread("largedata/isnps_vs_feature/isnps_in_int34ear.txt")
 #####change by features########################################################################################
 
 
-isnps_int327ear_table <- as.data.frame(table(isnps_int327ear$snps_for_medi)) 
-isnps_int327ear_table$Var1 = as.character(isnps_int327ear_table$Var1)
-isnps = merge(isnps, isnps_int327ear_table, by.x = "snps_for_medi", by.y = "Var1", sort = F, all.x = T)
+isnps_int34ear_table <- as.data.frame(table(isnps_int34ear$snps_for_medi)) 
+isnps_int34ear_table$Var1 = as.character(isnps_int34ear_table$Var1)
+isnps = merge(isnps, isnps_int34ear_table, by.x = "snps_for_medi", by.y = "Var1", sort = F, all.x = T)
 idx = which(is.na(isnps$Freq))
 isnps$Freq[idx] = 0
 
@@ -36,7 +36,7 @@ isnps_eq <- subset(isnps, method == "res.eq")
 isnps_fixed <- subset(isnps, method == "res.fixed")
 i_trait_eq <- unique(isnps_eq$trait)
 i_tissue_eq <- unique(isnps_eq$tissue)
-int327ear_overlap_eq = NULL
+int34ear_overlap_eq = NULL
 for (trait in i_trait_eq) {
   
   for (tissue in i_tissue_eq) {
@@ -44,7 +44,7 @@ for (trait in i_trait_eq) {
     if (length(t) > 0) {
       tem = isnps_eq[t, ]
       o_ratio = length(which(tem$Freq != 0))/nrow(tem)
-      int327ear_overlap_eq = rbind(int327ear_overlap_eq, c(trait, tissue, o_ratio, length(which(tem$Freq != 0)), nrow(tem) ))
+      int34ear_overlap_eq = rbind(int34ear_overlap_eq, c(trait, tissue, o_ratio, length(which(tem$Freq != 0)), nrow(tem) ))
     }
     
   }
@@ -54,7 +54,7 @@ for (trait in i_trait_eq) {
 
 i_trait_fixed <- unique(isnps_fixed$trait)
 i_tissue_fixed <- unique(isnps_fixed$tissue)
-int327ear_overlap_fixed = NULL
+int34ear_overlap_fixed = NULL
 for (trait in i_trait_fixed) {
   
   for (tissue in i_tissue_fixed) {
@@ -62,7 +62,7 @@ for (trait in i_trait_fixed) {
     if (length(t) > 0) {
       tem = isnps_fixed[t, ]
       o_ratio = length(which(tem$Freq != 0))/nrow(tem)
-      int327ear_overlap_fixed = rbind(int327ear_overlap_fixed, c(trait, tissue, o_ratio, length(which(tem$Freq != 0)), nrow(tem) ))
+      int34ear_overlap_fixed = rbind(int34ear_overlap_fixed, c(trait, tissue, o_ratio, length(which(tem$Freq != 0)), nrow(tem) ))
     }
     
   }
@@ -87,27 +87,27 @@ isnps = merge(isnps, trait_category, by = "trait", all.x = T, sort = F)
 isnps_eq <- subset(isnps, method == "res.eq")
 isnps_fixed <- subset(isnps, method == "res.fixed")
 
-int327ear_overlap_eq = as.data.frame(int327ear_overlap_eq)
-colnames(int327ear_overlap_eq) = c("trait", "tissue", "o_ratio", "num_o", "N_isnps")
-int327ear_overlap_fixed = as.data.frame(int327ear_overlap_fixed)
-colnames(int327ear_overlap_fixed) = c("trait", "tissue", "o_ratio", "num_o", "N_isnps")
+int34ear_overlap_eq = as.data.frame(int34ear_overlap_eq)
+colnames(int34ear_overlap_eq) = c("trait", "tissue", "o_ratio", "num_o", "N_isnps")
+int34ear_overlap_fixed = as.data.frame(int34ear_overlap_fixed)
+colnames(int34ear_overlap_fixed) = c("trait", "tissue", "o_ratio", "num_o", "N_isnps")
 
-int327ear_overlap_eq = merge(int327ear_overlap_eq, trait_category, by = "trait", all.x = T, sort = F)
-int327ear_overlap_fixed = merge(int327ear_overlap_fixed, trait_category, by = "trait", all.x = T, sort = F)
+int34ear_overlap_eq = merge(int34ear_overlap_eq, trait_category, by = "trait", all.x = T, sort = F)
+int34ear_overlap_fixed = merge(int34ear_overlap_fixed, trait_category, by = "trait", all.x = T, sort = F)
 
 ```
 
 ### all plot
 ```{r}
 fsize=18
-int327ear_overlap_eq$tissue <- factor(int327ear_overlap_eq$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+int34ear_overlap_eq$tissue <- factor(int34ear_overlap_eq$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
                     labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
-int327ear_overlap_eq$o_ratio = as.numeric(int327ear_overlap_eq$o_ratio)
+int34ear_overlap_eq$o_ratio = as.numeric(int34ear_overlap_eq$o_ratio)
 
 library(ggplot2)
 
 #df0 <- subset(df, cat != "1")
-pall <- ggplot(int327ear_overlap_eq, aes(x=tissue, y=o_ratio, fill=category)) +
+pall <- ggplot(int34ear_overlap_eq, aes(x=tissue, y=o_ratio, fill=category)) +
     #geom_bar(stat="identity", position=position_dodge()) +
     geom_boxplot(outlier.colour="black", outlier.shape=16, 
              outlier.size=1, notch=FALSE) +
@@ -115,11 +115,11 @@ pall <- ggplot(int327ear_overlap_eq, aes(x=tissue, y=o_ratio, fill=category)) +
     # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
     # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
     xlab("") +
-    ylab("Overlap ratio with enhancer from interactome H3K27ac in immature ear") +
+    ylab("Overlap ratio with enhancer from interactome H3K4me3 in immature ear") +
     ggtitle("") +
     theme_classic() +
     labs(fill = "") +
-    scale_y_continuous(limits = c(-0.01, max(int327ear_overlap_eq$o_ratio))) +
+    scale_y_continuous(limits = c(-0.01, max(int34ear_overlap_eq$o_ratio))) +
     theme(plot.title = element_text(size=20, face = "bold"), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
@@ -130,7 +130,7 @@ pall <- ggplot(int327ear_overlap_eq, aes(x=tissue, y=o_ratio, fill=category)) +
           legend.text = element_text(size=fsize))
 pall
 
-pdf("graphs/overlap_ratio_maxscale_int327ear_all_traits_eq.pdf", width = 9, height= 6)
+pdf("graphs/overlap_ratio_maxscale_int34ear_all_traits_eq.pdf", width = 9, height= 6)
 pall
 dev.off()
 
@@ -139,14 +139,14 @@ dev.off()
 ### all plot
 ```{r}
 fsize=18
-int327ear_overlap_fixed$tissue <- factor(int327ear_overlap_fixed$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+int34ear_overlap_fixed$tissue <- factor(int34ear_overlap_fixed$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
                     labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
-int327ear_overlap_fixed$o_ratio = as.numeric(int327ear_overlap_fixed$o_ratio)
+int34ear_overlap_fixed$o_ratio = as.numeric(int34ear_overlap_fixed$o_ratio)
 
 library(ggplot2)
 
 #df0 <- subset(df, cat != "1")
-pall <- ggplot(int327ear_overlap_fixed, aes(x=tissue, y=o_ratio, fill=category)) +
+pall <- ggplot(int34ear_overlap_fixed, aes(x=tissue, y=o_ratio, fill=category)) +
     #geom_bar(stat="identity", position=position_dodge()) +
     geom_boxplot(outlier.colour="black", outlier.shape=16, 
              outlier.size=1, notch=FALSE) +
@@ -154,11 +154,11 @@ pall <- ggplot(int327ear_overlap_fixed, aes(x=tissue, y=o_ratio, fill=category))
     # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
     # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
     xlab("") +
-    ylab("Overlap ratio with enhancer from interactome H3K27ac in immature ear") +
+    ylab("Overlap ratio with enhancer from interactome H3K4me3 in immature ear") +
     ggtitle("") +
     theme_classic() +
     labs(fill = "") +
-    scale_y_continuous(limits = c(-0.01, max(int327ear_overlap_fixed$o_ratio))) +
+    scale_y_continuous(limits = c(-0.01, max(int34ear_overlap_fixed$o_ratio))) +
     theme(plot.title = element_text(size=20, face = "bold"), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
@@ -169,7 +169,7 @@ pall <- ggplot(int327ear_overlap_fixed, aes(x=tissue, y=o_ratio, fill=category))
           legend.text = element_text(size=fsize))
 pall
 
-pdf("graphs/overlap_ratio_maxscale_int327ear_all_traits_fixed.pdf", width = 9, height= 6)
+pdf("graphs/overlap_ratio_maxscale_int34ear_all_traits_fixed.pdf", width = 9, height= 6)
 pall
 dev.off()
 
@@ -181,54 +181,55 @@ dev.off()
 #p7msnps_gdown5k: 76409, 0.1096968
 #p7msnps_f_gene: 65479, 0.09400514
 #p7msnps_int327shoot: 7767 0.01115072
-#p7msnps_int327ear: 3195 0.004586912
+#p7msnps_int34shoot: 3195 0.004586912
+#p7msnps_int34ear: 8181 0.01174508
 ```{r}
 
 #####change by features########################################################################################
-int327ear_overlap_eq$p_f_null = 0.004586912
+int34ear_overlap_eq$p_f_null = 0.01174508
  
-int327ear_overlap_fixed$p_f_null = 0.004586912
+int34ear_overlap_fixed$p_f_null = 0.01174508
 
 #####change by features########################################################################################
 
 
 
-int327ear_overlap_eq$num_o = as.numeric(int327ear_overlap_eq$num_o)
-int327ear_overlap_fixed$num_o = as.numeric(int327ear_overlap_fixed$num_o)
-int327ear_overlap_eq$N_isnps = as.numeric(int327ear_overlap_eq$N_isnps)
-int327ear_overlap_fixed$N_isnps = as.numeric(int327ear_overlap_fixed$N_isnps)
+int34ear_overlap_eq$num_o = as.numeric(int34ear_overlap_eq$num_o)
+int34ear_overlap_fixed$num_o = as.numeric(int34ear_overlap_fixed$num_o)
+int34ear_overlap_eq$N_isnps = as.numeric(int34ear_overlap_eq$N_isnps)
+int34ear_overlap_fixed$N_isnps = as.numeric(int34ear_overlap_fixed$N_isnps)
 
-int327ear_overlap_eq$p_val_chi = 0.0
-int327ear_overlap_eq$p_val_chi_adj = 0.0
-int327ear_overlap_eq$statistic_chi = 0.0
-for (i in 1:nrow(int327ear_overlap_eq)) {
-  t = chisq.test(c(int327ear_overlap_eq$num_o[i], int327ear_overlap_eq$N_isnps[i]-int327ear_overlap_eq$num_o[i]),p=c(int327ear_overlap_eq$p_f_null[i], 1-int327ear_overlap_eq$p_f_null[i]))
-  int327ear_overlap_eq$statistic_chi[i] = t$statistic
-  int327ear_overlap_eq$p_val_chi[i] = t$p.value
-  int327ear_overlap_eq$p_val_chi_adj[i] = p.adjust(int327ear_overlap_eq$p_val_chi[i], method = "fdr", n= nrow(int327ear_overlap_eq))
+int34ear_overlap_eq$p_val_chi = 0.0
+int34ear_overlap_eq$p_val_chi_adj = 0.0
+int34ear_overlap_eq$statistic_chi = 0.0
+for (i in 1:nrow(int34ear_overlap_eq)) {
+  t = chisq.test(c(int34ear_overlap_eq$num_o[i], int34ear_overlap_eq$N_isnps[i]-int34ear_overlap_eq$num_o[i]),p=c(int34ear_overlap_eq$p_f_null[i], 1-int34ear_overlap_eq$p_f_null[i]))
+  int34ear_overlap_eq$statistic_chi[i] = t$statistic
+  int34ear_overlap_eq$p_val_chi[i] = t$p.value
+  int34ear_overlap_eq$p_val_chi_adj[i] = p.adjust(int34ear_overlap_eq$p_val_chi[i], method = "fdr", n= nrow(int34ear_overlap_eq))
 }
 
-int327ear_overlap_fixed$p_val_chi = 0.0
-int327ear_overlap_fixed$p_val_chi_adj = 0.0
-int327ear_overlap_fixed$statistic_chi = 0.0
-for (i in 1:nrow(int327ear_overlap_fixed)) {
-  t = chisq.test(c(int327ear_overlap_fixed$num_o[i], int327ear_overlap_fixed$N_isnps[i]-int327ear_overlap_fixed$num_o[i]),p=c(int327ear_overlap_fixed$p_f_null[i], 1-int327ear_overlap_fixed$p_f_null[i]))
-  int327ear_overlap_fixed$statistic_chi[i] = t$statistic
-  int327ear_overlap_fixed$p_val_chi[i] = t$p.value
-  int327ear_overlap_fixed$p_val_chi_adj[i] = p.adjust(int327ear_overlap_fixed$p_val_chi[i], method = "fdr", n= nrow(int327ear_overlap_fixed))
+int34ear_overlap_fixed$p_val_chi = 0.0
+int34ear_overlap_fixed$p_val_chi_adj = 0.0
+int34ear_overlap_fixed$statistic_chi = 0.0
+for (i in 1:nrow(int34ear_overlap_fixed)) {
+  t = chisq.test(c(int34ear_overlap_fixed$num_o[i], int34ear_overlap_fixed$N_isnps[i]-int34ear_overlap_fixed$num_o[i]),p=c(int34ear_overlap_fixed$p_f_null[i], 1-int34ear_overlap_fixed$p_f_null[i]))
+  int34ear_overlap_fixed$statistic_chi[i] = t$statistic
+  int34ear_overlap_fixed$p_val_chi[i] = t$p.value
+  int34ear_overlap_fixed$p_val_chi_adj[i] = p.adjust(int34ear_overlap_fixed$p_val_chi[i], method = "fdr", n= nrow(int34ear_overlap_fixed))
 }
 
-length(which(int327ear_overlap_eq$p_val_chi_adj > 0.05))
-length(which(int327ear_overlap_fixed$p_val_chi_adj > 0.05))
+length(which(int34ear_overlap_eq$p_val_chi_adj > 0.05))
+length(which(int34ear_overlap_fixed$p_val_chi_adj > 0.05))
 
 
 
-hist(int327ear_overlap_eq$p_val_chi_adj[- which(int327ear_overlap_eq$p_val_chi_adj > 0.05)], main = "Distribution of adjusted p-value by FDR (Medfix.0.5)", xlab = "adjusted p-value")
+hist(int34ear_overlap_eq$p_val_chi_adj[- which(int34ear_overlap_eq$p_val_chi_adj > 0.05)], main = "Distribution of adjusted p-value by FDR (Medfix.0.5)", xlab = "adjusted p-value")
 
-hist(int327ear_overlap_fixed$p_val_chi_adj[- which(int327ear_overlap_fixed$p_val_chi_adj > 0.05)], main = "Distribution of adjusted p-value by FDR (Medfix.bic)", xlab = "adjusted p-value")
+hist(int34ear_overlap_fixed$p_val_chi_adj[- which(int34ear_overlap_fixed$p_val_chi_adj > 0.05)], main = "Distribution of adjusted p-value by FDR (Medfix.bic)", xlab = "adjusted p-value")
 
-write.table(int327ear_overlap_eq, "largedata/isnps_vs_feature/int327ear_overlap_eq.csv", sep=",", row.names=FALSE, quote=FALSE)
-write.table(int327ear_overlap_fixed, "largedata/isnps_vs_feature/int327ear_overlap_fixed.csv", sep=",", row.names=FALSE, quote=FALSE)
+write.table(int34ear_overlap_eq, "largedata/isnps_vs_feature/int34ear_overlap_eq.csv", sep=",", row.names=FALSE, quote=FALSE)
+write.table(int34ear_overlap_fixed, "largedata/isnps_vs_feature/int34ear_overlap_fixed.csv", sep=",", row.names=FALSE, quote=FALSE)
 
 
 
