@@ -16,13 +16,13 @@ f_gene <- subset(gff, feature %in% "gene")
 f_gene$geneid <- gsub(".*gene:|;biotype.*", "", f_gene$att)
 
 #####change by features########################################################################################
-int327shoot = fread("largedata/isnps_vs_feature/interactions_from_H3K27ac-ChIA-PET_in_shoot.txt", header=TRUE, data.table=FALSE)
+int34shoot = fread("largedata/isnps_vs_feature/interactions_from_H3K4me3-ChIA-PET_in_shoot.txt", header=TRUE, data.table=FALSE)
 #####change by features########################################################################################
 
-int327shoot$start1 = as.integer(int327shoot$start1)
-int327shoot$start2 = as.integer(int327shoot$start2)
-int327shoot$end1 = as.integer(int327shoot$end1)
-int327shoot$end2 = as.integer(int327shoot$end2)
+int34shoot$start1 = as.integer(int34shoot$start1)
+int34shoot$start2 = as.integer(int34shoot$start2)
+int34shoot$end1 = as.integer(int34shoot$end1)
+int34shoot$end2 = as.integer(int34shoot$end2)
 
 fwrite(f_gene, "largedata/isnps_vs_feature/f_gene.txt", sep="\t", row.names = FALSE, quote=FALSE)
 
@@ -41,11 +41,11 @@ isnps_uni = unique(isnps_uni)
 
 
 #################################################################################
-idx = which(is.na(int327shoot$start1))
-int327shoot = int327shoot[-idx,]
-idx = which(is.na(int327shoot$end1))
+idx = which(is.na(int34shoot$start1))
+int34shoot = int34shoot[-idx,]
+idx = which(is.na(int34shoot$end1))
 
-grc1 <- with(int327shoot, GRanges(seqnames=chr1, IRanges(start=start1, end=end1)))
+grc1 <- with(int34shoot, GRanges(seqnames=chr1, IRanges(start=start1, end=end1)))
 
 grf <- with(f_gene, GRanges(seqnames=seq, IRanges(start=start, end=end), geneid=geneid))
 
@@ -54,7 +54,7 @@ tb <- findOverlaps(query=grf, subject=grc1)
 tb <- as.matrix(tb)
 tb1 = tb
 
-grc2 <- with(int327shoot, GRanges(seqnames=chr2, IRanges(start=start2, end=end2)))
+grc2 <- with(int34shoot, GRanges(seqnames=chr2, IRanges(start=start2, end=end2)))
 tb <- findOverlaps(query=grf, subject=grc2)
 tb <- as.matrix(tb)
 tb2 = tb
@@ -70,8 +70,8 @@ enhancer_id1 = unique(tb2[,2][idx2])
 
 length(intersect(enhancer_id1, enhancer_id2))
 # 0
-tem1 =int327shoot[enhancer_id1,1:3]
-tem2 = int327shoot[enhancer_id2,4:6]
+tem1 =int34shoot[enhancer_id1,1:3]
+tem2 = int34shoot[enhancer_id2,4:6]
 colnames(tem1) = c("chr", "start", "end")
 colnames(tem2) = c("chr", "start", "end")
 
@@ -109,7 +109,7 @@ for (i in 1:nrow(out2)) {
 }
 
 
-fwrite(out2, "largedata/isnps_vs_feature/isnps_in_int327shoot.txt", sep="\t", row.names = FALSE, quote=FALSE)
+fwrite(out2, "largedata/isnps_vs_feature/isnps_in_int34shoot.txt", sep="\t", row.names = FALSE, quote=FALSE)
 
 
 
@@ -137,9 +137,9 @@ out_p7m2$seq = as.integer(as.character(out_p7m2$seq))
 #snps_p7msnps$seq = as.integer(as.character(snps_p7msnps$seq))
 
 
-print("p7msnps_int327shoot")
+print("p7msnps_int34shoot")
 print(nrow(unique(out_p7m2[,1:2])))
-print("p7msnps_int327shoot_ratio")
+print("p7msnps_int34shoot_ratio")
 print(nrow(unique(out_p7m2[,1:2]))/nrow(snps_p7msnps))
 
 
