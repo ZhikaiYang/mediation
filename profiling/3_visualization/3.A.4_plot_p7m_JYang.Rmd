@@ -48,6 +48,23 @@ out$trait  <- gsub(".*sum_|_ts.*", "", out$file)
 out$tissue  <- gsub(".*_ts_|.csv", "", out$file)
 fwrite(out[,-8],"largedata/sum_out_metabolites.txt", sep="\t", row.names = F, quote = F)
 ```
+### read in microbiome data on HCC
+
+```{r}
+library(data.table)
+f <- list.files(path="largedata/med_output", pattern="fixed.pcut_sum_T[[0-9]", full.names = T)
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$trait  <- gsub(".*sum_|_ts.*", "", out$file)
+out$tissue  <- gsub(".*_ts_|.csv", "", out$file)
+fwrite(out[,-8],"largedata/sum_out_microbiome_fixed.txt", sep="\t", row.names = F, quote = F)
+```
 
 ### Assign category
 
@@ -113,6 +130,22 @@ df_m_gshoot <- subset(df_m, tissue %in% "GShoot")
 df_m_groot <- subset(df_m, tissue %in% "GRoot")
 df_m_gsr <- merge(df_m_gshoot[,c(1,8,9)], df_m_groot[,c(1,8,9)], by = "trait")
 t.test(df_m_gsr$pmed.pure.x, df_m_gsr$pmed.pure.y, alternative = "greater", paired = T)
+```
+### Assign category microbiome
+```{r}
+library(ggplot2)
+# library(ggpubr)
+library(dplyr)
+
+df_mi <- fread("largedata/sum_out_microbiome_fixed.txt", header= T, data.table=F)
+
+### assign category: 
+df_mi$cat <- "microbiome"
+
+df_mi_gshoot <- subset(df_mi, tissue %in% "GShoot")
+df_mi_groot <- subset(df_mi, tissue %in% "GRoot")
+df_mi_gsr <- merge(df_mi_gshoot[,c(1,8,9)], df_mi_groot[,c(1,8,9)], by = "trait")
+t.test(df_mi_gsr$pmed.pure.x, df_mi_gsr$pmed.pure.y, alternative = "greater", paired = T)
 ```
 
 
@@ -362,5 +395,33 @@ pm
 ```
 
 
+### Visualization microbiome
+```{r}
+
+
+pmi <- ggplot(df_mi, aes(y=tissue, x=pmed.pure, fill=tissue)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=2, notch=FALSE) +
+    scale_fill_manual(values=rep("#69b3a2", 7), guide=FALSE) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("") +
+    ggtitle("Microbiome Traits") +
+    theme_classic() +
+    scale_x_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          # axis.text.x = element_text(angle = 20),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pmi
+
+
+```
 
 
