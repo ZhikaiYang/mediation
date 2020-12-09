@@ -1,0 +1,322 @@
+---
+title: "Collect mediation analysis results"
+author: "Zhikai Yang "
+date: "11-9-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+
+### on local
+
+```{r}
+library(data.table)
+
+isnps <- fread("largedata/isnps_vs_feature/isnps_55257rows.csv")
+
+#####change by features########################################################################################
+isnps_dmr <- fread("largedata/isnps_vs_feature/isnps_in_dmr.txt")
+#####change by features########################################################################################
+
+
+isnps_dmr_table <- as.data.frame(table(isnps_dmr$snps_for_medi)) 
+isnps_dmr_table$Var1 = as.character(isnps_dmr_table$Var1)
+isnps = merge(isnps, isnps_dmr_table, by.x = "snps_for_medi", by.y = "Var1", sort = F, all.x = T)
+idx = which(is.na(isnps$Freq))
+isnps$Freq[idx] = 0
+
+isnps_eq <- subset(isnps, method == "res.eq")
+isnps_fixed <- subset(isnps, method == "res.fixed")
+i_trait_eq <- unique(isnps_eq$trait)
+i_tissue_eq <- unique(isnps_eq$tissue)
+dmr_overlap_eq = NULL
+for (trait in i_trait_eq) {
+  
+  for (tissue in i_tissue_eq) {
+    t = intersect(which(isnps_eq$trait == trait ), which( isnps_eq$tissue == tissue))
+    if (length(t) > 0) {
+      tem = isnps_eq[t, ]
+      o_ratio = length(which(tem$Freq != 0))/nrow(tem)
+      dmr_overlap_eq = rbind(dmr_overlap_eq, c(trait, tissue, o_ratio, length(which(tem$Freq != 0)), nrow(tem) ))
+    }
+    
+  }
+  
+}
+
+
+i_trait_fixed <- unique(isnps_fixed$trait)
+i_tissue_fixed <- unique(isnps_fixed$tissue)
+dmr_overlap_fixed = NULL
+for (trait in i_trait_fixed) {
+  
+  for (tissue in i_tissue_fixed) {
+    t = intersect(which(isnps_fixed$trait == trait ), which( isnps_fixed$tissue == tissue))
+    if (length(t) > 0) {
+      tem = isnps_fixed[t, ]
+      o_ratio = length(which(tem$Freq != 0))/nrow(tem)
+      dmr_overlap_fixed = rbind(dmr_overlap_fixed, c(trait, tissue, o_ratio, length(which(tem$Freq != 0)), nrow(tem) ))
+    }
+    
+  }
+  
+}
+```
+
+```{r}
+ag_trait <- fread("data/geno_trait.txt")
+m_trait <- fread("data/metabolite_rep1_genotype_namecorrect.txt")
+trait_category <- data.frame(category = "other", trait = c(colnames(ag_trait)[-1], colnames(m_trait)[-1]))
+
+trait_category$category[c(3,4,11:13,38)]= "Flowering Time"
+trait_category$category[c(6,23)]= "Development"
+trait_category$category[c(15,16,36)]= "Leaf Morphology"
+trait_category$category[c(32,33)]= "Male Inflorescence"
+trait_category$category[c(1,7,9,8)]= "Female Inflorescence"
+trait_category$category[c(2,10,35,37,39,40)]= "Seed Traits"
+trait_category$category[41:106]= "Metabolite"
+
+isnps = merge(isnps, trait_category, by = "trait", all.x = T, sort = F)
+isnps_eq <- subset(isnps, method == "res.eq")
+isnps_fixed <- subset(isnps, method == "res.fixed")
+
+dmr_overlap_eq = as.data.frame(dmr_overlap_eq)
+colnames(dmr_overlap_eq) = c("trait", "tissue", "o_ratio", "num_o", "N_isnps")
+dmr_overlap_fixed = as.data.frame(dmr_overlap_fixed)
+colnames(dmr_overlap_fixed) = c("trait", "tissue", "o_ratio", "num_o", "N_isnps")
+
+dmr_overlap_eq = merge(dmr_overlap_eq, trait_category, by = "trait", all.x = T, sort = F)
+dmr_overlap_fixed = merge(dmr_overlap_fixed, trait_category, by = "trait", all.x = T, sort = F)
+
+```
+
+### all plot
+```{r}
+fsize=18
+dmr_overlap_eq$tissue <- factor(dmr_overlap_eq$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+dmr_overlap_eq$o_ratio = as.numeric(dmr_overlap_eq$o_ratio)
+
+library(ggplot2)
+
+#df0 <- subset(df, cat != "1")
+pall <- ggplot(dmr_overlap_eq, aes(x=tissue, y=o_ratio, fill=category)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=1, notch=FALSE) +
+    # scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("Overlap ratio with DMR") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, max(dmr_overlap_eq$o_ratio))) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/overlap_ratio_maxscale_dmr_all_traits_eq.pdf", width = 9, height= 6)
+pall
+dev.off()
+
+```
+
+### all plot
+```{r}
+fsize=18
+dmr_overlap_fixed$tissue <- factor(dmr_overlap_fixed$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+dmr_overlap_fixed$o_ratio = as.numeric(dmr_overlap_fixed$o_ratio)
+
+library(ggplot2)
+
+#df0 <- subset(df, cat != "1")
+pall <- ggplot(dmr_overlap_fixed, aes(x=tissue, y=o_ratio, fill=category)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=1, notch=FALSE) +
+    # scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("Overlap ratio with DMR") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, max(dmr_overlap_fixed$o_ratio))) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/overlap_ratio_maxscale_dmr_all_traits_fixed.pdf", width = 9, height= 6)
+pall
+dev.off()
+
+```
+
+
+### enrichment test
+#p7msnps_gup5k: 77704, 0.111556
+#p7msnps_gdown5k: 76409, 0.1096968
+#p7msnps_f_gene: 65479, 0.09400514
+#p7msnps_int327shoot: 7767 0.01115072
+#p7msnps_int34shoot: 3195 0.004586912
+#p7msnps_int327ear: 8181 0.01174508
+#p7msnps_int34ear: 2631 0.003777204
+#p7msnps_dmr: 957 0.00137392
+```{r}
+
+#####change by features########################################################################################
+dmr_overlap_eq$p_f_null = 0.00137392
+ 
+dmr_overlap_fixed$p_f_null = 0.00137392
+
+#####change by features########################################################################################
+
+
+
+dmr_overlap_eq$num_o = as.numeric(dmr_overlap_eq$num_o)
+dmr_overlap_fixed$num_o = as.numeric(dmr_overlap_fixed$num_o)
+dmr_overlap_eq$N_isnps = as.numeric(dmr_overlap_eq$N_isnps)
+dmr_overlap_fixed$N_isnps = as.numeric(dmr_overlap_fixed$N_isnps)
+
+dmr_overlap_eq$p_val_chi = 0.0
+dmr_overlap_eq$p_val_chi_adj = 0.0
+dmr_overlap_eq$statistic_chi = 0.0
+for (i in 1:nrow(dmr_overlap_eq)) {
+  t = chisq.test(c(dmr_overlap_eq$num_o[i], dmr_overlap_eq$N_isnps[i]-dmr_overlap_eq$num_o[i]),p=c(dmr_overlap_eq$p_f_null[i], 1-dmr_overlap_eq$p_f_null[i]))
+  dmr_overlap_eq$statistic_chi[i] = t$statistic
+  dmr_overlap_eq$p_val_chi[i] = t$p.value
+  dmr_overlap_eq$p_val_chi_adj[i] = p.adjust(dmr_overlap_eq$p_val_chi[i], method = "fdr", n= nrow(dmr_overlap_eq))
+}
+
+dmr_overlap_fixed$p_val_chi = 0.0
+dmr_overlap_fixed$p_val_chi_adj = 0.0
+dmr_overlap_fixed$statistic_chi = 0.0
+for (i in 1:nrow(dmr_overlap_fixed)) {
+  t = chisq.test(c(dmr_overlap_fixed$num_o[i], dmr_overlap_fixed$N_isnps[i]-dmr_overlap_fixed$num_o[i]),p=c(dmr_overlap_fixed$p_f_null[i], 1-dmr_overlap_fixed$p_f_null[i]))
+  dmr_overlap_fixed$statistic_chi[i] = t$statistic
+  dmr_overlap_fixed$p_val_chi[i] = t$p.value
+  dmr_overlap_fixed$p_val_chi_adj[i] = p.adjust(dmr_overlap_fixed$p_val_chi[i], method = "fdr", n= nrow(dmr_overlap_fixed))
+}
+
+length(which(dmr_overlap_eq$p_val_chi_adj > 0.05))
+length(which(dmr_overlap_fixed$p_val_chi_adj > 0.05))
+
+
+
+hist(dmr_overlap_eq$p_val_chi_adj[- which(dmr_overlap_eq$p_val_chi_adj > 0.05)], main = "Distribution of adjusted p-value by FDR (Medfix.0.5)", xlab = "adjusted p-value")
+
+hist(dmr_overlap_fixed$p_val_chi_adj[- which(dmr_overlap_fixed$p_val_chi_adj > 0.05)], main = "Distribution of adjusted p-value by FDR (Medfix.bic)", xlab = "adjusted p-value")
+
+write.table(dmr_overlap_eq, "largedata/isnps_vs_feature/dmr_overlap_eq.csv", sep=",", row.names=FALSE, quote=FALSE)
+write.table(dmr_overlap_fixed, "largedata/isnps_vs_feature/dmr_overlap_fixed.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+
+
+```
+### pie chart visual of p-chisq
+```{r}
+
+f_gene_overlap_fixed = fread("largedata/isnps_vs_feature/f_gene_overlap_fixed.csv")
+length(which(dmr_overlap_eq$p_val_chi_adj > 0.05))
+
+
+df = data.frame(
+  group = c("non-significant", "significant"),
+  count = c(length(which(f_gene_overlap_fixed$p_val_chi_adj > 0.05)), nrow(f_gene_overlap_fixed)-length(which(f_gene_overlap_fixed$p_val_chi_adj > 0.05)))
+)
+
+library(ggplot2)
+# Barplot
+bp2 <- ggplot(df, aes(x="gene", y=count, fill=group))+
+geom_bar(width = 1, stat = "identity")
+bp2
+
+
+
+nonsig = fread("largedata/isnps_vs_feature/scratch.txt", header = T, data.table = F)
+
+df_nonsig = data.frame(
+  non_sig = rep(c("significant", "non-significant"), nrow(nonsig)),
+  feature = rep(nonsig$feature, each=2),
+  count_eq = rep(0, 2*nrow(nonsig)),
+  count_fixed = rep(0, 2*nrow(nonsig)),
+  label_ypos_eq = rep(0, 2*nrow(nonsig)),
+  label_ypos_fixed = rep(0, 2*nrow(nonsig))
+)
+
+df_count = data.frame(
+  non_sig = rep(c("significant", "non-significant"), each=nrow(nonsig)),
+  eq = c(c(574-nonsig$eq), nonsig$eq),
+  fixed = c(c(519-nonsig$fixed), nonsig$fixed)
+)
+
+n = 0.5*nrow(df_nonsig)
+df_nonsig$count_eq[2*c(0:(n-1))+1]= df_count$eq[1:n]
+df_nonsig$count_eq[2*c(1:n)]= df_count$eq[(n+1):nrow(df_nonsig)]
+
+df_nonsig$label_ypos_eq[2*c(0:(n-1))+1]= df_count$eq[1:n]
+df_nonsig$label_ypos_eq[2*c(1:n)]= 574
+
+
+
+df_nonsig$count_fixed[2*c(0:(n-1))+1]= df_count$fixed[1:n]
+df_nonsig$count_fixed[2*c(1:n)]= df_count$fixed[(n+1):nrow(df_nonsig)]
+
+df_nonsig$label_ypos_fixed[2*c(0:(n-1))+1]= df_count$fixed[1:n]
+df_nonsig$label_ypos_fixed[2*c(1:n)]= 519
+
+
+ggplot(data=df_nonsig, aes(x=feature, y=count_eq, fill=non_sig)) +
+  geom_bar(stat="identity")+
+  geom_text(aes(y=label_ypos_eq, label=count_eq), vjust=1.6, 
+            color="white", size=3.5)+
+  scale_fill_brewer(palette="Paired")+
+  theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+  #theme_minimal()
+
+ggplot(data=df_nonsig, aes(x=feature, y=count_fixed, fill=non_sig)) +
+  geom_bar(stat="identity")+
+  geom_text(aes(y=label_ypos_fixed, label=count_fixed), vjust=1.6, 
+            color="white", size=3.5)+
+  scale_fill_brewer(palette="Paired")+
+  theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+```
+

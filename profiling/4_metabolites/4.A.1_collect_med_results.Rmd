@@ -55,6 +55,10 @@ write.table(out, "cache/mediators_23296rows.csv", sep=",", row.names=FALSE, quot
 
 ```{r}
 m <- read.csv("cache/mediators_23296rows.csv")
+
+eq <- subset(m, method %in% "res.eq")
+fixed <- subset(m, method %in% "res.fixed")
+
 m5 <- subset(m, padj < 0.05)
 # nrow(m5) 2751
 m1 <- subset(m, padj < 0.01)
@@ -62,7 +66,22 @@ m1 <- subset(m, padj < 0.01)
 
 t5 <- as.data.frame(table(m5$id))
 t5 <- t5[order(t5$Freq, decreasing=T),]
+
+t5 <- subset(t5, Freq > 4)
+# write.table(t5, "cache/top_mediators.csv", sep=",", row.names=FALSE, quote=FALSE)
 ```
+
+
+## TF enrichment test
+
+```{r}
+tf <- read.csv("data/NC_Supplementary_Data_1.csv")
+
+out <- merge(t5, tf, by.x="Var1", by.y="v3")
+```
+
+
+
 
 If focus on only the metabolite traits
 

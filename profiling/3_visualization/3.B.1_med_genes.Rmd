@@ -43,6 +43,24 @@ out$tissue  <- gsub(".*_ts_|.csv", "", out$file)
 fwrite(out[,-7],"largedata/mediator_out_metabolites.txt", sep="\t", row.names = F, quote = F)
 ```
 
+### read in data microbiome on HCC
+
+```{r}
+library(data.table)
+f <- list.files(path="largedata/med_output", pattern="fixed_mediator_T[[0-9]", full.names = T)
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$trait  <- gsub(".*mediator_|_ts.*", "", out$file)
+out$tissue  <- gsub(".*_ts_|.csv", "", out$file)
+fwrite(out[,-7],"largedata/mediator_out_microbiome_fixed.txt", sep="\t", row.names = F, quote = F)
+```
+
 
 
 Check if there is any cripsr genes

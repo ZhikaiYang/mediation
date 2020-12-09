@@ -1,0 +1,123 @@
+---
+title: "mediation vs. TFs"
+author: "Jinliang Yang"
+date: "10-29-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+
+### Filter non-significant ones
+
+remove metabolite traits
+
+```{r}
+m0 <- read.csv("cache/mediators_23296rows.csv")
+idx <- grep("X\\.", m0$trait)
+
+m <- m0[-idx,]
+
+eq <- subset(m, method %in% "res.eq")
+fixed <- subset(m, method %in% "res.fixed")
+
+eq5 <- subset(eq, padj < 0.05)
+# 1346   10
+eq1 <- subset(eq, padj < 0.01)
+# 737  10
+
+t5 <- as.data.frame(table(eq5$id))
+t5 <- t5[order(t5$Freq, decreasing=T),]
+
+t5 <- subset(t5, Freq > 0)
+# write.table(t5, "cache/top_mediators.csv", sep=",", row.names=FALSE, quote=FALSE)
+```
+
+
+## TF enrichment test
+https://grassius.org/tfomecollection.php?page=137&ipp=15
+
+```{r}
+tf <- read.csv("data/Maize_TFome_Bulk_data.csv")
+tf <- subset(tf, Gene.model != "")
+dim(tf)
+# 2034   12
+
+tf <- read.delim("data/PlnTFDB_tf_858125568.txt", header=T)
+# 5246    5
+tf$gid <- gsub("_P.*", "", tf$Protein.ID)
+tf$gid <- gsub("_FGP", "_FG", tf$gid)
+tf$gid <- gsub("_T.*", "", tf$gid)
+
+tem <- subset(t5, Freq > 1)
+out <- merge(tem, tf, by.x="Var1", by.y="Gene.model")
+
+mx <- matrix(c(34, 578-34, 2034-34, 38000-578+34), byrow=T, nrow=2)
+chisq.test(mx)
+```
+
+eq5 donot work!
+
+### Filter non-significant ones
+
+```{r}
+m <- read.csv("cache/mediators_23296rows.csv")
+
+fixed <- subset(m, method %in% "res.fixed")
+
+f5 <- subset(fixed, padj < 0.05)
+# 1405   10
+f1 <- subset(fixed, padj < 0.01)
+# 830 10
+
+t5 <- as.data.frame(table(f5$id))
+t5 <- t5[order(t5$Freq, decreasing=T),]
+
+t5 <- subset(t5, Freq > 0)
+# write.table(t5, "cache/top_mediators.csv", sep=",", row.names=FALSE, quote=FALSE)
+```
+
+
+## TF enrichment test
+https://grassius.org/tfomecollection.php?page=137&ipp=15
+
+```{r}
+tf <- read.csv("data/Maize_TFome_Bulk_data.csv")
+dim(tf)
+tf <- subset(tf, Gene.model != "")
+
+tem <- subset(t5, Freq >0)
+out <- merge(tem, tf, by.x="Var1", by.y="Gene.model")
+
+mx <- matrix(c(63, 1135-63, 2034-63, 38000-1135+63), byrow=T, nrow=2)
+chisq.test(mx)
+```
+
+## TF from NC paper
+
+
+```{r}
+tf <- read.csv("data/NC_Supplementary_Data_1.csv")
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
