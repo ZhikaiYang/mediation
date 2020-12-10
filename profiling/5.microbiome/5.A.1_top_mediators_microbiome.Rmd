@@ -1,0 +1,78 @@
+---
+title: "Master Med genes: top mediator genes"
+author: "Jinliang Yang"
+date: "09-22-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+```{r}
+f <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output", pattern="fixed_mediator_T[[0-9]", full.names = T)
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$file  <- gsub(".*\\/", "", out$file)
+# method
+out$method <- gsub("_.*", "", out$file)
+# tissue type
+out$tissue <- gsub(".*_ts_|.csv", "", out$file)
+table(out$tissue)
+# trait
+out$trait <- gsub(".*mediator_|_ts.*", "", out$file)
+table(out$trait)
+
+out$treatment <- gsub(".*_", "", out$trait)
+out$trait <- gsub("_.*", "", out$trait)
+write.table(out, "cache/microbiome_mediators_34155rows.csv", sep=",", row.names=FALSE, quote=FALSE)
+```
+
+
+### read in data
+
+select the top mediators!
+
+```{r}
+mg <- read.csv("cache/microbiome_mediators_34155rows.csv")
+
+## freq of the mediators
+mgt <- data.frame(table(mg$id))
+mgt <- mgt[order(mgt$Freq, decreasing = T),]
+```
+
+
+#### +N
+
+```{r}
+library("tidyr")
+np <- subset(mg, treatment %in% "stdN")
+
+out1 <- data.frame(table(np$id)) 
+out1 <-  out1[order(out1$Freq, decreasing = T),]
+```
+
+
+#### -N
+
+```{r}
+nm <- subset(mg, treatment %in% "lowN")
+
+out2 <- data.frame(table(nm$id)) 
+out2 <-  out2[order(out2$Freq, decreasing = T),]
+
+```
+
+
+
+
