@@ -177,6 +177,7 @@ dev.off()
 
 
 ### enrichment test
+#snpsize_feature:num_p7msnps_overlapped, p7msnps_overlapped ratio
 #p7msnps_gup5k: 77704, 0.111556
 #p7msnps_gdown5k: 76409, 0.1096968
 #p7msnps_f_gene: 65479, 0.09400514
@@ -236,7 +237,7 @@ write.table(dmr_overlap_fixed, "largedata/isnps_vs_feature/dmr_overlap_fixed.csv
 
 
 ```
-### pie chart visual of p-chisq
+###  bar plot visual of p-chisq
 ```{r}
 
 f_gene_overlap_fixed = fread("largedata/isnps_vs_feature/f_gene_overlap_fixed.csv")

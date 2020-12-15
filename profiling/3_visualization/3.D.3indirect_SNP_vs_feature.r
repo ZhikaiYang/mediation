@@ -1,5 +1,5 @@
 library(data.table)
-
+library(dplyr)
 
 f <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/", pattern="indirect_", full.names = T)
 
@@ -38,6 +38,11 @@ table(gff$feature)
 g <- subset(gff, feature %in% "gene")
 g$geneid <- gsub(".*gene:|;biotype.*", "", g$att)
 
+### Get 5' utr and upstream 5kb regions
+utr5 = subset(gff, feature %in% "five_prime_UTR")
+utr5$geneid = gsub(".*transcript:|_T.*", "", utr5$att)
+utr5$seq = as.integer(utr5$seq)
+
 ### + strand
 gp <- subset(g, strand %in% "+") 
 
@@ -52,19 +57,46 @@ gp_down <- gp
 gp_down$start <- gp_down$end + 1
 gp_down$end <- gp_down$start + 5000 
 
+
+### - strand
 gm <- subset(g, strand %in% "-") 
 
 
-### get the 5k upstream of the + strand gene model
+### get the 5k upstream of the - strand gene model
 gm_up <- gm
 gm_up$start <- gm_up$end + 1
 gm_up$end <- gm_up$start + 5000 
 
-### get the 5k downstream of the + strand gene model
+### get the 5k downstream of the - strand gene model
 gm_down <- gm
 gm_down$end <- gm_down$start - 1
 gm_down$start <- gm_down$end - 5000 
 
+
+
+### + strand
+utr5p <- subset(utr5, strand %in% "+") 
+
+
+### get the 5k upstream of the + strand utr5
+utr5p_up <- as.data.frame(utr5p %>% group_by(geneid) %>% summarise(seq = mean(seq), start = min(start), end = max(end)) )
+utr5p_up$end <- utr5p_up$start - 1
+utr5p_up$start <- utr5p_up$end - 5000 
+utr5p_up$strand = "+"
+
+
+### - strand
+utr5m <- subset(utr5, strand %in% "-") 
+
+### get the 5k upstream of the - strand utr5
+utr5m_up <- as.data.frame(utr5m %>% group_by(geneid) %>% summarise(seq = mean(seq), start = min(start), end = max(end)) )
+utr5m_up$start <- utr5m_up$end + 1
+utr5m_up$end <- utr5m_up$start + 5000 
+utr5m_up$strand = "-"
+
+
+
+###output
 
 gup <- rbind(gp_up, gm_up)
 fwrite(gup, "largedata/isnps_vs_feature/gene_up5k.txt", sep="\t", row.names = FALSE, quote=FALSE)
@@ -73,6 +105,10 @@ gdown <- rbind(gp_down, gm_down)
 fwrite(gdown, "largedata/isnps_vs_feature/gene_down5k.txt", sep="\t", row.names = FALSE, quote=FALSE)
 
 fwrite(g, "largedata/isnps_vs_feature/gene.txt", sep="\t", row.names = FALSE, quote=FALSE)
+
+
+utr5up = rbind(utr5p_up, utr5m_up)
+fwrite(utr5up, "largedata/isnps_vs_feature/utr5up5k.txt", sep="\t", row.names = FALSE, quote=FALSE)
 
 
 library("GenomicRanges")
