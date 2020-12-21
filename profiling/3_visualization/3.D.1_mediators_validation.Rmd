@@ -54,8 +54,316 @@ write.table(out, "cache/mediators_23296rows.csv", sep=",", row.names=FALSE, quot
 ### Filter non-significant ones
 
 ```{r}
+library(data.table)
+
+ag_trait <- fread("data/geno_trait.txt")
+m_trait <- fread("data/metabolite_rep1_genotype_namecorrect.txt")
+trait_category <- data.frame(category = "other", trait = c(colnames(ag_trait)[-1], colnames(m_trait)[-1]))
+
+trait_category$category[c(3,4,11:13,38)]= "Flowering Time"
+trait_category$category[c(6,23)]= "Development"
+trait_category$category[c(15,16,36)]= "Leaf Morphology"
+trait_category$category[c(32,33)]= "Male Inflorescence"
+trait_category$category[c(1,7,9,8)]= "Female Inflorescence"
+trait_category$category[c(2,10,35,37,39,40)]= "Seed Traits"
+trait_category$category[41:106]= "Metabolite"
+
+
 m <- read.csv("cache/mediators_23296rows.csv")
+
+trait_t = table(m$trait)
+trait_t = as.data.frame(trait_t)
+
+trait_c_t = table(trait_category$category)
+trait_c_t = as.data.frame(trait_c_t)
+
+m = merge(m, trait_category, by = "trait")
+
+idx = which(m$id == "GRMZM2G171650")
+mads56 = m[idx,c(1,2,6,9,10,11)]
+mads56fixed = subset(mads56, method == "res.fixed")
+mads56fixeds = mads56fixed[,c(6,1,5,3)]
+library(dplyr)
+mads56fixeds = arrange(mads56fixeds, category, trait, tissue, padj)
+mads56fixeds_sig = subset(mads56fixeds, padj <= 0.05)
+
+
+ms = m[,c(1,2,6,9,10,11)]
+mfixed = subset(ms, method == "res.fixed")
+mfixed = mfixed[,c(6,1,5,2,3)]
+mfixed = mfixed[,c(4,1,2,3,5)]
+mfixed = arrange(mfixed, id, category, trait, tissue, padj)
+
+mfixed_sig = subset(mfixed, padj <= 0.05)
+siggene_freq = as.data.frame(table(mfixed_sig$id))
+siggene_freq = arrange(siggene_freq, desc(Freq))
+
+
+trait_medi_num = as.data.frame(table(mfixed$trait))
+trait_medi_num = arrange(trait_medi_num, desc(Freq))
+
+trait_sig_medi_num = as.data.frame(table(mfixed_sig$trait))
+trait_sig_medi_num = arrange(trait_sig_medi_num, desc(Freq))
+
+cat_trait_medinum = merge(trait_category, trait_medi_num, by.x = "trait", by.y = "Var1")
+cat_trait_medinum = cat_trait_medinum[, c(2,1,3)]
+cat_trait_medinum = arrange(cat_trait_medinum, category)
+colnames(cat_trait_medinum)[3] = "num_mediators"
+write.table(cat_trait_medinum, "data/supplementary/cat_trait_medinum.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+cat_trait_sig_medinum = merge(trait_category, trait_sig_medi_num, by.x = "trait", by.y = "Var1")
+cat_trait_sig_medinum = cat_trait_sig_medinum[, c(2,1,3)]
+cat_trait_sig_medinum = arrange(cat_trait_sig_medinum, category)
+colnames(cat_trait_sig_medinum)[3] = "num_mediators"
+write.table(cat_trait_sig_medinum, "data/supplementary/cat_trait_sig_medinum.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+
+
+for (i in 1:nrow(trait_c_t)) {
+  idx = which(m$category == trait_c_t$Var1[i])
+  fd = paste0("largedata/go/", trait_c_t$Var1[i], ".txt")
+  write(unique(m$id[idx]), file = fd, sep = "\n")
+}
+
+Development = fread("largedata/go/Development_1.txt")
+
 m5 <- subset(m, padj < 0.05)
+
+for (i in 1:nrow(trait_c_t)) {
+  idx = which(m5$category == trait_c_t$Var1[i])
+  fd = paste0("largedata/go/", trait_c_t$Var1[i], "_p5.txt")
+  write(unique(m5$id[idx]), file = fd, sep = "\n")
+}
+
+############READ GO RESULT METHOD 2 ############
+f <- list.files(path="largedata/go/", pattern="_2", full.names = T)
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- fread(f[i], header=TRUE)
+  tem$file <- f[i]
+  print(i)
+  out <- rbind(out, tem)
+}
+
+out$file  <- gsub(".*\\/", "", out$file)
+out$category  <- gsub("_2.*", "", out$file)
+
+idx = grep("_p5", out$category)
+go2 = out[-idx,]
+gop52 = out[idx,]
+
+gop52$category = gsub("_p5", "", gop52$category)
+
+go2sig = subset(go2, FDR <0.05)
+gop52sig = subset(gop52, FDR < 0.05)
+
+############READ GO RESULT METHOD 2 ############
+
+f <- list.files(path="largedata/go/", pattern="_1", full.names = T)
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- fread(f[i], header=TRUE)
+  tem$file <- f[i]
+  print(i)
+  out <- rbind(out, tem)
+}
+
+out$file  <- gsub(".*\\/", "", out$file)
+out$category  <- gsub("_1.*", "", out$file)
+
+idx = grep("_p5", out$category)
+go1 = out[-idx,]
+gop51 = out[idx,]
+
+gop51$category = gsub("_p5", "", gop51$category)
+
+go1sig = subset(go1, FDR <0.05)
+gop51sig = subset(gop51, FDR < 0.05)
+
+########################
+
+library(ggplot2)
+
+
+Development = subset(go1sig, category == "Development")
+
+fsize =18
+p1 = ggplot(Development, aes(x = Term, -log(pvalue))) +
+    geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+    coord_flip() +
+    ggtitle("Development")+
+    xlab("") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+
+
+Female_Inflorescence = subset(go1sig, category == "Female Inflorescence")
+
+
+p2 = ggplot(Female_Inflorescence, aes(x = Term, y = -log(pvalue))) +
+    geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+    coord_flip() +
+    ggtitle("Female Inflorescence")+
+    xlab("") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+
+Flowering_Time = subset(go1sig, category == "Flowering Time")
+
+
+p3 = ggplot(Flowering_Time, aes(x = Term, y=-log(pvalue))) +
+    geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+    coord_flip() +
+    ggtitle("Flowering Time")+
+    xlab("") +
+    
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=14, face="bold"),
+          strip.text.x = element_text(size = 14, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+
+Metabolite = subset(go1sig, category == "Metabolite")
+
+p4 = ggplot(Metabolite, aes(x = Term, -log(pvalue))) +
+    geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+    coord_flip() +
+    ggtitle("Metabolite")+
+    xlab("") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=10, face="bold"),
+          strip.text.x = element_text(size = 10, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+
+other = subset(go1sig, category == "other")
+
+
+p5 = ggplot(other, aes(x = Term, y=-log(pvalue))) +
+    geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+    coord_flip() +
+    ggtitle("other")+
+    xlab("") +
+    
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=14, face="bold"),
+          strip.text.x = element_text(size = 14, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+Seed_Traits = subset(go1sig, category == "Seed Traits")
+
+
+p6 = ggplot(Seed_Traits, aes(x = Term, y=-log(pvalue))) +
+    geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+    coord_flip() +
+    ggtitle("Seed Traits")+
+    xlab("") +
+    
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=14, face="bold"),
+          strip.text.x = element_text(size = 14, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+Male_Inflorescence = subset(go1sig, category == "Male Inflorescence")
+
+
+p7 = ggplot(Male_Inflorescence, aes(x = Term, y = -log(pvalue))) +
+    geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+    coord_flip() +
+    ggtitle("Male Inflorescence")+
+    xlab("") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=12, face="bold"),
+          strip.text.x = element_text(size = 12, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+library("ggpubr")
+library(gridExtra)
+ggarrange(p2,p7, nrow =1, ncol = 2)
+
+#####0.05 significant visual####
+Flowering_Time = subset(gop51sig, category == "Flowering Time")
+
+
+p8 = ggplot(Flowering_Time, aes(x = Term, y=-log(pvalue))) +
+    geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+    coord_flip() +
+    ggtitle("Flowering Time")+
+    xlab("") +
+    
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=14, face="bold"),
+          strip.text.x = element_text(size = 14, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+
+Metabolite = subset(gop51sig, category == "Metabolite")
+
+p9 = ggplot(Metabolite, aes(x = Term, -log(pvalue))) +
+    geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+    coord_flip() +
+    ggtitle("Metabolite")+
+    xlab("") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+
+Leaf_Morphology = subset(gop51sig, category == "Leaf Morphology")
+
+p10 = ggplot(Leaf_Morphology, aes(x = Term, -log(pvalue))) +
+    geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+    coord_flip() +
+    ggtitle("Leaf Morphology")+
+    xlab("") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+
+
+
+
 # nrow(m5) 2751
 m1 <- subset(m, padj < 0.01)
 # 1567
