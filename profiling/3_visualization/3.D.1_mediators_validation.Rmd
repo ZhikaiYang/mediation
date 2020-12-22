@@ -94,6 +94,14 @@ mfixed = mfixed[,c(6,1,5,2,3)]
 mfixed = mfixed[,c(4,1,2,3,5)]
 mfixed = arrange(mfixed, id, category, trait, tissue, padj)
 
+gene_freq = as.data.frame(table(mfixed$id))
+gene_freq = arrange(gene_freq, desc(Freq))
+gene_freq_g2 = subset(gene_freq, Freq >= 2)
+idx = which(mfixed$id %in% gene_freq_g2$Var1)
+mfixed_g2 = mfixed[idx, ]
+write.table(mfixed_g2, "data/supplementary/mfixed_g2.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+
 mfixed_sig = subset(mfixed, padj <= 0.05)
 siggene_freq = as.data.frame(table(mfixed_sig$id))
 siggene_freq = arrange(siggene_freq, desc(Freq))
