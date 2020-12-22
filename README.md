@@ -11,11 +11,15 @@ For simplicity, the result files needed for manhattan plot for GWAS are moved in
 
 # Results
 
-### data
+### Meidation analysis results
 
 - direct SNP `data/`
 - indirect SNP `data/`
 - mediator genes `data/`
+
+### GWAS results
+
+- GWAS `crane/path/`
 
 # For Mediation analysis, the code is in 2_mediation folder;
 
