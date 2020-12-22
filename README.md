@@ -19,8 +19,8 @@ For simplicity, the result files needed for manhattan plot for GWAS are moved in
 
 ### GWAS results
 raw data:
-- agronomic triats GWAS :`/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/output`
-- metabolomics triats GWAS : `/common/jyanglab/shared/Gen_Xu/282_metabolite/output`
+- agronomic traits GWAS :`/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/output`
+- metabolomics traits GWAS : `/common/jyanglab/shared/Gen_Xu/282_metabolite/output`
 
 processed data:
 
