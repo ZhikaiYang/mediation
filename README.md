@@ -11,7 +11,7 @@ For simplicity, the result files needed for manhattan plot for GWAS are moved in
 
 # Results
 
-### Meidation analysis results
+### Mediation analysis results
 
 - direct SNP `data/`
 - indirect SNP `data/`
