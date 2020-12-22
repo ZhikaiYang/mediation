@@ -1,4 +1,4 @@
-The code for this project is in profiling folder;
+# The code for this project is in profiling folder;
 
 inside of it, there are 1_GWAS folder, which holds the code for doing GWAS:
 
@@ -9,9 +9,12 @@ To carry out the analysis, some part of the code needs to be adjusted like the p
 For simplicity, the result files needed for manhattan plot for GWAS are moved into data folder.
 
 
+# Results
 
 
-For Mediation analysis, the code is in 2_mediation folder;
+
+
+# For Mediation analysis, the code is in 2_mediation folder;
 
 there is no specific order for each R code, and they were run in high performance computing environment, and the jobs are submited with their corresponding slurm files;
 To carry out the analysis, some part of the code needs to be adjusted like the path.
