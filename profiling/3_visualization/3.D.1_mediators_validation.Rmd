@@ -78,6 +78,7 @@ trait_c_t = table(trait_category$category)
 trait_c_t = as.data.frame(trait_c_t)
 
 m = merge(m, trait_category, by = "trait")
+write.table(m, "data/input/mediators_23296rows_by_cat.csv", sep=",", row.names=FALSE, quote=FALSE)
 
 idx = which(m$id == "GRMZM2G171650")
 mads56 = m[idx,c(1,2,6,9,10,11)]
