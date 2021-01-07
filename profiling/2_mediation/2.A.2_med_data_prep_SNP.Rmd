@@ -46,7 +46,48 @@ fwrite(pc[,-2],"largedata/All_Merged_1.25M_MAF0.05_AGPV4.eigenvec",sep="\t", na 
 
 ```
 
+```{bash}
+module load plink
+cd /common/jyanglab/zhikaiyang/projects/mediation/largedata/geno
+##Convert binary file to VCF using plink
+plink --bfile hmp321_282_agpv4_maf005_miss03_pruned --recode vcf-iid --out hmp321_282_agpv4_maf005_miss03_pruned
 
+module load perl
+perl subs_NA_0.pl
+```
+
+
+#preparation for the new geno data
+```{r}
+
+library(data.table)
+library(Ropt)
+
+trait=fread("trait_GDDDaystoSilk.txt", header=T,data.table=F)
+#pheno <- fread("/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/phenotype_282_GEMMA_sure.txt")
+#trait$GDDDaystoSilk <- as.vector(unlist(pheno[,12]))
+d=fread("hmp321_282_agpv4_maf005_miss03_pruned.vcf1", header=F,data.table=F)
+d1=t(d)
+mk=colnames(d1)=d1[1,]
+colnames(d1)[1]="Genotype"
+d1=d1[-1,]
+d2=as.data.frame(d1,stringsAsFactors =F)
+d3=as.data.frame(d1)
+id = which(d3$Genotype == "W64a")
+d3$Genotype = as.character(d3$Genotype)
+d3$Genotype[id] = "W64A"
+d4=merge(trait, d3, by="Genotype")
+out="gddtosilk_p7msnps_matrix_new.txt"
+fwrite(d4,"gddtosilk_p7msnps_matrix_new.txt",sep="\t",col.names = T,row.names = F,quote=F)
+
+
+
+pc <- fread("largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned.eigenvec", data.table = FALSE)
+id = which(pc$V1 == "W64a")
+pc$V1[id] = "W64A"
+pc$V2[id] = "W64A"
+fwrite(pc,"largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned.eigenvec",sep="\t",col.names = F, row.names = F, quote=F)
+```
 
 -----
 ignore the below code!
