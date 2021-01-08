@@ -17,10 +17,10 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 
 ```{r}
 rfile <- list.files(path="largedata/RNA-seq", pattern="csv", full.names=TRUE)
-trait <- read.delim("data/geno_trait.txt", header=T)
+trait <- read.delim("data/metabolite_rep1_genotype_namecorrect.txt", header=T)
 rfile = rfile[1:7] # remove P368
-df <- data.frame(rnafile=rep(rfile, each=40), trait=rep(2:41, times=7))
-write.table(df, "largedata/df_job_control_ag.csv", sep=",", row.names=FALSE, quote=FALSE)
+df <- data.frame(rnafile=rep(rfile, each=66), trait=rep(2:67, times=7))
+write.table(df, "largedata/df_job_control_metabolite.csv", sep=",", row.names=FALSE, quote=FALSE)
 
 ```
 
@@ -28,7 +28,7 @@ write.table(df, "largedata/df_job_control_ag.csv", sep=",", row.names=FALSE, quo
 
 ```{r}
 library("huskeR")
-run_Rcode(inputdf=data.frame(file=1:280, out=NA), outdir="slurm-script", cmdno = 10, 
+run_Rcode(inputdf=data.frame(file=1:462, out=NA), outdir="slurm-script", cmdno = 10, 
           rcodes = "profiling/2_mediation/2.B.1_setup_med_job.R",
           rversion="3.5",
           base_shid = "med_test",
