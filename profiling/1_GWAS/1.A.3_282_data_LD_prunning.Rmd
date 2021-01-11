@@ -1,8 +1,8 @@
 ---
 title: "Heavy SNP filteration using LD prunning"
 output: NULL
-date: 04-22-2020
-author: "Zhikai Yang & Jinliang Yang"
+date: 04-01-2019
+author: "Jinliang Yang"
 ---
 
 ```{r setup}
@@ -24,8 +24,6 @@ plink --bfile allchr_bisnp_n282_snpid_maf01_geno2  --ld-window 10 --ld-window-kb
 ## Plot LD decay
 
 ```{r}
-#should be done in high performance computing environment
-
 library(data.table)
 ld <- fread("largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2.ld", data.table=FALSE)
 ld$dis <- ld$BP_B - ld$BP_A
@@ -81,15 +79,41 @@ dev.off()
 ```{bash, eval=FALSE}
 cd largedata/geno_282
 
+plink -bfile allchr_bisnp_n282_snpid_maf01_geno2 --indep-pairwise 10 10 0.1 --out allchr_bisnp_n282_snpid_maf01_geno2_pr1
+# from 20724054 to 7877228
+plink -bfile allchr_bisnp_n282_snpid_maf01_geno2 --indep-pairwise 100 10 0.1 --out allchr_bisnp_n282_snpid_maf01_geno2_pr1
+# from 20724054 to 1883640
+plink -bfile allchr_bisnp_n282_snpid_maf01_geno2 --indep-pairwise 1 kb 10 0.1 --out allchr_bisnp_n282_snpid_maf01_geno2_pr1
+# from 20724054 to 4730579
+plink -bfile allchr_bisnp_n282_snpid_maf01_geno2 --indep-pairwise 10 kb 10 0.1 --out allchr_bisnp_n282_snpid_maf01_geno2_pr1
+# from 20724054 to 1887590
+plink -bfile allchr_bisnp_n282_snpid_maf01_geno2 --indep-pairwise 10 kb 100 0.1 --out allchr_bisnp_n282_snpid_maf01_geno2_pr2e6
+# from 20724054 to 4102736
+plink -bfile allchr_bisnp_n282_snpid_maf01_geno2 --indep-pairwise 10 kb 100 0.2 --out allchr_bisnp_n282_snpid_maf01_geno2_pr1
+# from 20724054 to 4686214
+plink -bfile allchr_bisnp_n282_snpid_maf01_geno2 --indep-pairwise 100 kb 10 0.2 --out allchr_bisnp_n282_snpid_maf01_geno2_pr1
+# 1315636
 plink -bfile allchr_bisnp_n282_snpid_maf01_geno2 --indep-pairwise 100 kb 10 0.1 --out allchr_bisnp_n282_snpid_maf01_geno2_pr1
 # 696547
-
 plink -bfile allchr_bisnp_n282_snpid_maf01_geno2 --indep-pairwise 100 kb 10 0.032 --out allchr_bisnp_n282_snpid_maf01_geno2_pr1_0.032
 # 111961
+
+plink -bfile allchr_bisnp_n282_snpid_maf01_geno2 --indep-pairwise 100 kb 10 0.066 --out allchr_bisnp_n282_snpid_maf01_geno2_pr1_0.066
+# 411523
+
+plink -bfile allchr_bisnp_n282_snpid_maf01_geno2 --indep-pairwise 10 kb 10 0.1 --out allchr_bisnp_n282_sn
+pid_maf01_geno2_pr1_10100.1
+# from 20724054 to 1887590
+
+
+########### New Genotype #############
+
+plink -bfile hmp321_282_agpv4_maf005_miss03 --indep-pairwise 10 kb 10 0.1 --out hmp321_282_agpv4_maf005_miss03_pr1
+#769690
 ```
 
 
-### Extract the prune in SNPs
+### Exact the prune in SNPs
 
 ```{bash, eval=FALSE}
 cd largedata/geno_282
@@ -98,6 +122,46 @@ plink -bfile  allchr_bisnp_n282_snpid_maf01_geno2 --extract allchr_bisnp_n282_sn
 
 plink -bfile  allchr_bisnp_n282_snpid_maf01_geno2 --extract allchr_bisnp_n282_snpid_maf01_geno2_pr1_0.032.prune.in --make-bed --out allchr_bisnp_n282_snpid_maf01_geno2_0.032_pruned
 
+
+plink -bfile  allchr_bisnp_n282_snpid_maf01_geno2 --extract allchr_bisnp_n282_snpid_maf01_geno2_pr1_0.066.prune.in --make-bed --out allchr_bisnp_n282_snpid_maf01_geno2_0.066_pruned
+
+plink -bfile  allchr_bisnp_n282_snpid_maf01_geno2 --extract allchr_bisnp_n282_snpid_maf01_geno2_pr1_10100.1.prune.in --make-bed --out allchr_bisnp_n282_snpid_maf01_geno2_10100.1_pruned
+
+###subsample SNPs to same size(111961 from 696547)
+
+snp_pr1 <- fread("./largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pr1.prune.in", header = FALSE, data.table=FALSE)
+
+set.seed(1234)
+sam_1 <- sample(696547, size = 111961, replace = FALSE)
+sam_1 <- sort(sam_1)
+sam_2 <- sample(696547, size = 111961, replace = FALSE)
+sam_2 <- sort(sam_2)
+sam_3 <- sample(696547, size = 111961, replace = FALSE)
+sam_3 <- sort(sam_3)
+
+
+###subsample SNPs to same size(1M from 20M)
+
+set.seed(1234)
+snps <- fread("./largedata/geno_282/20MSNPS.txt", header = FALSE, data.table=FALSE)
+SNP_1M <- sample(20724054, size = 1000000, replace = FALSE)
+SNP_1M <- sort(SNP_1M)
+
+fwrite(as.list(snp_pr1[sam_1, ]), "./largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pr1_sam_1.txt", sep="\n", row.names=FALSE, col.names = FALSE, quote=FALSE)
+
+fwrite(as.list(snps[SNP_1M, ]), "SNP_1M.txt", sep="\n", row.names=FALSE, col.names = FALSE, quote=FALSE)
+
+snp_pr1_sam_1 <- fread("./largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pr1_sam_1.txt", header = FALSE, data.table=FALSE)
+
+plink -bfile  allchr_bisnp_n282_snpid_maf01_geno2 --extract allchr_bisnp_n282_snpid_maf01_geno2_pr1_sam_1.txt --make-bed --out allchr_bisnp_n282_snpid_maf01_geno2_pr1_sam_1
+
+plink -bfile  allchr_bisnp_n282_snpid_maf01_geno2 --extract SNP_1M.txt --make-bed --out allchr_bisnp_n282_snpid_maf01_1M
+
+
+
+########### New Genotype #############
+
+plink -bfile  hmp321_282_agpv4_maf005_miss03 --extract hmp321_282_agpv4_maf005_miss03_pr1.prune.in --make-bed --out hmp321_282_agpv4_maf005_miss03_pruned
 
 
 ```

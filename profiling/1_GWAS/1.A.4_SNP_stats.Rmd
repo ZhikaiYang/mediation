@@ -1,8 +1,8 @@
 ---
 title: "Post prunning statistics"
 output: NULL
-date: 04-22-2020
-author: "Zhikai Yang & Jinliang Yang"
+date: 04-01-2019
+author: "Jinliang Yang"
 ---
 
 ```{r setup}
@@ -22,13 +22,14 @@ module load plink
 plink -bfile allchr_bisnp_n282_snpid_maf01_geno2_pruned --freq --missing --out allchr_bisnp_n282_snpid_maf01_geno2_pruned
 
 
+######## NEW GENOTYPE #############
+
+plink -bfile hmp321_282_agpv4_maf005_miss03_pruned --freq --missing --out hmp321_282_agpv4_maf005_miss03_pruned
+
 ```
 
 ```{r}
-#should be done in high performance computing environment
-
 ## Plot MAF and Missingness
-
 library("data.table")
 
 maf <- fread("largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned.frq", header=TRUE)
@@ -46,16 +47,36 @@ abline(v=0.6, lty=2, col="red", lwd=3)
 abline(v=0.2, lty=2, col="red", lwd=3)
 dev.off()
 
+
+######## NEW GENOTYPE #############
+
+maf <- fread("hmp321_282_agpv4_maf005_miss03_pruned.frq", header=TRUE)
+lmiss <- fread("hmp321_282_agpv4_maf005_miss03_pruned.lmiss", header=TRUE)
+
+
+pdf("hmp321_282_agpv4_maf005_miss03_pruned_maf_lmiss.pdf", width = 10, height=5)
+par(mfrow=c(1,2))
+hist(maf$MAF, breaks=100, col="#cdb79e", main="MAF (SNP = 769,690)", xlab="Minor Allele Freq")
+abline(v=0.01, lty=2, col="black", lwd=3)
+abline(v=0.05, lty=2, col="red", lwd=3)
+
+hist(lmiss$F_MISS, breaks=100, col="#cdb79e", main="Missingness (SNP = 769,690)", xlab="Missing Rate")
+abline(v=0.6, lty=2, col="red", lwd=3)
+abline(v=0.2, lty=2, col="red", lwd=3)
+dev.off()
+
 ```
 ----
 ```{bash, eval=FALSE}
 # LD decay
 plink --bfile allchr_bisnp_n282_snpid_maf01_geno2_pruned  --ld-window 10 --ld-window-kb 100 --r2 --ld-window-r2 0  --out allchr_bisnp_n282_snpid_maf01_geno2_pruned
+
+######## NEW GENOTYPE #############
+plink --bfile hmp321_282_agpv4_maf005_miss03_pruned  --ld-window 10 --ld-window-kb 100 --r2 --ld-window-r2 0  --out hmp321_282_agpv4_maf005_miss03_pruned
+
 ```
 
 ```{r}
-#should be done in high performance computing environment
-
 ## Plot LD decay
 
 library(data.table)
@@ -96,6 +117,51 @@ p2 <- ggplot(df, aes(x=dis, y=meanr2)) +
   #########
 p2
 dev.off()
+
+
+
+######## NEW GENOTYPE #############
+
+ld <- fread("hmp321_282_agpv4_maf005_miss03_pruned.ld", data.table=FALSE)
+ld$dis <- ld$BP_B - ld$BP_A
+# summarize for each bp distance, the mean R2 
+ld <- as.data.table(ld)
+
+df <- ld[,.(meanr2=mean(R2), sd=sd(R2)), by=dis]
+write.table(df, "hmp321_282_agpv4_maf005_miss03_pruned_ld_mean_sd.csv", sep=",", quote=FALSE)
+
+df <- read.csv("hmp321_282_agpv4_maf005_miss03_pruned_ld_mean_sd.csv")
+library(ggplot2)
+
+pdf("hmp321_282_agpv4_maf005_miss03_pruned_LD_decay.pdf", width = 10, height=5)
+par(mfrow=c(1,2))
+p1 <- ggplot(df, aes(x=dis, y=meanr2)) +
+    #facet_grid(. ~ type) +
+    geom_point(size=2) +
+    geom_smooth(method='gam') +
+    theme_bw() +
+    xlab("physitcal distance") +
+    ylab("LD (r2)") +
+    theme(axis.text=element_text(size=12), axis.title=element_text(size=15) )
+  #########
+p1
+
+df <- as.data.frame(df)
+df <- subset(df, dis < 5000)
+p2 <- ggplot(df, aes(x=dis, y=meanr2)) +
+    #facet_grid(. ~ type) +
+    geom_point(size=2) +
+    geom_smooth(method='loess') +
+    theme_bw() +
+    xlab("physitcal distance") +
+    ylab("LD (r2)") +
+    theme(axis.text=element_text(size=12), axis.title=element_text(size=15) )
+  #########
+p2
+dev.off()
+
+
+
 ```
 ### PCs
 
@@ -110,6 +176,12 @@ By default, --pca extracts the top 20 principal components of the variance-stand
 cd largedata/geno_282
 
 plink -bfile allchr_bisnp_n282_snpid_maf01_geno2_pruned --pca 'tabs' --out allchr_bisnp_n282_snpid_maf01_geno2_pruned
+
+######## NEW GENOTYPE #############
+
+plink -bfile hmp321_282_agpv4_maf005_miss03_pruned --pca 'tabs' --out hmp321_282_agpv4_maf005_miss03_pruned
+
+
 ```
 
 
@@ -118,8 +190,6 @@ plink -bfile allchr_bisnp_n282_snpid_maf01_geno2_pruned --pca 'tabs' --out allch
 ### Plot 3D PCA
 
 ```{r}
-#should be done in high performance computing environment
-
 library(ggplot2)
 library(cowplot)
 library(plyr)
@@ -131,7 +201,6 @@ df <- read.delim("cache/allchr_bisnp_n282_snpid_maf01_geno2_pruned.eigenvec", he
 names(df)[3:5] <- c("PC1", "PC2", "PC3")
 
 
-
 #install.packages("scatterplot3d")
 library("scatterplot3d") # load
 
@@ -140,6 +209,72 @@ fsize=16
 pdf("graphs/Fig_pca1-3_maize.pdf", width=10, height=10)
 scatterplot3d(df[,3:5], pch = 16, cex.symbol=1.2, color="#00BFC4", main="Maize Diversity Panel", angle=40)
 dev.off()
+
+
+
+scatterplot3d(iris[,1:3], pch = shapes)
+sub_pop <- read.delim("largedata/geno_282/sub_pop_282.csv", sep = ",",header=T)
+sub_pop = sub_pop[,c(1,9)]
+df_sub_pop = merge(df, sub_pop, by.x = "V2", by.y = "Inbred", all.x = T)
+df_sub_pop = df_sub_pop[,c(1,3,4,5,23)]
+df_sub_pop$Subpopulation = as.factor(df_sub_pop$Subpopulation)
+shapes = c(16, 17, 18, 19, 20, 21) 
+shapes <- shapes[as.numeric(as.factor(df_sub_pop$Subpopulation))]
+colors =  c("#CC0033", "#FF9900", "#CCCC00", "#00FF00", "#3399FF", "#00FFFF")
+colors <- colors[as.numeric(as.factor(df_sub_pop$Subpopulation))]
+
+s3d = scatterplot3d(df_sub_pop[,2:4], pch = 16, color=colors, grid=TRUE, box=FALSE)
+legend("right", legend = levels(df_sub_pop$Subpopulation),
+      col =  c("#CC0033", "#FF9900", "#CCCC00", "#00FF00", "#3399FF", "#00FFFF"), pch = 16 )
+
+pdf("graphs/Fig_pca1-3_maize_color.pdf", width=10, height=10)
+s3d = scatterplot3d(df_sub_pop[,2:4], pch = 16, color=colors, grid=TRUE, box=FALSE)
+legend("right", legend = levels(df_sub_pop$Subpopulation),
+      col =  c("#CC0033", "#FF9900", "#CCCC00", "#00FF00", "#3399FF", "#00FFFF"), pch = 16 )
+dev.off()
+
+
+######## NEW GENOTYPE #############
+
+df <- read.delim("largedata/gwas/hmp321_282_agpv4_maf005_miss03_pruned.eigenvec", header=FALSE)
+#write.table(df, "cache/allchr_bisnp_n282_snpid_maf01_geno2_pruned.eigenvec", se="\t", row.names=FALSE, quote=FALSE)
+
+#df <- read.delim("cache/allchr_bisnp_n282_snpid_maf01_geno2_pruned.eigenvec", header=TRUE)
+names(df)[3:5] <- c("PC1", "PC2", "PC3")
+
+
+#install.packages("scatterplot3d")
+library("scatterplot3d") # load
+
+fsize=16
+
+pdf("graphs/Fig_pca1-3_maize_new_genotype.pdf", width=10, height=10)
+scatterplot3d(df[,3:5], pch = 16, cex.symbol=1.2, color="#00BFC4", main="Maize Diversity Panel", angle=40)
+dev.off()
+
+
+
+#scatterplot3d(iris[,1:3], pch = shapes)
+sub_pop <- read.delim("largedata/geno_282/sub_pop_282.csv", sep = ",",header=T)
+sub_pop = sub_pop[,c(1,9)]
+df_sub_pop = merge(df, sub_pop, by.x = "V2", by.y = "Inbred", all.x = T)
+df_sub_pop = df_sub_pop[,c(1,3,4,5,23)]
+df_sub_pop$Subpopulation = as.factor(df_sub_pop$Subpopulation)
+shapes = c(16, 17, 18, 19, 20, 21) 
+shapes <- shapes[as.numeric(as.factor(df_sub_pop$Subpopulation))]
+colors =  c("#CC0033", "#FF9900", "#CCCC00", "#00FF00", "#3399FF", "#00FFFF")
+colors <- colors[as.numeric(as.factor(df_sub_pop$Subpopulation))]
+
+s3d = scatterplot3d(df_sub_pop[,2:4], pch = 16, color=colors, grid=TRUE, box=FALSE)
+legend("right", legend = levels(df_sub_pop$Subpopulation),
+      col =  c("#CC0033", "#FF9900", "#CCCC00", "#00FF00", "#3399FF", "#00FFFF"), pch = 16 )
+
+pdf("graphs/Fig_pca1-3_maize_color_new_genotype.pdf", width=10, height=10)
+s3d = scatterplot3d(df_sub_pop[,2:4], pch = 16, color=colors, grid=TRUE, box=FALSE)
+legend("right", legend = levels(df_sub_pop$Subpopulation),
+      col =  c("#CC0033", "#FF9900", "#CCCC00", "#00FF00", "#3399FF", "#00FFFF"), pch = 16 )
+dev.off()
+
 
 ```
 

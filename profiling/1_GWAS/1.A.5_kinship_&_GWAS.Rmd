@@ -10,6 +10,55 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 knitr::opts_chunk$set(warning=FALSE, message=FALSE, error=FALSE, echo=TRUE)
 ```
 
+#gwas input prep
+```{r}
+#PCA data input
+
+library(dplyr)
+
+trait <- read.delim("data/geno_trait.txt", header=T)
+df <- read.delim("largedata/gwas/hmp321_282_agpv4_maf005_miss03_pruned.eigenvec", header=FALSE)
+#write.table(df, "cache/allchr_bisnp_n282_snpid_maf01_geno2_pruned.eigenvec", se="\t", row.names=FALSE, quote=FALSE)
+
+#df <- read.delim("cache/allchr_bisnp_n282_snpid_maf01_geno2_pruned.eigenvec", header=TRUE)
+names(df)[1:5] <- c("new_name", "old_name","PC1", "PC2", "PC3")
+
+pc = cbind(1, df[,3:5])
+
+fwrite(pc,"largedata/gwas/PCA_new.txt",sep="\t",col.names = F, row.names = F, quote=F)
+
+
+#reorder pheno
+df = df[,2:3]
+df$PC1 = 1:nrow(df)
+
+pheno_new = merge(df, trait, by.x = "old_name", by.y = "genotype")
+
+pheno_new = arrange(pheno_new, PC1)
+
+fwrite(pheno_new[,3:ncol(pheno_new)],"largedata/gwas/phenotype_282_GEMMA_ag_new.txt",sep="\t",col.names = F, row.names = F,  na = "NA", quote=F)
+
+trait_name = data.frame(num = 1:40, trait = colnames(pheno_new)[3:ncol(pheno_new)])
+
+fwrite(trait_name, "largedata/gwas/traits_ag_new.txt", sep="\t",col.names = F, row.names = F,  na = "NA", quote=F )
+
+
+trait = read.delim("data/metabolite_rep1_genotype_namecorrect.txt", header=T)
+pheno_new = merge(df, trait, by.x = "old_name", by.y = "genotype")
+
+pheno_new = arrange(pheno_new, PC1)
+
+fwrite(pheno_new[,3:ncol(pheno_new)],"largedata/gwas/phenotype_282_GEMMA_metabolite_new.txt",sep="\t",col.names = F, row.names = F,  na = "NA", quote=F)
+
+trait_name = data.frame(num = 1:66, trait = colnames(pheno_new)[3:ncol(pheno_new)])
+fwrite(trait_name, "largedata/gwas/traits_metabolite_new.txt", sep="\t",col.names = F, row.names = F,  na = "NA", quote=F )
+
+
+
+```
+
+
+
 #kinship matrix from TASSEL
 ```{bash}
 ##Convert Hapmap to VCF using Tassel
@@ -23,6 +72,48 @@ plink --bfile allchr_bisnp_n282_snpid_maf01_geno2_pruned --recode vcf-iid --out 
 
 
 run_pipeline.pl -Xms30g -Xmx120g -vcf allchr_bisnp_n282_snpid_maf01_geno2_pruned.vcf -KinshipPlugin -method Centered_IBS -endPlugin -export Centered_IBS_kinship.txt -exportType SqrMatrix
+
+
+####### New Genotype #######
+run_pipeline.pl -Xms30g -Xmx120g -vcf hmp321_282_agpv4_maf005_miss03_pruned.vcf -KinshipPlugin -method Centered_IBS -endPlugin -export Centered_IBS_kinship_282_new.txt -exportType SqrMatrix
+
+
+```
+
+#deal with kinship matrix generated from Tassel  
+```{r}
+library(Ropt)
+infile="Centered_IBS_kinship_282_new.txt"
+  data=read.table(infile,skip=3,row=1)
+  data=as.matrix(data)
+   data[data<0.0001]=0
+   data[data>1]=1
+   data=round(data,3)
+   data=2*data
+   diag(data)=2
+  ofile="Centered_IBS_kinship_GEMMA_282_new.txt"
+  write.table(data,file=ofile,row.names=F,col.names=F,append=T)
+  
+  data = fread("largedata/gwas/Centered_IBS_kinship_GEMMA_282_new.txt")
+  
+kinship <- read.table(infile,skip=3,row=1)
+kinship <- as.matrix(kinship)
+col<- colorRampPalette(c("blue", "white", "red"))(20)
+heatmap(x = kinship, col = col, symm = TRUE)
+kinship_1 <- kinship[c(1,2,3,4,5), c(1,2,3,4,5)]
+heatmap(x = kinship_1, col = col, symm = TRUE)
+
+
+install.packages("gplots")
+install.packages("heatmap.plus")
+install.packages("RColorBrewer")
+
+library("gplots")
+library("heatmap.plus")
+library("RColorBrewer")
+
+
+
 
 ```
 
