@@ -129,9 +129,29 @@ trait_c_t = table(trait_category$category)
 trait_c_t = as.data.frame(trait_c_t)
 
 m = merge(m, trait_category, by = "trait")
+
+lin = c("Zm00001d030968", "Zm00001d049305", "Zm00001d039589", "Zm00001d038644", "Zm00001d036801", "Zm00001d034964", "Zm00001d020157", "Zm00001d013863", "Zm00001d042319", "Zm00001d033680", "Zm00001d045481", "Zm00001d006131", "Zm00001d006198", "Zm00001d032894", "Zm00001d017193", "Zm00001d011748", "Zm00001d010625", "Zm00001d006918", "Zm00001d034313", "Zm00001d049543", "Zm00001d017241", "Zm00001d006212", "Zm00001d021291", "Zm00001d045944", "Zm00001d034038", "Zm00001d033799", "Zm00001d028905", "Zm00001d013402" )
+V3_V4 <- fread("./largedata/V3_V4.csv", header = FALSE , data.table=FALSE)
+V3_V4 <- V3_V4[,c(1,2)]
+Zea_mays.AGPv4_anno <- fread("./largedata/Zea_mays.AGPv4_anno.txt", header = TRUE, data.table = FALSE)
+Zea_mays.AGPv4_anno <- data.frame(chr = Zea_mays.AGPv4_anno$chromosome_name, gene4 = Zea_mays.AGPv4_anno$ensembl_gene_id_v4, start4 = Zea_mays.AGPv4_anno$start_position, end4 = Zea_mays.AGPv4_anno$end_position, name = Zea_mays.AGPv4_anno$description)
+Zea_mays.AGPv34_anno <- merge(V3_V4, Zea_mays.AGPv4_anno, by.x = "V2", by.y = "gene4")
+Zea_mays.AGPv34_anno_s = subset(Zea_mays.AGPv34_anno, V2 %in% lin)
+V3_V4_s = subset(V3_V4, V2 %in% lin)
+
+which(flowering$id %in% V3_V4_s$V1)
+
+
+oldm = fread("data/input/mediators_23296rows_by_cat.csv")
+oldflowering = subset(oldm, category == "Flowering Time")
+which(oldflowering$id %in% V3_V4_s$V1)
+
+oldmads56 = subset(oldm, id == "GRMZM2G171650")
+
+length(which(m$id %in% oldm$id))
 #write.table(m, "data/input/mediators_23296rows_by_cat.csv", sep=",", row.names=FALSE, quote=FALSE)
 
-
+write.table(m, "largedata/mediators_18812rows_by_cat.csv", sep=",", row.names=FALSE, quote=FALSE)
 
 idx = which(m$id == "GRMZM2G171650")
 mads56 = m[idx,c(1,2,6,9,10,11)]
@@ -471,6 +491,39 @@ chisq.test(obsfreq,p=nullprobs)
 
 ```
 ```{r}
+flowering = subset(m, category == "Flowering Time")
+mflowering <- subset(m, trait %in% c("DaystoSilk",	"DaysToTassel", "GDDDaystoSilk",	"GDDDaystoTassel")) 
+
+mflowering <- subset(mflowering, method == "res.fixed") 
+
+male_mflowering <- subset(mflowering, trait %in% c(	"DaysToTassel",	"GDDDaystoTassel")) 
+female_mflowering <- subset(mflowering, trait %in% c(	"DaystoSilk",	"GDDDaystoSilk")) 
+
+tp <- as.data.frame(table(mt$id))
+tp <- tp[order(tp$Freq, decreasing = T),]
+
+library("readxl")
+maleg<- read_excel("largedata/top_genes_associated_with_male_flowering.xlsx")
+femaleg<- read_excel("largedata/top_genes_associated_with_female_flowering.xlsx")
+
+which(male_mflowering$id %in% maleg$ID)
+which(female_mflowering$id %in% femaleg$ID)
+
+length(which(male_mflowering$id %in% maleg$ID))
+
+
+
+Nf <- nrow(femaleg)
+N <- 37127
+
+noverlap <-length(which(female_mflowering$id %in% femaleg$ID))
+n <- nrow(female_mflowering)
+
+p <- Nf/N
+obsfreq <- c(noverlap, n - noverlap)
+nullprobs <- c(p, 1-p)
+chisq.test(obsfreq,p=nullprobs)
+
 
 ```
 

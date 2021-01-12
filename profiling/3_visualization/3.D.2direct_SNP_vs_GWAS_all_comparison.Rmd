@@ -57,18 +57,56 @@ write.table(out, "largedata/dsnps_vs_gwas/dsnps_20149rows.csv", sep=",", row.nam
 ```
 
 
+### New Geno on HCC
+
+```{r}
+
+f <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/", pattern="_dsnps_", full.names = T)
+fmic <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/", pattern="dsnps_T[[0-9]", full.names = T)
+id = which(f %in% fmic)
+f = f[-c(id)]
+id = grep("P368", f)
+f = f[-c(id)]
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$file  <- gsub(".*\\/", "", out$file)
+
+library(data.table)
+
+snps_p7msnps <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned.bim", header = FALSE , data.table=FALSE)
+out <- merge(out, snps_p7msnps[,c(1,2,4)], by.x = "snp", by.y = "V2", sort = F, all.x = T)
+colnames(out)[c(5,6)] = c("chr", "pos")
+# method
+out$method <- gsub("_.*", "", out$file)
+# tissue type
+out$tissue <- gsub(".*_ts_|.csv", "", out$file)
+table(out$tissue)
+# trait
+out$trait <- gsub(".*dsnps_|_ts.*", "", out$file)
+table(out$trait)
+
+write.table(out, "largedata/dsnps_vs_gwas/dsnps_34013rows.csv", sep=",", row.names=FALSE, quote=FALSE)
+```
+
+
 ### on local
 
 ```{r}
-dsnps <- fread("largedata/dsnps_vs_gwas/dsnps_20149rows.csv")
+dsnps <- fread("largedata/dsnps_vs_gwas/dsnps_34013rows.csv")
 all_gwas <- fread("largedata/dsnps_vs_gwas/all_traits.all_res.txt")
 which(all_gwas$Chr == dsnps$chr[1] & all_gwas$start < dsnps$pos[1] & all_gwas$end > dsnps$pos[1] & all_gwas$date == dsnps$trait[1])
 idx <- grep("X\\.", all_gwas$date)
 all_gwas$date[idx] <- gsub("\\.$", "", all_gwas$date[idx])
 dsnps$gwas_overlap <- 0
 
-idx <- grep("P368\\.", dsnps$trait)
-dsnps = dsnps[- idx,]
+#idx <- grep("P368\\.", dsnps$trait)
+#dsnps = dsnps[- idx,]
 
 for (i in 1:nrow(dsnps)) {
   if (length(which(all_gwas$Chr == dsnps$chr[i] & all_gwas$start < dsnps$pos[i] & all_gwas$end > dsnps$pos[i] & all_gwas$date == dsnps$trait[i])) != 0) {
