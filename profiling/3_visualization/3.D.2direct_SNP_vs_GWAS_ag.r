@@ -4,7 +4,7 @@ f=list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/gwas
 for(ff in f)
 {
 out=gsub("assoc.txt","sig.region.txt",ff)
-ff = paste("/common/jyanglab/zhikaiyang/projects/mediation/largedata/gwas/output", ff, sep="")
+ff = paste("/common/jyanglab/zhikaiyang/projects/mediation/largedata/gwas/output/", ff, sep="")
 d1=fread(ff,head=T,data.table=F)
 d1=d1[d1[,13]<=1e-5,]
 s=d1[,3]-100000;e=d1[,3]+100000
