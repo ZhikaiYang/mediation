@@ -1,0 +1,38 @@
+---
+title: "New mediator genes"
+author: "Jinliang Yang"
+date: "1-12-2021"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+- Direct SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_34013rows.csv
+- Indirect SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv
+- Mediators: data/mediators_18812rows_by_cat.csv
+
+### Mediators
+
+```{r}
+m <- read.csv("data/mediators_18812rows_by_cat.csv")
+m <- subset(m, padj < 0.05)
+
+top <- data.frame(table(m$id))
+top <- top[order(top$Freq, decreasing = T),]
+
+idx <- which(top$Var1 %in% "GRMZM2G171650")
+
+
+head(m)
+
+subset(m, id %in% "GRMZM2G171650")
+```
+
+
+

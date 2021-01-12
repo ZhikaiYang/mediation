@@ -11,6 +11,10 @@ For simplicity, the result files needed for manhattan plot for GWAS are moved in
 
 # Results
 
+### Trait category
+
+- phenotypic traits and their categories `data/`.
+
 ### Mediation analysis results
 
 - direct SNP `data/input/dsnps_20149rows.csv`
