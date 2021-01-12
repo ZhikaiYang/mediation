@@ -51,6 +51,54 @@ write.table(out, "cache/mediators_23296rows.csv", sep=",", row.names=FALSE, quot
 ```
 
 
+### NEW RUN Mediators on HCC
+
+```{r}
+library(data.table)
+f <- list.files(path="largedata/med_output", pattern="mediator_", full.names = T)
+fmet <- list.files(path="largedata/med_output", pattern="mediator_X\\.", full.names = T)
+fmic <- list.files(path="largedata/med_output", pattern="mediator_T[[0-9]", full.names = T)
+id1 = which(f %in% fmet)
+id2 = which(f %in% fmic)
+f = f[-c(id1, id2)]
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$file  <- gsub(".*\\/", "", out$file)
+out$method <- gsub("_.*", "", out$file)
+out$tissue  <- gsub(".*_ts_|.csv", "", out$file)
+out$trait  <- gsub(".*mediator_|_ts.*", "", out$file)
+id = grep("P368", out$trait)
+out = out [- id, ]
+
+fwrite(out,"largedata/mediator_5100rows_agronomics.txt", sep="\t", row.names = F, quote = F)
+```
+### read in data metabolites on HCC
+
+```{r}
+library(data.table)
+f <- list.files(path="largedata/med_output", pattern="mediator_X\\.", full.names = T)
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$file  <- gsub(".*\\/", "", out$file)
+out$method <- gsub("_.*", "", out$file)
+out$tissue  <- gsub(".*_ts_|.csv", "", out$file)
+out$trait  <- gsub(".*mediator_|_ts.*", "", out$file)
+fwrite(out,"largedata/mediator_13712rows_metabolites.txt", sep="\t", row.names = F, quote = F)
+```
+
+
 ### Filter non-significant ones
 
 ```{r}
@@ -69,7 +117,10 @@ trait_category$category[c(2,10,35,37,39,40)]= "Seed Traits"
 trait_category$category[41:106]= "Metabolite"
 
 
-m <- read.csv("cache/mediators_23296rows.csv")
+#m <- read.csv("cache/mediators_23296rows.csv")
+m1 <- fread("largedata/mediator_5100rows_agronomics.txt")
+m2 <- fread("largedata/mediator_13712rows_metabolites.txt")
+m = rbind(m1, m2)
 
 trait_t = table(m$trait)
 trait_t = as.data.frame(trait_t)
@@ -78,7 +129,9 @@ trait_c_t = table(trait_category$category)
 trait_c_t = as.data.frame(trait_c_t)
 
 m = merge(m, trait_category, by = "trait")
-write.table(m, "data/input/mediators_23296rows_by_cat.csv", sep=",", row.names=FALSE, quote=FALSE)
+#write.table(m, "data/input/mediators_23296rows_by_cat.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+
 
 idx = which(m$id == "GRMZM2G171650")
 mads56 = m[idx,c(1,2,6,9,10,11)]
@@ -415,6 +468,9 @@ p <- Nf/N
 obsfreq <- c(noverlap, n - noverlap)
 nullprobs <- c(p, 1-p)
 chisq.test(obsfreq,p=nullprobs)
+
+```
+```{r}
 
 ```
 

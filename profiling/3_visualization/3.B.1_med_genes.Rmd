@@ -24,12 +24,38 @@ f <- subset(mg, trait %in% c("asi", "daystosilk", "daystotassel", "tpb", "tsl"))
 f1 <- subset(f, tissue %in% "ln268")
 ```
 
+### read in data
+
+```{r}
+library(data.table)
+f <- list.files(path="largedata/med_output", pattern="fixed_mediator_", full.names = T)
+fmet <- list.files(path="largedata/med_output", pattern="fixed_mediator_X\\.", full.names = T)
+fmic <- list.files(path="largedata/med_output", pattern="fixed_mediator_T[[0-9]", full.names = T)
+id1 = which(f %in% fmet)
+id2 = which(f %in% fmic)
+f = f[-c(id1, id2)]
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$trait  <- gsub(".*mediator_|_ts.*", "", out$file)
+out$tissue  <- gsub(".*_ts_|.csv", "", out$file)
+id = grep("P368", out$trait)
+out = out [- id, ]
+
+fwrite(out[,-7],"largedata/mediator_out_agronomics.txt", sep="\t", row.names = F, quote = F)
+```
+
 
 ### read in data metabolites on HCC
 
 ```{r}
 library(data.table)
-f <- list.files(path="largedata/med_output", pattern="fixed_mediator_X", full.names = T)
+f <- list.files(path="largedata/med_output", pattern="fixed_mediator_X\\.", full.names = T)
 
 out <- data.frame()
 for(i in 1:length(f)){

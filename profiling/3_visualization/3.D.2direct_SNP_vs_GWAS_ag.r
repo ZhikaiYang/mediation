@@ -1,10 +1,10 @@
 setwd('/common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas')
 library(data.table)
-f=list.files(path="/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/output/",patt=".assoc.txt")
+f=list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/gwas/output",patt=".assoc.txt")
 for(ff in f)
 {
 out=gsub("assoc.txt","sig.region.txt",ff)
-ff = paste("/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/output/", ff, sep="")
+ff = paste("/common/jyanglab/zhikaiyang/projects/mediation/largedata/gwas/output", ff, sep="")
 d1=fread(ff,head=T,data.table=F)
 d1=d1[d1[,13]<=1e-5,]
 s=d1[,3]-100000;e=d1[,3]+100000
