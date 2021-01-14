@@ -64,6 +64,10 @@ for (i in 1:nrow(traits)) {
 }
 
 
+overlap = merge(overlap_m[,c(2,6,9:11)], overlap_known[,c(36,23:25,27, 13,20,22)], by.x = "id", by.y = "Gene_refGene", all.x = T) 
+
+write.table(overlap, "largedata/overlap_lin_known_genes.csv", sep = ",", row.names = F)
+
 CobDiameter_known = subset(out, trait == "CobDiameter")
 CobDiameter_m = subset(m, trait == "CobDiameter")
 which(CobDiameter_m$id %in% CobDiameter_known$Gene_refGene)
