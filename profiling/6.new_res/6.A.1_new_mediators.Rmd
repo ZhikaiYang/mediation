@@ -34,5 +34,47 @@ head(m)
 subset(m, id %in% "GRMZM2G171650")
 ```
 
+Lin's known genes overlap
+```{r}
+library("readxl")
+
+f <- list.files(path="largedata/lin_known_genes/", pattern=".*", full.names = T)
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read_excel(f[i])
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$trait  <- gsub(".*genes\\/|\\.xls", "", out$file)
+
+out$trait[which(out$trait == "DaystoSilk2")] = "DaystoSilk"
+traits = data.frame(table(out$trait))
+
+overlap_known = data.frame()
+overlap_m = data.frame()
+for (i in 1:nrow(traits)) {
+  tem_known = subset(out, trait == traits$Var1[i])
+  tem_m = subset(m, trait == traits$Var1[i])
+  id = which(tem_m$id %in% tem_known$Gene_refGene)
+  overlap_m = rbind(overlap_m, tem_m[id,])
+  id = which(tem_known$Gene_refGene %in% tem_m$id)
+  overlap_known = rbind(overlap_known, tem_known[id, ])
+}
+
+
+CobDiameter_known = subset(out, trait == "CobDiameter")
+CobDiameter_m = subset(m, trait == "CobDiameter")
+which(CobDiameter_m$id %in% CobDiameter_known$Gene_refGene)
+
+id = which(out$Gene_refGene %in% m$id) 
+
+traits_m = subset(m, trait %in% out$trait)
+out_m = subset(out, trait %in% m$trait)
+id = which(traits_m$id %in% out_m$Gene_refGene)
+traits_m_s = traits_m[id,]
+
+```
 
 
