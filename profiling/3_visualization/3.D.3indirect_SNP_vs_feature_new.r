@@ -122,8 +122,8 @@ fwrite(utr5up, "largedata/isnps_vs_feature/utr5up5k.txt", sep="\t", row.names = 
 
 library("GenomicRanges")
 library("plyr")
-gdown$start = as.integer(gdown$start)
-gdown$end = as.integer(gdown$end)
+g$start = as.integer(g$start)
+g$end = as.integer(g$end)
 
 colnames(isnps)[8] = "seq"
 colnames(isnps)[9] = "Pos"
@@ -136,7 +136,7 @@ isnps_uni = unique(isnps_uni)
 
 grc <- with(isnps_uni, GRanges(seqnames=seq, IRanges(start=Pos, end=Pos)))
 
-grf <- with(gdown, GRanges(seqnames=seq, IRanges(start=start, end=end), geneid=geneid))
+grf <- with(g, GRanges(seqnames=seq, IRanges(start=start, end=end), geneid=geneid))
 
 ### find overlaps between the two
 tb <- findOverlaps(query=grf, subject=grc)
@@ -162,7 +162,7 @@ for (i in 1:nrow(out)) {
 }
 
 
-fwrite(out, "largedata/isnps_vs_feature/isnps_in_gdown.txt", sep="\t", row.names = FALSE, quote=FALSE)
+fwrite(out, "largedata/isnps_vs_feature/isnps_in_g.txt", sep="\t", row.names = FALSE, quote=FALSE)
 
 fwrite(isnps, "largedata/isnps_vs_feature/isnps_47143rows.csv", sep=",", row.names=FALSE, quote=FALSE)
 
@@ -174,7 +174,7 @@ colnames(snps_p7msnps)[c(1,2,4)] = c("seq", "snp", "Pos")
 snps_p7msnps$seq = as.character(snps_p7msnps$seq)
 grc1 <- with(snps_p7msnps, GRanges(seqnames=seq, IRanges(start=Pos, end=Pos)))
 
-grf <- with(gdown, GRanges(seqnames=seq, IRanges(start=start, end=end), geneid=geneid))
+grf <- with(g, GRanges(seqnames=seq, IRanges(start=start, end=end), geneid=geneid))
 
 ### find overlaps between the two
 tb1 <- findOverlaps(query=grf, subject=grc1)
@@ -192,7 +192,7 @@ snps_p7msnps$seq = as.integer(as.character(snps_p7msnps$seq))
 
 
 
-print("p7msnps_gdown5k")
+print("p7msnps_g")
 print(nrow(unique(out_p7m[,7:8])))
-print("p7msnps_gdown5k_ratio")
+print("p7msnps_g_ratio")
 print(nrow(unique(out_p7m[,7:8]))/nrow(snps_p7msnps))
