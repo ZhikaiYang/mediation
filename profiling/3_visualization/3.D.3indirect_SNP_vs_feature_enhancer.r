@@ -35,6 +35,10 @@ colnames(isnps)[8] = "seq"
 colnames(isnps)[9] = "Pos"
 isnps$seq = as.character(isnps$seq)
 
+
+
+idx <- which(is.na(isnps$Pos))
+isnps = isnps[-idx,]
 isnps_uni = data.frame(snps_for_medi = isnps$snps_for_medi, seq = isnps$seq, Pos = isnps$Pos)
 isnps_uni = unique(isnps_uni)
 
