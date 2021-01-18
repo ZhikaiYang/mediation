@@ -2,7 +2,7 @@ setwd("/common/jyanglab/zhikaiyang/projects/mediation")
 library(data.table)
 
 
-isnps <- fread("largedata/isnps_vs_feature/isnps_55257rows.csv", header=TRUE, data.table=FALSE)
+isnps <- fread("largedata/isnps_vs_feature/isnps_633005rows.csv", header=TRUE, data.table=FALSE)
 
 gff <- fread("largedata/isnps_vs_feature/Zea_mays.B73_RefGen_v4.46.chr.txt", header=FALSE, data.table=FALSE)
 names(gff) <- c("seq", "source", "feature", "start", "end", "score", "strand", "phase", "att")
@@ -115,7 +115,7 @@ fwrite(out2, "largedata/isnps_vs_feature/isnps_in_int34ear.txt", sep="\t", row.n
 
 
 ### null probability
-snps_p7msnps <- fread("/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/code2020/gen/allchr_bisnp_n282_snpid_maf01_geno2_pruned.bim", header = FALSE , data.table=FALSE)
+snps_p7msnps <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned.bim", header = FALSE , data.table=FALSE)
 
 colnames(snps_p7msnps)[c(1,2,4)] = c("seq", "snp", "Pos")
 snps_p7msnps$seq = as.character(snps_p7msnps$seq)
