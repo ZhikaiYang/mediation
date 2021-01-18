@@ -1,8 +1,39 @@
 setwd("/common/jyanglab/zhikaiyang/projects/mediation")
 library(data.table)
 
+library(data.table)
+library(dplyr)
 
-isnps <- fread("largedata/isnps_vs_feature/isnps_633005rows.csv", header=TRUE, data.table=FALSE)
+f <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/", pattern="indirect_", full.names = T)
+fmic <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/", pattern="indirect_T[[0-9]", full.names = T)
+id = which(f %in% fmic)
+f = f[-c(id)]
+id = grep("P368", f)
+f = f[-c(id)]
+
+
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$file  <- gsub(".*\\/", "", out$file)
+# method
+out$method <- gsub("_.*", "", out$file)
+# tissue type
+out$tissue <- gsub(".*_ts_|.csv", "", out$file)
+table(out$tissue)
+# trait
+out$trait <- gsub(".*indirect_|_ts.*", "", out$file)
+table(out$trait)
+
+
+snps_p7msnps <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned.bim", header = FALSE , data.table=FALSE)
+out <- merge(out, snps_p7msnps[,c(1,2,4)], by.x = "snps_for_medi", by.y = "V2", sort = F, all.x = T)
+colnames(out)[c(8,9)] = c("chr", "pos")
 
 gff <- fread("largedata/isnps_vs_feature/Zea_mays.B73_RefGen_v4.46.chr.txt", header=FALSE, data.table=FALSE)
 names(gff) <- c("seq", "source", "feature", "start", "end", "score", "strand", "phase", "att")
