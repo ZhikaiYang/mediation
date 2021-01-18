@@ -1,3 +1,5 @@
+setwd("/common/jyanglab/zhikaiyang/projects/mediation")
+
 library(data.table)
 library(dplyr)
 
