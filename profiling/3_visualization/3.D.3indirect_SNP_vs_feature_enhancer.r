@@ -35,6 +35,12 @@ snps_p7msnps <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/
 out <- merge(out, snps_p7msnps[,c(1,2,4)], by.x = "snps_for_medi", by.y = "V2", sort = F, all.x = T)
 colnames(out)[c(8,9)] = c("chr", "pos")
 
+
+write.table(out, "largedata/isnps_vs_feature/isnps_633005rows.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+isnps <- fread("largedata/isnps_vs_feature/isnps_633005rows.csv", header=TRUE, data.table=FALSE)
+
+
 gff <- fread("largedata/isnps_vs_feature/Zea_mays.B73_RefGen_v4.46.chr.txt", header=FALSE, data.table=FALSE)
 names(gff) <- c("seq", "source", "feature", "start", "end", "score", "strand", "phase", "att")
 table(gff$feature)
