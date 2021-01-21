@@ -128,25 +128,25 @@ write.table(out, "largedata/dsnps_vs_gwas/dsnps_34013rows.csv", sep=",", row.nam
 
 ```{r}
 dsnps <- fread("largedata/dsnps_vs_gwas/dsnps_34013rows.csv")
-all_gwas_100kb <- fread("largedata/dsnps_vs_gwas/all_traits_ag.all_res_100kb.txt")
-which(all_gwas_100kb$Chr == dsnps$chr[1] & all_gwas_100kb$start < dsnps$pos[1] & all_gwas_100kb$end > dsnps$pos[1] & all_gwas_100kb$date == dsnps$trait[1])
-idx <- grep("X\\.", all_gwas_100kb$date)
-all_gwas_100kb$date[idx] <- gsub("\\.$", "", all_gwas_100kb$date[idx])
+all_gwas_50kb <- fread("largedata/dsnps_vs_gwas/all_traits_ag.all_res_50kb.txt")
+which(all_gwas_50kb$Chr == dsnps$chr[1] & all_gwas_50kb$start < dsnps$pos[1] & all_gwas_50kb$end > dsnps$pos[1] & all_gwas_50kb$date == dsnps$trait[1])
+idx <- grep("X\\.", all_gwas_50kb$date)
+all_gwas_50kb$date[idx] <- gsub("\\.$", "", all_gwas_50kb$date[idx])
 dsnps$gwas_overlap <- 0
 
 #idx <- grep("P368\\.", dsnps$trait)
 #dsnps = dsnps[- idx,]
 
 for (i in 1:nrow(dsnps)) {
-  if (length(which(all_gwas_100kb$Chr == dsnps$chr[i] & all_gwas_100kb$start < dsnps$pos[i] & all_gwas_100kb$end > dsnps$pos[i] & all_gwas_100kb$date == dsnps$trait[i])) != 0) {
-    dsnps$gwas_overlap[i] = which(all_gwas_100kb$Chr == dsnps$chr[i] & all_gwas_100kb$start < dsnps$pos[i] & all_gwas_100kb$end > dsnps$pos[i] & all_gwas_100kb$date == dsnps$trait[i])
+  if (length(which(all_gwas_50kb$Chr == dsnps$chr[i] & all_gwas_50kb$start < dsnps$pos[i] & all_gwas_50kb$end > dsnps$pos[i] & all_gwas_50kb$date == dsnps$trait[i])) != 0) {
+    dsnps$gwas_overlap[i] = which(all_gwas_50kb$Chr == dsnps$chr[i] & all_gwas_50kb$start < dsnps$pos[i] & all_gwas_50kb$end > dsnps$pos[i] & all_gwas_50kb$date == dsnps$trait[i])
   }
   
 }
 
-write.table(dsnps, "largedata/dsnps_vs_gwas/dsnps_100kb_comparsion.csv", sep=",", row.names=FALSE, quote=FALSE)
+write.table(dsnps, "largedata/dsnps_vs_gwas/dsnps_50kb_comparsion.csv", sep=",", row.names=FALSE, quote=FALSE)
 
-dsnps <- fread("largedata/dsnps_vs_gwas/dsnps_100kb_comparsion.csv")
+dsnps <- fread("largedata/dsnps_vs_gwas/dsnps_50kb_comparsion.csv")
 
 dsnps_eq <- subset(dsnps, method == "res.eq")
 dsnps_fixed <- subset(dsnps, method == "res.fixed")
@@ -246,7 +246,7 @@ pall <- ggplot(gwas_overlap_eq, aes(x=tissue, y=o_ratio, fill=category)) +
           legend.text = element_text(size=fsize))
 pall
 
-pdf("graphs/overlap_ratio_gwas_100kb_all_traits_eq.pdf", width = 9, height= 6)
+pdf("graphs/overlap_ratio_gwas_50kb_all_traits_eq.pdf", width = 9, height= 6)
 pall
 dev.off()
 
@@ -285,7 +285,7 @@ pall <- ggplot(gwas_overlap_fixed, aes(x=tissue, y=o_ratio, fill=category)) +
           legend.text = element_text(size=fsize))
 pall
 
-pdf("graphs/overlap_ratio_gwas_100kb_all_traits_fixed.pdf", width = 9, height= 6)
+pdf("graphs/overlap_ratio_gwas_50kb_all_traits_fixed.pdf", width = 9, height= 6)
 pall
 dev.off()
 
@@ -295,12 +295,12 @@ dev.off()
 ### enrichment test
 
 ```{r}
-index = unique(all_gwas_100kb$date)
+index = unique(all_gwas_50kb$date)
 
 gwas_nsig = NULL
 for (trait in index) {
-  idx = which(all_gwas_100kb$date == trait)
-  tem = all_gwas_100kb[idx,c(1,7)]
+  idx = which(all_gwas_50kb$date == trait)
+  tem = all_gwas_50kb[idx,c(1,7)]
   gwas_nsig = rbind(gwas_nsig, c(trait, sum(tem$N), 20724054))
 }
 
@@ -349,8 +349,8 @@ hist(gwas_overlap_eq$p_val_chi_adj[- which(gwas_overlap_eq$p_val_chi_adj > 0.05)
 
 hist(gwas_overlap_fixed$p_val_chi_adj[- which(gwas_overlap_fixed$p_val_chi_adj > 0.05)], main = "Distribution of adjusted p-value by FDR (Medfix.bic)", xlab = "adjusted p-value")
 
-write.table(gwas_overlap_eq, "largedata/dsnps_vs_gwas/gwas_100kb_overlap_eq.csv", sep=",", row.names=FALSE, quote=FALSE)
-write.table(gwas_overlap_fixed, "largedata/dsnps_vs_gwas/gwas_100kb_overlap_fixed.csv", sep=",", row.names=FALSE, quote=FALSE)
+write.table(gwas_overlap_eq, "largedata/dsnps_vs_gwas/gwas_50kb_overlap_eq.csv", sep=",", row.names=FALSE, quote=FALSE)
+write.table(gwas_overlap_fixed, "largedata/dsnps_vs_gwas/gwas_50kb_overlap_fixed.csv", sep=",", row.names=FALSE, quote=FALSE)
 
 
 
@@ -359,11 +359,11 @@ write.table(gwas_overlap_fixed, "largedata/dsnps_vs_gwas/gwas_100kb_overlap_fixe
 
 ```{r}
 
-gwas_overlap_eq_100kb =  fread( "largedata/dsnps_vs_gwas/gwas_100kb_overlap_eq.csv")
-gwas_overlap_fixed_100kb =  fread( "largedata/dsnps_vs_gwas/gwas_100kb_overlap_fixed.csv")
+gwas_overlap_eq_50kb =  fread( "largedata/dsnps_vs_gwas/gwas_50kb_overlap_eq.csv")
+gwas_overlap_fixed_50kb =  fread( "largedata/dsnps_vs_gwas/gwas_50kb_overlap_fixed.csv")
 
-gwas_overlap_eq_100kb =  fread( "largedata/dsnps_vs_gwas/gwas_100kb_overlap_eq.csv")
-gwas_overlap_fixed_100kb =  fread( "largedata/dsnps_vs_gwas/gwas_100kb_overlap_fixed.csv")
+gwas_overlap_eq_50kb =  fread( "largedata/dsnps_vs_gwas/gwas_50kb_overlap_eq.csv")
+gwas_overlap_fixed_50kb =  fread( "largedata/dsnps_vs_gwas/gwas_50kb_overlap_fixed.csv")
 
 gwas_overlap_eq_10kb =  fread( "largedata/dsnps_vs_gwas/gwas_10kb_overlap_eq.csv")
 gwas_overlap_fixed_10kb =  fread( "largedata/dsnps_vs_gwas/gwas_10kb_overlap_fixed.csv")
@@ -377,18 +377,18 @@ gwas_overlap_fixed_5kb =  fread( "largedata/dsnps_vs_gwas/gwas_5kb_overlap_fixed
 
 par(mfrow=c(2,4))
 
-hist(gwas_overlap_eq_100kb$p_val_chi_adj[- which(gwas_overlap_eq_100kb$p_val_chi_adj > 0.05)], main = "100kb Medfix.0.5", xlab = "adjusted p-value")
+hist(gwas_overlap_eq_50kb$p_val_chi_adj[- which(gwas_overlap_eq_50kb$p_val_chi_adj > 0.05)], main = "50kb Medfix.0.5", xlab = "adjusted p-value")
 
-hist(gwas_overlap_eq_100kb$p_val_chi_adj[- which(gwas_overlap_eq_100kb$p_val_chi_adj > 0.05)], main = "100kb Medfix.0.5", xlab = "adjusted p-value")
+hist(gwas_overlap_eq_50kb$p_val_chi_adj[- which(gwas_overlap_eq_50kb$p_val_chi_adj > 0.05)], main = "50kb Medfix.0.5", xlab = "adjusted p-value")
 
 hist(gwas_overlap_eq_10kb$p_val_chi_adj[- which(gwas_overlap_eq_10kb$p_val_chi_adj > 0.05)], main = "10kb Medfix.0.5", xlab = "adjusted p-value")
 
 hist(gwas_overlap_eq_5kb$p_val_chi_adj[- which(gwas_overlap_eq_5kb$p_val_chi_adj > 0.05)], main = "5kb Medfix.0.5", xlab = "adjusted p-value")
 
 
-hist(gwas_overlap_fixed_100kb$p_val_chi_adj[- which(gwas_overlap_fixed_100kb$p_val_chi_adj > 0.05)], main = "100kb Medfix.bic", xlab = "adjusted p-value")
+hist(gwas_overlap_fixed_50kb$p_val_chi_adj[- which(gwas_overlap_fixed_50kb$p_val_chi_adj > 0.05)], main = "50kb Medfix.bic", xlab = "adjusted p-value")
 
-hist(gwas_overlap_fixed_100kb$p_val_chi_adj[- which(gwas_overlap_fixed_100kb$p_val_chi_adj > 0.05)], main = "100kb Medfix.bic", xlab = "adjusted p-value")
+hist(gwas_overlap_fixed_50kb$p_val_chi_adj[- which(gwas_overlap_fixed_50kb$p_val_chi_adj > 0.05)], main = "50kb Medfix.bic", xlab = "adjusted p-value")
 
 hist(gwas_overlap_fixed_10kb$p_val_chi_adj[- which(gwas_overlap_fixed_10kb$p_val_chi_adj > 0.05)], main = "10kb Medfix.bic", xlab = "adjusted p-value")
 
