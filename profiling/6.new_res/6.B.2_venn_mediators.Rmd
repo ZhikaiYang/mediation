@@ -1,0 +1,108 @@
+---
+title: "New mediator genes"
+author: "Jinliang Yang"
+date: "1-12-2021"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+#### New results
+
+- Direct SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_34013rows.csv
+- Indirect SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv
+- Mediators: data/mediators_18812rows_by_cat.csv
+
+### Old results for microbiome data
+
+- cache/microbiome_mediators_34155rows.csv
+
+
+
+### Mediators
+
+```{r}
+m <- read.csv("data/mediators_18812rows_by_cat.csv")
+table(m$method)
+
+### only consider std nitrogen condition
+mi <- read.csv("cache/microbiome_mediators_34155rows.csv")
+
+```
+- eq: MedFix0.5
+- fixed: MedFixBIC
+
+- e2m: p-values for the exposure effect on the individual mediators
+- m2y: p-values for the mediator effect on phenotype
+- e2m2y: min value among c(1, max(e2m, m2y))
+
+```{r}
+# res.eq
+m1 <- subset(m, method %in% "res.fixed" & padj <= 0.05)
+
+m2 <- subset(mi, treatment %in% "stdN" & method %in% "res.fixed" & padj <= 0.05)
+
+df <- rbind(m1[, c("id", "tissue", "trait")], m2[, c("id", "tissue", "trait")])
+#write.table(df, "largedata/mediators_by_tissue.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+```
+
+### merge two datasets together
+
+```{r}
+
+
+```
+
+# Number of mediator genes by category and trait
+
+```{r}
+library(eulerr)
+library(data.table)
+
+# df$tissue <- factor(df$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+#                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf # during the day", "Adult leaf at night","Kernels after pollination"))
+
+
+root = subset(df, tissue == "GRoot")$id
+root <- root[!duplicated(root)]
+
+shoot = subset(df, tissue == "GShoot")$id
+shoot <- shoot[!duplicated(shoot)]
+  
+l3base = subset(df, tissue == "L3Base")$id
+l3base <- l3base[!duplicated(l3base)]
+
+l3tip = subset(df, tissue == "L3Tip")$id
+l3tip <- l3tip[!duplicated(l3tip)]
+
+kern = subset(df, tissue == "Kern")$id
+kern <- kern[!duplicated(kern)]
+
+df1 <- list(Root = root,
+           Shoot = shoot,
+           L3Base = l3base,
+           L3Tip = l3tip,
+           Kern = kern)
+
+pdf("graphs/venn_mediators_by_tissue.pdf", width = 9, height= 6)
+plot(venn(df1))
+dev.off()
+
+
+```
+
+
+These results suggested that mediation effects were tissue specific.
+
+
+
+
+
+

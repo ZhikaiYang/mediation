@@ -1,0 +1,126 @@
+---
+title: "Plot Venn Diagram for dSNPs"
+author: "Jinliang Yang"
+date: "01-21-2021"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+#### New results
+
+- Direct SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_34013rows.csv
+- Indirect SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv
+- Mediators: data/mediators_18812rows_by_cat.csv
+
+### Old results for microbiome data
+
+- Mediators: cache/microbiome_mediators_34155rows.csv
+- Direct SNPs: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_45112rows_microbiome_old_geno.csv
+- Indirect SNPs: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_54015rows_microbiome_old_geno.csv
+
+### Keys
+
+- eq: MedFix0.5
+- fixed: MedFixBIC
+
+- e2m: p-values for the exposure effect on the individual mediators
+- m2y: p-values for the mediator effect on phenotype
+- e2m2y: min value among c(1, max(e2m, m2y))
+
+### direct SNPs
+
+```{r}
+library("data.table")
+dsnp <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_34013rows.csv", data.table=FALSE)
+table(dsnp$method)
+
+#  res.eq res.fixed
+#    15642     18371
+
+### only consider res.fixed
+d1 <- subset(dsnp, method == "res.fixed")
+d1$type <- "Morphology"
+idx <- grep("^X\\.", d1$trait)
+d1[idx, ]$type <- "Metabolite"
+
+#d1$log10pval <- -log10(d1$pval)
+# d1 <- subset(d1, log10pval > 10)
+```
+
+for microbiome
+
+```{r}
+library("data.table")
+dsnp2 <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_45112rows_microbiome_old_geno.csv", data.table=FALSE)
+table(dsnp2$method)
+
+#  res.eq res.fixed
+#    15642     18371
+
+### only consider res.fixed and stdN
+d2 <- subset(dsnp2, method == "res.fixed")
+
+d2$treatment <- gsub(".*_", "", d2$trait)
+d2 <- subset(d2, treatment  == "stdN")
+
+d2$type <- "Microbiome"
+
+```
+
+### merge two datasets together
+
+```{r}
+
+df <- rbind(d1[, c("snp", "chr", "pos", "tissue", "trait", "type")], d2[, c("snp", "chr", "pos", "tissue", "trait", "type")])
+write.table(df, "largedata/dsnp_by_type.csv", sep=",", row.names=FALSE, quote=FALSE)
+```
+
+# Number of mediator genes by category and trait
+
+```{r}
+library(eulerr)
+library(data.table)
+
+df <- fread("largedata/dsnp_by_type.csv", data.table=FALSE)
+
+df$tissue <- factor(df$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+
+root = subset(df, tissue == "GRoot")$snp
+root <- root[!duplicated(root)]
+
+shoot = subset(df, tissue == "GShoot")$snp
+shoot <- shoot[!duplicated(shoot)]
+  
+l3base = subset(df, tissue == "L3Base")$snp
+l3base <- l3base[!duplicated(l3base)]
+
+l3tip = subset(df, tissue == "L3Tip")$snp
+l3tip <- l3tip[!duplicated(l3tip)]
+
+kern = subset(df, tissue == "Kern")$snp
+kern <- kern[!duplicated(kern)]
+
+df1 <- list(Root = root,
+           Shoot = shoot,
+           L3Base = l3base,
+           L3Tip = l3tip,
+           Kern = kern)
+
+pdf("graphs/venn_dSNPs_by_tissue.pdf", width = 9, height= 6)
+plot(venn(df1))
+dev.off()
+
+
+```
+
+
+
