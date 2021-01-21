@@ -21,7 +21,9 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 
 ### Old results for microbiome data
 
-- cache/microbiome_mediators_34155rows.csv
+- Mediators: cache/microbiome_mediators_34155rows.csv
+- Direct SNPs: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_45112rows_microbiome_old_geno.csv
+- Indirect SNPs: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_54015rows_microbiome_old_geno.csv
 
 ### Keys
 
@@ -48,10 +50,29 @@ d1$type <- "Morphology"
 idx <- grep("^X\\.", d1$trait)
 d1[idx, ]$type <- "Metabolite"
 
-d1$log10pval <- -log10(d1$pval)
+#d1$log10pval <- -log10(d1$pval)
 # d1 <- subset(d1, log10pval > 10)
 ```
 
+for microbiome
+
+```{r}
+library("data.table")
+dsnp2 <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_45112rows_microbiome_old_geno.csv", data.table=FALSE)
+table(dsnp2$method)
+
+#  res.eq res.fixed
+#    15642     18371
+
+### only consider res.fixed and stdN
+d2 <- subset(dsnp2, method == "res.fixed")
+
+d2$treatment <- gsub(".*_", "", d2$trait)
+d2 <- subset(d2, treatment  == "stdN")
+
+d2$type <- "Microbiome"
+
+```
 
 ### Avg dSNP per trait by type
 
@@ -59,9 +80,11 @@ d1$log10pval <- -log10(d1$pval)
 library(plyr)
 nt1 <- ddply(d1, .(tissue, type, trait), nrow)
 
+nt2 <- ddply(d2, .(tissue, type, trait), nrow)
 
 
 nt <- rbind(nt1, nt2)
+write.table(nt, "cache/dsnp_summary.csv", sep=",", row.names=FALSE, quote=FALSE)
 ```
 
 # Number of mediator genes by category and trait
@@ -70,11 +93,11 @@ nt <- rbind(nt1, nt2)
 library(ggplot2)
 
 fsize=18
-nt1$tissue <- factor(nt1$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+nt$tissue <- factor(nt$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
                     labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 
 
-p1 <- ggplot(nt1, aes(x=tissue, y=V1, fill=type)) +
+p1 <- ggplot(nt, aes(x=tissue, y=V1, fill=type)) +
     #geom_bar(stat="identity", position=position_dodge()) +
     geom_boxplot(outlier.colour="black", outlier.shape=16, 
              outlier.size=1, notch=FALSE) +
