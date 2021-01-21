@@ -28,7 +28,7 @@ write.table(df, "largedata/df_job_control_microbiome.csv", sep=",", row.names=FA
 
 ```{r}
 library("huskeR")
-run_Rcode(inputdf=data.frame(file=1:7, out=NA), outdir="slurm-script", cmdno = 10, 
+run_Rcode(inputdf=data.frame(file=1:2100, out=NA), outdir="slurm-script", cmdno = 10, 
           rcodes = "profiling/2_mediation/2.B.1_setup_med_job.R",
           rversion="3.5",
           base_shid = "med_test",
