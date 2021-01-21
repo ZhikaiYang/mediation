@@ -21,7 +21,9 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 
 ### Old results for microbiome data
 
-- cache/microbiome_mediators_34155rows.csv
+- Mediators: cache/microbiome_mediators_34155rows.csv
+- Direct SNPs: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_45112rows_microbiome_old_geno.csv
+- Indirect SNPs: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_54015rows_microbiome_old_geno.csv
 
 ### Keys
 
@@ -50,6 +52,25 @@ i1[idx, ]$type <- "Metabolite"
 
 ```
 
+for microbiome
+
+```{r}
+library("data.table")
+isnp2 <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_54015rows_microbiome_old_geno.csv", data.table=FALSE)
+table(isnp2$method)
+
+#  res.eq res.fixed
+#    15642     18371
+
+### only consider res.fixed and stdN
+i2 <- subset(isnp2, method == "res.fixed")
+
+i2$treatment <- gsub(".*_", "", i2$trait)
+i2 <- subset(i2, treatment  == "stdN")
+
+i2$type <- "Microbiome"
+
+```
 
 ### Avg iSNP per gene by type
 
@@ -57,9 +78,11 @@ i1[idx, ]$type <- "Metabolite"
 library(plyr)
 nt1 <- ddply(i1, .(tissue, type, medi), nrow)
 
+nt2 <- ddply(i2, .(tissue, type, medi), nrow)
 
 
 nt <- rbind(nt1, nt2)
+write.table(nt, "cache/isnp_summary.csv", sep=",", row.names=FALSE, quote=FALSE)
 ```
 
 # Number of mediator genes by category and trait
@@ -68,11 +91,11 @@ nt <- rbind(nt1, nt2)
 library(ggplot2)
 
 fsize=18
-nt1$tissue <- factor(nt1$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+nt$tissue <- factor(nt$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
                     labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 
 
-p1 <- ggplot(nt1, aes(x=tissue, y=V1, fill=type)) +
+p1 <- ggplot(nt, aes(x=tissue, y=V1, fill=type)) +
     #geom_bar(stat="identity", position=position_dodge()) +
     geom_boxplot(outlier.colour="black", outlier.shape=16, 
              outlier.size=1, notch=FALSE) +

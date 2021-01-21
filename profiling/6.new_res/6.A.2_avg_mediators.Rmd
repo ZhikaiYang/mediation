@@ -65,6 +65,7 @@ nt2 <- ddply(m2, .(tissue, trait), nrow)
 nt2$type <- "Microbiome"
 
 nt <- rbind(nt1, nt2)
+write.table(nt, "cache/mediator_summary.csv", sep=",", row.names=FALSE, quote=FALSE)
 ```
 
 # Number of mediator genes by category and trait
