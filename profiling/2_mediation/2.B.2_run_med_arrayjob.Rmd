@@ -17,10 +17,10 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 
 ```{r}
 rfile <- list.files(path="largedata/RNA-seq", pattern="csv", full.names=TRUE)
-trait <- read.delim("data/N_traits.txt", header=T)
+trait <- read.delim("data/blup_N_300_tax_groups.txt", header=T)
 rfile = rfile[1:7] # remove P368
-df <- data.frame(rnafile=rep(rfile, each=1), trait=rep(2:2, times=7))
-write.table(df, "largedata/df_job_control_nitrogen.csv", sep=",", row.names=FALSE, quote=FALSE)
+df <- data.frame(rnafile=rep(rfile, each=300), trait=rep(2:301, times=7))
+write.table(df, "largedata/df_job_control_microbiome.csv", sep=",", row.names=FALSE, quote=FALSE)
 
 ```
 
