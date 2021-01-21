@@ -1,0 +1,108 @@
+---
+title: "New mediation analysis results: indirect SNPs"
+author: "Jinliang Yang"
+date: "1-20-2021"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+#### New results
+
+- Direct SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_34013rows.csv
+- Indirect SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv
+- Mediators: data/mediators_18812rows_by_cat.csv
+
+### Old results for microbiome data
+
+- cache/microbiome_mediators_34155rows.csv
+
+### Keys
+
+- eq: MedFix0.5
+- fixed: MedFixBIC
+
+- e2m: p-values for the exposure effect on the individual mediators
+- m2y: p-values for the mediator effect on phenotype
+- e2m2y: min value among c(1, max(e2m, m2y))
+
+### direct SNPs
+
+```{r}
+library("data.table")
+isnp <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv", data.table=FALSE)
+table(isnp$method)
+
+#  res.eq res.fixed
+#    22832     24463
+
+### only consider res.fixed
+i1 <- subset(isnp, method == "res.fixed")
+i1$type <- "Morphology"
+idx <- grep("^X\\.", i1$trait)
+i1[idx, ]$type <- "Metabolite"
+
+```
+
+
+### Avg iSNP per gene by type
+
+```{r}
+library(plyr)
+nt1 <- ddply(i1, .(tissue, type, medi), nrow)
+
+
+
+nt <- rbind(nt1, nt2)
+```
+
+# Number of mediator genes by category and trait
+
+```{r}
+library(ggplot2)
+
+fsize=18
+nt1$tissue <- factor(nt1$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+
+p1 <- ggplot(nt1, aes(x=tissue, y=V1, fill=type)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=1, notch=FALSE) +
+    # scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("Avg number of indirect SNPs per gene") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = c(0.2, 0.8), 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+#p1
+
+pdf("graphs/avg_num_iSNPs_per_gene_by_type.pdf", width = 9, height= 6)
+p1
+dev.off()
+```
+
+
+
+
+
+
+
