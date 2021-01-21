@@ -1,7 +1,7 @@
 ---
-title: "New mediator genes"
+title: "New mediation analysis results: indirect SNPs"
 author: "Jinliang Yang"
-date: "1-12-2021"
+date: "1-20-2021"
 output: NULL
 ---
 
@@ -23,18 +23,8 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 
 - cache/microbiome_mediators_34155rows.csv
 
+### Keys
 
-
-### Mediators
-
-```{r}
-m <- read.csv("data/mediators_18812rows_by_cat.csv")
-table(m$method)
-
-### only consider std nitrogen condition
-mi <- read.csv("cache/microbiome_mediators_34155rows.csv")
-
-```
 - eq: MedFix0.5
 - fixed: MedFixBIC
 
@@ -42,27 +32,32 @@ mi <- read.csv("cache/microbiome_mediators_34155rows.csv")
 - m2y: p-values for the mediator effect on phenotype
 - e2m2y: min value among c(1, max(e2m, m2y))
 
+### direct SNPs
+
 ```{r}
-# res.eq
-m1 <- subset(m, method %in% "res.fixed" & padj <= 0.05)
+library("data.table")
+isnp <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv", data.table=FALSE)
+table(isnp$method)
 
-m2 <- subset(mi, treatment %in% "stdN" & method %in% "res.fixed" & padj <= 0.05)
+#  res.eq res.fixed
+#    22832     24463
 
-nrow(m1) # 932
-length(unique(m1$id)) # 736
+### only consider res.fixed
+i1 <- subset(isnp, method == "res.fixed")
+i1$type <- "Morphology"
+idx <- grep("^X\\.", i1$trait)
+i1[idx, ]$type <- "Metabolite"
 
-pertrait <- data.frame(table(m1$trait))
-mean(pertrait$Freq)
+```
 
 
+### Avg iSNP per gene by type
+
+```{r}
 library(plyr)
-nt1 <- ddply(m1, .(tissue, category, trait), nrow)
-nt1$type <- "Morphology"
-nt1[nt1$category == "Metabolite", ]$type <- "Metabolite"
-nt1 <- nt1[, -2]
+nt1 <- ddply(i1, .(tissue, type, medi), nrow)
 
-nt2 <- ddply(m2, .(tissue, trait), nrow)
-nt2$type <- "Microbiome"
+
 
 nt <- rbind(nt1, nt2)
 ```
@@ -73,11 +68,11 @@ nt <- rbind(nt1, nt2)
 library(ggplot2)
 
 fsize=18
-nt$tissue <- factor(nt$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+nt1$tissue <- factor(nt1$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
                     labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 
 
-pall <- ggplot(nt, aes(x=tissue, y=V1, fill=type)) +
+p1 <- ggplot(nt1, aes(x=tissue, y=V1, fill=type)) +
     #geom_bar(stat="identity", position=position_dodge()) +
     geom_boxplot(outlier.colour="black", outlier.shape=16, 
              outlier.size=1, notch=FALSE) +
@@ -85,7 +80,7 @@ pall <- ggplot(nt, aes(x=tissue, y=V1, fill=type)) +
     # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
     # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
     xlab("") +
-    ylab("Avg number of mediator genes") +
+    ylab("Avg number of indirect SNPs per gene") +
     ggtitle("") +
     theme_classic() +
     labs(fill = "") +
@@ -98,10 +93,10 @@ pall <- ggplot(nt, aes(x=tissue, y=V1, fill=type)) +
           legend.position = c(0.2, 0.8), 
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=fsize))
-pall
+#p1
 
-pdf("graphs/avg_num_mediator_genes_by_type.pdf", width = 9, height= 6)
-pall
+pdf("graphs/avg_num_iSNPs_per_gene_by_type.pdf", width = 9, height= 6)
+p1
 dev.off()
 ```
 

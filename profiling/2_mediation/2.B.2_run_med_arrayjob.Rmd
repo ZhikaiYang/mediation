@@ -17,10 +17,10 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 
 ```{r}
 rfile <- list.files(path="largedata/RNA-seq", pattern="csv", full.names=TRUE)
-trait <- read.delim("data/N_traits.txt", header=T)
+trait <- read.delim("data/blup_N_300_tax_groups.txt", header=T)
 rfile = rfile[1:7] # remove P368
-df <- data.frame(rnafile=rep(rfile, each=1), trait=rep(2:2, times=7))
-write.table(df, "largedata/df_job_control_nitrogen.csv", sep=",", row.names=FALSE, quote=FALSE)
+df <- data.frame(rnafile=rep(rfile, each=300), trait=rep(2:301, times=7))
+write.table(df, "largedata/df_job_control_microbiome.csv", sep=",", row.names=FALSE, quote=FALSE)
 
 ```
 
@@ -28,7 +28,7 @@ write.table(df, "largedata/df_job_control_nitrogen.csv", sep=",", row.names=FALS
 
 ```{r}
 library("huskeR")
-run_Rcode(inputdf=data.frame(file=1:7, out=NA), outdir="slurm-script", cmdno = 10, 
+run_Rcode(inputdf=data.frame(file=1:2100, out=NA), outdir="slurm-script", cmdno = 10, 
           rcodes = "profiling/2_mediation/2.B.1_setup_med_job.R",
           rversion="3.5",
           base_shid = "med_test",

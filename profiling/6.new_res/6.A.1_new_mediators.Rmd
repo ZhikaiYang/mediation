@@ -121,6 +121,9 @@ newgenes = fread("largedata/new_genes.txt")
 
 id = which(top$Var1 %in% newgenes$`Gene Model`)
 top_newgenes = merge(top, newgenes, by.x = "Var1", by.y = "Gene Model")
+
+bx13 = subset(m, id == "AC148152.3_FG005")
+
 ```
 
 

@@ -1,107 +1,107 @@
 category,trait,num_mediators
-Development,EarHeight,88
-Development,PlantHeight,68
-Female Inflorescence,CobDiameter,85
-Female Inflorescence,EarLength,66
-Female Inflorescence,EarRankNumber,91
-Female Inflorescence,EarRowNumber,114
-Flowering Time,AnthesistoSilkInterval,186
-Flowering Time,DaystoSilk,165
-Flowering Time,DaysToTassel,77
-Flowering Time,GDDAnthesis.SilkingInterval,93
-Flowering Time,GDDDaystoSilk,74
-Flowering Time,GDDDaystoTassel,41
-Leaf Morphology,LeafLength,79
-Leaf Morphology,LeafWidth,31
-Leaf Morphology,UpperLeafAngle,42
-Male Inflorescence,TasselLength,65
-Male Inflorescence,TasselPrimaryBranches,45
-Metabolite,X.1001..phenethylamine..13.742,79
-Metabolite,X.1060..pyruvic.acid..6.714,66
-Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,231
-Metabolite,X.12647..L.homoserine.2..12.359,184
-Metabolite,X.128869..galactonic.acid.2..18.504,91
-Metabolite,X.1549111..caffeic.acid..19.755,142
-Metabolite,X.204..allantoin.1..17.293,153
-Metabolite,X.2116..alpha.tocophereol..27.379,106
-Metabolite,X.236..L.asparagine.2..14.984,39
-Metabolite,X.239..Beta..alanine..1..12.044,323
-Metabolite,X.2724705..1.6.anhydro.glucose..15.326,129
-Metabolite,X.3037582..mucic.acid..18.907,115
-Metabolite,X.311..citric.acid..16.615..s100,102
-Metabolite,X.33032..L.glutamic.acid.3..dehydrated...13.232..s100,112
-Metabolite,X.439183..3.phosphoglyceric.acid..16.504,70
-Metabolite,X.439194..glyceric.acid..10.735,129
-Metabolite,X.439242..Raffinose..29.282,188
-Metabolite,X.439451..galactinol.2..26.479,71
-Metabolite,X.439742..beta.cyano.L.alanine..11.288,162
-Metabolite,X.439958..D.glucose.6.phosphate.1..21.394,52
-Metabolite,X.444212..trans.aconitic.acid..15.842..s100,84
-Metabolite,X.444266..maleic.acid..10.323,144
-Metabolite,X.444972..fumaric.acid..10.94,108
-Metabolite,X.448388..D.allose.1..17.278,111
-Metabolite,X.51..alpha.ketoglutaric.acid..13.859,144
-Metabolite,X.5280450..linoleic.acid..20.399,72
-Metabolite,X.5321342..beta.sitosterol..28.848,52
-Metabolite,X.5321515..stigmasterol..28.442,82
-Metabolite,X.5460407..threonic.acid..13.652,211
-Metabolite,X.5460673..D.saccharic.acid..18.614,172
-Metabolite,X.5460935..turanose.1..24.81,319
-Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,183
-Metabolite,X.5951..L.serine.2..11.174..s100,75
-Metabolite,X.5960..aspartic.acid.2..13.207,89
-Metabolite,X.5962..L.lysine.2..17.643,164
-Metabolite,X.5984..fructose.1..17.18..s100,87
-Metabolite,X.5988..Sucrose..23.988..s100,119
-Metabolite,X.6057..tyrosine.2..17.871,80
-Metabolite,X.60961..adenosine..23.825,109
-Metabolite,X.6106..L.leucine.2..9.945,149
-Metabolite,X.6255..maltose..2..24.915,185
-Metabolite,X.6255..maltose.1..24.702,142
-Metabolite,X.6262..L.ornithine.2..16.632,133
-Metabolite,X.6287..L.valine.2..9.151,115
-Metabolite,X.6288..L.threonine.2..11.464,82
-Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,60
-Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,320
-Metabolite,X.642609..trans.caftaric.acid.2..25.529,132
-Metabolite,X.6508..quinic.acid..17.076..s100,97
-Metabolite,X.6537496..chlorogenic.acid.1..26.37,139
-Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,156
-Metabolite,X.6537496..chlorogenic.acid.2..27.18._alt,24
-Metabolite,X.6912..xylitol..15.376,150
-Metabolite,X.700..ethanolamine..9.879,237
-Metabolite,X.738..L.glutamine.2..14.083,265
-Metabolite,X.750..glycine..10.456..s100,92
-Metabolite,X.754..glycerol.1.phosphate..16.056,95
-Metabolite,X.791..DL.isoleucine.2..10.225,175
-Metabolite,X.827..ribitol..15.66,105
-Metabolite,X.835..dehydroascorbic.acid..1..16.863,90
-Metabolite,X.8742..shikimic.acid..16.433..s100,130
-Metabolite,X.892..myo.inositol..19.354..s100,77
-Metabolite,X.92824..D.malic.acid..12.794..s100,72
-Metabolite,X.938..nicotinic.acid..10.27,221
-Metabolite,X.971..oxalic.acid..7.883,90
-Metabolite,X.9750..citrulline.2..16.691,147
-other,EarDiameter,70
-other,GerminationCount,64
-other,MainSpikeLength,38
-other,MiddleLeafAngle,77
-other,NIROil,137
-other,NIRProtein,52
-other,NIRStarch,81
-other,NumberofTilleringPlants,121
-other,RowQuality,70
-other,SecondaryBranchNumber,96
-other,SeedSetLength,91
-other,SouthernLeafBlight,92
-other,Spikelets.MainSpike,56
-other,Spikelets.PrimaryBranch,75
-other,StandCount,104
-other,TasselBranchLength,132
-other,TilleringIndex,100
-Seed Traits,CobWeight,110
-Seed Traits,EarWeight,38
-Seed Traits,TotalKernelNum,51
-Seed Traits,TotalKernelVolume,90
-Seed Traits,TotalSeedWeight,52
-Seed Traits,X20KernelWeight,79
+Development,EarHeight,42
+Development,PlantHeight,58
+Female Inflorescence,CobDiameter,22
+Female Inflorescence,EarLength,54
+Female Inflorescence,EarRankNumber,44
+Female Inflorescence,EarRowNumber,146
+Flowering Time,AnthesistoSilkInterval,27
+Flowering Time,DaystoSilk,70
+Flowering Time,DaysToTassel,82
+Flowering Time,GDDAnthesis.SilkingInterval,48
+Flowering Time,GDDDaystoSilk,40
+Flowering Time,GDDDaystoTassel,45
+Leaf Morphology,LeafLength,20
+Leaf Morphology,LeafWidth,53
+Leaf Morphology,UpperLeafAngle,27
+Male Inflorescence,TasselLength,57
+Male Inflorescence,TasselPrimaryBranches,43
+Metabolite,X.1001..phenethylamine..13.742,77
+Metabolite,X.1060..pyruvic.acid..6.714,65
+Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,200
+Metabolite,X.12647..L.homoserine.2..12.359,195
+Metabolite,X.128869..galactonic.acid.2..18.504,86
+Metabolite,X.1549111..caffeic.acid..19.755,33
+Metabolite,X.204..allantoin.1..17.293,155
+Metabolite,X.2116..alpha.tocophereol..27.379,68
+Metabolite,X.236..L.asparagine.2..14.984,65
+Metabolite,X.239..Beta..alanine..1..12.044,217
+Metabolite,X.2724705..1.6.anhydro.glucose..15.326,138
+Metabolite,X.3037582..mucic.acid..18.907,212
+Metabolite,X.311..citric.acid..16.615..s100,87
+Metabolite,X.33032..L.glutamic.acid.3..dehydrated...13.232..s100,70
+Metabolite,X.439183..3.phosphoglyceric.acid..16.504,104
+Metabolite,X.439194..glyceric.acid..10.735,62
+Metabolite,X.439242..Raffinose..29.282,90
+Metabolite,X.439451..galactinol.2..26.479,137
+Metabolite,X.439742..beta.cyano.L.alanine..11.288,144
+Metabolite,X.439958..D.glucose.6.phosphate.1..21.394,140
+Metabolite,X.444212..trans.aconitic.acid..15.842..s100,81
+Metabolite,X.444266..maleic.acid..10.323,107
+Metabolite,X.444972..fumaric.acid..10.94,16
+Metabolite,X.448388..D.allose.1..17.278,42
+Metabolite,X.51..alpha.ketoglutaric.acid..13.859,18
+Metabolite,X.5280450..linoleic.acid..20.399,31
+Metabolite,X.5321342..beta.sitosterol..28.848,213
+Metabolite,X.5321515..stigmasterol..28.442,126
+Metabolite,X.5460407..threonic.acid..13.652,24
+Metabolite,X.5460673..D.saccharic.acid..18.614,84
+Metabolite,X.5460935..turanose.1..24.81,224
+Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,227
+Metabolite,X.5951..L.serine.2..11.174..s100,110
+Metabolite,X.5960..aspartic.acid.2..13.207,53
+Metabolite,X.5962..L.lysine.2..17.643,132
+Metabolite,X.5984..fructose.1..17.18..s100,93
+Metabolite,X.5988..Sucrose..23.988..s100,86
+Metabolite,X.6057..tyrosine.2..17.871,57
+Metabolite,X.60961..adenosine..23.825,94
+Metabolite,X.6106..L.leucine.2..9.945,146
+Metabolite,X.6255..maltose..2..24.915,213
+Metabolite,X.6255..maltose.1..24.702,43
+Metabolite,X.6262..L.ornithine.2..16.632,143
+Metabolite,X.6287..L.valine.2..9.151,24
+Metabolite,X.6288..L.threonine.2..11.464,135
+Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,154
+Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,164
+Metabolite,X.642609..trans.caftaric.acid.2..25.529,125
+Metabolite,X.6508..quinic.acid..17.076..s100,146
+Metabolite,X.6537496..chlorogenic.acid.1..26.37,234
+Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,168
+Metabolite,X.6537496..chlorogenic.acid.2..27.18._alt,38
+Metabolite,X.6912..xylitol..15.376,108
+Metabolite,X.700..ethanolamine..9.879,181
+Metabolite,X.738..L.glutamine.2..14.083,257
+Metabolite,X.750..glycine..10.456..s100,110
+Metabolite,X.754..glycerol.1.phosphate..16.056,115
+Metabolite,X.791..DL.isoleucine.2..10.225,104
+Metabolite,X.827..ribitol..15.66,88
+Metabolite,X.835..dehydroascorbic.acid..1..16.863,68
+Metabolite,X.8742..shikimic.acid..16.433..s100,125
+Metabolite,X.892..myo.inositol..19.354..s100,20
+Metabolite,X.92824..D.malic.acid..12.794..s100,100
+Metabolite,X.938..nicotinic.acid..10.27,124
+Metabolite,X.971..oxalic.acid..7.883,29
+Metabolite,X.9750..citrulline.2..16.691,134
+other,EarDiameter,91
+other,GerminationCount,45
+other,MainSpikeLength,29
+other,MiddleLeafAngle,31
+other,NIROil,101
+other,NIRProtein,36
+other,NIRStarch,145
+other,NumberofTilleringPlants,104
+other,RowQuality,93
+other,SecondaryBranchNumber,60
+other,SeedSetLength,27
+other,SouthernLeafBlight,118
+other,Spikelets.MainSpike,101
+other,Spikelets.PrimaryBranch,46
+other,StandCount,81
+other,TasselBranchLength,92
+other,TilleringIndex,57
+Seed Traits,CobWeight,100
+Seed Traits,EarWeight,24
+Seed Traits,TotalKernelNum,60
+Seed Traits,TotalKernelVolume,92
+Seed Traits,TotalSeedWeight,77
+Seed Traits,X20KernelWeight,28
