@@ -138,8 +138,8 @@ Zea_mays.AGPv4_anno <- data.frame(chr = Zea_mays.AGPv4_anno$chromosome_name, gen
 Zea_mays.AGPv34_anno <- merge(V3_V4, Zea_mays.AGPv4_anno, by.x = "V2", by.y = "gene4")
 Zea_mays.AGPv34_anno_s = subset(Zea_mays.AGPv34_anno, V2 %in% lin)
 V3_V4_s = subset(V3_V4, V2 %in% lin)
-
-which(flowering$id %in% V3_V4_s$V1)
+flowering = subset(m, category == "Flowering Time")
+id = which(flowering$id %in% V3_V4_s$V1)
 
 
 oldm = fread("data/input/mediators_23296rows_by_cat.csv")
@@ -160,6 +160,15 @@ mads56fixeds = mads56fixed[,c(6,1,5,3)]
 library(dplyr)
 mads56fixeds = arrange(mads56fixeds, category, trait, tissue, padj)
 mads56fixeds_sig = subset(mads56fixeds, padj <= 0.05)
+
+
+idx = which(m$id == "AC148152.3_FG005")
+bx13 = m[idx,c(1,2,6,9,10,11)]
+bx13fixed = subset(bx13, method == "res.fixed")
+bx13fixeds = bx13fixed[,c(6,1,5,3)]
+
+bx13fixeds = arrange(bx13fixeds, category, trait, tissue, padj)
+bx13fixeds_sig = subset(bx13fixeds, padj <= 0.05)
 
 
 ms = m[,c(1,2,6,9,10,11)]
@@ -240,7 +249,7 @@ gop52$category = gsub("_p5", "", gop52$category)
 go2sig = subset(go2, FDR <0.05)
 gop52sig = subset(gop52, FDR < 0.05)
 
-############READ GO RESULT METHOD 2 ############
+############READ GO RESULT METHOD 1 ############
 
 f <- list.files(path="largedata/go/", pattern="_1", full.names = T)
 
@@ -393,7 +402,7 @@ library(gridExtra)
 ggarrange(p2,p7, nrow =1, ncol = 2)
 
 #####0.05 significant visual####
-Flowering_Time = subset(gop51sig, category == "Flowering Time")
+Flowering_Time = subset(gop52sig, category == "Flowering Time")
 
 
 p8 = ggplot(Flowering_Time, aes(x = Term, y=-log(pvalue))) +
@@ -411,7 +420,7 @@ p8 = ggplot(Flowering_Time, aes(x = Term, y=-log(pvalue))) +
           legend.text = element_text(size=fsize))
 
 
-Metabolite = subset(gop51sig, category == "Metabolite")
+Metabolite = subset(gop52sig, category == "Metabolite")
 
 p9 = ggplot(Metabolite, aes(x = Term, -log(pvalue))) +
     geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
