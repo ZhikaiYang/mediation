@@ -425,10 +425,44 @@ p_o
 dev.off()
 
 
-length(which(gwas_overlap_fixed_100kb$p_val_chi_adj <= 0.05))/737
-length(which(gwas_overlap_fixed_50kb$p_val_chi_adj <= 0.05))/737
-length(which(gwas_overlap_fixed_10kb$p_val_chi_adj <= 0.05))/737
-length(which(gwas_overlap_fixed_5kb$p_val_chi_adj <= 0.05))/737
+p <-ggplot(gwas_overlap_fixed_all, aes(x=win_size, y=o_ratio, fill=category)) +
+  geom_boxplot(outlier.colour="black", outlier.shape=16, outlier.size=1, notch=FALSE) +
+   xlab("window size") +
+    ylab("Overlap ratio with GWAS signals") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+id1 = which(gwas_overlap_fixed_100kb$category != "Metabolite")
+length(which(gwas_overlap_fixed_100kb$p_val_chi_adj[id1] <= 0.05))/length(id1)
+length(which(gwas_overlap_fixed_100kb$p_val_chi_adj[-id1] <= 0.05))/ (737 - length(id1) )
+
+id1 = which(gwas_overlap_fixed_50kb$category != "Metabolite")
+length(which(gwas_overlap_fixed_50kb$p_val_chi_adj[id1] <= 0.05))/length(id1)
+length(which(gwas_overlap_fixed_50kb$p_val_chi_adj[-id1] <= 0.05))/ (737 - length(id1) )
+
+id1 = which(gwas_overlap_fixed_10kb$category != "Metabolite")
+length(which(gwas_overlap_fixed_10kb$p_val_chi_adj[id1] <= 0.05))/length(id1)
+length(which(gwas_overlap_fixed_10kb$p_val_chi_adj[-id1] <= 0.05))/ (737 - length(id1) )
+
+id1 = which(gwas_overlap_fixed_5kb$category != "Metabolite")
+length(which(gwas_overlap_fixed_5kb$p_val_chi_adj[id1] <= 0.05))/length(id1)
+length(which(gwas_overlap_fixed_5kb$p_val_chi_adj[-id1] <= 0.05))/ (737 - length(id1) )
+
+pdf("graphs/overlap_ratio_gwas_all_win_all_traits_fixed_box.pdf", width = 9, height= 6)
+p
+dev.off()
+
+
 ```
 
 
