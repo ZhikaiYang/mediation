@@ -163,7 +163,8 @@ pdf("graphs/pvm_box_ag_met_tissue.pdf", width = 9, height= 6)
 p_tissue
 dev.off()
 
-
+p <- ggboxplot(pvm, x = "tissue", y = "pmed.pure",
+          color = "category")
 
 p_tissue_cats = p +
   xlab("Tissue") +
