@@ -63,6 +63,10 @@ write.table(out, "largedata/pvm_742rows_ag_met.csv", sep=",", row.names=FALSE, q
 ### on local
 
 ```{r}
+library(data.table)
+library(dplyr)
+  
+  
 ag_trait <- fread("data/geno_trait.txt")
 m_trait <- fread("data/metabolite_rep1_genotype_namecorrect.txt")
 trait_category <- data.frame(category = "other", trait = c(colnames(ag_trait)[-1], colnames(m_trait)[-1]))
@@ -77,6 +81,24 @@ trait_category$category[41:106]= "Metabolite"
 
 pvm = fread("largedata/pvm_742rows_ag_met.csv")
 pvm = merge(pvm, trait_category, by = "trait", all.x = T, sort = F)
+
+pvm_stat = (pvm %>% group_by(trait) %>% summarise(avg_pvm = mean(pmed.pure) ,avg_vmed = mean(v.med), min_vmed = min(v.med), max_vmed = max(v.med), num = n()))
+ag_mean = apply(ag_trait[,2:ncol(ag_trait)], 2, mean , na.rm = T)
+ag_mean = as.data.frame(ag_mean)
+ag_var = apply(ag_trait[,2:ncol(ag_trait)], 2, var , na.rm = T)
+ag_var = as.data.frame(ag_var)
+colnames(ag_var) = "trait_var"
+
+m_mean = apply(m_trait[,2:ncol(m_trait)], 2, mean , na.rm = T)
+m_mean = as.data.frame(m_mean)
+m_var = apply(m_trait[,2:ncol(m_trait)], 2, var , na.rm = T)
+m_var = as.data.frame(m_var)
+colnames(m_var) = "trait_var"
+
+trait_var = rbind(ag_var, m_var)
+trait_var$trait = rownames(trait_var)
+pvm_stat = merge(pvm_stat, trait_var, by = "trait")
+
 id = which(pvm$category != "Metabolite")
 pvm$category[id] = "Morphology"
 
