@@ -1,0 +1,119 @@
+---
+title: "Mediator genes break down by tissue"
+author: "Jinliang Yang"
+date: "1-21-2021"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+#### New results
+
+- Direct SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_34013rows.csv
+- Indirect SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv
+- Mediators: data/mediators_18812rows_by_cat.csv
+
+### Old results for microbiome data
+
+- cache/microbiome_mediators_34155rows.csv
+
+
+
+### Mediators
+
+
+```{r}
+m <- read.csv("data/mediators_18812rows_by_cat.csv")
+table(m$method)
+
+### only consider std nitrogen condition
+mi <- read.csv("cache/microbiome_mediators_34155rows.csv")
+
+# res.eq
+m1 <- subset(m, method %in% "res.fixed" & padj <= 0.05)
+m1$type <- "Morphology"
+m1[m1$category == "Metabolite", ]$type <- "Metabolite"
+
+
+m2 <- subset(mi, treatment %in% "stdN" & method %in% "res.fixed" & padj <= 0.05)
+m2$type <- "Microbiome"
+
+m1 <- m1[, c("type", "category", "tissue", "trait", "id", "method", "e2m", "m2y","e2m2y","padj","coef")]
+m2 <- m2[, c("type", "treatment", "tissue", "trait", "id", "method", "e2m", "m2y","e2m2y","padj","coef")]
+names(m2)[2] <- "category"
+
+df <- rbind(m1, m2) 
+```
+- eq: MedFix0.5
+- fixed: MedFixBIC
+
+- e2m: p-values for the exposure effect on the individual mediators
+- m2y: p-values for the mediator effect on phenotype
+- e2m2y: min value among c(1, max(e2m, m2y))
+
+
+
+# Polygenic mediators
+
+
+V3 => V4 gene id and coordinates:
+
+```{r}
+V3_V4 <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/V3_V4.csv", 
+               header = FALSE, data.table=FALSE)
+V3_V4 <- V3_V4[,c(1,2)]
+Zea_mays.AGPv4_anno <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/Zea_mays.AGPv4_anno.txt",
+                             header = TRUE, data.table = FALSE)
+v34 <- merge(V3_V4, Zea_mays.AGPv4_anno, by.x = "V2", by.y = "ensembl_gene_id_v4")
+fwrite(v34, "cache/gene_v34_conversion.txt", sep="\t", row.names=FALSE, quote=FALSE)
+```
+
+
+Find the top mediators
+
+```{r}
+library(plyr)
+library("data.table")
+
+df <- m1
+pall <- ddply(df, .(id), nrow)
+pall <- pall[order(pall$V1, decreasing = T),]
+
+v34 <- fread("cache/gene_v34_conversion.txt", data.table=FALSE)
+
+p2 <- merge(pall, v34[, 1:5], by.x="id", by.y="V1")
+p2 <- p2[order(p2$V1, decreasing = T),]
+```
+
+
+```{r}
+library(huskeR)
+
+names(p2)[4:5] <- c("chr", "pos")
+#mediator genes ploted in manhattan plot
+out <- plot_mht(inputdf=p2, hdf=NULL, col2plot = "V1", jmph = FALSE, pl = TRUE,
+  cl_file = "data/chr_length_B73v4.csv", cex = 1.5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="Number of mediated traits")
+
+pdf("graphs/mht_num_med_traits.pdf", width = 15, height= 5)
+plot_mht(inputdf=p2, hdf=NULL, col2plot = "V1", jmph = FALSE, pl = TRUE,
+  cl_file = "data/chr_length_B73v4.csv", cex = 1.5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="Number of mediated traits")
+dev.off()
+```
+
+
+
+
+
+
+
+

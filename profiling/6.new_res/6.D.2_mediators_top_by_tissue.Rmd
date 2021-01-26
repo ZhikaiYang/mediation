@@ -1,0 +1,180 @@
+---
+title: "Mediator genes break down by tissue"
+author: "Jinliang Yang"
+date: "1-21-2021"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+#### New results
+
+- Direct SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_34013rows.csv
+- Indirect SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv
+- Mediators: data/mediators_18812rows_by_cat.csv
+
+### Old results for microbiome data
+
+- cache/microbiome_mediators_34155rows.csv
+
+
+
+### Mediators
+
+Note, here, we only focus on m1 (metabolite and morphological traits)
+```{r}
+m <- read.csv("data/mediators_18812rows_by_cat.csv")
+table(m$method)
+
+### only consider std nitrogen condition
+mi <- read.csv("cache/microbiome_mediators_34155rows.csv")
+
+# res.eq
+m1 <- subset(m, method %in% "res.fixed" & padj <= 0.05)
+m1$type <- "Morphology"
+m1[m1$category == "Metabolite", ]$type <- "Metabolite"
+
+
+m2 <- subset(mi, treatment %in% "stdN" & method %in% "res.fixed" & padj <= 0.05)
+m2$type <- "Microbiome"
+
+m1 <- m1[, c("type", "category", "tissue", "trait", "id", "method", "e2m", "m2y","e2m2y","padj","coef")]
+m2 <- m2[, c("type", "treatment", "tissue", "trait", "id", "method", "e2m", "m2y","e2m2y","padj","coef")]
+names(m2)[2] <- "category"
+
+df <- rbind(m1, m2) 
+df <- m1
+```
+- eq: MedFix0.5
+- fixed: MedFixBIC
+
+- e2m: p-values for the exposure effect on the individual mediators
+- m2y: p-values for the mediator effect on phenotype
+- e2m2y: min value among c(1, max(e2m, m2y))
+
+
+
+# Polygenic mediators by tissue
+
+
+Find the top mediators
+
+```{r}
+library(plyr)
+library("data.table")
+
+pall <- ddply(df, .(tissue, id), nrow)
+pall <- pall[order(pall$V1, decreasing = T),]
+
+v34 <- fread("cache/gene_v34_conversion.txt", data.table=FALSE)
+
+p2 <- merge(pall, v34[, 1:5], by.x="id", by.y="V1")
+p2 <- p2[order(p2$V1, decreasing = T),]
+```
+
+
+
+Here we focus on L3Tip
+
+```{r}
+l3tip <- subset(df, tissue %in% "L3Tip")
+p2 <- ddply(l3tip, .(id), nrow)
+
+fg5 <- subset(df, id %in% "AC148152.3_FG005")
+table(fg5$type)
+
+
+table(fg5$category)
+```
+Metabolite Morphology 
+        25         15
+        
+
+
+```{r}
+library(huskeR)
+
+names(p2)[4:5] <- c("chr", "pos")
+#mediator genes ploted in manhattan plot
+out <- plot_mht(inputdf=p2, hdf=NULL, col2plot = "V1", jmph = FALSE, pl = TRUE,
+  cl_file = "data/chr_length_B73v4.csv", cex = 1.5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="Number of mediated traits")
+
+pdf("graphs/mht_num_med_traits.pdf", width = 15, height= 5)
+plot_mht(inputdf=p2, hdf=NULL, col2plot = "V1", jmph = FALSE, pl = TRUE,
+  cl_file = "data/chr_length_B73v4.csv", cex = 1.5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="Number of mediated traits")
+dev.off()
+```
+
+
+
+
+
+
+
+
+
+
+```{r}
+pm <- ddply(df, .(type, tissue, id), nrow)
+pm <- pm[order(pm$V1, decreasing = T),]
+
+
+fg005 <- subset(pm, id %in% "AC148152.3_FG005")
+
+gc <- ddply(df, .(id), nrow)
+gc <- gc[order(gc$V1, decreasing = T),]
+```
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+nt$tissue <- factor(nt$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+
+pall <- ggplot(nt, aes(x=tissue, y=V1, fill=type)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=1, notch=FALSE) +
+    # scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("Avg number of mediator genes") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = c(0.2, 0.8), 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/avg_num_mediator_genes_by_type.pdf", width = 9, height= 6)
+pall
+dev.off()
+```
+
+
+
+
+
+
+
