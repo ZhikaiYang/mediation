@@ -91,6 +91,7 @@ dev.off()
 
 
 ```{r}
+library(data.table)
 ag <- subset()
 
 m <- subset(m, padj < 0.05)
@@ -103,12 +104,12 @@ m = merge(m, top, by.x = "id", by.y = "Var1", all.x = T)
 library(dplyr)
 m = arrange(m, desc(Freq), id)
 
-idx <- which(top$Var1 %in% "GRMZM2G171650")
+#idx <- which(top$Var1 %in% "GRMZM2G171650")
 
 
-head(m)
+#head(m)
 
-subset(m, id %in% "GRMZM2G171650")
+#subset(m, id %in% "GRMZM2G171650")
 
 V3_V4 <- fread("./largedata/V3_V4.csv", header = FALSE , data.table=FALSE)
 V3_V4 <- V3_V4[,c(1,2)]
@@ -123,7 +124,7 @@ id = which(top$Var1 %in% newgenes$`Gene Model`)
 top_newgenes = merge(top, newgenes, by.x = "Var1", by.y = "Gene Model")
 
 bx13 = subset(m, id == "AC148152.3_FG005")
-
+bx13 = arrange(bx13, category, padj)
 ```
 
 
