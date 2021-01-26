@@ -86,7 +86,7 @@ Here we focus on L3Tip
 l3tip <- subset(df, tissue %in% "L3Tip")
 p2 <- ddply(l3tip, .(id), nrow)
 
-fg5 <- subset(df, id %in% "AC148152.3_FG005")
+fg5 <- subset(l3tip, id %in% "AC148152.3_FG005")
 table(fg5$type)
 
 
@@ -97,22 +97,44 @@ Metabolite Morphology
         
 
 
+
+### Phenotype
+
+### RNA-seq data
+- largedata/RNA-seq
 ```{r}
-library(huskeR)
+library("data.table")
+ag_trait <- fread("data/geno_trait.txt", data.table = FALSE)
+m_trait <-fread("data/metabolite_rep1_genotype_namecorrect.txt", data.table = FALSE)
+t <- merge(ag_trait, m_trait, by="genotype")
 
-names(p2)[4:5] <- c("chr", "pos")
-#mediator genes ploted in manhattan plot
-out <- plot_mht(inputdf=p2, hdf=NULL, col2plot = "V1", jmph = FALSE, pl = TRUE,
-  cl_file = "data/chr_length_B73v4.csv", cex = 1.5,
-  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
-  yaxis = NULL, ylab="Number of mediated traits")
+l3t <- fread("largedata/RNA-seq/filtered_L3Tip.csv", data.table = FALSE)
+```
 
-pdf("graphs/mht_num_med_traits.pdf", width = 15, height= 5)
-plot_mht(inputdf=p2, hdf=NULL, col2plot = "V1", jmph = FALSE, pl = TRUE,
-  cl_file = "data/chr_length_B73v4.csv", cex = 1.5,
-  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
-  yaxis = NULL, ylab="Number of mediated traits")
-dev.off()
+
+```{r}
+# version3 gene id
+geneid = "AC148152.3_FG005"
+rna <- l3t[, c("genotype", geneid)]
+
+myt <- t[, c("genotype", as.character(fg5$trait))]
+
+### RNA and trait
+rt <- merge(rna, myt, by="genotype")
+
+library("tidyr")
+df <- gather(rt,  key="trait", value, 3:ncol(rt))
+fwrite(df, "cache/fg005_rna_pheno.csv", sep=",", row.names = FALSE, quote=FALSE)
+
+# Rescale to c(0,1)
+library("scales")
+rt0 <- scale(rt[, -1])
+row.names(rt0) <- rt$genotype
+
+rt0 <- as.data.frame(rt0)
+df2 <- gather(rt0,  key="trait", value, 2:ncol(rt0))
+fwrite(df2, "cache/fg005_rna_pheno_scaled.csv", sep=",", row.names = FALSE, quote=FALSE)
+
 ```
 
 
@@ -120,34 +142,28 @@ dev.off()
 
 
 
-
-
-
-
-```{r}
-pm <- ddply(df, .(type, tissue, id), nrow)
-pm <- pm[order(pm$V1, decreasing = T),]
-
-
-fg005 <- subset(pm, id %in% "AC148152.3_FG005")
-
-gc <- ddply(df, .(id), nrow)
-gc <- gc[order(gc$V1, decreasing = T),]
-```
-
+# Plot the results
 
 ```{r}
 library(ggplot2)
 
+df <- read.csv("cache/fg005_rna_pheno_scaled.csv")
+df$type <- "Ag"
+idx <- grep("^X\\.", df$trait)
+df[idx,]$type <- "M"
+
+df <- merge(df, fg5, by="trait")
+df$Eff <- "P"
+df[df$coef < 0, ]$Eff <- "N"
+
 fsize=18
-nt$tissue <- factor(nt$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
-                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 
 
-pall <- ggplot(nt, aes(x=tissue, y=V1, fill=type)) +
+pall <- ggplot(df, aes(x=log(AC148152.3_FG005), y=value, fill=trait)) +
     #geom_bar(stat="identity", position=position_dodge()) +
-    geom_boxplot(outlier.colour="black", outlier.shape=16, 
-             outlier.size=1, notch=FALSE) +
+    geom_point() +
+    geom_smooth(method="lm") +
+    facet_grid(vars(category), scales = "free") +
     # scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
     # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
     # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
@@ -162,12 +178,13 @@ pall <- ggplot(nt, aes(x=tissue, y=V1, fill=type)) +
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
           axis.text.x = element_text(angle = 15, hjust=0.8),
-          legend.position = c(0.2, 0.8), 
+          #legend.position = c(0.2, 0.8), 
+          legend.position ="none",
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=fsize))
 pall
 
-pdf("graphs/avg_num_mediator_genes_by_type.pdf", width = 9, height= 6)
+pdf("graphs/rna_pheno_FG005.pdf", width = 9, height= 6)
 pall
 dev.off()
 ```

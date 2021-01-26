@@ -1,5 +1,5 @@
 ---
-title: "Mediator genes break down by tissue"
+title: "Mediator genes for all tissues and traits"
 author: "Jinliang Yang"
 date: "1-21-2021"
 output: NULL
