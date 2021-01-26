@@ -1,0 +1,197 @@
+---
+title: "Mediator genes break down by tissue"
+author: "Jinliang Yang"
+date: "1-21-2021"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+#### New results
+
+- Direct SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_34013rows.csv
+- Indirect SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv
+- Mediators: data/mediators_18812rows_by_cat.csv
+
+### Old results for microbiome data
+
+- cache/microbiome_mediators_34155rows.csv
+
+
+
+### Mediators
+
+Note, here, we only focus on m1 (metabolite and morphological traits)
+```{r}
+m <- read.csv("data/mediators_18812rows_by_cat.csv")
+table(m$method)
+
+### only consider std nitrogen condition
+mi <- read.csv("cache/microbiome_mediators_34155rows.csv")
+
+# res.eq
+m1 <- subset(m, method %in% "res.fixed" & padj <= 0.05)
+m1$type <- "Morphology"
+m1[m1$category == "Metabolite", ]$type <- "Metabolite"
+
+
+m2 <- subset(mi, treatment %in% "stdN" & method %in% "res.fixed" & padj <= 0.05)
+m2$type <- "Microbiome"
+
+m1 <- m1[, c("type", "category", "tissue", "trait", "id", "method", "e2m", "m2y","e2m2y","padj","coef")]
+m2 <- m2[, c("type", "treatment", "tissue", "trait", "id", "method", "e2m", "m2y","e2m2y","padj","coef")]
+names(m2)[2] <- "category"
+
+df <- rbind(m1, m2) 
+df <- m1
+```
+- eq: MedFix0.5
+- fixed: MedFixBIC
+
+- e2m: p-values for the exposure effect on the individual mediators
+- m2y: p-values for the mediator effect on phenotype
+- e2m2y: min value among c(1, max(e2m, m2y))
+
+
+
+# Polygenic mediators by tissue
+
+
+Find the top mediators
+
+```{r}
+library(plyr)
+library("data.table")
+
+pall <- ddply(df, .(tissue, id), nrow)
+pall <- pall[order(pall$V1, decreasing = T),]
+
+v34 <- fread("cache/gene_v34_conversion.txt", data.table=FALSE)
+
+p2 <- merge(pall, v34[, 1:5], by.x="id", by.y="V1")
+p2 <- p2[order(p2$V1, decreasing = T),]
+```
+
+
+
+Here we focus on L3Tip
+
+```{r}
+l3tip <- subset(df, tissue %in% "L3Tip")
+p2 <- ddply(l3tip, .(id), nrow)
+
+fg5 <- subset(l3tip, id %in% "AC148152.3_FG005")
+table(fg5$type)
+
+
+table(fg5$category)
+```
+Metabolite Morphology 
+        25         15
+        
+
+
+
+### Phenotype
+
+### RNA-seq data
+- largedata/RNA-seq
+```{r}
+library("data.table")
+ag_trait <- fread("data/geno_trait.txt", data.table = FALSE)
+m_trait <-fread("data/metabolite_rep1_genotype_namecorrect.txt", data.table = FALSE)
+t <- merge(ag_trait, m_trait, by="genotype")
+
+l3t <- fread("largedata/RNA-seq/filtered_L3Tip.csv", data.table = FALSE)
+```
+
+
+```{r}
+# version3 gene id
+geneid = "AC148152.3_FG005"
+rna <- l3t[, c("genotype", geneid)]
+
+myt <- t[, c("genotype", as.character(fg5$trait))]
+
+### RNA and trait
+rt <- merge(rna, myt, by="genotype")
+
+library("tidyr")
+df <- gather(rt,  key="trait", value, 3:ncol(rt))
+fwrite(df, "cache/fg005_rna_pheno.csv", sep=",", row.names = FALSE, quote=FALSE)
+
+# Rescale to c(0,1)
+library("scales")
+rt0 <- scale(rt[, -1])
+row.names(rt0) <- rt$genotype
+
+rt0 <- as.data.frame(rt0)
+df2 <- gather(rt0,  key="trait", value, 2:ncol(rt0))
+fwrite(df2, "cache/fg005_rna_pheno_scaled.csv", sep=",", row.names = FALSE, quote=FALSE)
+
+```
+
+
+
+
+
+
+# Plot the results
+
+```{r}
+library(ggplot2)
+
+df <- read.csv("cache/fg005_rna_pheno_scaled.csv")
+df$type <- "Ag"
+idx <- grep("^X\\.", df$trait)
+df[idx,]$type <- "M"
+
+df <- merge(df, fg5, by="trait")
+df$Eff <- "P"
+df[df$coef < 0, ]$Eff <- "N"
+
+fsize=18
+
+
+pall <- ggplot(df, aes(x=log(AC148152.3_FG005), y=value, fill=trait)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_point() +
+    geom_smooth(method="lm") +
+    facet_grid(vars(category), scales = "free") +
+    # scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("Avg number of mediator genes") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position ="none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/rna_pheno_FG005.pdf", width = 9, height= 6)
+pall
+dev.off()
+```
+
+
+
+
+
+
+

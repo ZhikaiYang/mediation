@@ -1,0 +1,114 @@
+---
+title: "Mediator genes break down by tissue"
+author: "Jinliang Yang"
+date: "1-21-2021"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+
+### Mediators
+
+Note, here, we only focus on m1 (metabolite and morphological traits)
+```{r}
+library("data.table")
+isnp <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv", data.table=FALSE)
+# table(isnp$method)
+
+#  res.eq res.fixed
+#    22832     24463
+
+### only consider res.fixed
+i1 <- subset(isnp, method == "res.fixed")
+i1$type <- "Morphology"
+idx <- grep("^X\\.", i1$trait)
+i1[idx, ]$type <- "Metabolite"
+
+```
+
+
+# iSNP for FG005
+
+Find the top mediators: "AC148152.3_FG005"
+
+
+```{r}
+ifg5 <- subset(i1, medi %in% "AC148152.3_FG005")
+
+v34 <- fread("cache/gene_v34_conversion.txt", data.table=FALSE)
+fg5 <- subset(v34, V1 %in% "AC148152.3_FG005")
+
+# 238143557
+
+chr2 <- subset(ifg5, seq == 2)
+
+chr2$dist <- chr2$Pos - 238143557
+
+out <- subset(chr2, abs(dist) < 100000)
+```
+
+
+```{r}
+library(readxl)
+
+bx <- read_excel("data/bx_genes.xlsx")
+bx <- as.data.frame(bx)
+write.table(bx, "cache/bx_genes.csv", sep=",", row.names = FALSE, quote=FALSE)
+
+bx <- read.csv("data/bx_genes.csv")
+bx4 <- merge(v34, bx, by.x="V2", by.y="GeneID")
+```
+
+
+Ask Gen to draw the LD plot
+
+
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+pall <- ggplot(d, aes(tissue, trait, fill = coef)) + 
+  geom_tile(colour='white') +
+  scale_fill_gradientn(colours=c("red","white","darkgreen"),
+                       values  = rescale(c(min(d$coef), 0, max(d$coef)))) +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position =c(0.2, 0.2),
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/rna_pheno_FG005.pdf", width = 9, height= 6)
+pall
+dev.off()
+```
+
+
+
+
+
+
+
+
