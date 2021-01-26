@@ -50,12 +50,24 @@ fg5 <- subset(v34, V1 %in% "AC148152.3_FG005")
 chr2 <- subset(ifg5, seq == 2)
 
 chr2$dist <- chr2$Pos - 238143557
+
+out <- subset(chr2, abs(dist) < 100000)
 ```
 
 
+```{r}
+library(readxl)
+
+bx <- read_excel("data/bx_genes.xlsx")
+bx <- as.data.frame(bx)
+write.table(bx, "cache/bx_genes.csv", sep=",", row.names = FALSE, quote=FALSE)
+
+bx <- read.csv("data/bx_genes.csv")
+bx4 <- merge(v34, bx, by.x="V2", by.y="GeneID")
+```
 
 
-
+Ask Gen to draw the LD plot
 
 
 
