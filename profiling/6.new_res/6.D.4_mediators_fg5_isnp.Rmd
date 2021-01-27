@@ -70,6 +70,17 @@ bx4 <- merge(v34, bx, by.x="V2", by.y="GeneID")
 Ask Gen to draw the LD plot
 
 
+# Find the phenotypic effect
+
+SNP: 238153041
+
+```{r}
+library("data.table")
+snp <- fread("data/Zm00001d007718.up_down.50K.hmp.txt", data.table=FALSE)
+
+mysnp <- subset(snp, pos >  238153041 -100 & pos < 238153041 + 100)
+```
+
 
 
 

@@ -285,6 +285,15 @@ m1 <- subset(m, padj < 0.01)
 
 t5 <- as.data.frame(table(m5$id))
 t5 <- t5[order(t5$Freq, decreasing=T),]
+
+t5 <- subset(t5, Freq > 5)
+# For Phenotyping
+out <- subset(m, id %in% t5$Var1)
+out2 <- merge(out[, c("id","trait", "tissue", "method")], t5, by.x="id", by.y="Var1")
+
+idx <- grep("^X", out2$trait)
+out3 <- out2[-idx,]
+write.table(out3, "largedata/top_mediators_traits.csv", sep=",", row.names = FALSE, quote=FALSE)
 ```
 
 ### focus on only the metabolite traits
