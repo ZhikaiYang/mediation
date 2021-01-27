@@ -121,7 +121,7 @@ if (res_fixed_X.6255..maltose..2..24.915_p7msnps_L3Tip$n.med >= 1) {
   fixed_X.6255..maltose..2..24.915_p7msnps_L3Tip <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/res.fixed_mediator_X.6255..maltose..2..24.915_ts_L3Tip.csv", header = T , data.table=FALSE)
   id = which(fixed_X.6255..maltose..2..24.915_p7msnps_L3Tip$padj <= 0.05)
   
-  hdf_fixed_X.6255..maltose..2..24.915_p7msnps_L3Tip_v34 <- filter(Zea_mays.AGPv34_anno, gene3 %in% fixed_X.6255..maltose..2..24.915_p7msnps_L3Tip$id) 
+  hdf_fixed_X.6255..maltose..2..24.915_p7msnps_L3Tip_v34 <- filter(Zea_mays.AGPv34_anno, gene3 %in% fixed_X.6255..maltose..2..24.915_p7msnps_L3Tip$id[id]) 
   
   if (length(hdf_fixed_X.6255..maltose..2..24.915_p7msnps_L3Tip_v34$gene4) >= 1) {
     
