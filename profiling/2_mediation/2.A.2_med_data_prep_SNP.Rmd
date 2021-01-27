@@ -22,6 +22,7 @@ copy from Zhikai's folder!
 cp /common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned_NA_0_matrix.txt largedata/geno
 cp /common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/allchr_bisnp_n282_snpid_maf01_geno2_pruned.eigenvec largedata
 ```
+
 ###preparing files for population 368
 ```{bash}
 cp /common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/code2020/traits/tpb_p7msnps_368/All_Merged_1.25M_MAF0.05_AGPV4.eigenvec largedata/All_Merged_1.25M_MAF0.05_AGPV4.eigenvec
