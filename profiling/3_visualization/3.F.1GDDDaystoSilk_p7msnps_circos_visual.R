@@ -119,13 +119,14 @@ if (res_fixed_X.738..L.glutamine.2..14.083_p7msnps_L3Base$n.direct >= 1) {
 if (res_fixed_X.738..L.glutamine.2..14.083_p7msnps_L3Base$n.med >= 1) {
   
   fixed_X.738..L.glutamine.2..14.083_p7msnps_L3Base <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/res.fixed_mediator_X.738..L.glutamine.2..14.083_ts_L3Base.csv", header = T , data.table=FALSE)
+  id = which(fixed_X.738..L.glutamine.2..14.083_p7msnps_L3Base$padj <= 0.05)
   
-  
-  hdf_fixed_X.738..L.glutamine.2..14.083_p7msnps_L3Base_v34 <- filter(Zea_mays.AGPv34_anno, gene3 %in% fixed_X.738..L.glutamine.2..14.083_p7msnps_L3Base$id) 
+  hdf_fixed_X.738..L.glutamine.2..14.083_p7msnps_L3Base_v34 <- filter(Zea_mays.AGPv34_anno, gene3 %in% fixed_X.738..L.glutamine.2..14.083_p7msnps_L3Base$id[id]) 
   
   if (length(hdf_fixed_X.738..L.glutamine.2..14.083_p7msnps_L3Base_v34$gene4) >= 1) {
     
     color = c("#CC0033", "#FF9900", "#CCCC00", "#00FF00", "#3399FF", "#00FFFF", "#FF00FF", "#990066", "#999999", "#000000")
+    color = rep(color, 6)
     hdf_fixed_X.738..L.glutamine.2..14.083_p7msnps_L3Base_v34$col = color[1:nrow(hdf_fixed_X.738..L.glutamine.2..14.083_p7msnps_L3Base_v34)]   
     
     fwrite(hdf_fixed_X.738..L.glutamine.2..14.083_p7msnps_L3Base_v34, "./largedata/circos/hdf_fixed_X.738..L.glutamine.2..14.083_p7msnps_L3Base_v34.csv", sep=",", row.names=FALSE, quote=FALSE)
