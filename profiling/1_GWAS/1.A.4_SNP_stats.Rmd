@@ -255,7 +255,7 @@ dev.off()
 
 
 #scatterplot3d(iris[,1:3], pch = shapes)
-sub_pop <- read.delim("largedata/geno_282/sub_pop_282.csv", sep = ",",header=T)
+sub_pop <- read.delim("largedata/geno/sub_pop_282.csv", sep = ",",header=T)
 sub_pop = sub_pop[,c(1,9)]
 df_sub_pop = merge(df, sub_pop, by.x = "V2", by.y = "Inbred", all.x = T)
 df_sub_pop = df_sub_pop[,c(1,3,4,5,23)]
