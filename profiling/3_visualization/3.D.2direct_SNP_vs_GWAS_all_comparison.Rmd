@@ -202,6 +202,8 @@ trait_category$category[41:106]= "Metabolite"
 dsnps = merge(dsnps, trait_category, by = "trait", all.x = T, sort = F)
 dsnps_eq <- subset(dsnps, method == "res.eq")
 dsnps_fixed <- subset(dsnps, method == "res.fixed")
+id = which(dsnps_fixed$pval < 0.05)
+fwrite(dsnps_fixed[id,], "data/supplementary/dsnps_18369rows_fixed.csv" , sep=",", row.names=FALSE, quote=FALSE)
 
 gwas_overlap_eq = as.data.frame(gwas_overlap_eq)
 colnames(gwas_overlap_eq) = c("trait", "tissue", "o_ratio", "num_o", "N_dsnps")

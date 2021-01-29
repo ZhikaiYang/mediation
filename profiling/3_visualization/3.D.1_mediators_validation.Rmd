@@ -186,6 +186,7 @@ write.table(mfixed_g2, "data/supplementary/mfixed_g2.csv", sep=",", row.names=FA
 
 
 mfixed_sig = subset(mfixed, padj <= 0.05)
+fwrite(mfixed_sig, "data/supplementary/mediators_mfixed_sig_932rows.csv" , sep=",", row.names=FALSE, quote=FALSE)
 siggene_freq = as.data.frame(table(mfixed_sig$id))
 siggene_freq = arrange(siggene_freq, desc(Freq))
 

@@ -120,6 +120,7 @@ trait_category$category[41:106]= "Metabolite"
 isnps = merge(isnps, trait_category, by = "trait", all.x = T, sort = F)
 isnps_eq <- subset(isnps, method == "res.eq")
 isnps_fixed <- subset(isnps, method == "res.fixed")
+fwrite(isnps_fixed, "data/supplementary/isnps_24383rows_fixed.csv" , sep=",", row.names=FALSE, quote=FALSE)
 
 int34ear_overlap_eq = as.data.frame(int34ear_overlap_eq)
 colnames(int34ear_overlap_eq) = c("trait", "tissue", "o_ratio", "num_o", "N_isnps")
