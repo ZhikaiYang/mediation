@@ -9,6 +9,8 @@ id = which(f %in% fmic)
 f = f[-c(id)]
 id = grep("P368", f)
 f = f[-c(id)]
+id = grep("Nitrogen",f)
+f = f[-c(id)]
 
 
 
@@ -34,9 +36,9 @@ snps_p7msnps <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/
 out <- merge(out, snps_p7msnps[,c(1,2,4)], by.x = "snps_for_medi", by.y = "V2", sort = F, all.x = T)
 colnames(out)[c(8,9)] = c("chr", "pos")
 
-write.table(out, "largedata/isnps_vs_feature/isnps_633005rows.csv", sep=",", row.names=FALSE, quote=FALSE)
+write.table(out, "largedata/isnps_vs_feature/isnps_63005rows.csv", sep=",", row.names=FALSE, quote=FALSE)
 
-isnps <- fread("largedata/isnps_vs_feature/isnps_633005rows.csv", header=TRUE, data.table=FALSE)
+isnps <- fread("largedata/isnps_vs_feature/isnps_63005rows.csv", header=TRUE, data.table=FALSE)
 
 gff <- fread("largedata/isnps_vs_feature/Zea_mays.B73_RefGen_v4.46.chr.txt", header=FALSE, data.table=FALSE)
 names(gff) <- c("seq", "source", "feature", "start", "end", "score", "strand", "phase", "att")
@@ -118,7 +120,6 @@ fwrite(g, "largedata/isnps_vs_feature/gene.txt", sep="\t", row.names = FALSE, qu
 
 utr5up = rbind(utr5p_up, utr5m_up)
 fwrite(utr5up, "largedata/isnps_vs_feature/utr5up5k.txt", sep="\t", row.names = FALSE, quote=FALSE)
-
 
 library("GenomicRanges")
 library("plyr")

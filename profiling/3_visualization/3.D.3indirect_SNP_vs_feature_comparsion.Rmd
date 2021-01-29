@@ -289,7 +289,6 @@ write.table(int34ear_overlap_fixed, "largedata/isnps_vs_feature/int34ear_overlap
 
 ```
 
-
 ###  bar plot visual of p-chisq(isnps overlap)
 ```{r}
 

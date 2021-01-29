@@ -10,7 +10,8 @@ id = which(f %in% fmic)
 f = f[-c(id)]
 id = grep("P368", f)
 f = f[-c(id)]
-
+id = grep("Nitrogen",f)
+f = f[-c(id)]
 
 
 out <- data.frame()
@@ -29,16 +30,16 @@ table(out$tissue)
 # trait
 out$trait <- gsub(".*indirect_|_ts.*", "", out$file)
 table(out$trait)
-
+dim(as.data.frame(table(out$trait)))
 
 snps_p7msnps <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned.bim", header = FALSE , data.table=FALSE)
 out <- merge(out, snps_p7msnps[,c(1,2,4)], by.x = "snps_for_medi", by.y = "V2", sort = F, all.x = T)
 colnames(out)[c(8,9)] = c("chr", "pos")
 
 
-write.table(out, "largedata/isnps_vs_feature/isnps_633005rows.csv", sep=",", row.names=FALSE, quote=FALSE)
+write.table(out, "largedata/isnps_vs_feature/isnps_63005rows.csv", sep=",", row.names=FALSE, quote=FALSE)
 
-isnps <- fread("largedata/isnps_vs_feature/isnps_633005rows.csv", header=TRUE, data.table=FALSE)
+isnps <- fread("largedata/isnps_vs_feature/isnps_63005rows.csv", header=TRUE, data.table=FALSE)
 
 
 gff <- fread("largedata/isnps_vs_feature/Zea_mays.B73_RefGen_v4.46.chr.txt", header=FALSE, data.table=FALSE)
