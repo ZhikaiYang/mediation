@@ -65,6 +65,8 @@ write.table(out, "largedata/pvm_742rows_ag_met.csv", sep=",", row.names=FALSE, q
 ```{r}
 library(data.table)
 library(dplyr)
+library(agricolae)
+library(ggplot2)
   
   
 ag_trait <- fread("data/geno_trait.txt")
@@ -81,6 +83,58 @@ trait_category$category[41:106]= "Metabolite"
 
 pvm = fread("largedata/pvm_742rows_ag_met.csv")
 pvm = merge(pvm, trait_category, by = "trait", all.x = T, sort = F)
+
+
+#heritability
+h2 = data.frame(category = "other", trait = colnames(ag_trait)[-1], h2 = 0)
+h2$category[c(3,4,11:13,38)]= "Flowering Time"
+h2$category[c(6,23)]= "Development"
+h2$category[c(15,16,36)]= "Leaf Morphology"
+h2$category[c(32,33)]= "Male Inflorescence"
+h2$category[c(1,7,9,8)]= "Female Inflorescence"
+h2$category[c(2,10,35,37,39,40)]= "Seed Traits"
+h2 = arrange(h2, category, trait)
+h2$h2[c(7,9,8,2,1,13,14,15,16,17,3,4,6,5,36,35,39,40,37)] = c(0.33, 0.71, 0.70, 0.56, 0.59, 0.60, 0.59, 0.50, 0.62, 0.66, 0.42, 0.37, 0.43, 0.24, 0.26, 0.42, 0.23, 0.35, 0.29 )
+h2s = subset(h2, h2>0)
+h2s_stat = (h2s %>% group_by(category) %>% summarise(avg_h2 = mean(h2), median_h2 = median(h2), min_h2 = min(h2), max_h2 = max(h2), std_h2 = var(h2), num = n()))
+h2s_stat = arrange(h2s_stat, avg_h2)
+h2s_max = h2s_stat[,c(1,5)]
+
+
+h2s$category <- factor(h2s$category, levels = c( "Seed Traits", "Female Inflorescence", "Leaf Morphology", "Development", "Flowering Time", "Male Inflorescence"),
+                    labels =c( "Seed Traits", "Female Inflorescence", "Leaf Morphology", "Development", "Flowering Time", "Male Inflorescence"))
+
+hsd=HSD.test(aov(h2~category,data=h2s), "category", group=T)
+
+
+p <- ggboxplot(h2s, aes(x=reorder(category, h2, FUN = mean)), y = "h2",
+          color = "category", palette = "jco",
+          add = "jitter")+geom_text(data=h2s_max,aes(x=category,y=h2,label=hsd$groups$groups),vjust=0)
+p_cat = p + 
+  xlab("Category") +
+    ylab("Heritablity ") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=10, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=10, face="bold"),
+          legend.text = element_text(size=10))
+
+pdf("graphs/pvm_box_ag_met_tissue.pdf", width = 9, height= 6)
+p_tissue
+dev.off()
+
+
+iris.summarized = iris %>% group_by(Species) %>% summarize(Max.Petal.Length=max(Petal.Length))
+hsd=HSD.test(aov(Petal.Length~Species,data=iris), "Species", group=T)
+ggplot(iris,aes(x=reorder(Species,Petal.Length,FUN = median),y=Petal.Length))+geom_boxplot()+geom_text(data=iris.summarized,aes(x=Species,y=0.2+Max.Petal.Length,label=hsd$groups$groups),vjust=0)
+
 
 
 #####
@@ -102,13 +156,13 @@ trait_var$trait = rownames(trait_var)
 pvm_stat = merge(pvm_stat, trait_var, by = "trait")
 ####
 
-#id = which(pvm$category != "Metabolite")
-#pvm$category[id] = "Morphology"
+id = which(pvm$category != "Metabolite")
+pvm$category[id] = "Agronomy"
 
 
 library(ggplot2)
 library(ggpubr)
-
+fsize =16
 p <-ggplot(pvm, aes(x=category, y=pmed.pure, fill=tissue)) +
   geom_boxplot(outlier.colour="black", outlier.shape=16, outlier.size=1, notch=FALSE) +
    xlab("Trait Category") +
@@ -155,7 +209,7 @@ p_tissue = p + stat_compare_means(aes(group = category), label = "p.signif")+
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
           axis.text.x = element_text(angle = 15, hjust=0.8),
-          legend.position = "right", 
+          legend.position = "top", 
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=fsize))
 
