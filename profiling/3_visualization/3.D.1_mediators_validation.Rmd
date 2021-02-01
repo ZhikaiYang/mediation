@@ -189,6 +189,9 @@ mfixed_sig = subset(mfixed, padj <= 0.05)
 fwrite(mfixed_sig, "data/supplementary/mediators_mfixed_sig_932rows.csv" , sep=",", row.names=FALSE, quote=FALSE)
 siggene_freq = as.data.frame(table(mfixed_sig$id))
 siggene_freq = arrange(siggene_freq, desc(Freq))
+mfixed_sig_num = merge(mfixed_sig, siggene_freq, by.x = "id", by.y = "Var1")
+mfixed_sig_num = arrange(mfixed_sig_num, desc(Freq))
+fwrite(mfixed_sig_num, "data/supplementary/mediators_mfixed_sig_num_932rows.csv" , sep=",", row.names=FALSE, quote=FALSE)
 
 
 trait_medi_num = as.data.frame(table(mfixed$trait))
