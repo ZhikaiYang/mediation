@@ -106,10 +106,12 @@ h2s$category <- factor(h2s$category, levels = c( "Seed Traits", "Female Inflores
 
 hsd=HSD.test(aov(h2~category,data=h2s), "category", group=T)
 
+p <- ggboxplot(h2s, x = "category", y = "h2",
+            color = "category", palette = "jco", add = "jitter")
+#p <- ggboxplot(h2s, aes(x=reorder(category, h2, FUN = mean)), y = "h2",
+#          color = "category", palette = "jco",
+#          add = "jitter")+geom_text(data=h2s_max,aes(x=category,y=h2,label=hsd$groups$groups),vjust=0)
 
-p <- ggboxplot(h2s, aes(x=reorder(category, h2, FUN = mean)), y = "h2",
-          color = "category", palette = "jco",
-          add = "jitter")+geom_text(data=h2s_max,aes(x=category,y=h2,label=hsd$groups$groups),vjust=0)
 p_cat = p + 
   xlab("Category") +
     ylab("Heritablity ") +
@@ -118,7 +120,7 @@ p_cat = p +
     labs(fill = "") +
     scale_y_continuous(limits = c(-0.01, 1)) +
     theme(plot.title = element_text(size=20, face = "bold"), 
-          axis.text=element_text(size=10, face="bold"),
+          axis.text=element_text(size=12, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
           axis.text.x = element_text(angle = 15, hjust=0.8),
@@ -126,14 +128,14 @@ p_cat = p +
           legend.title = element_text(size=10, face="bold"),
           legend.text = element_text(size=10))
 
-pdf("graphs/pvm_box_ag_met_tissue.pdf", width = 9, height= 6)
-p_tissue
+pdf("graphs/heritability_cat.pdf", width = 9, height= 6)
+p_cat
 dev.off()
 
 
-iris.summarized = iris %>% group_by(Species) %>% summarize(Max.Petal.Length=max(Petal.Length))
-hsd=HSD.test(aov(Petal.Length~Species,data=iris), "Species", group=T)
-ggplot(iris,aes(x=reorder(Species,Petal.Length,FUN = median),y=Petal.Length))+geom_boxplot()+geom_text(data=iris.summarized,aes(x=Species,y=0.2+Max.Petal.Length,label=hsd$groups$groups),vjust=0)
+#iris.summarized = iris %>% group_by(Species) %>% summarize(Max.Petal.Length=max(Petal.Length))
+#hsd=HSD.test(aov(Petal.Length~Species,data=iris), "Species", group=T)
+#ggplot(iris,aes(x=reorder(Species,Petal.Length,FUN = median),y=Petal.Length))+geom_boxplot()+geom_text(data=iris.summarized,aes(x=Species,y=0.2+Max.Petal.Length,label=hsd$groups$groups),vjust=0)
 
 
 
@@ -156,8 +158,13 @@ trait_var$trait = rownames(trait_var)
 pvm_stat = merge(pvm_stat, trait_var, by = "trait")
 ####
 
-id = which(pvm$category != "Metabolite")
-pvm$category[id] = "Agronomy"
+
+
+######subset out other, bi cat###
+pvm_s = subset(pvm, category != "other")
+
+id = which(pvm_s$category != "Metabolite")
+pvm_s$category[id] = "Agronomy"
 
 
 library(ggplot2)
@@ -189,12 +196,11 @@ pdf("graphs/pvm_box_ag_met.pdf", width = 9, height= 6)
 p
 dev.off()
 
-
-pvm$tissue <- factor(pvm$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+pvm_s$tissue <- factor(pvm_s$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
                     labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
-pvm$category = as.factor(pvm$category)
+pvm_s$category = as.factor(pvm_s$category)
 
-p <- ggboxplot(pvm, x = "tissue", y = "pmed.pure",
+p <- ggboxplot(pvm_s, x = "tissue", y = "pmed.pure",
           color = "category", palette = "jco",
           add = "jitter")
 p_tissue = p + stat_compare_means(aes(group = category), label = "p.signif")+
@@ -213,9 +219,71 @@ p_tissue = p + stat_compare_means(aes(group = category), label = "p.signif")+
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=fsize))
 
-pdf("graphs/pvm_box_ag_met_tissue.pdf", width = 9, height= 6)
+pdf("graphs/pvm_s_box_ag_met_tissue.pdf", width = 9, height= 6)
 p_tissue
 dev.off()
+
+
+#################subset out other and metabolite, not bi###
+pvm_s = subset(pvm, !(category %in% c("other", "Metabolite")))
+
+pvm_s$category <- factor(pvm_s$category, levels = c( "Seed Traits", "Female Inflorescence", "Leaf Morphology", "Development", "Flowering Time", "Male Inflorescence"),
+                    labels =c( "Seed Traits", "Female Inflorescence", "Leaf Morphology", "Development", "Flowering Time", "Male Inflorescence"))
+
+
+
+
+
+pvm_s$tissue <- factor(pvm_s$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+
+p <- ggboxplot(pvm_s, x = "tissue", y = "pmed.pure",
+          color = "category", palette = "jco",
+          add = "jitter")
+p_tissue = p + 
+  xlab("Tissue") +
+    ylab("Proportion of the Variance Mediated (PVM) ") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=13, face="bold"),
+          strip.text.x = element_text(size = 13, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=12, face="bold"),
+          legend.text = element_text(size=12))
+
+pdf("graphs/pvm_s_box_ags_tissue.pdf", width = 9, height= 6)
+p_tissue
+dev.off()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 p <- ggboxplot(pvm, x = "tissue", y = "pmed.pure",
           color = "category")
