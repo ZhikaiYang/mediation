@@ -78,10 +78,29 @@ SNP: 238153041
 library("data.table")
 snp <- fread("data/Zm00001d007718.up_down.50K.hmp.txt", data.table=FALSE)
 
-mysnp <- subset(snp, pos >  238153041 -100 & pos < 238153041 + 100)
+mysnp <- subset(snp, pos ==  238153041)
+
+tsnp <- as.data.frame(t(mysnp))
+tsnp$geno <- row.names(tsnp)
+tsnp <- tsnp[-(1:11), ]
+names(tsnp)[1] <- "S2_238153041"
+table(tsnp[,1])
 ```
 
 
+```{r}
+df <- read.csv("cache/fg005_rna_pheno.csv")
+df <- merge(df, tsnp, by.x="genotype", by.y="geno")
+
+
+
+```
+
+
+
+
+
+### Expression
 
 
 ```{r}
@@ -90,32 +109,36 @@ library(ggplot2)
 fsize=18
 
 # Heatmap 
-pall <- ggplot(d, aes(tissue, trait, fill = coef)) + 
-  geom_tile(colour='white') +
-  scale_fill_gradientn(colours=c("red","white","darkgreen"),
-                       values  = rescale(c(min(d$coef), 0, max(d$coef)))) +
+df1 <- subset(df, trait %in% "EarHeight")
+df1 <- subset(df1, S2_238153041 %in% c("AA", "GG"))
+pall <- ggplot(df1, aes(x=S2_238153041, y=log(AC148152.3_FG005), fill=S2_238153041)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1) +
     xlab("") +
-    ylab("") +
+    ylab("log(TPM)") +
     ggtitle("") +
     theme_classic() +
     labs(fill = "") +
-    #scale_y_continuous(limits = c(-0.01, 1)) +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
     theme(plot.title = element_text(size=20, face = "bold"), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
-          axis.text.x = element_text(angle = 15, hjust=0.8),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
           #legend.position = c(0.2, 0.8), 
-          legend.position =c(0.2, 0.2),
+          legend.position = "none",
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=fsize))
 pall
 
-pdf("graphs/rna_pheno_FG005.pdf", width = 9, height= 6)
+pdf("graphs/rna_FG005_AG_alleles.pdf", width = 5, height= 5)
 pall
 dev.off()
 ```
 
+```{r}
+t.test(log(subset(df1, S2_238153041 %in% "AA")$AC148152.3_FG005), log(subset(df1, S2_238153041 %in% "GG")$AC148152.3_FG005))
+```
 
 
 
