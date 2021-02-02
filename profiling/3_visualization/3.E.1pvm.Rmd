@@ -21,7 +21,9 @@ library("data.table")
 ag_trait <- fread("data/geno_trait.txt")
 m_trait <- fread("data/metabolite_rep1_genotype_namecorrect.txt")
 trait_category <- data.frame(category = "other", trait = c(colnames(ag_trait)[-1], colnames(m_trait)[-1]))
+trait_category$category <- as.character(trait_category$category)
 
+### Assign trait type
 trait_category$category[c(3,4,11:13,38)]= "Flowering Time"
 trait_category$category[c(6,23)]= "Development"
 trait_category$category[c(15,16,36)]= "Leaf Morphology"
@@ -30,7 +32,7 @@ trait_category$category[c(1,7,9,8)]= "Female Inflorescence"
 trait_category$category[c(2,10,35,37,39,40)]= "Seed Traits"
 trait_category$category[41:106]= "Metabolite"
 
-pvm = fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/largedata/pvm_742rows_ag_met.csv")
+pvm = fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/pvm_742rows_ag_met.csv")
 pvm = merge(pvm, trait_category, by = "trait", all.x = T, sort = F)
 
 

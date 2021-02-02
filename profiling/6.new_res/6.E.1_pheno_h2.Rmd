@@ -13,119 +13,133 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir=normalizePath('../../')) 
 ```
 
-#### New results
-
-- Direct SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_34013rows.csv
-- Indirect SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv
-- Mediators: data/mediators_18812rows_by_cat.csv
-
-### Old results for microbiome data
-
-- Mediators: cache/microbiome_mediators_34155rows.csv
-- Direct SNPs: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_45112rows_microbiome_old_geno.csv
-- Indirect SNPs: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_54015rows_microbiome_old_geno.csv
-
-### Keys
-
-- eq: MedFix0.5
-- fixed: MedFixBIC
-
-- e2m: p-values for the exposure effect on the individual mediators
-- m2y: p-values for the mediator effect on phenotype
-- e2m2y: min value among c(1, max(e2m, m2y))
-
-### direct SNPs
+### Pheno prepared by Zhikai
 
 ```{r}
 library("data.table")
-isnp <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv", data.table=FALSE)
-table(isnp$method)
 
-#  res.eq res.fixed
-#    22832     24463
+ag_trait <- fread("data/geno_trait.txt")
+m_trait <- fread("data/metabolite_rep1_genotype_namecorrect.txt")
+trait_category <- data.frame(category = "other", trait = c(colnames(ag_trait)[-1], colnames(m_trait)[-1]))
+trait_category$category <- as.character(trait_category$category)
 
-### only consider res.fixed
-i1 <- subset(isnp, method == "res.fixed")
-i1$type <- "Morphology"
-idx <- grep("^X\\.", i1$trait)
-i1[idx, ]$type <- "Metabolite"
+### Assign trait type
+trait_category$category[c(3,4,11:13,38)]= "Flowering Time"
+trait_category$category[c(6,23)]= "Development"
+trait_category$category[c(15,16,36)]= "Leaf Morphology"
+trait_category$category[c(32,33)]= "Male Inflorescence"
+trait_category$category[c(1,7,9,8)]= "Female Inflorescence"
+trait_category$category[c(2,10,35,37,39,40)]= "Seed Traits"
+trait_category$category[41:106]= "Metabolite"
 
+pvm = fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/pvm_742rows_ag_met.csv")
+pvm = merge(pvm, trait_category, by = "trait", all.x = T, sort = F)
+
+
+#heritability
+h2 = data.frame(category = "other", trait = colnames(ag_trait)[-1], h2 = 0)
+h2$category <- as.character(h2$category)
+h2$category[c(3,4,11:13,38)]= "Flowering Time"
+h2$category[c(6,23)]= "Development"
+h2$category[c(15,16,36)]= "Leaf Morphology"
+h2$category[c(32,33)]= "Male Inflorescence"
+h2$category[c(1,7,9,8)]= "Female Inflorescence"
+h2$category[c(2,10,35,37,39,40)]= "Seed Traits"
+h2 = arrange(h2, category, trait)
+h2$h2[c(7,9,8,2,1,13,14,15,16,17,3,4,6,5,36,35,39,40,37)] = c(0.33, 0.71, 0.70, 0.56, 0.59, 0.60, 0.59, 0.50, 0.62, 0.66, 0.42, 0.37, 0.43, 0.24, 0.26, 0.42, 0.23, 0.35, 0.29 )
+
+
+h2s = subset(h2, h2>0)
+# h2s_stat = (h2s %>% group_by(category) %>% summarise(avg_h2 = mean(h2), median_h2 = median(h2), min_h2 = min(h2), max_h2 = max(h2), std_h2 = var(h2), num = n()))
+# h2s_stat = arrange(h2s_stat, avg_h2)
+# h2s_max = h2s_stat[,c(1,5)]
 ```
 
-for microbiome
+
+## PVM and h2
 
 ```{r}
-library("data.table")
-isnp2 <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_54015rows_microbiome_old_geno.csv", data.table=FALSE)
-table(isnp2$method)
-
-#  res.eq res.fixed
-#    15642     18371
-
-### only consider res.fixed and stdN
-i2 <- subset(isnp2, method == "res.fixed")
-
-i2$treatment <- gsub(".*_", "", i2$trait)
-i2 <- subset(i2, treatment  == "stdN")
-
-i2$type <- "Microbiome"
-
+df <- merge(pvm, h2s[,2:3], by="trait")
+write.table(df, "cache/trait_pvm_h2.csv", sep=",", row.names = FALSE, quote=FALSE)
 ```
 
-### Avg iSNP per gene by type
 
-```{r}
-library(plyr)
-nt1 <- ddply(i1, .(tissue, type, medi), nrow)
-
-nt2 <- ddply(i2, .(tissue, type, medi), nrow)
-
-
-nt <- rbind(nt1, nt2)
-write.table(nt, "cache/isnp_summary.csv", sep=",", row.names=FALSE, quote=FALSE)
-```
-
-# Number of mediator genes by category and trait
+# Plot PVM with h2
 
 ```{r}
 library(ggplot2)
-
+df <- read.csv("cache/trait_pvm_h2.csv")
+df <- subset(df, pmed.pure < 0.8)
 fsize=18
-nt$tissue <- factor(nt$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+df$tissue <- factor(df$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
                     labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 
 
-p1 <- ggplot(nt, aes(x=tissue, y=V1, fill=type)) +
+df1 <- subset(df, tissue %in% "Adult leaf during the day")
+p1 <- ggplot(df1, aes(x=h2, y=pmed.pure, color=category)) +
     #geom_bar(stat="identity", position=position_dodge()) +
-    geom_boxplot(outlier.colour="black", outlier.shape=16, 
-             outlier.size=1, notch=FALSE) +
-    # scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
-    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
-    # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
-    xlab("") +
-    ylab("Avg number of indirect SNPs per gene") +
+    geom_point(size=2) +
+    geom_smooth(method=lm, linetype="dashed",
+             color="darkred", fill="grey") +
+    # facet_wrap(~ tissue) +
+    xlab("Heritability (h2)") +
+    ylab("Variance due to mediation (Vie)") +
     ggtitle("") +
     theme_classic() +
-    labs(fill = "") +
+    labs(color = "") +
     #scale_y_continuous(limits = c(-0.01, 1)) +
     theme(plot.title = element_text(size=20, face = "bold"), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
-          axis.text.x = element_text(angle = 15, hjust=0.8),
-          legend.position = c(0.2, 0.8), 
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = c(0.3, 0.8), 
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=fsize))
-#p1
+p1
 
-pdf("graphs/avg_num_iSNPs_per_gene_by_type.pdf", width = 9, height= 6)
+pdf("graphs/med_h2_LMAD.pdf", width = 6, height= 6)
 p1
 dev.off()
 ```
 
 
+Excuding adult leaf during the day:
+
+```{r}
+library(ggplot2)
+df <- read.csv("cache/trait_pvm_h2.csv")
+df <- subset(df, pmed.pure < 0.8)
+fsize=18
+df$tissue <- factor(df$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 
 
+df2 <- subset(df, tissue !%in% "Adult leaf during the day")
+p2 <- ggplot(df2, aes(x=h2, y=pmed.pure, color=category)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_point(size=2) +
+    geom_smooth(method=lm, linetype="dashed",
+             color="darkred", fill="grey") +
+    facet_wrap(~ tissue) +
+    xlab("Heritability (h2)") +
+    ylab("Variance due to mediation (Vie)") +
+    ggtitle("") +
+    theme_classic() +
+    labs(color = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = c(0.3, 0.8), 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+p2
 
+pdf("graphs/med_h2_LMAD.pdf", width = 6, height= 6)
+p2
+dev.off()
 
 
