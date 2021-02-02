@@ -259,6 +259,7 @@ dev.off()
 fsize=18
 gwas_overlap_fixed$tissue <- factor(gwas_overlap_fixed$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
                     labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
 gwas_overlap_fixed$o_ratio = as.numeric(gwas_overlap_fixed$o_ratio)
 
 library(ggplot2)
@@ -288,6 +289,50 @@ pall <- ggplot(gwas_overlap_fixed, aes(x=tissue, y=o_ratio, fill=category)) +
 pall
 
 pdf("graphs/overlap_ratio_gwas_5kb_all_traits_fixed.pdf", width = 9, height= 6)
+pall
+dev.off()
+
+```
+### all plot_ subset out other and metabolite
+```{r}
+fsize=18
+gwas_overlap_fixed$tissue <- factor(gwas_overlap_fixed$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+gwas_overlap_fixed_s = subset(gwas_overlap_fixed, !(category %in% c("other", "Metabolite")))
+gwas_overlap_fixed_s$category <- factor(gwas_overlap_fixed_s$category, levels = c( "Seed Traits", "Female Inflorescence", "Leaf Morphology", "Development", "Flowering Time", "Male Inflorescence"),
+                    labels =c( "Seed Traits", "Female Inflorescence", "Leaf Morphology", "Development", "Flowering Time", "Male Inflorescence"))
+
+
+gwas_overlap_fixed_s$o_ratio = as.numeric(gwas_overlap_fixed_s$o_ratio)
+
+library(ggplot2)
+
+#df0 <- subset(df, cat != "1")
+pall <- ggplot(gwas_overlap_fixed_s, aes(x=tissue, y=o_ratio, fill=category)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=1, notch=FALSE) +
+    # scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("Overlap ratio with GWAS signals") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=11, face="bold"),
+          strip.text.x = element_text(size = 11, face = "bold"),
+          axis.title=element_text(size=13, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=11, face="bold"),
+          legend.text = element_text(size=11))
+pall
+
+pdf("graphs/overlap_ratio_gwas_5kb_all_traits_fixed_s_h2order.pdf", width = 9, height= 6)
 pall
 dev.off()
 
