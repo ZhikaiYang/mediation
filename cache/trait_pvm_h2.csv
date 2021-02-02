@@ -1,0 +1,134 @@
+trait,pmed.pure,v.tot,v.med,v.dir,n.med,pval.cut,n.direct,file,method,tissue,category,h2
+AnthesistoSilkInterval,0.00933757019553552,401.438707495471,3.74846211044401,393.38466219594,1,0.05,44,res.fixed.pcut_sum_AnthesistoSilkInterval_ts_GRoot.csv,res.fixed,GRoot,Flowering Time,0.33
+AnthesistoSilkInterval,0,385.061444707302,0,385.061444707302,0,0.05,36,res.fixed.pcut_sum_AnthesistoSilkInterval_ts_GShoot.csv,res.fixed,GShoot,Flowering Time,0.33
+AnthesistoSilkInterval,0.0156131775977199,203.684620751882,3.18016415772335,189.533237910434,1,0.05,22,res.fixed.pcut_sum_AnthesistoSilkInterval_ts_Kern.csv,res.fixed,Kern,Flowering Time,0.33
+AnthesistoSilkInterval,0.0806403494141981,354.600560906505,28.5951131339712,334.581409954349,2,0.05,38,res.fixed.pcut_sum_AnthesistoSilkInterval_ts_L3Base.csv,res.fixed,L3Base,Flowering Time,0.33
+AnthesistoSilkInterval,0,236.469816363938,0,236.469816363938,0,0.05,19,res.fixed.pcut_sum_AnthesistoSilkInterval_ts_L3Tip.csv,res.fixed,L3Tip,Flowering Time,0.33
+AnthesistoSilkInterval,0,192.329992871634,0,192.329992871634,0,0.05,34,res.fixed.pcut_sum_AnthesistoSilkInterval_ts_LMAD.csv,res.fixed,LMAD,Flowering Time,0.33
+AnthesistoSilkInterval,0,195.144853381936,0,195.144853381936,0,0.05,21,res.fixed.pcut_sum_AnthesistoSilkInterval_ts_LMAN.csv,res.fixed,LMAN,Flowering Time,0.33
+CobDiameter,0.0251039313902801,573.339344777313,14.3930715746378,518.524337354109,1,0.05,12,res.fixed.pcut_sum_CobDiameter_ts_GRoot.csv,res.fixed,GRoot,Female Inflorescence,0.42
+CobDiameter,0,656.695536108132,0,656.695536108132,0,0.05,12,res.fixed.pcut_sum_CobDiameter_ts_GShoot.csv,res.fixed,GShoot,Female Inflorescence,0.42
+CobDiameter,0,252.58815400438,0,252.58815400438,0,0.05,6,res.fixed.pcut_sum_CobDiameter_ts_Kern.csv,res.fixed,Kern,Female Inflorescence,0.42
+CobDiameter,0.0259391020576919,951.434977064263,24.6793689713276,890.727939112629,1,0.05,29,res.fixed.pcut_sum_CobDiameter_ts_L3Base.csv,res.fixed,L3Base,Female Inflorescence,0.42
+CobDiameter,0,888.102500214819,0,888.102500214819,0,0.05,25,res.fixed.pcut_sum_CobDiameter_ts_L3Tip.csv,res.fixed,L3Tip,Female Inflorescence,0.42
+CobDiameter,0,929.281061770764,0,929.281061770764,0,0.05,36,res.fixed.pcut_sum_CobDiameter_ts_LMAD.csv,res.fixed,LMAD,Female Inflorescence,0.42
+CobDiameter,0,671.804122500122,0,671.804122500122,0,0.05,10,res.fixed.pcut_sum_CobDiameter_ts_LMAN.csv,res.fixed,LMAN,Female Inflorescence,0.42
+CobWeight,1,275.685213162267,275.685213162267,0,3,0.05,0,res.fixed.pcut_sum_CobWeight_ts_GRoot.csv,res.fixed,GRoot,Seed Traits,0.42
+CobWeight,0.0450424174872142,1083.57154061942,48.8066817098438,967.416801782331,1,0.05,8,res.fixed.pcut_sum_CobWeight_ts_GShoot.csv,res.fixed,GShoot,Seed Traits,0.42
+CobWeight,0.0355949922577359,1317.32362888995,46.8901243712703,1118.37406452922,1,0.05,10,res.fixed.pcut_sum_CobWeight_ts_Kern.csv,res.fixed,Kern,Seed Traits,0.42
+CobWeight,0,2556.67103770033,0,2556.67103770033,0,0.05,32,res.fixed.pcut_sum_CobWeight_ts_L3Base.csv,res.fixed,L3Base,Seed Traits,0.42
+CobWeight,1,791.259102159602,791.259102159602,0,7,0.05,0,res.fixed.pcut_sum_CobWeight_ts_L3Tip.csv,res.fixed,L3Tip,Seed Traits,0.42
+CobWeight,0,794.295540148713,0,794.295540148713,0,0.05,19,res.fixed.pcut_sum_CobWeight_ts_LMAD.csv,res.fixed,LMAD,Seed Traits,0.42
+CobWeight,0,624.872708620736,0,624.872708620736,0,0.05,8,res.fixed.pcut_sum_CobWeight_ts_LMAN.csv,res.fixed,LMAN,Seed Traits,0.42
+DaysToTassel,0.0241339673571266,5739.32146727676,138.512596943313,5156.75701758965,1,0.05,15,res.fixed.pcut_sum_DaysToTassel_ts_GRoot.csv,res.fixed,GRoot,Flowering Time,0.71
+DaysToTassel,0,8408.62811548047,0,8408.62811548047,0,0.05,25,res.fixed.pcut_sum_DaysToTassel_ts_GShoot.csv,res.fixed,GShoot,Flowering Time,0.71
+DaysToTassel,0,5865.03839143649,0,5865.03839143649,0,0.05,57,res.fixed.pcut_sum_DaysToTassel_ts_Kern.csv,res.fixed,Kern,Flowering Time,0.71
+DaysToTassel,0,8671.37519710602,0,8671.37519710602,0,0.05,40,res.fixed.pcut_sum_DaysToTassel_ts_L3Base.csv,res.fixed,L3Base,Flowering Time,0.71
+DaysToTassel,0.0448328211432179,6884.32035765318,308.643503287279,5691.27736000277,2,0.05,31,res.fixed.pcut_sum_DaysToTassel_ts_L3Tip.csv,res.fixed,L3Tip,Flowering Time,0.71
+DaysToTassel,0.443105967457831,1109.5596777001,491.652514439503,521.347617998421,2,0.05,7,res.fixed.pcut_sum_DaysToTassel_ts_LMAD.csv,res.fixed,LMAD,Flowering Time,0.71
+DaysToTassel,0,2860.43994353356,0,2860.43994353356,0,0.05,22,res.fixed.pcut_sum_DaysToTassel_ts_LMAN.csv,res.fixed,LMAN,Flowering Time,0.71
+DaystoSilk,0,8487.71784001348,0,8487.71784001348,0,0.05,65,res.fixed.pcut_sum_DaystoSilk_ts_GRoot.csv,res.fixed,GRoot,Flowering Time,0.7
+DaystoSilk,0,7795.53769951038,0,7795.53769951038,0,0.05,19,res.fixed.pcut_sum_DaystoSilk_ts_GShoot.csv,res.fixed,GShoot,Flowering Time,0.7
+DaystoSilk,0,5325.02448813511,0,5325.02448813511,0,0.05,27,res.fixed.pcut_sum_DaystoSilk_ts_Kern.csv,res.fixed,Kern,Flowering Time,0.7
+DaystoSilk,0,9290.37432966602,0,9290.37432966602,0,0.05,37,res.fixed.pcut_sum_DaystoSilk_ts_L3Base.csv,res.fixed,L3Base,Flowering Time,0.7
+DaystoSilk,0.0467534655415604,6188.03206918584,289.311944116751,5218.9506848911,3,0.05,38,res.fixed.pcut_sum_DaystoSilk_ts_L3Tip.csv,res.fixed,L3Tip,Flowering Time,0.7
+DaystoSilk,0.290312678369172,874.41879865282,253.854863453254,425.168766982146,2,0.05,1,res.fixed.pcut_sum_DaystoSilk_ts_LMAD.csv,res.fixed,LMAD,Flowering Time,0.7
+DaystoSilk,0,4295.8250254821,0,4295.8250254821,0,0.05,30,res.fixed.pcut_sum_DaystoSilk_ts_LMAN.csv,res.fixed,LMAN,Flowering Time,0.7
+EarHeight,0.0942620733636485,26946.7239268931,2540.05406770678,21267.8004420936,2,0.05,11,res.fixed.pcut_sum_EarHeight_ts_GRoot.csv,res.fixed,GRoot,Development,0.59
+EarHeight,0.0265377174980218,45451.2493602043,1206.17241545324,42109.3699767908,1,0.05,28,res.fixed.pcut_sum_EarHeight_ts_GShoot.csv,res.fixed,GShoot,Development,0.59
+EarHeight,0,33621.774653752,0,33621.774653752,0,0.05,25,res.fixed.pcut_sum_EarHeight_ts_Kern.csv,res.fixed,Kern,Development,0.59
+EarHeight,0,35903.632488865,0,35903.632488865,0,0.05,17,res.fixed.pcut_sum_EarHeight_ts_L3Base.csv,res.fixed,L3Base,Development,0.59
+EarHeight,0.0609343408231006,37676.5918360323,2295.79828798964,35531.4964221489,1,0.05,20,res.fixed.pcut_sum_EarHeight_ts_L3Tip.csv,res.fixed,L3Tip,Development,0.59
+EarHeight,0.0823575101766756,29915.9622035871,2463.80416162697,20405.7671900211,2,0.05,12,res.fixed.pcut_sum_EarHeight_ts_LMAD.csv,res.fixed,LMAD,Development,0.59
+EarHeight,0,30176.5168911683,0,30176.5168911683,0,0.05,24,res.fixed.pcut_sum_EarHeight_ts_LMAN.csv,res.fixed,LMAN,Development,0.59
+EarLength,0.380110299279328,16522.239016597,6280.27321736327,8488.49813718934,2,0.05,6,res.fixed.pcut_sum_EarLength_ts_GRoot.csv,res.fixed,GRoot,Female Inflorescence,0.37
+EarLength,0.218327481203383,6335.70807623788,1383.25918592495,4938.61642649034,2,0.05,4,res.fixed.pcut_sum_EarLength_ts_GShoot.csv,res.fixed,GShoot,Female Inflorescence,0.37
+EarLength,0,39920.2539480235,0,39920.2539480235,0,0.05,33,res.fixed.pcut_sum_EarLength_ts_Kern.csv,res.fixed,Kern,Female Inflorescence,0.37
+EarLength,0.0510277281990139,39174.3993025171,1998.98059996849,37295.5657179564,1,0.05,36,res.fixed.pcut_sum_EarLength_ts_L3Base.csv,res.fixed,L3Base,Female Inflorescence,0.37
+EarLength,0,36273.8659065746,0,36273.8659065746,0,0.05,22,res.fixed.pcut_sum_EarLength_ts_L3Tip.csv,res.fixed,L3Tip,Female Inflorescence,0.37
+EarLength,0.0129002514827636,26200.0981028248,337.987854399517,26354.8860804968,1,0.05,27,res.fixed.pcut_sum_EarLength_ts_LMAD.csv,res.fixed,LMAD,Female Inflorescence,0.37
+EarLength,0,25745.4481495802,0,25745.4481495802,0,0.05,15,res.fixed.pcut_sum_EarLength_ts_LMAN.csv,res.fixed,LMAN,Female Inflorescence,0.37
+EarRankNumber,0,718.813565640165,0,718.813565640165,0,0.05,60,res.fixed.pcut_sum_EarRankNumber_ts_GRoot.csv,res.fixed,GRoot,Female Inflorescence,0.24
+EarRankNumber,0,926.769771585139,0,926.769771585139,0,0.05,63,res.fixed.pcut_sum_EarRankNumber_ts_GShoot.csv,res.fixed,GShoot,Female Inflorescence,0.24
+EarRankNumber,0,778.722952892079,0,778.722952892079,0,0.05,84,res.fixed.pcut_sum_EarRankNumber_ts_Kern.csv,res.fixed,Kern,Female Inflorescence,0.24
+EarRankNumber,0.0659928067622838,868.77108974926,57.3326426464816,733.370759644374,3,0.05,38,res.fixed.pcut_sum_EarRankNumber_ts_L3Base.csv,res.fixed,L3Base,Female Inflorescence,0.24
+EarRankNumber,0.15116402155619,531.51717244116,80.3462733123807,497.107556955783,2,0.05,15,res.fixed.pcut_sum_EarRankNumber_ts_L3Tip.csv,res.fixed,L3Tip,Female Inflorescence,0.24
+EarRankNumber,0,476.006489558639,0,476.006489558639,0,0.05,23,res.fixed.pcut_sum_EarRankNumber_ts_LMAD.csv,res.fixed,LMAD,Female Inflorescence,0.24
+EarRankNumber,0,892.745886269185,0,892.745886269185,0,0.05,51,res.fixed.pcut_sum_EarRankNumber_ts_LMAN.csv,res.fixed,LMAN,Female Inflorescence,0.24
+EarRowNumber,0.043309635198934,233.74281009802,10.123315835719,205.489268138026,2,0.05,26,res.fixed.pcut_sum_EarRowNumber_ts_GRoot.csv,res.fixed,GRoot,Female Inflorescence,0.43
+EarRowNumber,0.113347440593059,295.863802094365,33.5354047315275,225.513145055994,3,0.05,28,res.fixed.pcut_sum_EarRowNumber_ts_GShoot.csv,res.fixed,GShoot,Female Inflorescence,0.43
+EarRowNumber,0,144.544250917648,0,144.544250917648,0,0.05,16,res.fixed.pcut_sum_EarRowNumber_ts_Kern.csv,res.fixed,Kern,Female Inflorescence,0.43
+EarRowNumber,0.0531079744669908,145.220586996408,7.71237122628664,123.843652336421,1,0.05,9,res.fixed.pcut_sum_EarRowNumber_ts_L3Base.csv,res.fixed,L3Base,Female Inflorescence,0.43
+EarRowNumber,0.280452352225637,148.598732083349,41.6748639505226,94.8095856384655,5,0.05,8,res.fixed.pcut_sum_EarRowNumber_ts_L3Tip.csv,res.fixed,L3Tip,Female Inflorescence,0.43
+EarRowNumber,0.0122536989400956,157.421254693185,1.92899266178241,152.737671809053,1,0.05,45,res.fixed.pcut_sum_EarRowNumber_ts_LMAD.csv,res.fixed,LMAD,Female Inflorescence,0.43
+EarRowNumber,0.168343442690604,547.814258103071,92.22093816407,442.980299302126,1,0.05,54,res.fixed.pcut_sum_EarRowNumber_ts_LMAN.csv,res.fixed,LMAN,Female Inflorescence,0.43
+EarWeight,0.036397301047258,18142.9411841598,660.35409216256,16532.8209026291,1,0.05,12,res.fixed.pcut_sum_EarWeight_ts_GRoot.csv,res.fixed,GRoot,Seed Traits,0.26
+EarWeight,0,32911.3521023229,0,32911.3521023229,0,0.05,25,res.fixed.pcut_sum_EarWeight_ts_GShoot.csv,res.fixed,GShoot,Seed Traits,0.26
+EarWeight,0.0516908198589494,23966.3904310753,1238.84237044196,20178.0025888825,1,0.05,15,res.fixed.pcut_sum_EarWeight_ts_Kern.csv,res.fixed,Kern,Seed Traits,0.26
+EarWeight,0,26351.2870141322,0,26351.2870141322,0,0.05,16,res.fixed.pcut_sum_EarWeight_ts_L3Base.csv,res.fixed,L3Base,Seed Traits,0.26
+EarWeight,0.0140174581865265,35732.0052436233,500.871889423235,35772.8755050859,1,0.05,28,res.fixed.pcut_sum_EarWeight_ts_L3Tip.csv,res.fixed,L3Tip,Seed Traits,0.26
+EarWeight,0.112150447149194,13911.0466570778,1560.13010290458,10928.0339770964,2,0.05,8,res.fixed.pcut_sum_EarWeight_ts_LMAD.csv,res.fixed,LMAD,Seed Traits,0.26
+EarWeight,0.020988055092311,27056.1681687533,567.856348112627,23756.8741856905,1,0.05,13,res.fixed.pcut_sum_EarWeight_ts_LMAN.csv,res.fixed,LMAN,Seed Traits,0.26
+LeafLength,0,1423221.65358624,0,1423221.65358624,0,0.05,33,res.fixed.pcut_sum_LeafLength_ts_GRoot.csv,res.fixed,GRoot,Leaf Morphology,0.6
+LeafLength,0,1459389.3834888,0,1459389.3834888,0,0.05,34,res.fixed.pcut_sum_LeafLength_ts_GShoot.csv,res.fixed,GShoot,Leaf Morphology,0.6
+LeafLength,0,1269753.9496114,0,1269753.9496114,0,0.05,19,res.fixed.pcut_sum_LeafLength_ts_Kern.csv,res.fixed,Kern,Leaf Morphology,0.6
+LeafLength,0,1389601.63058739,0,1389601.63058739,0,0.05,22,res.fixed.pcut_sum_LeafLength_ts_L3Base.csv,res.fixed,L3Base,Leaf Morphology,0.6
+LeafLength,0.0181759673539624,1044246.32598866,18980.187130665,973488.349837155,1,0.05,29,res.fixed.pcut_sum_LeafLength_ts_L3Tip.csv,res.fixed,L3Tip,Leaf Morphology,0.6
+LeafLength,0,1178562.86491612,0,1178562.86491612,0,0.05,17,res.fixed.pcut_sum_LeafLength_ts_LMAD.csv,res.fixed,LMAD,Leaf Morphology,0.6
+LeafLength,0,1050040.53622104,0,1050040.53622104,0,0.05,14,res.fixed.pcut_sum_LeafLength_ts_LMAN.csv,res.fixed,LMAN,Leaf Morphology,0.6
+LeafWidth,0.00972423464833784,34772.4097364595,338.13507156548,34406.915827251,1,0.05,73,res.fixed.pcut_sum_LeafWidth_ts_GRoot.csv,res.fixed,GRoot,Leaf Morphology,0.59
+LeafWidth,0,25929.0409633366,0,25929.0409633366,0,0.05,41,res.fixed.pcut_sum_LeafWidth_ts_GShoot.csv,res.fixed,GShoot,Leaf Morphology,0.59
+LeafWidth,0.033813074370809,9427.04221060635,318.757279363988,8214.89737516068,1,0.05,19,res.fixed.pcut_sum_LeafWidth_ts_Kern.csv,res.fixed,Kern,Leaf Morphology,0.59
+LeafWidth,0,23737.269805063,0,23737.269805063,0,0.05,20,res.fixed.pcut_sum_LeafWidth_ts_L3Base.csv,res.fixed,L3Base,Leaf Morphology,0.59
+LeafWidth,0.086858991655826,40815.6937803577,3545.21000549484,37459.11220448,1,0.05,97,res.fixed.pcut_sum_LeafWidth_ts_L3Tip.csv,res.fixed,L3Tip,Leaf Morphology,0.59
+LeafWidth,0.105949229668794,19492.9151289291,2065.25934190921,17240.4231741677,1,0.05,48,res.fixed.pcut_sum_LeafWidth_ts_LMAD.csv,res.fixed,LMAD,Leaf Morphology,0.59
+LeafWidth,0,30540.1571586871,0,30540.1571586871,0,0.05,61,res.fixed.pcut_sum_LeafWidth_ts_LMAN.csv,res.fixed,LMAN,Leaf Morphology,0.59
+PlantHeight,0.0949346663017766,34659.6796084334,3290.40511775312,27403.8920840607,2,0.05,15,res.fixed.pcut_sum_PlantHeight_ts_GRoot.csv,res.fixed,GRoot,Development,0.56
+PlantHeight,0.0197377399961137,80244.6034817447,1583.84711961392,74019.2013028136,1,0.05,35,res.fixed.pcut_sum_PlantHeight_ts_GShoot.csv,res.fixed,GShoot,Development,0.56
+PlantHeight,0.0482850219726436,35240.6032240163,1701.59330100084,31797.1663760138,1,0.05,26,res.fixed.pcut_sum_PlantHeight_ts_Kern.csv,res.fixed,Kern,Development,0.56
+PlantHeight,0,34348.9545397225,0,34348.9545397225,0,0.05,12,res.fixed.pcut_sum_PlantHeight_ts_L3Base.csv,res.fixed,L3Base,Development,0.56
+PlantHeight,0,73098.1817619952,0,73098.1817619952,0,0.05,48,res.fixed.pcut_sum_PlantHeight_ts_L3Tip.csv,res.fixed,L3Tip,Development,0.56
+PlantHeight,0.00390203302897079,65572.9924630936,255.867982399444,62235.5536356811,1,0.05,72,res.fixed.pcut_sum_PlantHeight_ts_LMAD.csv,res.fixed,LMAD,Development,0.56
+PlantHeight,0,17262.378872519,0,17262.378872519,0,0.05,6,res.fixed.pcut_sum_PlantHeight_ts_LMAN.csv,res.fixed,LMAN,Development,0.56
+TasselLength,0,223887.551990407,0,223887.551990407,0,0.05,27,res.fixed.pcut_sum_TasselLength_ts_GRoot.csv,res.fixed,GRoot,Male Inflorescence,0.62
+TasselLength,0.0182507282754093,279069.944456668,5093.22972611221,281847.921202684,1,0.05,45,res.fixed.pcut_sum_TasselLength_ts_GShoot.csv,res.fixed,GShoot,Male Inflorescence,0.62
+TasselLength,0,167150.408041086,0,167150.408041086,0,0.05,13,res.fixed.pcut_sum_TasselLength_ts_Kern.csv,res.fixed,Kern,Male Inflorescence,0.62
+TasselLength,0.017488001290743,234529.752007045,4101.45660581685,222419.741721432,1,0.05,37,res.fixed.pcut_sum_TasselLength_ts_L3Base.csv,res.fixed,L3Base,Male Inflorescence,0.62
+TasselLength,0.0495150168529389,212311.31145012,10512.5981645223,213719.586866618,1,0.05,30,res.fixed.pcut_sum_TasselLength_ts_L3Tip.csv,res.fixed,L3Tip,Male Inflorescence,0.62
+TasselLength,0,216229.13025725,0,216229.13025725,0,0.05,32,res.fixed.pcut_sum_TasselLength_ts_LMAD.csv,res.fixed,LMAD,Male Inflorescence,0.62
+TasselLength,0,201462.728690281,0,201462.728690281,0,0.05,14,res.fixed.pcut_sum_TasselLength_ts_LMAN.csv,res.fixed,LMAN,Male Inflorescence,0.62
+TasselPrimaryBranches,0.0622790308039206,1902.17111068095,118.465373196427,1626.8747918135,2,0.05,14,res.fixed.pcut_sum_TasselPrimaryBranches_ts_GRoot.csv,res.fixed,GRoot,Male Inflorescence,0.66
+TasselPrimaryBranches,0.0222878841192197,1828.28070951874,40.7485085911584,1688.67925741927,1,0.05,33,res.fixed.pcut_sum_TasselPrimaryBranches_ts_GShoot.csv,res.fixed,GShoot,Male Inflorescence,0.66
+TasselPrimaryBranches,0,2202.1542234503,0,2202.1542234503,0,0.05,19,res.fixed.pcut_sum_TasselPrimaryBranches_ts_Kern.csv,res.fixed,Kern,Male Inflorescence,0.66
+TasselPrimaryBranches,0.103860830604877,2379.921344812,247.18060764645,2090.55721566298,1,0.05,13,res.fixed.pcut_sum_TasselPrimaryBranches_ts_L3Base.csv,res.fixed,L3Base,Male Inflorescence,0.66
+TasselPrimaryBranches,0.0240179959548867,2438.63503704104,58.5711264550966,2280.87808046742,1,0.05,18,res.fixed.pcut_sum_TasselPrimaryBranches_ts_L3Tip.csv,res.fixed,L3Tip,Male Inflorescence,0.66
+TasselPrimaryBranches,0,3071.97532735974,0,3071.97532735974,0,0.05,39,res.fixed.pcut_sum_TasselPrimaryBranches_ts_LMAD.csv,res.fixed,LMAD,Male Inflorescence,0.66
+TasselPrimaryBranches,0,2038.52539915387,0,2038.52539915387,0,0.05,15,res.fixed.pcut_sum_TasselPrimaryBranches_ts_LMAN.csv,res.fixed,LMAN,Male Inflorescence,0.66
+TotalKernelNum,0,478.481259674954,0,478.481259674954,0,0.05,10,res.fixed.pcut_sum_TotalKernelNum_ts_GRoot.csv,res.fixed,GRoot,Seed Traits,0.29
+TotalKernelNum,0,697.971245367208,0,697.971245367208,0,0.05,16,res.fixed.pcut_sum_TotalKernelNum_ts_GShoot.csv,res.fixed,GShoot,Seed Traits,0.29
+TotalKernelNum,0.115095459254265,722.471850770476,83.1532294627064,624.550934745633,1,0.05,12,res.fixed.pcut_sum_TotalKernelNum_ts_Kern.csv,res.fixed,Kern,Seed Traits,0.29
+TotalKernelNum,0.298182558932639,583.12614634221,173.878046496848,345.305558850924,3,0.05,14,res.fixed.pcut_sum_TotalKernelNum_ts_L3Base.csv,res.fixed,L3Base,Seed Traits,0.29
+TotalKernelNum,0.0846243546898529,663.125587580921,56.116574927365,499.272782500854,3,0.05,13,res.fixed.pcut_sum_TotalKernelNum_ts_L3Tip.csv,res.fixed,L3Tip,Seed Traits,0.29
+TotalKernelNum,0.0583918609025444,609.642161302139,35.598140283081,515.790957394318,2,0.05,23,res.fixed.pcut_sum_TotalKernelNum_ts_LMAD.csv,res.fixed,LMAD,Seed Traits,0.29
+TotalKernelNum,0,973.0668113779,0,973.0668113779,0,0.05,29,res.fixed.pcut_sum_TotalKernelNum_ts_LMAN.csv,res.fixed,LMAN,Seed Traits,0.29
+TotalSeedWeight,0,18101.7828534578,0,18101.7828534578,0,0.05,16,res.fixed.pcut_sum_TotalSeedWeight_ts_GRoot.csv,res.fixed,GRoot,Seed Traits,0.23
+TotalSeedWeight,0,17857.1765194167,0,17857.1765194167,0,0.05,13,res.fixed.pcut_sum_TotalSeedWeight_ts_GShoot.csv,res.fixed,GShoot,Seed Traits,0.23
+TotalSeedWeight,0.0298560743846689,16272.698489627,485.838896545593,14366.9462626259,1,0.05,12,res.fixed.pcut_sum_TotalSeedWeight_ts_Kern.csv,res.fixed,Kern,Seed Traits,0.23
+TotalSeedWeight,0,17881.4054904561,0,17881.4054904561,0,0.05,14,res.fixed.pcut_sum_TotalSeedWeight_ts_L3Base.csv,res.fixed,L3Base,Seed Traits,0.23
+TotalSeedWeight,0.0632556417721827,25979.0598672956,1643.32210454374,26237.7373417692,1,0.05,31,res.fixed.pcut_sum_TotalSeedWeight_ts_L3Tip.csv,res.fixed,L3Tip,Seed Traits,0.23
+TotalSeedWeight,0.152183926708588,10423.7425042822,1586.32606530087,7932.35830056315,2,0.05,15,res.fixed.pcut_sum_TotalSeedWeight_ts_LMAD.csv,res.fixed,LMAD,Seed Traits,0.23
+TotalSeedWeight,1,3495.06885539754,3495.06885539754,0,6,0.05,0,res.fixed.pcut_sum_TotalSeedWeight_ts_LMAN.csv,res.fixed,LMAN,Seed Traits,0.23
+UpperLeafAngle,0,22570.2337263489,0,22570.2337263489,0,0.05,19,res.fixed.pcut_sum_UpperLeafAngle_ts_GRoot.csv,res.fixed,GRoot,Leaf Morphology,0.5
+UpperLeafAngle,0.0508720698510208,18152.7272136395,923.466806798793,15257.8276416905,1,0.05,13,res.fixed.pcut_sum_UpperLeafAngle_ts_GShoot.csv,res.fixed,GShoot,Leaf Morphology,0.5
+UpperLeafAngle,0.0467442043151274,12636.9467782895,590.704022123757,11045.6643186113,1,0.05,13,res.fixed.pcut_sum_UpperLeafAngle_ts_Kern.csv,res.fixed,Kern,Leaf Morphology,0.5
+UpperLeafAngle,0,20096.691177289,0,20096.691177289,0,0.05,11,res.fixed.pcut_sum_UpperLeafAngle_ts_L3Base.csv,res.fixed,L3Base,Leaf Morphology,0.5
+UpperLeafAngle,0.0825049742084496,18787.5697844838,1550.06796050828,14513.7384260477,1,0.05,8,res.fixed.pcut_sum_UpperLeafAngle_ts_L3Tip.csv,res.fixed,L3Tip,Leaf Morphology,0.5
+UpperLeafAngle,0,12481.780807221,0,12481.780807221,0,0.05,12,res.fixed.pcut_sum_UpperLeafAngle_ts_LMAD.csv,res.fixed,LMAD,Leaf Morphology,0.5
+UpperLeafAngle,0,20164.1717953241,0,20164.1717953241,0,0.05,24,res.fixed.pcut_sum_UpperLeafAngle_ts_LMAN.csv,res.fixed,LMAN,Leaf Morphology,0.5
+X20KernelWeight,0.0341843843584636,48.6901456640041,1.6644426538479,39.7733780448871,2,0.05,11,res.fixed.pcut_sum_X20KernelWeight_ts_GRoot.csv,res.fixed,GRoot,Seed Traits,0.35
+X20KernelWeight,0,59.9054456715413,0,59.9054456715413,0,0.05,14,res.fixed.pcut_sum_X20KernelWeight_ts_GShoot.csv,res.fixed,GShoot,Seed Traits,0.35
+X20KernelWeight,0,79.006060763409,0,79.006060763409,0,0.05,54,res.fixed.pcut_sum_X20KernelWeight_ts_Kern.csv,res.fixed,Kern,Seed Traits,0.35
+X20KernelWeight,0,75.7995720838869,0,75.7995720838869,0,0.05,18,res.fixed.pcut_sum_X20KernelWeight_ts_L3Base.csv,res.fixed,L3Base,Seed Traits,0.35
+X20KernelWeight,0.0225911473314042,72.7352993073958,1.64317386284716,68.5783624471797,1,0.05,17,res.fixed.pcut_sum_X20KernelWeight_ts_L3Tip.csv,res.fixed,L3Tip,Seed Traits,0.35
+X20KernelWeight,0,53.3310109042168,0,53.3310109042168,0,0.05,18,res.fixed.pcut_sum_X20KernelWeight_ts_LMAD.csv,res.fixed,LMAD,Seed Traits,0.35
+X20KernelWeight,0.0209191950954979,48.1901302443268,1.00809873625852,44.5755892699582,1,0.05,21,res.fixed.pcut_sum_X20KernelWeight_ts_LMAN.csv,res.fixed,LMAN,Seed Traits,0.35
