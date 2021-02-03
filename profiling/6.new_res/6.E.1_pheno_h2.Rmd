@@ -115,7 +115,7 @@ df$tissue <- factor(df$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip",
                     labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 
 
-df2 <- subset(df, tissue !%in% "Adult leaf during the day")
+df2 <- subset(df, tissue != "Adult leaf during the day")
 p2 <- ggplot(df2, aes(x=h2, y=pmed.pure, color=category)) +
     #geom_bar(stat="identity", position=position_dodge()) +
     geom_point(size=2) +
@@ -133,12 +133,12 @@ p2 <- ggplot(df2, aes(x=h2, y=pmed.pure, color=category)) +
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
           #axis.text.x = element_text(angle = 15, hjust=0.8),
-          legend.position = c(0.3, 0.8), 
+          legend.position = "none", 
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=fsize))
 p2
 
-pdf("graphs/med_h2_LMAD.pdf", width = 6, height= 6)
+pdf("graphs/med_h2_others.pdf", width = 10, height= 10)
 p2
 dev.off()
 

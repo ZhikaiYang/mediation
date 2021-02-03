@@ -74,11 +74,17 @@ write.table(nt, "cache/mediator_summary.csv", sep=",", row.names=FALSE, quote=FA
 library(ggplot2)
 
 fsize=18
-nt$tissue <- factor(nt$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+
+
+med <- read.csv("cache/mediator_summary.csv")
+med <- subset(med, type %in% c("Metabolite", "Morphology"))
+
+med $tissue <- factor(med$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
                     labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 
 
-pall <- ggplot(nt, aes(x=tissue, y=V1, fill=type)) +
+
+pall <- ggplot(med, aes(x=tissue, y=V1, fill=type)) +
     #geom_bar(stat="identity", position=position_dodge()) +
     geom_boxplot(outlier.colour="black", outlier.shape=16, 
              outlier.size=1, notch=FALSE) +
@@ -96,12 +102,12 @@ pall <- ggplot(nt, aes(x=tissue, y=V1, fill=type)) +
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
           axis.text.x = element_text(angle = 15, hjust=0.8),
-          legend.position = c(0.2, 0.8), 
+          legend.position = "none", 
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=fsize))
 pall
 
-pdf("graphs/avg_num_mediator_genes_by_type.pdf", width = 9, height= 6)
+pdf("graphs/avg_num_mediator_genes_by_type.pdf", width = 10, height= 6)
 pall
 dev.off()
 ```

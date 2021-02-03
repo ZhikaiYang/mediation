@@ -47,7 +47,9 @@ percat <- ddply(nt, .(tissue, category), summarise,
                 m=mean(V1),
                 sd=sd(V1))
 
-
+mg <- ddply(m1, .(id), nrow)
+nrow(subset(mg, V1 > 1))
+nrow(subset(mg, V1 > 5))
 ```
 
 # Number of mediator genes by category and trait

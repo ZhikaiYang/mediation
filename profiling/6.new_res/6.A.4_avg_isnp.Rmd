@@ -89,13 +89,17 @@ write.table(nt, "cache/isnp_summary.csv", sep=",", row.names=FALSE, quote=FALSE)
 
 ```{r}
 library(ggplot2)
-
 fsize=18
-nt$tissue <- factor(nt$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
-                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+isnp <- read.csv("cache/isnp_summary.csv")
+isnp <- subset(isnp, type %in% c("Metabolite", "Morphology"))
+
+isnp$tissue <- factor(isnp$tissue, 
+                      levels = c("Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"),
+                      labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 
 
-p1 <- ggplot(nt, aes(x=tissue, y=V1, fill=type)) +
+p1 <- ggplot(isnp, aes(x=tissue, y=V1, fill=type)) +
     #geom_bar(stat="identity", position=position_dodge()) +
     geom_boxplot(outlier.colour="black", outlier.shape=16, 
              outlier.size=1, notch=FALSE) +
@@ -116,7 +120,7 @@ p1 <- ggplot(nt, aes(x=tissue, y=V1, fill=type)) +
           legend.position = c(0.2, 0.8), 
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=fsize))
-#p1
+p1
 
 pdf("graphs/avg_num_iSNPs_per_gene_by_type.pdf", width = 9, height= 6)
 p1
