@@ -47,6 +47,21 @@ write.table(out, "largedata/isnps_vs_feature/isnps_54015rows_microbiome_old_geno
 
 ```
 
+```{r}
+library(data.table)
+
+isnps <- fread("largedata/isnps_vs_feature/isnps_63005rows.csv", header=TRUE, data.table=FALSE)
+snps_used_in_med = fread("largedata/geno/snps.txt",header=F, data.table=FALSE)
+snps_used_in_med_old = fread("largedata/geno/snps_old.txt",header=F, data.table=FALSE)
+snps_used_in_med_old_in_lib = fread("largedata/geno/snps_old_in_lib.txt", header=F, data.table=FALSE)
+
+length(which(isnps$snps_for_medi %in% snps_used_in_med$V1))
+length(which(isnps$snps_for_medi %in% snps_used_in_med_old$V1))
+length(which(isnps$snps_for_medi %in% snps_used_in_med_old_in_lib$V1))
+
+
+```
+
 
 ### on local
 
