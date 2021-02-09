@@ -122,5 +122,84 @@ dev.off()
 
 ```
 
+# Number of mediator genes by category and trait
+
+```{r}
+library(eulerr)
+library(data.table)
+
+
+root = subset(d1, tissue == "GRoot")$snp
+root <- root[!duplicated(root)]
+
+shoot = subset(d1, tissue == "GShoot")$snp
+shoot <- shoot[!duplicated(shoot)]
+  
+l3base = subset(d1, tissue == "L3Base")$snp
+l3base <- l3base[!duplicated(l3base)]
+
+l3tip = subset(d1, tissue == "L3Tip")$snp
+l3tip <- l3tip[!duplicated(l3tip)]
+
+lmad = subset(d1, tissue == "LMAD")$snp
+lmad = lmad[!duplicated(lmad)]
+
+lman = subset(d1, tissue == "LMAN")$snp
+lman = lman[!duplicated(lman)]
+
+kern = subset(d1, tissue == "Kern")$snp
+kern <- kern[!duplicated(kern)]
+
+df1 <- list(Root = root,
+           Shoot = shoot
+          )
+
+df2 <- list(L3Base = l3base,
+           L3Tip = l3tip
+           )
+df3 = list(LMAD = lmad, LMAN = lman)
+
+pdf("graphs/venn_dSNPs_by_root-shoot.pdf", width = 9, height= 6)
+plot(venn(df1))
+dev.off()
+
+pdf("graphs/venn_dSNPs_by_l3base-l3tip.pdf", width = 9, height= 6)
+plot(venn(df2))
+dev.off()
+
+pdf("graphs/venn_dSNPs_by_lmad-lman.pdf", width = 9, height= 6)
+plot(venn(df3))
+dev.off()
+
+
+d1$tissue <- factor(d1$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root/Shoot", "Germinating Root/Shoot", "Leaf 3 base/tip", "Leaf 3 base/tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+shoot_root = subset(d1, tissue == "Germinating Root/Shoot")$snp
+shoot_root <- shoot_root[!duplicated(shoot_root)]
+
+  
+l3base_tip = subset(d1, tissue == "Leaf 3 base/tip")$snp
+l3base_tip <- l3base_tip[!duplicated(l3base_tip)]
+
+
+lmad = subset(d1, tissue == "Adult leaf during the day")$snp
+lmad = lmad[!duplicated(lmad)]
+
+lman = subset(d1, tissue == "Adult leaf at night")$snp
+lman = lman[!duplicated(lman)]
+
+kern = subset(d1, tissue == "Kernels after pollination")$snp
+kern <- kern[!duplicated(kern)]
+
+
+df5 = list(Shoot_Root = shoot_root, L3Base_Tip = l3base_tip, LMAD = lmad, LMAN = lman, Kern = kern)
+
+pdf("graphs/venn_dSNPs_by_7tissues.pdf", width = 9, height= 6)
+plot(venn(df5))
+dev.off()
+
+```
+
 
 
