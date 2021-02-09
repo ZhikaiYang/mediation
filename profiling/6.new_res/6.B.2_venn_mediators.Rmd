@@ -104,5 +104,84 @@ These results suggested that mediation effects were tissue specific.
 
 
 
+# Number of mediator genes by category and trait
+
+
+```{r}
+library(eulerr)
+library(data.table)
+
+
+root = subset(m1, tissue == "GRoot")$id
+root <- root[!duplicated(root)]
+
+shoot = subset(m1, tissue == "GShoot")$id
+shoot <- shoot[!duplicated(shoot)]
+  
+l3base = subset(m1, tissue == "L3Base")$id
+l3base <- l3base[!duplicated(l3base)]
+
+l3tip = subset(m1, tissue == "L3Tip")$id
+l3tip <- l3tip[!duplicated(l3tip)]
+
+lmad = subset(m1, tissue == "LMAD")$id
+lmad = lmad[!duplicated(lmad)]
+
+lman = subset(m1, tissue == "LMAN")$id
+lman = lman[!duplicated(lman)]
+
+kern = subset(m1, tissue == "Kern")$id
+kern <- kern[!duplicated(kern)]
+
+df1 <- list(Root = root,
+           Shoot = shoot
+          )
+
+df2 <- list(L3Base = l3base,
+           L3Tip = l3tip
+           )
+df3 = list(LMAD = lmad, LMAN = lman)
+
+pdf("graphs/venn_mediators_by_root-shoot.pdf", width = 9, height= 6)
+plot(venn(df1))
+dev.off()
+
+pdf("graphs/venn_mediators_by_l3base-l3tip.pdf", width = 9, height= 6)
+plot(venn(df2))
+dev.off()
+
+pdf("graphs/venn_mediators_by_lmad-lman.pdf", width = 9, height= 6)
+plot(venn(df3))
+dev.off()
+
+
+m1$tissue <- factor(m1$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root/Shoot", "Germinating Root/Shoot", "Leaf 3 base/tip", "Leaf 3 base/tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+shoot_root = subset(m1, tissue == "Germinating Root/Shoot")$id
+shoot_root <- shoot_root[!duplicated(shoot_root)]
+
+  
+l3base_tip = subset(m1, tissue == "Leaf 3 base/tip")$id
+l3base_tip <- l3base_tip[!duplicated(l3base_tip)]
+
+
+lmad = subset(m1, tissue == "Adult leaf during the day")$id
+lmad = lmad[!duplicated(lmad)]
+
+lman = subset(m1, tissue == "Adult leaf at night")$id
+lman = lman[!duplicated(lman)]
+
+kern = subset(m1, tissue == "Kernels after pollination")$id
+kern <- kern[!duplicated(kern)]
+
+
+df5 = list(Shoot_Root = shoot_root, L3Base_Tip = l3base_tip, LMAD = lmad, LMAN = lman, Kern = kern)
+
+pdf("graphs/venn_mediators_by_7tissues.pdf", width = 9, height= 6)
+plot(venn(df5))
+dev.off()
+
+```
 
 
