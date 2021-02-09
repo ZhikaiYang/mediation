@@ -1,0 +1,138 @@
+---
+title: "Plot Venn Diagram for dSNPs"
+author: "Jinliang Yang"
+date: "01-21-2021"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+#### New results
+
+- Direct SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_34013rows.csv
+- Indirect SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv
+- Mediators: data/mediators_18812rows_by_cat.csv
+
+### Old results for microbiome data
+
+- Mediators: cache/microbiome_mediators_34155rows.csv
+- Direct SNPs: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_45112rows_microbiome_old_geno.csv
+- Indirect SNPs: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_54015rows_microbiome_old_geno.csv
+
+### Keys
+
+- eq: MedFix0.5
+- fixed: MedFixBIC
+
+- e2m: p-values for the exposure effect on the individual mediators
+- m2y: p-values for the mediator effect on phenotype
+- e2m2y: min value among c(1, max(e2m, m2y))
+
+### indirect SNPs
+
+```{r}
+library("data.table")
+isnps <- fread("largedata/isnps_vs_feature/isnps_47143rows.csv")
+table(isnps$method)
+
+#  res.eq res.fixed
+#    15642     18371
+
+### only consider res.fixed
+isnps_fixed <- subset(isnps, method == "res.fixed")
+isnps_fixed$type <- "Morphology"
+idx <- grep("^X\\.", isnps_fixed$trait)
+isnps_fixed[idx, ]$type <- "Metabolite"
+
+#isnps_fixed$log10pval <- -log10(isnps_fixed$pval)
+# isnps_fixed <- subset(isnps_fixed, log10pval > 10)
+```
+
+
+# Number of mediator genes by category and trait
+
+```{r}
+library(eulerr)
+library(data.table)
+
+
+root = subset(isnps_fixed, tissue == "GRoot")$snp
+root <- root[!duplicated(root)]
+
+shoot = subset(isnps_fixed, tissue == "GShoot")$snp
+shoot <- shoot[!duplicated(shoot)]
+  
+l3base = subset(isnps_fixed, tissue == "L3Base")$snp
+l3base <- l3base[!duplicated(l3base)]
+
+l3tip = subset(isnps_fixed, tissue == "L3Tip")$snp
+l3tip <- l3tip[!duplicated(l3tip)]
+
+lmad = subset(isnps_fixed, tissue == "LMAD")$snp
+lmad = lmad[!duplicated(lmad)]
+
+lman = subset(isnps_fixed, tissue == "LMAN")$snp
+lman = lman[!duplicated(lman)]
+
+kern = subset(isnps_fixed, tissue == "Kern")$snp
+kern <- kern[!duplicated(kern)]
+
+df1 <- list(Root = root,
+           Shoot = shoot
+          )
+
+df2 <- list(L3Base = l3base,
+           L3Tip = l3tip
+           )
+df3 = list(LMAD = lmad, LMAN = lman)
+
+pdf("graphs/venn_iSNPs_by_root-shoot.pdf", width = 9, height= 6)
+plot(venn(df1))
+dev.off()
+
+pdf("graphs/venn_iSNPs_by_l3base-l3tip.pdf", width = 9, height= 6)
+plot(venn(df2))
+dev.off()
+
+pdf("graphs/venn_iSNPs_by_lmad-lman.pdf", width = 9, height= 6)
+plot(venn(df3))
+dev.off()
+
+
+isnps_fixed$tissue <- factor(isnps_fixed$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root/Shoot", "Germinating Root/Shoot", "Leaf 3 base/tip", "Leaf 3 base/tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+shoot_root = subset(isnps_fixed, tissue == "Germinating Root/Shoot")$snp
+shoot_root <- shoot_root[!duplicated(shoot_root)]
+
+  
+l3base_tip = subset(isnps_fixed, tissue == "Leaf 3 base/tip")$snp
+l3base_tip <- l3base_tip[!duplicated(l3base_tip)]
+
+
+lmad = subset(isnps_fixed, tissue == "Adult leaf during the day")$snp
+lmad = lmad[!duplicated(lmad)]
+
+lman = subset(isnps_fixed, tissue == "Adult leaf at night")$snp
+lman = lman[!duplicated(lman)]
+
+kern = subset(isnps_fixed, tissue == "Kernels after pollination")$snp
+kern <- kern[!duplicated(kern)]
+
+
+df5 = list(Shoot_Root = shoot_root, L3Base_Tip = l3base_tip, LMAD = lmad, LMAN = lman, Kern = kern)
+
+pdf("graphs/venn_iSNPs_by_7tissues.pdf", width = 9, height= 6)
+plot(venn(df5))
+dev.off()
+
+```
+
+
+
