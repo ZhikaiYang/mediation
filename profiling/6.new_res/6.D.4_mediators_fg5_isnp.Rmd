@@ -113,7 +113,8 @@ df1 <- subset(df, trait %in% "EarHeight")
 df1 <- subset(df1, S2_238153041 %in% c("AA", "GG"))
 pall <- ggplot(df1, aes(x=S2_238153041, y=log(AC148152.3_FG005), fill=S2_238153041)) + 
   geom_violin(trim=FALSE) +
-  geom_dotplot(binaxis='y', stackdir='center', dotsize=1) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
     xlab("") +
     ylab("log(TPM)") +
     ggtitle("") +
@@ -141,6 +142,88 @@ t.test(log(subset(df1, S2_238153041 %in% "AA")$AC148152.3_FG005), log(subset(df1
 ```
 
 
+```{r}
+library(ggplot2)
+library(agricolae)
+
+fsize=18
+
+# Heatmap 
+df1 <- subset(df, trait %in% "EarHeight")
+df1 <- subset(df1, S2_238153041 %in% c("AA", "GG"))
+df1 = merge(df1, ag_trait[,c(1,39)], by = "genotype")
+
+pall <- ggplot(df1, aes(x=S2_238153041, y=AnthesistoSilkInterval, fill=S2_238153041)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1) +
+  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+    xlab("") +
+    ylab("Days") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/pheno_FG005_AG_alleles.pdf", width = 5, height= 5)
+pall
+dev.off()
+
+
+t.test(log(subset(df1, S2_238153041 %in% "AA")$AnthesistoSilkInterval), subset(df1, S2_238153041 %in% "GG")$AnthesistoSilkInterval)
+
+```
+
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+df1 <- subset(df, trait %in% "EarHeight")
+df1 <- subset(df1, S2_238153041 %in% c("AA", "GG"))
+df1 = merge(df1, ag_trait[,c(1,39)], by = "genotype")
+
+pall <- ggplot(df1, aes(x=log(AC148152.3_FG005), y=AnthesistoSilkInterval, fill=S2_238153041)) + 
+  geom_point()+
+  geom_smooth(method=lm) +
+    xlab("log(TPM)") +
+    ylab("Days") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/pheno_FG005_rna_exp.pdf", width = 5, height= 5)
+pall
+dev.off()
+
+
+t.test(log(subset(df1, S2_238153041 %in% "AA")$AnthesistoSilkInterval), log(subset(df1, S2_238153041 %in% "GG")$AnthesistoSilkInterval))
+
+```
 
 
 
