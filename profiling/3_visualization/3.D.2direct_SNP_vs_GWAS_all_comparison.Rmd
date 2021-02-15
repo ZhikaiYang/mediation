@@ -307,6 +307,9 @@ gwas_overlap_fixed_s$category <- factor(gwas_overlap_fixed_s$category, levels = 
 gwas_overlap_fixed_s$o_ratio = as.numeric(gwas_overlap_fixed_s$o_ratio)
 
 library(ggplot2)
+library(ggpubr)
+library(dplyr)
+library(agricolae)
 
 #df0 <- subset(df, cat != "1")
 pall <- ggplot(gwas_overlap_fixed_s, aes(x=tissue, y=o_ratio, fill=category)) +
@@ -332,8 +335,30 @@ pall <- ggplot(gwas_overlap_fixed_s, aes(x=tissue, y=o_ratio, fill=category)) +
           legend.text = element_text(size=11))
 pall
 
+
+p <- ggboxplot(gwas_overlap_fixed_s, x = "tissue", y = "o_ratio",
+          color = "category", palette = "jco",
+          add = "jitter")
+p_tissue = p + #stat_compare_means(aes(group = category), label = "p.signif")+
+  xlab("Tissue") +
+    ylab("Overlap ratio with GWAS signals ") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "top", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=15))
+
+
+
 pdf("graphs/overlap_ratio_gwas_5kb_all_traits_fixed_s_h2order.pdf", width = 9, height= 6)
-pall
+p_tissue
 dev.off()
 
 ```
@@ -489,6 +514,28 @@ p <-ggplot(gwas_overlap_fixed_all, aes(x=win_size, y=o_ratio, fill=category)) +
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=fsize))
 
+
+p <- ggboxplot(gwas_overlap_fixed_all, x = "win_size", y = "o_ratio",
+          color = "category", palette = "jco",
+          add = "jitter")
+p_win = p + #stat_compare_means(aes(group = category), label = "p.signif")+
+  xlab("Window size") +
+    ylab("Overlap ratio with GWAS signals ") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "top", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+
+
 id1 = which(gwas_overlap_fixed_100kb$category != "Metabolite")
 length(which(gwas_overlap_fixed_100kb$p_val_chi_adj[id1] <= 0.05))/length(id1)
 length(which(gwas_overlap_fixed_100kb$p_val_chi_adj[-id1] <= 0.05))/ (737 - length(id1) )
@@ -505,8 +552,8 @@ id1 = which(gwas_overlap_fixed_5kb$category != "Metabolite")
 length(which(gwas_overlap_fixed_5kb$p_val_chi_adj[id1] <= 0.05))/length(id1)
 length(which(gwas_overlap_fixed_5kb$p_val_chi_adj[-id1] <= 0.05))/ (737 - length(id1) )
 
-pdf("graphs/overlap_ratio_gwas_all_win_all_traits_fixed_box.pdf", width = 9, height= 6)
-p
+pdf("graphs/overlap_ratio_gwas_all_win_all_traits_fixed_box_dot.pdf", width = 9, height= 6)
+p_win
 dev.off()
 
 
