@@ -115,8 +115,8 @@ shoot_root <- shoot_root[!duplicated(shoot_root)]
 l3base_tip = subset(isnps_fixed, tissue == "Leaf 3 base/tip")$snp
 l3base_tip <- l3base_tip[!duplicated(l3base_tip)]
 
-lmad_n = subset(isnps_fixed, tissue == "Adult leaf during the day")$snp
-lmad_n = lmad[!duplicated(lmad)]
+lmad_n = subset(isnps_fixed, tissue == "Adult leaf during the day/night")$snp
+lmad_n = lmad_n[!duplicated(lmad_n)]
 
 #lmad = subset(isnps_fixed, tissue == "Adult leaf during the day")$snp
 #lmad = lmad[!duplicated(lmad)]

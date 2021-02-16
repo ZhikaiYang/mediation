@@ -183,8 +183,7 @@ l3base_tip = subset(d1, tissue == "Leaf 3 base/tip")$snp
 l3base_tip <- l3base_tip[!duplicated(l3base_tip)]
 
 lmad_n = subset(d1, tissue == "Adult leaf during the day/night")$snp
-lmad_n = lmad[!duplicated(lmad_n)]
-lmad_n = unique(lmad_n)
+lmad_n = lmad_n[!duplicated(lmad_n)]
 #lmad = subset(d1, tissue == "Adult leaf during the day")$snp
 #lmad = lmad[!duplicated(lmad)]
 

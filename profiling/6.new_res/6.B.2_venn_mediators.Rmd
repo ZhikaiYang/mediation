@@ -156,7 +156,7 @@ dev.off()
 
 
 m1$tissue <- factor(m1$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
-                    labels =c( "Germinating Root/Shoot", "Germinating Root/Shoot", "Leaf 3 base/tip", "Leaf 3 base/tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+                    labels =c( "Germinating Root/Shoot", "Germinating Root/Shoot", "Leaf 3 base/tip", "Leaf 3 base/tip", "Adult leaf during the day/night", "Adult leaf during the day/night","Kernels after pollination"))
 
 shoot_root = subset(m1, tissue == "Germinating Root/Shoot")$id
 shoot_root <- shoot_root[!duplicated(shoot_root)]
@@ -165,6 +165,8 @@ shoot_root <- shoot_root[!duplicated(shoot_root)]
 l3base_tip = subset(m1, tissue == "Leaf 3 base/tip")$id
 l3base_tip <- l3base_tip[!duplicated(l3base_tip)]
 
+lmad_n = subset(m1, tissue == "Adult leaf during the day/night")$id
+lmad_n = lmad_n[!duplicated(lmad_n)]
 
 lmad = subset(m1, tissue == "Adult leaf during the day")$id
 lmad = lmad[!duplicated(lmad)]
@@ -176,10 +178,10 @@ kern = subset(m1, tissue == "Kernels after pollination")$id
 kern <- kern[!duplicated(kern)]
 
 
-df5 = list(Shoot_Root = shoot_root, L3Base_Tip = l3base_tip, LMAD = lmad, LMAN = lman, Kern = kern)
+df4 = list(Shoot_Root = shoot_root, L3Base_Tip = l3base_tip, LMADay_Night = lmad_n,  Kern = kern)
 
 pdf("graphs/venn_mediators_by_7tissues.pdf", width = 9, height= 6)
-plot(venn(df5))
+plot(venn(df4))
 dev.off()
 
 ```
