@@ -106,7 +106,7 @@ dev.off()
 
 
 isnps_fixed$tissue <- factor(isnps_fixed$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
-                    labels =c( "Germinating Root/Shoot", "Germinating Root/Shoot", "Leaf 3 base/tip", "Leaf 3 base/tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+                    labels =c( "Germinating Root/Shoot", "Germinating Root/Shoot", "Leaf 3 base/tip", "Leaf 3 base/tip", "Adult leaf during the day/night", "Adult leaf during the day/night","Kernels after pollination"))
 
 shoot_root = subset(isnps_fixed, tissue == "Germinating Root/Shoot")$snp
 shoot_root <- shoot_root[!duplicated(shoot_root)]
@@ -115,21 +115,23 @@ shoot_root <- shoot_root[!duplicated(shoot_root)]
 l3base_tip = subset(isnps_fixed, tissue == "Leaf 3 base/tip")$snp
 l3base_tip <- l3base_tip[!duplicated(l3base_tip)]
 
+lmad_n = subset(isnps_fixed, tissue == "Adult leaf during the day")$snp
+lmad_n = lmad[!duplicated(lmad)]
 
-lmad = subset(isnps_fixed, tissue == "Adult leaf during the day")$snp
-lmad = lmad[!duplicated(lmad)]
+#lmad = subset(isnps_fixed, tissue == "Adult leaf during the day")$snp
+#lmad = lmad[!duplicated(lmad)]
 
-lman = subset(isnps_fixed, tissue == "Adult leaf at night")$snp
-lman = lman[!duplicated(lman)]
+#lman = subset(isnps_fixed, tissue == "Adult leaf at night")$snp
+#lman = lman[!duplicated(lman)]
 
 kern = subset(isnps_fixed, tissue == "Kernels after pollination")$snp
 kern <- kern[!duplicated(kern)]
 
 
-df5 = list(Shoot_Root = shoot_root, L3Base_Tip = l3base_tip, LMAD = lmad, LMAN = lman, Kern = kern)
+df4 = list(Shoot_Root = shoot_root, L3Base_Tip = l3base_tip, LMADay_Night = lmad_n, Kern = kern)
 
 pdf("graphs/venn_iSNPs_by_7tissues.pdf", width = 9, height= 6)
-plot(venn(df5))
+plot(venn(df4))
 dev.off()
 
 ```
