@@ -529,8 +529,8 @@ p_win = p + #stat_compare_means(aes(group = category), label = "p.signif")+
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
-          axis.text.x = element_text(angle = 15, hjust=0.8),
-          legend.position = "top", 
+          axis.text.x = element_text(angle = 0, hjust=0.8),
+          legend.position = "right", 
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=fsize))
 
