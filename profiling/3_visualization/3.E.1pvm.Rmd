@@ -123,6 +123,17 @@ h2$category[c(32,33)]= "Male Inflorescence"
 h2$category[c(1,7,9,8)]= "Female Inflorescence"
 h2$category[c(2,10,35,37,39,40)]= "Seed Traits"
 h2 = arrange(h2, category, trait)
+
+
+h2_new = h2 
+h2_new$h2[c(9,16,17,2,15,14,13,40,3,1,4,35,39)] = c(0.73,0.29,0.37,0.4,0.34,0.3,0.49,0.11,0.17,0.21,0.31,0.30,0.27)
+
+
+
+
+
+
+
 h2$h2[c(7,9,8,2,1,13,14,15,16,17,3,4,6,5,36,35,39,40,37)] = c(0.33, 0.71, 0.70, 0.56, 0.59, 0.60, 0.59, 0.50, 0.62, 0.66, 0.42, 0.37, 0.43, 0.24, 0.26, 0.42, 0.23, 0.35, 0.29 )
 h2s = subset(h2, h2>0)
 h2s_stat = (h2s %>% group_by(category) %>% summarise(avg_h2 = mean(h2), median_h2 = median(h2), min_h2 = min(h2), max_h2 = max(h2), std_h2 = var(h2), num = n()))
