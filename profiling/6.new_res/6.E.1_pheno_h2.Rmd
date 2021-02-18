@@ -119,7 +119,7 @@ dev.off()
 ```
 
 
-Excuding adult leaf during the day:
+#Excuding adult leaf during the day:
 
 ```{r}
 library(ggplot2)
@@ -158,3 +158,4 @@ p2
 dev.off()
 
 
+```
