@@ -112,6 +112,11 @@ plot_mht(inputdf=p2, hdf=NULL, col2plot = "V1", jmph = FALSE, pl = TRUE,
   pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
   yaxis = NULL, ylab="Number of mediated traits")
 dev.off()
+
+
+
+
+
 ```
 
 annotation:
@@ -125,11 +130,27 @@ genes[order(genes$chr, genes$pos),]
 # count the number of mediated traits
 ptem <- ddply(df, .(id, type), nrow)
 
+<<<<<<< HEAD
 out1 <- merge(subset(p2, V1 >= 5), ptem, by="id")
 out1[order(out1$chr, out1$pos),]
 
 gid <- c("AC148152.3_FG001", "AC148152.3_FG005", "AC148152.3_FG008")
 out2 <- subset(df, id %in% gid[2])
+=======
+```{r}
+#library(qqman)
+#p2new = data.frame(SNP = p2$V2, CHR = as.numeric(as.character(p2$chr)), BP = p2$pos, P = p2$V1)
+
+#manhattan(subset(p2new, CHR == 2), highlight = c("Zm00001d00771"), xlim = c(238043557,	238245188), main = "Chr 2", ylim= c(0, 40), type ="h")
+
+p2new = subset(p2, chr == "2")
+x = rep(0,max(p2new$end_pos))
+x <- runif(15000)
+x[p2new$pos] <- p2new$V1
+
+plot(x, type="h", col= "green", xlim = c(238043557,	238245188))
+rm(x)
+>>>>>>> bb5f4e98862ac2307e30185f5780f2610a05cffa
 ```
 
 

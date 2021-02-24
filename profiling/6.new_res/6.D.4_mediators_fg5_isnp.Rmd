@@ -55,6 +55,7 @@ out <- subset(chr2, abs(dist) < 100000)
 ```
 
 
+
 ```{r}
 library(readxl)
 
@@ -226,6 +227,67 @@ t.test(log(subset(df1, S2_238153041 %in% "AA")$AnthesistoSilkInterval), log(subs
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+ifg5 <- subset(i1, medi %in% "AC148152.3_FG001")
+
+#v34 <- fread("cache/gene_v34_conversion.txt", data.table=FALSE)
+fg5 <- subset(v34, V1 %in% "AC148152.3_FG001")
+
+# 238143557
+
+chr2 <- subset(ifg5, seq == 2)
+
+chr2$dist <- chr2$Pos - 238219444
+
+out <- subset(chr2, abs(dist) < 100000)
+```
+
+
+```{r}
+ifg5 <- subset(i1, medi %in% "AC148152.3_FG008")
+
+#v34 <- fread("cache/gene_v34_conversion.txt", data.table=FALSE)
+fg5 <- subset(v34, V1 %in% "AC148152.3_FG008")
+
+# 238143557
+
+chr2 <- subset(ifg5, seq == 2)
+
+chr2$dist <- chr2$Pos - 238074569
+
+
+out <- subset(chr2, abs(dist) < 100000)
+```
 
 
 
