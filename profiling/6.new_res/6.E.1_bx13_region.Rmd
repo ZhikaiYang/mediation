@@ -1,0 +1,102 @@
+---
+title: "Three mediating genes around bx13 on chr2"
+author: "Jinliang Yang"
+date: "2-23-2021"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+#### New results
+
+- Direct SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/dsnps_34013rows.csv
+- Indirect SNP: /common/jyanglab/zhikaiyang/projects/mediation/largedata/isnps_vs_feature/isnps_47143rows.csv
+- Mediators: data/mediators_18812rows_by_cat.csv
+
+
+### RNA-seq data
+- largedata/RNA-seq
+```{r}
+library("data.table")
+ag_trait <- fread("data/geno_trait.txt", data.table = FALSE)
+m_trait <- fread("data/metabolite_rep1_genotype_namecorrect.txt", data.table = FALSE)
+t <- merge(ag_trait, m_trait, by="genotype")
+
+fpm <- fread("/common/jyanglab/shared/dbcenter/Kremling_Nature3RNASeq282_March2018/Expression_matrix/df_STAR_HTSeq_counts_B73_match_based_on_genet_dist_DESeq2_normed_fpm_rounded_origNames_and_Altnames.txt", data.table=FALSE)
+```
+
+FG001 was filtered out in l3t and l3b.
+
+```{r}
+# version3 gene id
+geneid = c("AC148152.3_FG001", "AC148152.3_FG005", "AC148152.3_FG008")
+rna <- fpm[, c("RawPhenotypeNames", "TissueWODate", geneid)]
+
+
+fwrite(rna, "cache/fg00n_rna_raw.csv", sep=",", row.names = FALSE, quote=FALSE)
+
+```
+
+
+
+```{r}
+library(ggplot2)
+ggplot(mtcars, aes(x=wt, y=mpg)) + 
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE)
+```
+
+
+
+# Plot the results
+
+```{r}
+library(ggplot2)
+
+df <- read.csv("cache/fg00n_rna_raw.csv")
+
+fsize=18
+
+
+pall <- ggplot(df, aes(x=log(AC148152.3_FG005+1), y=log(AC148152.3_FG008+1))) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_point() +
+    geom_smooth(method="lm") +
+    facet_grid(vars(TissueWODate), scales = "free") +
+    # scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("Avg number of mediator genes") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position ="none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/rna_pheno_FG005.pdf", width = 9, height= 6)
+pall
+dev.off()
+```
+
+
+
+
+
+
+

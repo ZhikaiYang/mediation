@@ -82,6 +82,10 @@ library(plyr)
 library("data.table")
 
 df <- m1
+
+
+
+
 pall <- ddply(df, .(id), nrow)
 pall <- pall[order(pall$V1, decreasing = T),]
 
@@ -104,15 +108,29 @@ out <- plot_mht(inputdf=p2, hdf=NULL, col2plot = "V1", jmph = FALSE, pl = TRUE,
 
 pdf("graphs/mht_num_med_traits.pdf", width = 15, height= 5)
 plot_mht(inputdf=p2, hdf=NULL, col2plot = "V1", jmph = FALSE, pl = TRUE,
-  cl_file = "data/chr_length_B73v4.csv", cex = 1.5,
+  cl_file = "data/chr_length_B73v4.csv", cex = 5,
   pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
   yaxis = NULL, ylab="Number of mediated traits")
 dev.off()
 ```
 
+annotation:
+```{r}
+genes <- subset(p2, V1 >= 5)
+genes[order(genes$chr, genes$pos),]
+```
 
 
+```{r}
+# count the number of mediated traits
+ptem <- ddply(df, .(id, type), nrow)
 
+out1 <- merge(subset(p2, V1 >= 5), ptem, by="id")
+out1[order(out1$chr, out1$pos),]
+
+gid <- c("AC148152.3_FG001", "AC148152.3_FG005", "AC148152.3_FG008")
+out2 <- subset(df, id %in% gid[2])
+```
 
 
 
