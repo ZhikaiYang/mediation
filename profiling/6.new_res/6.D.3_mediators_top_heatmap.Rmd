@@ -165,3 +165,351 @@ dev.off()
 
 
 
+
+Find the top mediators: "AC148152.3_FG001"
+
+
+```{r}
+fg1 <- subset(m1, id %in% "AC148152.3_FG001")
+
+#fg1$value <- scale(fg1$coef)
+
+tissue <- unique(fg1$tissue)
+trait <- unique(fg1$trait)
+d <- data.frame(tissue=rep(tissue, times=length(trait)), trait=trait)
+d$id <- paste(d$tissue, d$trait, sep="_")
+
+fg1$id <- paste(fg1$tissue, fg1$trait, sep="_")
+
+d <- merge(d, fg1[, c("id", "coef", "type")], by="id", all.x=TRUE)
+
+library(scales)
+
+d[is.na(d$coef),]$coef <- 0
+```
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+pall <- ggplot(d, aes(tissue, trait, fill = coef)) + 
+  geom_tile(colour='white') +
+  scale_fill_gradientn(colours=c("red","white","darkgreen"),
+                       values  = rescale(c(min(d$coef), 0, max(d$coef)))) +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position =c(0.8, 0.9),
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/coef_FG001_alltraits.pdf", width = 9, height= 6)
+pall
+dev.off()
+```
+
+
+
+
+```{r}
+fg1 <- subset(m1, id %in% "AC148152.3_FG001")
+
+fg1m <- subset(fg1, type %in% "Metabolite")
+#fg1m$value <- scale(fg1m$coef)
+
+tissue <- unique(fg1m$tissue)
+trait <- unique(fg1m$trait)
+d <- data.frame(tissue=rep(tissue, times=length(trait)), trait=trait)
+d$id <- paste(d$tissue, d$trait, sep="_")
+
+fg1$id <- paste(fg1$tissue, fg1$trait, sep="_")
+
+d <- merge(d, fg1[, c("id", "coef", "type")], by="id", all.x=TRUE)
+
+library(scales)
+
+d[is.na(d$coef),]$coef <- 0
+```
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+pall <- ggplot(d, aes(tissue, trait, fill = coef)) + 
+  geom_tile(colour='white') +
+  scale_fill_gradientn(colours=c("red","white","darkgreen"),
+                       values  = rescale(c(min(d$coef), 0, max(d$coef)))) +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position =c(0.2, 0.2),
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/coef_FG001_metabolite.pdf", width = 9, height= 6)
+pall
+dev.off()
+```
+
+
+# Polygenic mediators by tissue
+
+
+Find the top mediators: "AC148152.3_FG001"
+
+
+```{r}
+fg1 <- subset(m1, id %in% "AC148152.3_FG001")
+
+fg1a <- subset(fg1, type %in% "Morphology")
+#fg1m$value <- scale(fg1m$coef)
+
+tissue <- unique(fg1a$tissue)
+trait <- unique(fg1a$trait)
+d <- data.frame(tissue=rep(tissue, times=length(trait)), trait=trait)
+d$id <- paste(d$tissue, d$trait, sep="_")
+
+fg1$id <- paste(fg1$tissue, fg1$trait, sep="_")
+
+d <- merge(d, fg1[, c("id", "coef", "type")], by="id", all.x=TRUE)
+
+d[is.na(d$coef),]$coef <- 0
+```
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+pall <- ggplot(d, aes(tissue, trait, fill = coef)) + 
+  geom_tile(colour='white') +
+  scale_fill_gradientn(colours=c("red","white","darkgreen"),
+                       values  = rescale(c(min(d$coef), 0, max(d$coef)))) +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position =c(0.2, 0.2),
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/coef_FG001_ag.pdf", width = 9, height= 6)
+pall
+dev.off()
+```
+
+Find the top mediators: "AC148152.3_FG008"
+
+
+```{r}
+fg8 <- subset(m1, id %in% "AC148152.3_FG008")
+
+#fg8$value <- scale(fg8$coef)
+
+tissue <- unique(fg8$tissue)
+trait <- unique(fg8$trait)
+d <- data.frame(tissue=rep(tissue, times=length(trait)), trait=trait)
+d$id <- paste(d$tissue, d$trait, sep="_")
+
+fg8$id <- paste(fg8$tissue, fg8$trait, sep="_")
+
+d <- merge(d, fg8[, c("id", "coef", "type")], by="id", all.x=TRUE)
+
+library(scales)
+
+d[is.na(d$coef),]$coef <- 0
+```
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+pall <- ggplot(d, aes(tissue, trait, fill = coef)) + 
+  geom_tile(colour='white') +
+  scale_fill_gradientn(colours=c("red","white","darkgreen"),
+                       values  = rescale(c(min(d$coef), 0, max(d$coef)))) +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position =c(0.8, 0.9),
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/coef_FG008_alltraits.pdf", width = 9, height= 6)
+pall
+dev.off()
+```
+
+
+
+```{r}
+fg8 <- subset(m1, id %in% "AC148152.3_FG008")
+
+fg8m <- subset(fg8, type %in% "Metabolite")
+#fg8m$value <- scale(fg8m$coef)
+
+tissue <- unique(fg8m$tissue)
+trait <- unique(fg8m$trait)
+d <- data.frame(tissue=rep(tissue, times=length(trait)), trait=trait)
+d$id <- paste(d$tissue, d$trait, sep="_")
+
+fg8$id <- paste(fg8$tissue, fg8$trait, sep="_")
+
+d <- merge(d, fg8[, c("id", "coef", "type")], by="id", all.x=TRUE)
+
+library(scales)
+
+d[is.na(d$coef),]$coef <- 0
+```
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+pall <- ggplot(d, aes(tissue, trait, fill = coef)) + 
+  geom_tile(colour='white') +
+  scale_fill_gradientn(colours=c("red","white","darkgreen"),
+                       values  = rescale(c(min(d$coef), 0, max(d$coef)))) +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position =c(0.2, 0.2),
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/coef_FG008_metabolite.pdf", width = 9, height= 6)
+pall
+dev.off()
+```
+
+
+# Polygenic mediators by tissue
+
+
+Find the top mediators: "AC148152.3_FG008"
+
+
+```{r}
+fg8 <- subset(m1, id %in% "AC148152.3_FG008")
+
+fg8a <- subset(fg8, type %in% "Morphology")
+#fg8m$value <- scale(fg8m$coef)
+
+tissue <- unique(fg8a$tissue)
+trait <- unique(fg8a$trait)
+d <- data.frame(tissue=rep(tissue, times=length(trait)), trait=trait)
+d$id <- paste(d$tissue, d$trait, sep="_")
+
+fg8$id <- paste(fg8$tissue, fg8$trait, sep="_")
+
+d <- merge(d, fg8[, c("id", "coef", "type")], by="id", all.x=TRUE)
+
+d[is.na(d$coef),]$coef <- 0
+```
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+pall <- ggplot(d, aes(tissue, trait, fill = coef)) + 
+  geom_tile(colour='white') +
+  scale_fill_gradientn(colours=c("red","white","darkgreen"),
+                       values  = rescale(c(min(d$coef), 0, max(d$coef)))) +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position =c(0.2, 0.2),
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/coef_FG008_ag.pdf", width = 9, height= 6)
+pall
+dev.off()
+```
+
+
+
+
+

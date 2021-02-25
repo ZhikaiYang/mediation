@@ -236,36 +236,23 @@ t.test(log(subset(df1, S2_238153041 %in% "AA")$AnthesistoSilkInterval), log(subs
 
 
 
+# ################################################################################################################################################
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# iSNP for FG001
 
 
 
 
 
 ```{r}
-ifg5 <- subset(i1, medi %in% "AC148152.3_FG001")
+ifg1 <- subset(i1, medi %in% "AC148152.3_FG001")
 
 #v34 <- fread("cache/gene_v34_conversion.txt", data.table=FALSE)
-fg5 <- subset(v34, V1 %in% "AC148152.3_FG001")
+fg1 <- subset(v34, V1 %in% "AC148152.3_FG001")
 
 # 238143557
 
-chr2 <- subset(ifg5, seq == 2)
+chr2 <- subset(ifg1, seq == 2)
 
 chr2$dist <- chr2$Pos - 238219444
 
@@ -273,21 +260,1098 @@ out <- subset(chr2, abs(dist) < 100000)
 ```
 
 
-```{r}
-ifg5 <- subset(i1, medi %in% "AC148152.3_FG008")
+# Find the phenotypic effect
 
-#v34 <- fread("cache/gene_v34_conversion.txt", data.table=FALSE)
-fg5 <- subset(v34, V1 %in% "AC148152.3_FG008")
+SNP: 238222922
+
+```{r}
+library("data.table")
+snp <- fread("largedata/geno/fg1_8_isnps.hmp.txt", data.table=FALSE)
+
+mysnp <- subset(snp, pos ==  238222922)
+
+tsnp <- as.data.frame(t(mysnp))
+tsnp$geno <- row.names(tsnp)
+tsnp <- tsnp[-(1:11), ]
+names(tsnp)[1] <- "S2_238222922"
+table(tsnp[,1])
+```
+#ON HCC processing rna data: cd /common/jyanglab/zhikaiyang/projects/mediation/largedata/fg_rna
+
+```{r}
+rna <- fread("/common/jyanglab/shared/dbcenter/Kremling_Nature3RNASeq282_March2018/Expression_matrix/df_STAR_HTSeq_counts_B73_match_based_on_genet_dist_DESeq2_normed_fpm_rounded_origNames_and_Altnames.txt", data.table=FALSE)
+
+idx1 <- which(names(rna) == "AC148152.3_FG001")
+X <- rna[, c(3,6,10:ncol(rna))]
+X$HMP32Name <- gsub("282set_", "", X$HMP32Name)
+fwrite(X[,c(1,2,3,4,6)], "fg158_rna.txt", sep = "\t",  row.names=FALSE, quote=FALSE)
+
+
+```
+
+
+```{r}
+
+df <- read.csv("largedata/fg_rna/fg001_groot.csv")
+df <- merge(df, tsnp, by.x="genotype", by.y="geno")
+
+rna = fread("largedata/fg_rna/fg158_rna.txt", data.table = F)
+rna = subset(rna, TissueWODate != "L3Mid")
+
+
+df_fg1_GRoot = merge(subset(rna, TissueWODate == "GRoot")[,c(2,3)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg1_GShoot = merge(subset(rna, TissueWODate == "GShoot")[,c(2,3)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg1_Kern = merge(subset(rna, TissueWODate == "Kern")[,c(2,3)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg1_L3Base = merge(subset(rna, TissueWODate == "L3Base")[,c(2,3)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg1_L3Tip = merge(subset(rna, TissueWODate == "L3Tip")[,c(2,3)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg1_LMAD = merge(subset(rna, TissueWODate == "LMAD")[,c(2,3)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg1_LMAN = merge(subset(rna, TissueWODate == "LMAN")[,c(2,3)], tsnp, by.x="HMP32Name", by.y="geno")
+
+
+```
+
+
+
+
+
+### Expression
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df1 <- subset(df, S2_238222922 %in% c("AA", "GG"))
+pall <- ggplot(df1, aes(x=S2_238222922, y=log(AC148152.3_FG001), fill=S2_238222922)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+    xlab("") +
+    ylab("log(TPM)") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/rna_FG001_AG_alleles.pdf", width = 5, height= 5)
+pall
+dev.off()
+```
+
+```{r}
+t.test(log(subset(df1, S2_238153041 %in% "AA")$AC148152.3_FG005), log(subset(df1, S2_238153041 %in% "GG")$AC148152.3_FG005))
+```
+
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg1_GRoot <- subset(df_fg1_GRoot, S2_238222922 %in% c("AA", "GG"))
+
+length(which(df_fg1_GRoot$S2_238222922 == "AA"))/nrow(df_fg1_GRoot)
+length(which(df_fg1_GRoot$S2_238222922 == "GG"))/nrow(df_fg1_GRoot)
+
+id = which(df_fg1_GRoot$S2_238222922 == "GG")
+df_fg1_GRoot$allele = rep("major allele", nrow(df_fg1_GRoot))
+df_fg1_GRoot$allele[id] = "minor allele"
+
+pall_fg1_GRoot <- ggplot(df_fg1_GRoot, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg1_GRoot
+
+pdf("graphs/rna_fg1_GRoot_alleles.pdf", width = 5, height= 5)
+pall_fg1_GRoot
+dev.off()
+```
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg1_GShoot <- subset(df_fg1_GShoot, S2_238222922 %in% c("AA", "GG"))
+id = which(df_fg1_GShoot$S2_238222922 == "GG")
+df_fg1_GShoot$allele = rep("major allele", nrow(df_fg1_GShoot))
+df_fg1_GShoot$allele[id] = "minor allele"
+
+pall_fg1_GShoot <- ggplot(df_fg1_GShoot, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg1_GShoot
+
+pdf("graphs/rna_fg1_GShoot_alleles.pdf", width = 5, height= 5)
+pall_fg1_GShoot
+dev.off()
+```
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg1_L3Base <- subset(df_fg1_L3Base, S2_238222922 %in% c("AA", "GG"))
+id = which(df_fg1_L3Base$S2_238222922 == "GG")
+df_fg1_L3Base$allele = rep("major allele", nrow(df_fg1_L3Base))
+df_fg1_L3Base$allele[id] = "minor allele"
+
+pall_fg1_L3Base <- ggplot(df_fg1_L3Base, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg1_L3Base
+
+pdf("graphs/rna_fg1_L3Base_alleles.pdf", width = 5, height= 5)
+pall_fg1_L3Base
+dev.off()
+```
+
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg1_L3Tip <- subset(df_fg1_L3Tip, S2_238222922 %in% c("AA", "GG"))
+id = which(df_fg1_L3Tip$S2_238222922 == "GG")
+df_fg1_L3Tip$allele = rep("major allele", nrow(df_fg1_L3Tip))
+df_fg1_L3Tip$allele[id] = "minor allele"
+
+pall_fg1_L3Tip <- ggplot(df_fg1_L3Tip, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg1_L3Tip
+
+pdf("graphs/rna_fg1_L3Tip_alleles.pdf", width = 5, height= 5)
+pall_fg1_L3Tip
+dev.off()
+```
+
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg1_LMAD <- subset(df_fg1_LMAD, S2_238222922 %in% c("AA", "GG"))
+id = which(df_fg1_LMAD$S2_238222922 == "GG")
+df_fg1_LMAD$allele = rep("major allele", nrow(df_fg1_LMAD))
+df_fg1_LMAD$allele[id] = "minor allele"
+
+pall_fg1_LMAD <- ggplot(df_fg1_LMAD, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg1_LMAD
+
+pdf("graphs/rna_fg1_LMAD_alleles.pdf", width = 5, height= 5)
+pall_fg1_LMAD
+dev.off()
+```
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg1_LMAN <- subset(df_fg1_LMAN, S2_238222922 %in% c("AA", "GG"))
+id = which(df_fg1_LMAN$S2_238222922 == "GG")
+df_fg1_LMAN$allele = rep("major allele", nrow(df_fg1_LMAN))
+df_fg1_LMAN$allele[id] = "minor allele"
+
+pall_fg1_LMAN <- ggplot(df_fg1_LMAN, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg1_LMAN
+
+pdf("graphs/rna_fg1_LMAN_alleles.pdf", width = 5, height= 5)
+pall_fg1_LMAN
+dev.off()
+```
+
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg1_Kern <- subset(df_fg1_Kern, S2_238222922 %in% c("AA", "GG"))
+id = which(df_fg1_Kern$S2_238222922 == "GG")
+df_fg1_Kern$allele = rep("major allele", nrow(df_fg1_Kern))
+df_fg1_Kern$allele[id] = "minor allele"
+
+pall_fg1_Kern <- ggplot(df_fg1_Kern, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg1_Kern
+
+pdf("graphs/rna_fg1_Kern_alleles.pdf", width = 5, height= 5)
+pall_fg1_Kern
+dev.off()
+```
+
+
+# ################################################################################################################################################
+
+# iSNP for FG005
+
+Find the top mediators: "AC148152.3_FG005"
+
+
+```{r}
+ifg5 <- subset(i1, medi %in% "AC148152.3_FG005")
+
+v34 <- fread("cache/gene_v34_conversion.txt", data.table=FALSE)
+fg5 <- subset(v34, V1 %in% "AC148152.3_FG005")
 
 # 238143557
 
 chr2 <- subset(ifg5, seq == 2)
 
-chr2$dist <- chr2$Pos - 238074569
+chr2$dist <- chr2$Pos - 238143557
+
+out <- subset(chr2, abs(dist) < 100000)
+```
+
+
+SNP: 238153041
+
+```{r}
+library("data.table")
+snp <- fread("data/Zm00001d007718.up_down.50K.hmp.txt", data.table=FALSE)
+
+mysnp <- subset(snp, pos ==  238153041)
+
+tsnp <- as.data.frame(t(mysnp))
+tsnp$geno <- row.names(tsnp)
+tsnp <- tsnp[-(1:11), ]
+names(tsnp)[1] <- "S2_238153041"
+table(tsnp[,1])
+```
+
+```{r}
+
+rna = fread("largedata/fg_rna/fg158_rna.txt", data.table = F)
+rna = subset(rna, TissueWODate != "L3Mid")
+
+
+df_fg5_GRoot = merge(subset(rna, TissueWODate == "GRoot")[,c(2,4)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg5_GShoot = merge(subset(rna, TissueWODate == "GShoot")[,c(2,4)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg5_Kern = merge(subset(rna, TissueWODate == "Kern")[,c(2,4)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg5_L3Base = merge(subset(rna, TissueWODate == "L3Base")[,c(2,4)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg5_L3Tip = merge(subset(rna, TissueWODate == "L3Tip")[,c(2,4)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg5_LMAD = merge(subset(rna, TissueWODate == "LMAD")[,c(2,4)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg5_LMAN = merge(subset(rna, TissueWODate == "LMAN")[,c(2,4)], tsnp, by.x="HMP32Name", by.y="geno")
+
+
+```
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg5_GRoot <- subset(df_fg5_GRoot, S2_238153041 %in% c("AA", "GG"))
+
+length(which(df_fg5_GRoot$S2_238153041 == "AA"))/nrow(df_fg5_GRoot)
+length(which(df_fg5_GRoot$S2_238153041 == "GG"))/nrow(df_fg5_GRoot)
+
+id = which(df_fg5_GRoot$S2_238153041 == "AA")
+df_fg5_GRoot$allele = rep("major allele", nrow(df_fg5_GRoot))
+df_fg5_GRoot$allele[id] = "minor allele"
+
+pall_fg5_GRoot <- ggplot(df_fg5_GRoot, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg5_GRoot
+
+pdf("graphs/rna_fg5_GRoot_alleles.pdf", width = 5, height= 5)
+pall_fg5_GRoot
+dev.off()
+```
+
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg5_GShoot <- subset(df_fg5_GShoot, S2_238153041 %in% c("AA", "GG"))
+
+length(which(df_fg5_GShoot$S2_238153041 == "AA"))/nrow(df_fg5_GShoot)
+length(which(df_fg5_GShoot$S2_238153041 == "GG"))/nrow(df_fg5_GShoot)
+
+id = which(df_fg5_GShoot$S2_238153041 == "AA")
+df_fg5_GShoot$allele = rep("major allele", nrow(df_fg5_GShoot))
+df_fg5_GShoot$allele[id] = "minor allele"
+
+pall_fg5_GShoot <- ggplot(df_fg5_GShoot, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg5_GShoot
+
+pdf("graphs/rna_fg5_GShoot_alleles.pdf", width = 5, height= 5)
+pall_fg5_GShoot
+dev.off()
+```
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg5_L3Base <- subset(df_fg5_L3Base, S2_238153041 %in% c("AA", "GG"))
+
+length(which(df_fg5_L3Base$S2_238153041 == "AA"))/nrow(df_fg5_L3Base)
+length(which(df_fg5_L3Base$S2_238153041 == "GG"))/nrow(df_fg5_L3Base)
+
+id = which(df_fg5_L3Base$S2_238153041 == "AA")
+df_fg5_L3Base$allele = rep("major allele", nrow(df_fg5_L3Base))
+df_fg5_L3Base$allele[id] = "minor allele"
+
+pall_fg5_L3Base <- ggplot(df_fg5_L3Base, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg5_L3Base
+
+pdf("graphs/rna_fg5_L3Base_alleles.pdf", width = 5, height= 5)
+pall_fg5_L3Base
+dev.off()
+```
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg5_L3Tip <- subset(df_fg5_L3Tip, S2_238153041 %in% c("AA", "GG"))
+
+length(which(df_fg5_L3Tip$S2_238153041 == "AA"))/nrow(df_fg5_L3Tip)
+length(which(df_fg5_L3Tip$S2_238153041 == "GG"))/nrow(df_fg5_L3Tip)
+
+id = which(df_fg5_L3Tip$S2_238153041 == "AA")
+df_fg5_L3Tip$allele = rep("major allele", nrow(df_fg5_L3Tip))
+df_fg5_L3Tip$allele[id] = "minor allele"
+
+pall_fg5_L3Tip <- ggplot(df_fg5_L3Tip, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg5_L3Tip
+
+pdf("graphs/rna_fg5_L3Tip_alleles.pdf", width = 5, height= 5)
+pall_fg5_L3Tip
+dev.off()
+```
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg5_LMAD <- subset(df_fg5_LMAD, S2_238153041 %in% c("AA", "GG"))
+
+length(which(df_fg5_LMAD$S2_238153041 == "AA"))/nrow(df_fg5_LMAD)
+length(which(df_fg5_LMAD$S2_238153041 == "GG"))/nrow(df_fg5_LMAD)
+
+id = which(df_fg5_LMAD$S2_238153041 == "AA")
+df_fg5_LMAD$allele = rep("major allele", nrow(df_fg5_LMAD))
+df_fg5_LMAD$allele[id] = "minor allele"
+
+pall_fg5_LMAD <- ggplot(df_fg5_LMAD, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg5_LMAD
+
+pdf("graphs/rna_fg5_LMAD_alleles.pdf", width = 5, height= 5)
+pall_fg5_LMAD
+dev.off()
+```
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg5_LMAN <- subset(df_fg5_LMAN, S2_238153041 %in% c("AA", "GG"))
+
+length(which(df_fg5_LMAN$S2_238153041 == "AA"))/nrow(df_fg5_LMAN)
+length(which(df_fg5_LMAN$S2_238153041 == "GG"))/nrow(df_fg5_LMAN)
+
+id = which(df_fg5_LMAN$S2_238153041 == "AA")
+df_fg5_LMAN$allele = rep("major allele", nrow(df_fg5_LMAN))
+df_fg5_LMAN$allele[id] = "minor allele"
+
+pall_fg5_LMAN <- ggplot(df_fg5_LMAN, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg5_LMAN
+
+pdf("graphs/rna_fg5_LMAN_alleles.pdf", width = 5, height= 5)
+pall_fg5_LMAN
+dev.off()
+```
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg5_Kern <- subset(df_fg5_Kern, S2_238153041 %in% c("AA", "GG"))
+
+length(which(df_fg5_Kern$S2_238153041 == "AA"))/nrow(df_fg5_Kern)
+length(which(df_fg5_Kern$S2_238153041 == "GG"))/nrow(df_fg5_Kern)
+
+id = which(df_fg5_Kern$S2_238153041 == "AA")
+df_fg5_Kern$allele = rep("major allele", nrow(df_fg5_Kern))
+df_fg5_Kern$allele[id] = "minor allele"
+
+pall_fg5_Kern <- ggplot(df_fg5_Kern, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg5_Kern
+
+pdf("graphs/rna_fg5_Kern_alleles.pdf", width = 5, height= 5)
+pall_fg5_Kern
+dev.off()
+```
+
+
+
+# ################################################################################################################################################
+
+# iSNP for FG008
+
+Find the top mediators: "AC148152.3_FG008"
+
+
+```{r}
+ifg8 <- subset(i1, medi %in% "AC148152.3_FG008")
+
+#v34 <- fread("cache/gene_v34_conversion.txt", data.table=FALSE)
+fg8 <- subset(v34, V1 %in% "AC148152.3_FG008")
+
+# 238143557
+
+chr2 <- subset(ifg8, seq == 2)
+
+chr2$dist <- chr2$Pos - 238069977
 
 
 out <- subset(chr2, abs(dist) < 100000)
 ```
 
 
+
+# Find the phenotypic effect
+
+SNP: 235111374
+
+```{r}
+library("data.table")
+snp <- fread("largedata/geno/fg1_8_isnps.hmp.txt", data.table=FALSE)
+
+mysnp <- subset(snp, pos ==  235111374)
+
+tsnp <- as.data.frame(t(mysnp))
+tsnp$geno <- row.names(tsnp)
+tsnp <- tsnp[-(1:11), ]
+names(tsnp)[1] <- "S2_235111374"
+table(tsnp[,1])
+```
+```{r}
+
+
+
+rna = fread("largedata/fg_rna/fg158_rna.txt", data.table = F)
+rna = subset(rna, TissueWODate != "L3Mid")
+
+
+df_fg8_GRoot = merge(subset(rna, TissueWODate == "GRoot")[,c(2,5)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg8_GShoot = merge(subset(rna, TissueWODate == "GShoot")[,c(2,5)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg8_Kern = merge(subset(rna, TissueWODate == "Kern")[,c(2,5)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg8_L3Base = merge(subset(rna, TissueWODate == "L3Base")[,c(2,5)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg8_L3Tip = merge(subset(rna, TissueWODate == "L3Tip")[,c(2,5)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg8_LMAD = merge(subset(rna, TissueWODate == "LMAD")[,c(2,5)], tsnp, by.x="HMP32Name", by.y="geno")
+df_fg8_LMAN = merge(subset(rna, TissueWODate == "LMAN")[,c(2,5)], tsnp, by.x="HMP32Name", by.y="geno")
+
+```
+
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg8_GRoot <- subset(df_fg8_GRoot, S2_235111374 %in% c("CC", "TT"))
+
+length(which(df_fg8_GRoot$S2_235111374 == "CC"))/nrow(df_fg8_GRoot)
+length(which(df_fg8_GRoot$S2_235111374 == "TT"))/nrow(df_fg8_GRoot)
+
+id = which(df_fg8_GRoot$S2_235111374 == "CC")
+df_fg8_GRoot$allele = rep("major allele", nrow(df_fg8_GRoot))
+df_fg8_GRoot$allele[id] = "minor allele"
+
+pall_fg8_GRoot <- ggplot(df_fg8_GRoot, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg8_GRoot
+
+pdf("graphs/rna_fg8_GRoot_alleles.pdf", width = 5, height= 5)
+pall_fg8_GRoot
+dev.off()
+```
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg8_GShoot <- subset(df_fg8_GShoot, S2_235111374 %in% c("CC", "TT"))
+
+length(which(df_fg8_GShoot$S2_235111374 == "CC"))/nrow(df_fg8_GShoot)
+length(which(df_fg8_GShoot$S2_235111374 == "TT"))/nrow(df_fg8_GShoot)
+
+id = which(df_fg8_GShoot$S2_235111374 == "CC")
+df_fg8_GShoot$allele = rep("major allele", nrow(df_fg8_GShoot))
+df_fg8_GShoot$allele[id] = "minor allele"
+
+pall_fg8_GShoot <- ggplot(df_fg8_GShoot, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg8_GShoot
+
+pdf("graphs/rna_fg8_GShoot_alleles.pdf", width = 5, height= 5)
+pall_fg8_GShoot
+dev.off()
+```
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg8_L3Base <- subset(df_fg8_L3Base, S2_235111374 %in% c("CC", "TT"))
+
+length(which(df_fg8_L3Base$S2_235111374 == "CC"))/nrow(df_fg8_L3Base)
+length(which(df_fg8_L3Base$S2_235111374 == "TT"))/nrow(df_fg8_L3Base)
+
+id = which(df_fg8_L3Base$S2_235111374 == "CC")
+df_fg8_L3Base$allele = rep("major allele", nrow(df_fg8_L3Base))
+df_fg8_L3Base$allele[id] = "minor allele"
+
+pall_fg8_L3Base <- ggplot(df_fg8_L3Base, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg8_L3Base
+
+pdf("graphs/rna_fg8_L3Base_alleles.pdf", width = 5, height= 5)
+pall_fg8_L3Base
+dev.off()
+```
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg8_L3Tip <- subset(df_fg8_L3Tip, S2_235111374 %in% c("CC", "TT"))
+
+length(which(df_fg8_L3Tip$S2_235111374 == "CC"))/nrow(df_fg8_L3Tip)
+length(which(df_fg8_L3Tip$S2_235111374 == "TT"))/nrow(df_fg8_L3Tip)
+
+id = which(df_fg8_L3Tip$S2_235111374 == "CC")
+df_fg8_L3Tip$allele = rep("major allele", nrow(df_fg8_L3Tip))
+df_fg8_L3Tip$allele[id] = "minor allele"
+
+pall_fg8_L3Tip <- ggplot(df_fg8_L3Tip, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg8_L3Tip
+
+pdf("graphs/rna_fg8_L3Tip_alleles.pdf", width = 5, height= 5)
+pall_fg8_L3Tip
+dev.off()
+```
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg8_LMAD <- subset(df_fg8_LMAD, S2_235111374 %in% c("CC", "TT"))
+
+length(which(df_fg8_LMAD$S2_235111374 == "CC"))/nrow(df_fg8_LMAD)
+length(which(df_fg8_LMAD$S2_235111374 == "TT"))/nrow(df_fg8_LMAD)
+
+id = which(df_fg8_LMAD$S2_235111374 == "CC")
+df_fg8_LMAD$allele = rep("major allele", nrow(df_fg8_LMAD))
+df_fg8_LMAD$allele[id] = "minor allele"
+
+pall_fg8_LMAD <- ggplot(df_fg8_LMAD, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg8_LMAD
+
+pdf("graphs/rna_fg8_LMAD_alleles.pdf", width = 5, height= 5)
+pall_fg8_LMAD
+dev.off()
+```
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg8_LMAN <- subset(df_fg8_LMAN, S2_235111374 %in% c("CC", "TT"))
+
+length(which(df_fg8_LMAN$S2_235111374 == "CC"))/nrow(df_fg8_LMAN)
+length(which(df_fg8_LMAN$S2_235111374 == "TT"))/nrow(df_fg8_LMAN)
+
+id = which(df_fg8_LMAN$S2_235111374 == "CC")
+df_fg8_LMAN$allele = rep("major allele", nrow(df_fg8_LMAN))
+df_fg8_LMAN$allele[id] = "minor allele"
+
+pall_fg8_LMAN <- ggplot(df_fg8_LMAN, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg8_LMAN
+
+pdf("graphs/rna_fg8_LMAN_alleles.pdf", width = 5, height= 5)
+pall_fg8_LMAN
+dev.off()
+```
+
+```{r}
+library(ggplot2)
+
+fsize=18
+
+# Heatmap 
+
+df_fg8_Kern <- subset(df_fg8_Kern, S2_235111374 %in% c("CC", "TT"))
+
+length(which(df_fg8_Kern$S2_235111374 == "CC"))/nrow(df_fg8_Kern)
+length(which(df_fg8_Kern$S2_235111374 == "TT"))/nrow(df_fg8_Kern)
+
+id = which(df_fg8_Kern$S2_235111374 == "CC")
+df_fg8_Kern$allele = rep("major allele", nrow(df_fg8_Kern))
+df_fg8_Kern$allele[id] = "minor allele"
+
+pall_fg8_Kern <- ggplot(df_fg8_Kern, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg8_Kern
+
+pdf("graphs/rna_fg8_Kern_alleles.pdf", width = 5, height= 5)
+pall_fg8_Kern
+dev.off()
+```
 
