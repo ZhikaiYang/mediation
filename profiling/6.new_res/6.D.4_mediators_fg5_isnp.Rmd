@@ -230,12 +230,6 @@ t.test(log(subset(df1, S2_238153041 %in% "AA")$AnthesistoSilkInterval), log(subs
 
 
 
-
-
-
-
-
-
 # ################################################################################################################################################
 
 # iSNP for FG001
@@ -328,7 +322,7 @@ df1 <- subset(df, S2_238222922 %in% c("AA", "GG"))
 pall <- ggplot(df1, aes(x=S2_238222922, y=log(AC148152.3_FG001), fill=S2_238222922)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
     xlab("") +
     ylab("log(TPM)") +
     ggtitle("") +
@@ -374,17 +368,36 @@ id = which(df_fg1_GRoot$S2_238222922 == "GG")
 df_fg1_GRoot$allele = rep("major allele", nrow(df_fg1_GRoot))
 df_fg1_GRoot$allele[id] = "minor allele"
 
+sig_t = t.test(df_fg1_GRoot$AC148152.3_FG001[which(df_fg1_GRoot$allele == "major allele")], df_fg1_GRoot$AC148152.3_FG001[which(df_fg1_GRoot$allele == "minor allele")])
+
+pstar = function(p){
+  
+  if (p > 0.05) {
+    return("ns")
+  }else if(0.01< p & p <=0.05){
+    return("*")
+  }else if(0.001< p & p <=0.01){
+    return("**")
+  }else if(0.0001< p & p <=0.001){
+    return("***")
+  }else if(p<=0.0001){
+    return("****")
+  }
+}
+
+sign_t = pstar(sig_t$p.value)
+
 pall_fg1_GRoot <- ggplot(df_fg1_GRoot, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -412,18 +425,20 @@ df_fg1_GShoot <- subset(df_fg1_GShoot, S2_238222922 %in% c("AA", "GG"))
 id = which(df_fg1_GShoot$S2_238222922 == "GG")
 df_fg1_GShoot$allele = rep("major allele", nrow(df_fg1_GShoot))
 df_fg1_GShoot$allele[id] = "minor allele"
+sig_t = t.test(df_fg1_GShoot$AC148152.3_FG001[which(df_fg1_GShoot$allele == "major allele")], df_fg1_GShoot$AC148152.3_FG001[which(df_fg1_GShoot$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
 
 pall_fg1_GShoot <- ggplot(df_fg1_GShoot, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -452,18 +467,20 @@ df_fg1_L3Base <- subset(df_fg1_L3Base, S2_238222922 %in% c("AA", "GG"))
 id = which(df_fg1_L3Base$S2_238222922 == "GG")
 df_fg1_L3Base$allele = rep("major allele", nrow(df_fg1_L3Base))
 df_fg1_L3Base$allele[id] = "minor allele"
+sig_t = t.test(df_fg1_L3Base$AC148152.3_FG001[which(df_fg1_L3Base$allele == "major allele")], df_fg1_L3Base$AC148152.3_FG001[which(df_fg1_L3Base$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
 
 pall_fg1_L3Base <- ggplot(df_fg1_L3Base, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -493,18 +510,20 @@ df_fg1_L3Tip <- subset(df_fg1_L3Tip, S2_238222922 %in% c("AA", "GG"))
 id = which(df_fg1_L3Tip$S2_238222922 == "GG")
 df_fg1_L3Tip$allele = rep("major allele", nrow(df_fg1_L3Tip))
 df_fg1_L3Tip$allele[id] = "minor allele"
+sig_t = t.test(df_fg1_L3Tip$AC148152.3_FG001[which(df_fg1_L3Tip$allele == "major allele")], df_fg1_L3Tip$AC148152.3_FG001[which(df_fg1_L3Tip$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
 
 pall_fg1_L3Tip <- ggplot(df_fg1_L3Tip, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -534,18 +553,20 @@ df_fg1_LMAD <- subset(df_fg1_LMAD, S2_238222922 %in% c("AA", "GG"))
 id = which(df_fg1_LMAD$S2_238222922 == "GG")
 df_fg1_LMAD$allele = rep("major allele", nrow(df_fg1_LMAD))
 df_fg1_LMAD$allele[id] = "minor allele"
+sig_t = t.test(df_fg1_LMAD$AC148152.3_FG001[which(df_fg1_LMAD$allele == "major allele")], df_fg1_LMAD$AC148152.3_FG001[which(df_fg1_LMAD$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
 
 pall_fg1_LMAD <- ggplot(df_fg1_LMAD, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -574,18 +595,20 @@ df_fg1_LMAN <- subset(df_fg1_LMAN, S2_238222922 %in% c("AA", "GG"))
 id = which(df_fg1_LMAN$S2_238222922 == "GG")
 df_fg1_LMAN$allele = rep("major allele", nrow(df_fg1_LMAN))
 df_fg1_LMAN$allele[id] = "minor allele"
+sig_t = t.test(df_fg1_LMAN$AC148152.3_FG001[which(df_fg1_LMAN$allele == "major allele")], df_fg1_LMAN$AC148152.3_FG001[which(df_fg1_LMAN$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
 
 pall_fg1_LMAN <- ggplot(df_fg1_LMAN, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -615,18 +638,20 @@ df_fg1_Kern <- subset(df_fg1_Kern, S2_238222922 %in% c("AA", "GG"))
 id = which(df_fg1_Kern$S2_238222922 == "GG")
 df_fg1_Kern$allele = rep("major allele", nrow(df_fg1_Kern))
 df_fg1_Kern$allele[id] = "minor allele"
+sig_t = t.test(df_fg1_Kern$AC148152.3_FG001[which(df_fg1_Kern$allele == "major allele")], df_fg1_Kern$AC148152.3_FG001[which(df_fg1_Kern$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
 
 pall_fg1_Kern <- ggplot(df_fg1_Kern, aes(x=allele, y=log(AC148152.3_FG001), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238222922), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -715,18 +740,20 @@ length(which(df_fg5_GRoot$S2_238153041 == "GG"))/nrow(df_fg5_GRoot)
 id = which(df_fg5_GRoot$S2_238153041 == "AA")
 df_fg5_GRoot$allele = rep("major allele", nrow(df_fg5_GRoot))
 df_fg5_GRoot$allele[id] = "minor allele"
+sig_t = t.test(df_fg5_GRoot$AC148152.3_FG005[which(df_fg5_GRoot$allele == "major allele")], df_fg5_GRoot$AC148152.3_FG005[which(df_fg5_GRoot$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
 
 pall_fg5_GRoot <- ggplot(df_fg5_GRoot, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -760,17 +787,20 @@ id = which(df_fg5_GShoot$S2_238153041 == "AA")
 df_fg5_GShoot$allele = rep("major allele", nrow(df_fg5_GShoot))
 df_fg5_GShoot$allele[id] = "minor allele"
 
+sig_t = t.test(df_fg5_GShoot$AC148152.3_FG005[which(df_fg5_GShoot$allele == "major allele")], df_fg5_GShoot$AC148152.3_FG005[which(df_fg5_GShoot$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
+
 pall_fg5_GShoot <- ggplot(df_fg5_GShoot, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -803,17 +833,20 @@ id = which(df_fg5_L3Base$S2_238153041 == "AA")
 df_fg5_L3Base$allele = rep("major allele", nrow(df_fg5_L3Base))
 df_fg5_L3Base$allele[id] = "minor allele"
 
+sig_t = t.test(df_fg5_L3Base$AC148152.3_FG005[which(df_fg5_L3Base$allele == "major allele")], df_fg5_L3Base$AC148152.3_FG005[which(df_fg5_L3Base$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
+
 pall_fg5_L3Base <- ggplot(df_fg5_L3Base, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -845,17 +878,20 @@ id = which(df_fg5_L3Tip$S2_238153041 == "AA")
 df_fg5_L3Tip$allele = rep("major allele", nrow(df_fg5_L3Tip))
 df_fg5_L3Tip$allele[id] = "minor allele"
 
+sig_t = t.test(df_fg5_L3Tip$AC148152.3_FG005[which(df_fg5_L3Tip$allele == "major allele")], df_fg5_L3Tip$AC148152.3_FG005[which(df_fg5_L3Tip$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
+
 pall_fg5_L3Tip <- ggplot(df_fg5_L3Tip, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -888,17 +924,20 @@ id = which(df_fg5_LMAD$S2_238153041 == "AA")
 df_fg5_LMAD$allele = rep("major allele", nrow(df_fg5_LMAD))
 df_fg5_LMAD$allele[id] = "minor allele"
 
+sig_t = t.test(df_fg5_LMAD$AC148152.3_FG005[which(df_fg5_LMAD$allele == "major allele")], df_fg5_LMAD$AC148152.3_FG005[which(df_fg5_LMAD$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
+
 pall_fg5_LMAD <- ggplot(df_fg5_LMAD, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -930,17 +969,20 @@ id = which(df_fg5_LMAN$S2_238153041 == "AA")
 df_fg5_LMAN$allele = rep("major allele", nrow(df_fg5_LMAN))
 df_fg5_LMAN$allele[id] = "minor allele"
 
+sig_t = t.test(df_fg5_LMAN$AC148152.3_FG005[which(df_fg5_LMAN$allele == "major allele")], df_fg5_LMAN$AC148152.3_FG005[which(df_fg5_LMAN$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
+
 pall_fg5_LMAN <- ggplot(df_fg5_LMAN, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -973,17 +1015,20 @@ id = which(df_fg5_Kern$S2_238153041 == "AA")
 df_fg5_Kern$allele = rep("major allele", nrow(df_fg5_Kern))
 df_fg5_Kern$allele[id] = "minor allele"
 
+sig_t = t.test(df_fg5_Kern$AC148152.3_FG005[which(df_fg5_Kern$allele == "major allele")], df_fg5_Kern$AC148152.3_FG005[which(df_fg5_Kern$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
+
 pall_fg5_Kern <- ggplot(df_fg5_Kern, aes(x=allele, y=log(AC148152.3_FG005), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_238153041), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -1076,18 +1121,20 @@ length(which(df_fg8_GRoot$S2_235111374 == "TT"))/nrow(df_fg8_GRoot)
 id = which(df_fg8_GRoot$S2_235111374 == "CC")
 df_fg8_GRoot$allele = rep("major allele", nrow(df_fg8_GRoot))
 df_fg8_GRoot$allele[id] = "minor allele"
+sig_t = t.test(df_fg8_GRoot$AC148152.3_FG008[which(df_fg8_GRoot$allele == "major allele")], df_fg8_GRoot$AC148152.3_FG008[which(df_fg8_GRoot$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
 
 pall_fg8_GRoot <- ggplot(df_fg8_GRoot, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -1119,17 +1166,20 @@ id = which(df_fg8_GShoot$S2_235111374 == "CC")
 df_fg8_GShoot$allele = rep("major allele", nrow(df_fg8_GShoot))
 df_fg8_GShoot$allele[id] = "minor allele"
 
+sig_t = t.test(df_fg8_GShoot$AC148152.3_FG008[which(df_fg8_GShoot$allele == "major allele")], df_fg8_GShoot$AC148152.3_FG008[which(df_fg8_GShoot$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
+
 pall_fg8_GShoot <- ggplot(df_fg8_GShoot, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -1161,17 +1211,20 @@ id = which(df_fg8_L3Base$S2_235111374 == "CC")
 df_fg8_L3Base$allele = rep("major allele", nrow(df_fg8_L3Base))
 df_fg8_L3Base$allele[id] = "minor allele"
 
+sig_t = t.test(df_fg8_L3Base$AC148152.3_FG008[which(df_fg8_L3Base$allele == "major allele")], df_fg8_L3Base$AC148152.3_FG008[which(df_fg8_L3Base$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
+
 pall_fg8_L3Base <- ggplot(df_fg8_L3Base, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -1203,17 +1256,20 @@ id = which(df_fg8_L3Tip$S2_235111374 == "CC")
 df_fg8_L3Tip$allele = rep("major allele", nrow(df_fg8_L3Tip))
 df_fg8_L3Tip$allele[id] = "minor allele"
 
+sig_t = t.test(df_fg8_L3Tip$AC148152.3_FG008[which(df_fg8_L3Tip$allele == "major allele")], df_fg8_L3Tip$AC148152.3_FG008[which(df_fg8_L3Tip$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
+
 pall_fg8_L3Tip <- ggplot(df_fg8_L3Tip, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -1245,17 +1301,20 @@ id = which(df_fg8_LMAD$S2_235111374 == "CC")
 df_fg8_LMAD$allele = rep("major allele", nrow(df_fg8_LMAD))
 df_fg8_LMAD$allele[id] = "minor allele"
 
+sig_t = t.test(df_fg8_LMAD$AC148152.3_FG008[which(df_fg8_LMAD$allele == "major allele")], df_fg8_LMAD$AC148152.3_FG008[which(df_fg8_LMAD$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
+
 pall_fg8_LMAD <- ggplot(df_fg8_LMAD, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -1287,17 +1346,20 @@ id = which(df_fg8_LMAN$S2_235111374 == "CC")
 df_fg8_LMAN$allele = rep("major allele", nrow(df_fg8_LMAN))
 df_fg8_LMAN$allele[id] = "minor allele"
 
+sig_t = t.test(df_fg8_LMAN$AC148152.3_FG008[which(df_fg8_LMAN$allele == "major allele")], df_fg8_LMAN$AC148152.3_FG008[which(df_fg8_LMAN$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
+
 pall_fg8_LMAN <- ggplot(df_fg8_LMAN, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -1329,17 +1391,20 @@ id = which(df_fg8_Kern$S2_235111374 == "CC")
 df_fg8_Kern$allele = rep("major allele", nrow(df_fg8_Kern))
 df_fg8_Kern$allele[id] = "minor allele"
 
+sig_t = t.test(df_fg8_Kern$AC148152.3_FG008[which(df_fg8_Kern$allele == "major allele")], df_fg8_Kern$AC148152.3_FG008[which(df_fg8_Kern$allele == "minor allele")])
+sign_t = pstar(sig_t$p.value)
+
 pall_fg8_Kern <- ggplot(df_fg8_Kern, aes(x=allele, y=log(AC148152.3_FG008), fill=allele)) + 
   geom_violin(trim=FALSE) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
-  stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
     xlab("") +
     ylab("") +
-    ggtitle("") +
+    ggtitle(sign_t) +
     theme_classic() +
     labs(fill = "") +
     #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-    theme(plot.title = element_text(size=20, face = "bold"), 
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
           axis.text=element_text(size=16, face="bold"),
           strip.text.x = element_text(size = 16, face = "bold"),
           axis.title=element_text(size=fsize, face="bold"),
@@ -1353,5 +1418,21 @@ pall_fg8_Kern
 pdf("graphs/rna_fg8_Kern_alleles.pdf", width = 5, height= 5)
 pall_fg8_Kern
 dev.off()
+```
+
+```{r}
+library(ggpubr)
+
+all_DE = ggarrange(pall_fg1_GRoot+ rremove("x.text"), pall_fg1_GShoot+ rremove("x.text"), pall_fg1_L3Base+ rremove("x.text"), pall_fg1_L3Tip+ rremove("x.text"), pall_fg1_LMAD+ rremove("x.text"), pall_fg1_LMAN+ rremove("x.text"), pall_fg1_Kern+ rremove("x.text"),
+                   pall_fg5_GRoot+ rremove("x.text"), pall_fg5_GShoot+ rremove("x.text"), pall_fg5_L3Base+ rremove("x.text"), pall_fg5_L3Tip+ rremove("x.text"), pall_fg5_LMAD+ rremove("x.text"), pall_fg5_LMAN+ rremove("x.text"), pall_fg5_Kern+ rremove("x.text"),
+                   pall_fg8_GRoot+ rremove("x.text"), pall_fg8_GShoot+ rremove("x.text"), pall_fg8_L3Base+ rremove("x.text"), pall_fg8_L3Tip+ rremove("x.text"), pall_fg8_LMAD+ rremove("x.text"), pall_fg8_LMAN+ rremove("x.text"), pall_fg8_Kern+ rremove("x.text"),
+                   ncol = 7, nrow = 3)
+all_DE
+
+pdf("graphs/all_DE.pdf", width = 35, height= 15)
+all_DE
+dev.off()
+
+
 ```
 
