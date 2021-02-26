@@ -171,11 +171,15 @@ bx13fixeds = arrange(bx13fixeds, category, trait, tissue, padj)
 bx13fixeds_sig = subset(bx13fixeds, padj <= 0.05)
 
 
-ms = m[,c(1,2,6,9,10,11)]
+ms = m[,c(1,2,6,7,9,10,11)]
 mfixed = subset(ms, method == "res.fixed")
-mfixed = mfixed[,c(6,1,5,2,3)]
-mfixed = mfixed[,c(4,1,2,3,5)]
-mfixed = arrange(mfixed, id, category, trait, tissue, padj)
+mfixed = mfixed[,c(7,1,6,2,3,4)]
+mfixed = mfixed[,c(4,1,2,3,5,6)]
+mfixed = arrange(mfixed, id, padj, desc(coef), category, trait, tissue)
+mfixed$coef_abs = abs(mfixed$coef)
+mfixed = arrange(mfixed, id, padj, desc(coef_abs), category, trait, tissue)
+mfixed$criteria = mfixed$coef_abs + 0.1*(-log10(mfixed$padj))
+mfixed = arrange(mfixed, id, desc(criteria), padj,  category, trait, tissue)
 
 gene_freq = as.data.frame(table(mfixed$id))
 gene_freq = arrange(gene_freq, desc(Freq))
@@ -192,7 +196,7 @@ siggene_freq = arrange(siggene_freq, desc(Freq))
 mfixed_sig_num = merge(mfixed_sig, siggene_freq, by.x = "id", by.y = "Var1")
 mfixed_sig_num = arrange(mfixed_sig_num, desc(Freq))
 fwrite(mfixed_sig_num, "data/supplementary/mediators_mfixed_sig_num_932rows.csv" , sep=",", row.names=FALSE, quote=FALSE)
-
+mfixed_sig_num = merge(mfixed_sig_num, )
 
 trait_medi_num = as.data.frame(table(mfixed$trait))
 trait_medi_num = arrange(trait_medi_num, desc(Freq))
