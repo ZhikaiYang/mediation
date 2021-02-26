@@ -228,8 +228,6 @@ t.test(log(subset(df1, S2_238153041 %in% "AA")$AnthesistoSilkInterval), log(subs
 
 
 
-
-
 # ################################################################################################################################################
 
 # iSNP for FG001
@@ -302,10 +300,50 @@ df_fg1_LMAD = merge(subset(rna, TissueWODate == "LMAD")[,c(2,3)], tsnp, by.x="HM
 df_fg1_LMAN = merge(subset(rna, TissueWODate == "LMAN")[,c(2,3)], tsnp, by.x="HMP32Name", by.y="geno")
 
 
+df_fg1 = merge(rna[,c(1,2,3)], tsnp, by.x ="HMP32Name", by.y="geno")
+
+df_fg1 <- subset(df_fg1, S2_238222922 %in% c("AA", "GG"))
+
+length(which(df_fg1$S2_238222922 == "AA"))/nrow(df_fg1)
+length(which(df_fg1$S2_238222922 == "GG"))/nrow(df_fg1)
+
+id = which(df_fg1$S2_238222922 == "GG")
+df_fg1$allele = rep("major allele", nrow(df_fg1))
+df_fg1$allele[id] = "minor allele"
+
+
 ```
 
 
 
+```{r}
+df_fg1$TissueWODate <- factor(df_fg1$TissueWODate, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+
+pall_fg1 <- ggplot(df_fg1, aes(x=TissueWODate, y=log(AC148152.3_FG001), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  #geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = allele), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "top", 
+          #legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg1
+
+
+```
 
 
 ### Expression
@@ -720,9 +758,47 @@ df_fg5_L3Tip = merge(subset(rna, TissueWODate == "L3Tip")[,c(2,4)], tsnp, by.x="
 df_fg5_LMAD = merge(subset(rna, TissueWODate == "LMAD")[,c(2,4)], tsnp, by.x="HMP32Name", by.y="geno")
 df_fg5_LMAN = merge(subset(rna, TissueWODate == "LMAN")[,c(2,4)], tsnp, by.x="HMP32Name", by.y="geno")
 
+df_fg5 = merge(rna[,c(1,2,4)], tsnp, by.x ="HMP32Name", by.y="geno")
+
+df_fg5 <- subset(df_fg5, S2_238153041 %in% c("AA", "GG"))
+
+length(which(df_fg5$S2_238153041 == "AA"))/nrow(df_fg5)
+length(which(df_fg5$S2_238153041 == "GG"))/nrow(df_fg5)
+
+id = which(df_fg5$S2_238153041 == "AA")
+df_fg5$allele = rep("major allele", nrow(df_fg5))
+df_fg5$allele[id] = "minor allele"
 
 ```
 
+```{r}
+df_fg5$TissueWODate <- factor(df_fg5$TissueWODate, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+
+pall_fg5 <- ggplot(df_fg5, aes(x=TissueWODate, y=log(AC148152.3_FG005), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  #geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = allele), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg5
+
+
+```
 
 
 ```{r}
@@ -1087,6 +1163,8 @@ tsnp <- tsnp[-(1:11), ]
 names(tsnp)[1] <- "S2_235111374"
 table(tsnp[,1])
 ```
+
+
 ```{r}
 
 
@@ -1102,6 +1180,47 @@ df_fg8_L3Base = merge(subset(rna, TissueWODate == "L3Base")[,c(2,5)], tsnp, by.x
 df_fg8_L3Tip = merge(subset(rna, TissueWODate == "L3Tip")[,c(2,5)], tsnp, by.x="HMP32Name", by.y="geno")
 df_fg8_LMAD = merge(subset(rna, TissueWODate == "LMAD")[,c(2,5)], tsnp, by.x="HMP32Name", by.y="geno")
 df_fg8_LMAN = merge(subset(rna, TissueWODate == "LMAN")[,c(2,5)], tsnp, by.x="HMP32Name", by.y="geno")
+
+
+df_fg8 = merge(rna[,c(1,2,5)], tsnp, by.x ="HMP32Name", by.y="geno")
+
+df_fg8 <- subset(df_fg8, S2_235111374 %in% c("CC", "TT"))
+
+length(which(df_fg8$S2_235111374 == "CC"))/nrow(df_fg8)
+length(which(df_fg8$S2_235111374 == "TT"))/nrow(df_fg8)
+
+id = which(df_fg8$S2_235111374 == "CC")
+df_fg8$allele = rep("major allele", nrow(df_fg8))
+df_fg8$allele[id] = "minor allele"
+
+
+```
+
+```{r}
+df_fg8$TissueWODate <- factor(df_fg8$TissueWODate, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+pall_fg8 <- ggplot(df_fg8, aes(x=TissueWODate, y=log(AC148152.3_FG008), fill=allele)) + 
+  geom_violin(trim=FALSE) +
+  #geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+ 
+  stat_compare_means(aes(group = allele), label = "p.signif") +
+    xlab("") +
+    ylab("") + ylim(-3,6)+
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall_fg8
+
 
 ```
 
@@ -1431,6 +1550,17 @@ all_DE
 
 pdf("graphs/all_DE.pdf", width = 35, height= 15)
 all_DE
+dev.off()
+
+
+
+
+all_DE_new = ggarrange(pall_fg1+ rremove("x.text"), pall_fg5+ rremove("x.text"), pall_fg8, ncol = 1, nrow = 3 )
+
+all_DE_new
+
+pdf("graphs/all_DE_new.pdf", width = 10, height= 12)
+all_DE_new
 dev.off()
 
 
