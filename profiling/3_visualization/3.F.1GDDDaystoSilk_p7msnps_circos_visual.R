@@ -33,13 +33,13 @@ snps_p7msnps <- fread("./largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned.bi
 #GWAS_TRAIT_FILE_PROCESSING
 
 
-pval <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/gwas/output/X.6288..L.threonine.2..11.464.assoc.txt", data.table=FALSE)
+pval <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/gwas/output/SouthernLeafBlight.assoc.txt", data.table=FALSE)
 
 pval$p <- -log10(pval$p_wald)
 
 res <- subset(pval, p > 4)
-fwrite(res, "./largedata/circos/X.6288..L.threonine.2..11.464.assoc_pval4.txt", sep=",", row.names=FALSE, quote=FALSE)
-inputdf <- fread("./largedata/circos/X.6288..L.threonine.2..11.464.assoc_pval4.txt", data.table=FALSE)                                                  
+fwrite(res, "./largedata/circos/SouthernLeafBlight.assoc_pval4.txt", sep=",", row.names=FALSE, quote=FALSE)
+inputdf <- fread("./largedata/circos/SouthernLeafBlight.assoc_pval4.txt", data.table=FALSE)                                                  
 gwas <- data.frame(Chr = qq("Chr{inputdf$chr}"), Start = inputdf$ps, End = inputdf$ps, p = inputdf$p)
 
 
@@ -53,7 +53,7 @@ gwas <- data.frame(Chr = qq("Chr{inputdf$chr}"), Start = inputdf$ps, End = input
 #GWAS_VISUAL
 
 
-tiff("./largedata/circos/fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base.tiff",res=600,units = "mm",height = 120,width = 120)
+tiff("./largedata/circos/fixed_SouthernLeafBlight_p7msnps_L3Tip.tiff",res=600,units = "mm",height = 120,width = 120)
 par(mar=c(0,0,1,0))
 circos.genomicInitialize(data,plotType="NULL")
 #chr_col=colours()[c(12,41,46,52,60,79,125,414,429,190)]
@@ -66,7 +66,7 @@ circos.track(ylim = c(0, 1), panel.fun = function(x, y) {
               facing = "inside", niceFacing = TRUE)
 }, track.height = 0.1, bg.border = NA)
 
-title(main = "X.6288..L.threonine.2..11.464_L3Base" , cex.main = 1)
+title(main = "SouthernLeafBlight_L3Tip" , cex.main = 1)
 
 bg.col <- rep(colours()[c(407,140)], 5)
 
@@ -79,23 +79,23 @@ circos.genomicTrackPlotRegion(gwas,panel.fun = function(region, value, ...){
   ,bg.col =bg.col, bg.border = "white",track.height = 0.40
 ) 
 
-res_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/res.fixed.pcut_sum_X.6288..L.threonine.2..11.464_ts_L3Base.csv", header = T , data.table=FALSE)
+res_fixed_SouthernLeafBlight_p7msnps_L3Tip <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/res.fixed.pcut_sum_SouthernLeafBlight_ts_L3Tip.csv", header = T , data.table=FALSE)
 
-if (res_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base$n.direct >= 1) {
+if (res_fixed_SouthernLeafBlight_p7msnps_L3Tip$n.direct >= 1) {
   
   #Direct SNPs
-  dsnps_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/res.fixed_dsnps_X.6288..L.threonine.2..11.464_ts_L3Base.csv", header = T , data.table=FALSE)
+  dsnps_fixed_SouthernLeafBlight_p7msnps_L3Tip <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/res.fixed_dsnps_SouthernLeafBlight_ts_L3Tip.csv", header = T , data.table=FALSE)
   
-  hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps <- filter(snps_p7msnps, V2 %in% dsnps_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base$snp)
-  hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps <- select(hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps, V1, V4, V2)
-  colnames(hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps)<-c("chr", "pos","name")
+  hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps <- filter(snps_p7msnps, V2 %in% dsnps_fixed_SouthernLeafBlight_p7msnps_L3Tip$snp)
+  hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps <- select(hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps, V1, V4, V2)
+  colnames(hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps)<-c("chr", "pos","name")
   
   
-  fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps <- data.frame(Chr = qq("Chr{hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps$chr}"), Start = hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps$pos , End = hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps$pos, value = rep(0.4, nrow(hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps)))
-  fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps$value <- c(rep(10.5, nrow(fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps)))
-  fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps <- rbind(fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps[1,], fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps)
-  fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps$value[1] = 1
-  circos.genomicTrack(fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_dsnps, 
+  fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps <- data.frame(Chr = qq("Chr{hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps$chr}"), Start = hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps$pos , End = hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps$pos, value = rep(0.4, nrow(hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps)))
+  fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps$value <- c(rep(10.5, nrow(fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps)))
+  fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps <- rbind(fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps[1,], fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps)
+  fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps$value[1] = 1
+  circos.genomicTrack(fixed_SouthernLeafBlight_p7msnps_L3Tip_dsnps, 
                       panel.fun = function(region, value, ...) {
                         circos.genomicLines(region, value, type = "h", col="red")
                       }, track.index =2)
@@ -116,41 +116,41 @@ if (res_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base$n.direct >= 1) {
 ####################################################################################################################################
 #MED_VISUAL
 
-if (res_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base$n.med >= 1) {
+if (res_fixed_SouthernLeafBlight_p7msnps_L3Tip$n.med >= 1) {
   
-  fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/res.fixed_mediator_X.6288..L.threonine.2..11.464_ts_L3Base.csv", header = T , data.table=FALSE)
-  id = which(fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base$padj <= 0.05)
+  fixed_SouthernLeafBlight_p7msnps_L3Tip <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/res.fixed_mediator_SouthernLeafBlight_ts_L3Tip.csv", header = T , data.table=FALSE)
+  id = which(fixed_SouthernLeafBlight_p7msnps_L3Tip$padj <= 0.05)
   
-  hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v34 <- filter(Zea_mays.AGPv34_anno, gene3 %in% fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base$id[id]) 
+  hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_v34 <- filter(Zea_mays.AGPv34_anno, gene3 %in% fixed_SouthernLeafBlight_p7msnps_L3Tip$id[id]) 
   
-  if (length(hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v34$gene4) >= 1) {
+  if (length(hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_v34$gene4) >= 1) {
     
     color = c("#CC0033", "#FF9900", "#CCCC00", "#00FF00", "#3399FF", "#00FFFF", "#FF00FF", "#990066", "#999999", "#000000")
     color = rep(color, 6)
-    hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v34$col = color[1:nrow(hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v34)]   
+    hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_v34$col = color[1:nrow(hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_v34)]   
     
-    fwrite(hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v34, "./largedata/circos/hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v34.csv", sep=",", row.names=FALSE, quote=FALSE)
+    fwrite(hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_v34, "./largedata/circos/hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_v34.csv", sep=",", row.names=FALSE, quote=FALSE)
     
-    fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v4 <- data.frame(chr=hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v34$chr, start=hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v34$start4, end = hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v34$end4, value = rnorm(nrow(hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v34), 0, 0.5) )
-    fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v4$chr =qq("Chr{fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v4$chr}")
+    fixed_SouthernLeafBlight_p7msnps_L3Tip_v4 <- data.frame(chr=hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_v34$chr, start=hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_v34$start4, end = hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_v34$end4, value = rnorm(nrow(hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_v34), 0, 0.5) )
+    fixed_SouthernLeafBlight_p7msnps_L3Tip_v4$chr =qq("Chr{fixed_SouthernLeafBlight_p7msnps_L3Tip_v4$chr}")
     
     
     
-    fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v4$col = hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v34$col
+    fixed_SouthernLeafBlight_p7msnps_L3Tip_v4$col = hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_v34$col
     
     circos.track(ylim = c(0, 0.05), track.height = 0.05, bg.border = "black")
     
-    for(i in 1:nrow(fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v4))
+    for(i in 1:nrow(fixed_SouthernLeafBlight_p7msnps_L3Tip_v4))
     {
-      circos.rect((fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v4[i,2]-1000000),0,(fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v4[i,3]+1000000),0.05,sector.index=fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v4$chr[i], col= fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v4$col[i], border=fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v4$col[i],track.index =3)
+      circos.rect((fixed_SouthernLeafBlight_p7msnps_L3Tip_v4[i,2]-1000000),0,(fixed_SouthernLeafBlight_p7msnps_L3Tip_v4[i,3]+1000000),0.05,sector.index=fixed_SouthernLeafBlight_p7msnps_L3Tip_v4$chr[i], col= fixed_SouthernLeafBlight_p7msnps_L3Tip_v4$col[i], border=fixed_SouthernLeafBlight_p7msnps_L3Tip_v4$col[i],track.index =3)
     }
     
     
     
     
-    isnps_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/res.fixed_indirect_X.6288..L.threonine.2..11.464_ts_L3Base.csv")
-    isnps_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base = isnps_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base[,-3]
-    genev4_isnps <- merge(hdf_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base_v34, isnps_fixed_X.6288..L.threonine.2..11.464_p7msnps_L3Base, by.x = "gene3", by.y = "medi")
+    isnps_fixed_SouthernLeafBlight_p7msnps_L3Tip <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/res.fixed_indirect_SouthernLeafBlight_ts_L3Tip.csv")
+    isnps_fixed_SouthernLeafBlight_p7msnps_L3Tip = isnps_fixed_SouthernLeafBlight_p7msnps_L3Tip[,-3]
+    genev4_isnps <- merge(hdf_fixed_SouthernLeafBlight_p7msnps_L3Tip_v34, isnps_fixed_SouthernLeafBlight_p7msnps_L3Tip, by.x = "gene3", by.y = "medi")
     
     genev4_isnps_pos <- merge(genev4_isnps, snps_p7msnps, by.x = "snps_for_medi", by.y = "V2")
     
