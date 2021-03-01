@@ -1566,3 +1566,192 @@ dev.off()
 
 ```
 
+```{r}
+library(corrplot)
+
+rna_fg158_GRoot = subset(rna, TissueWODate == "GRoot")[,c(3,4,5)]
+rna_fg158_GShoot = subset(rna, TissueWODate == "GShoot")[,c(3,4,5)]
+rna_fg158_Kern = subset(rna, TissueWODate == "Kern")[,c(3,4,5)]
+rna_fg158_L3Base = subset(rna, TissueWODate == "L3Base")[,c(3,4,5)]
+rna_fg158_L3Tip = subset(rna, TissueWODate == "L3Tip")[,c(3,4,5)]
+rna_fg158_LMAD = subset(rna, TissueWODate == "LMAD")[,c(3,4,5)]
+rna_fg158_LMAN = subset(rna, TissueWODate == "LMAN")[,c(3,4,5)]
+
+res_fg158_GRoot = cor(log(rna_fg158_GRoot+1))
+cor_GRoot = corrplot(res_fg158_GRoot, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 30)
+res_fg158_GShoot = cor(log(rna_fg158_GShoot+1))
+cor_GShoot = corrplot(res_fg158_GShoot, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 30)
+res_fg158_L3Base = cor(log(rna_fg158_L3Base+1))
+cor_L3Base = corrplot(res_fg158_L3Base, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 30)
+
+res_fg158_L3Tip = cor(log(rna_fg158_L3Tip+1))
+cor_L3Tip = corrplot(res_fg158_L3Tip, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 30)
+res_fg158_LMAD = cor(log(rna_fg158_LMAD+1))
+cor_LMAD = corrplot(res_fg158_LMAD, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 30)
+res_fg158_LMAN = cor(log(rna_fg158_LMAN+1))
+cor_LMAN = corrplot(res_fg158_LMAN, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 30)
+res_fg158_Kern = cor(log(rna_fg158_Kern+1))
+cor_Kern = corrplot(res_fg158_Kern, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 30)
+
+res_fg158_GRoot = cor(log(rna_fg158_GRoot+1))
+cor_GRoot = ggcorrplot(res_fg158_GRoot,method = "circle", title = "GRoot")+ 
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("GRoot") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          axis.text.y = element_text(angle = -75, hjust=0.5),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+res_fg158_GShoot = cor(log(rna_fg158_GShoot+1))
+cor_GShoot = ggcorrplot(res_fg158_GShoot,method = "circle", title = "GShoot")+ 
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("GShoot") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          axis.text.y = element_text(angle = -75, hjust=0.5),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+res_fg158_L3Base = cor(log(rna_fg158_L3Base+1))
+
+cor_L3Base = ggcorrplot(res_fg158_L3Base,method = "circle", title = "L3Base")+ 
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("L3Base") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          axis.text.y = element_text(angle = -75, hjust=0.5),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+res_fg158_L3Tip = cor(log(rna_fg158_L3Tip+1))
+cor_L3Tip = ggcorrplot(res_fg158_L3Tip,method = "circle", title = "L3Tip")+ 
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("L3Tip") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          axis.text.y = element_text(angle = -75, hjust=0.5),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+res_fg158_LMAD = cor(log(rna_fg158_LMAD+1))
+cor_LMAD = ggcorrplot(res_fg158_LMAD,method = "circle", title = "LMAD")+ 
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("LMAD") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          axis.text.y = element_text(angle = -75, hjust=0.5),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+res_fg158_LMAN = cor(log(rna_fg158_LMAN+1))
+cor_LMAN = ggcorrplot(res_fg158_LMAN,method = "circle", title = "LMAN")+ 
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("LMAN") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          axis.text.y = element_text(angle = -75, hjust=0.5),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+res_fg158_Kern = cor(log(rna_fg158_Kern+1))
+cor_Kern = ggcorrplot(res_fg158_Kern,method = "circle", title = "Kern")+ 
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("Kern") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          axis.text.y = element_text(angle = -75, hjust=0.5),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+pdf("graphs/cor_Kern.pdf", width = 6, height= 5)
+cor_Kern 
+dev.off()
+
+
+cor_all = ggarrange(cor_GRoot+ rremove("x.text")+rremove("y.text"), cor_GShoot+ rremove("x.text")+rremove("y.text"), cor_L3Base+ rremove("x.text")+rremove("y.text"), cor_L3Tip+ rremove("x.text")+rremove("y.text"), cor_LMAD+ rremove("x.text")+rremove("y.text"), cor_LMAN+ rremove("x.text")+ rremove("y.text"), cor_Kern+ rremove("x.text")+ rremove("y.text"),  ncol = 4, nrow = 2)
+
+cor_all
+pdf("graphs/cor_all.pdf", width = 6, height= 5)
+cor_all
+dev.off()
+
+```
+
