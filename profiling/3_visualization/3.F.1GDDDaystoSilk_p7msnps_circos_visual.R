@@ -66,7 +66,7 @@ circos.track(ylim = c(0, 1), panel.fun = function(x, y) {
               facing = "inside", niceFacing = TRUE)
 }, track.height = 0.1, bg.border = NA)
 
-title(main = "X.6508..quinic.acid..17.076..s100_L3Tip" , cex.main = 1)
+title(main = "Quinic Acid in L3Tip" , cex.main = 1)
 
 bg.col <- rep(colours()[c(407,140)], 5)
 
