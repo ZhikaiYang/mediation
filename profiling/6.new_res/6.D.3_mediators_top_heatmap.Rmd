@@ -66,6 +66,10 @@ d <- merge(d, fg5[, c("id", "coef", "type")], by="id", all.x=TRUE)
 library(scales)
 
 d[is.na(d$coef),]$coef <- 0
+
+d$trait = gsub("X\\.[0-9]*\\.\\.", "", d$trait)
+d$trait= gsub("\\.\\.[0-9].*", "", d$trait)
+
 ```
 
 
@@ -92,14 +96,15 @@ pall <- ggplot(d, aes(tissue, trait, fill = coef)) +
           axis.title=element_text(size=fsize, face="bold"),
           axis.text.x = element_text(angle = 15, hjust=0.8),
           #legend.position = c(0.2, 0.8), 
-          legend.position =c(0.2, 0.2),
+          legend.position =c(0.12, 0.2),
           legend.title = element_text(size=fsize, face="bold"),
-          legend.text = element_text(size=fsize))
+          legend.text = element_text(size=13, face="bold"))
 pall
 
 pdf("graphs/rna_pheno_FG005.pdf", width = 9, height= 6)
 pall
 dev.off()
+
 ```
 
 
@@ -151,12 +156,12 @@ pall <- ggplot(d, aes(tissue, trait, fill = coef)) +
           axis.title=element_text(size=fsize, face="bold"),
           axis.text.x = element_text(angle = 15, hjust=0.8),
           #legend.position = c(0.2, 0.8), 
-          legend.position =c(0.2, 0.2),
+          legend.position =c(0.1, 0.2),
           legend.title = element_text(size=fsize, face="bold"),
-          legend.text = element_text(size=fsize))
+          legend.text = element_text(size=13, face="bold"))
 pall
 
-pdf("graphs/rna_pheno_FG005.pdf", width = 9, height= 6)
+pdf("graphs/rna_pheno_ag_FG005.pdf", width = 9, height= 6)
 pall
 dev.off()
 ```
