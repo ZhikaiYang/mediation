@@ -1600,6 +1600,8 @@ res_fg158_Kern = cor(log(rna_fg158_Kern+1))
 cor_Kern = corrplot(res_fg158_Kern, type = "upper", order = "hclust", 
          tl.col = "black", tl.srt = 30)
 
+library(ggcorrplot)
+
 res_fg158_GRoot = cor(log(rna_fg158_GRoot+1))
 cor_GRoot = ggcorrplot(res_fg158_GRoot,method = "circle", title = "GRoot")+ 
   #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
@@ -1751,6 +1753,167 @@ cor_all = ggarrange(cor_GRoot+ rremove("x.text")+rremove("y.text"), cor_GShoot+ 
 cor_all
 pdf("graphs/cor_all.pdf", width = 6, height= 5)
 cor_all
+dev.off()
+
+```
+```{r}
+# Quick display of two cabapilities of GGally, to assess the distribution and correlation of variables 
+library(GGally)
+
+rna = fread("largedata/fg_rna/fg158_rna.txt", data.table = F)
+rna = subset(rna, TissueWODate != "L3Mid")
+
+
+colnames(rna)[3:5] = c("Zm00001d007725", "Zm00001d007718", "Zm00001d007716")
+
+rna_fg158_GRoot = subset(rna, TissueWODate == "GRoot")[,c(3,4,5)]
+rna_fg158_GShoot = subset(rna, TissueWODate == "GShoot")[,c(3,4,5)]
+rna_fg158_Kern = subset(rna, TissueWODate == "Kern")[,c(3,4,5)]
+rna_fg158_L3Base = subset(rna, TissueWODate == "L3Base")[,c(3,4,5)]
+rna_fg158_L3Tip = subset(rna, TissueWODate == "L3Tip")[,c(3,4,5)]
+rna_fg158_LMAD = subset(rna, TissueWODate == "LMAD")[,c(3,4,5)]
+rna_fg158_LMAN = subset(rna, TissueWODate == "LMAN")[,c(3,4,5)]
+
+cor_GRoot = ggpairs(log(rna_fg158_GRoot+1), title = "GRoot")+
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5))
+
+cor_GShoot = ggpairs(log(rna_fg158_GShoot+1), title = "GShoot")+
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5))
+
+
+library("PerformanceAnalytics")
+
+pdf("graphs/cor_dis_all.pdf", width = 6, height= 5)
+
+chart.Correlation(log(rna_fg158_GRoot+1), histogram=TRUE, pch=19)+title(main = "GRoot", cex.main =2, adj=0)
+chart.Correlation(log(rna_fg158_GShoot+1), histogram=TRUE, pch=19)+title(main = "GShoot", cex.main =2, adj=0)
+chart.Correlation(log(rna_fg158_L3Base+1), histogram=TRUE, pch=19)+title(main = "L3Base", cex.main =2, adj=0)
+chart.Correlation(log(rna_fg158_L3Tip+1), histogram=TRUE, pch=19)+title(main = "L3Tip", cex.main =2, adj=0)
+chart.Correlation(log(rna_fg158_LMAD+1), histogram=TRUE, pch=19)+title(main = "LMAD", cex.main =2, adj=0)
+chart.Correlation(log(rna_fg158_LMAN+1), histogram=TRUE, pch=19)+title(main = "LMAN", cex.main =2, adj=0)
+chart.Correlation(log(rna_fg158_Kern+1), histogram=TRUE, pch=19)+title(main = "Kern", cex.main =2, adj=0)
+
+dev.off()
+```
+```{r}
+library(ggcorrplot)
+
+m_trait_no_na = na.omit(m_trait)
+m_name = colnames(m_trait_no_na)[2:ncol(m_trait_no_na)]
+m_name = gsub("X\\.[0-9]*\\.\\.", "", m_name)
+m_name = gsub("\\.\\.[0-9].*", "", m_name)
+
+colnames(m_trait_no_na)[2:ncol(m_trait_no_na)] = m_name
+
+cor_metabolites = cor(m_trait_no_na[,2:ncol(m_trait_no_na)])
+cor_metabolites_plot = ggcorrplot(cor_metabolites,method = "circle", title = "metabolites", type = "lower", outline.col = "white")+ 
+  #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
+    xlab("") +
+    ylab("") +
+    ggtitle("metabolites") +
+    theme_classic() +
+    labs(fill = "") +
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          axis.text.y = element_text(angle = -75, hjust=0.5),
+          #legend.position = c(0.2, 0.8), 
+          legend.position = "none",
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+cor_metabolites_plot = ggcorrplot(cor_metabolites,method = "circle", title = "Metabolites", type = "lower", outline.col = "white")+
+    #scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+    theme(plot.title = element_text(size=50, face = "bold", hjust = 0.5), 
+          axis.text=element_text(size=16, face="bold"),
+          axis.text.x = element_text(angle = 90, hjust =1, vjust = 0.5),
+          legend.position = "right",
+          legend.title = element_text(size=30, face="bold"),
+          legend.text = element_text(size=25))
+
+
+
+
+pdf("graphs/cor_metabolite.pdf", width = 20, height= 20)
+ggarrange(cor_metabolites_plot+rremove("y.text"), nrow = 1, ncol = 1)
+dev.off()
+
+
+
+
+chart.Correlation(m_trait_no_na[,2:ncol(m_trait_no_na)], histogram=TRUE, pch=19)+title(main = "Metabolites", cex.main =2, adj=0)
+
+#cor_metabolites_plot2 = ggpairs(m_trait_no_na[,2:ncol(m_trait_no_na)], title = "Metabolites")+
+#    theme(plot.title = element_text(size=20, face = "bold", hjust = 0.5))
+#cor_metabolites_plot2
+
+```
+
+```{r}
+# Prepare Data
+#mydata <- na.omit(mydata) # listwise deletion of missing
+mydata_t = m_trait_no_na[,2:ncol(m_trait_no_na)]
+mydata = t(mydata_t)
+mydata <- scale(mydata) # standardize variables
+
+# Determine number of clusters
+wss <- (nrow(mydata)-1)*sum(apply(mydata,2,var))
+for (i in 2:15) wss[i] <- sum(kmeans(mydata,
+   centers=i)$withinss)
+plot(1:15, wss, type="b", xlab="Number of Clusters",
+  ylab="Within groups sum of squares")
+
+fit <- kmeans(mydata, 2) # 5 cluster solution
+# get cluster means
+aggregate(mydata,by=list(fit$cluster),FUN=mean)
+# append cluster assignment
+mydata <- data.frame(mydata, fit$cluster)
+cl1 = rownames(mydata)[which(mydata$fit.cluster == 1)]
+cl2 = rownames(mydata)[which(mydata$fit.cluster == 2)]
+```
+```{r}
+set.seed(123)
+mydata <- matrix(rnorm(200), 20, 10)
+mydata[1:10, seq(1, 10, 2)] = mydata[1:10, seq(1, 10, 2)] + 3
+mydata[11:20, seq(2, 10, 2)] = mydata[11:20, seq(2, 10, 2)] + 2
+mydata[15:20, seq(2, 10, 2)] = mydata[15:20, seq(2, 10, 2)] + 4
+colnames(mydata) = paste("Sple", 1:10, sep = "")
+rownames(mydata) = paste("Gene", 1:20, sep = "")
+head(mydata[, 1:4], 4)
+
+library("pheatmap")
+pheatmap(mydata, scale = "row")
+
+# Pairwise correlation between samples (columns)
+cols.cor <- cor(mydata, use = "pairwise.complete.obs", method = "pearson")
+# Pairwise correlation between rows (genes)
+rows.cor <- cor(t(mydata), use = "pairwise.complete.obs", method = "pearson")
+
+# Plot the heatmap
+library("pheatmap")
+pheatmap(
+  mydata, scale = "row", 
+  clustering_distance_cols = as.dist(1 - cols.cor),
+  clustering_distance_rows = as.dist(1 - rows.cor)
+  )
+
+pheatmap(
+  rows.cor, scale = "row", 
+  clustering_distance_cols = as.dist(1 - rows.cor),
+  clustering_distance_rows = as.dist(1 - rows.cor)
+  )
+
+pdf("graphs/cor_m.pdf", width = 20, height= 20)
+pheatmap(
+  cor_metabolites, 
+  clustering_distance_cols = as.dist(1 - cor_metabolites),
+  clustering_distance_rows = as.dist(1 - cor_metabolites),
+  show_rownames = F, fontsize_col = 16,
+  main = "Meatbolites Correlation"
+  )
 dev.off()
 
 ```
