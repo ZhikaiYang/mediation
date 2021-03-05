@@ -18,6 +18,8 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 
 Note, here, we only focus on m1 (metabolite and morphological traits)
 ```{r}
+library(data.table)
+
 m <- read.csv("data/mediators_18812rows_by_cat.csv")
 table(m$method)
 
@@ -39,6 +41,16 @@ names(m2)[2] <- "category"
 
 df <- rbind(m1, m2) 
 df <- m1
+
+ag_name = fread("largedata/ag_name.txt")
+metabolite_name = fread("largedata/metabolite_name.txt")
+pheno_name = rbind(ag_name, metabolite_name)
+m1 = merge(m1, pheno_name, by.x = "trait", by.y = "code_name")
+m1 = m1[,-1]
+colnames(m1)[11]="trait"
+m1 <- m1[, c("type", "category", "tissue", "trait", "id", "method", "e2m", "m2y","e2m2y","padj","coef")]
+m1$tissue <- factor(m1$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating root", "Germinating shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 ```
 
 
@@ -67,8 +79,8 @@ library(scales)
 
 d[is.na(d$coef),]$coef <- 0
 
-d$trait = gsub("X\\.[0-9]*\\.\\.", "", d$trait)
-d$trait= gsub("\\.\\.[0-9].*", "", d$trait)
+#d$trait = gsub("X\\.[0-9]*\\.\\.", "", d$trait)
+#d$trait= gsub("\\.\\.[0-9].*", "", d$trait)
 
 ```
 
@@ -96,12 +108,12 @@ pall <- ggplot(d, aes(tissue, trait, fill = coef)) +
           axis.title=element_text(size=fsize, face="bold"),
           axis.text.x = element_text(angle = 15, hjust=0.8),
           #legend.position = c(0.2, 0.8), 
-          legend.position =c(0.12, 0.2),
+          legend.position ="none",
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=13, face="bold"))
 pall
 
-pdf("graphs/rna_pheno_FG005.pdf", width = 9, height= 6)
+pdf("graphs/rna_pheno_met_FG005_nol.pdf", width = 10, height= 6)
 pall
 dev.off()
 
@@ -156,12 +168,12 @@ pall <- ggplot(d, aes(tissue, trait, fill = coef)) +
           axis.title=element_text(size=fsize, face="bold"),
           axis.text.x = element_text(angle = 15, hjust=0.8),
           #legend.position = c(0.2, 0.8), 
-          legend.position =c(0.1, 0.2),
+          legend.position ="none",
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=13, face="bold"))
 pall
 
-pdf("graphs/rna_pheno_ag_FG005.pdf", width = 9, height= 6)
+pdf("graphs/rna_pheno_ag_FG005_nol.pdf", width = 8.7, height= 6)
 pall
 dev.off()
 ```
