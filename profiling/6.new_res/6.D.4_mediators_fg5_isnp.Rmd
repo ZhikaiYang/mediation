@@ -1799,13 +1799,24 @@ dev.off()
 library(ggcorrplot)
 
 m_trait_no_na = na.omit(m_trait)
-m_name = colnames(m_trait_no_na)[2:ncol(m_trait_no_na)]
-m_name = gsub("X\\.[0-9]*\\.\\.", "", m_name)
-m_name = gsub("\\.\\.[0-9].*", "", m_name)
+#m_name = colnames(m_trait_no_na)[2:ncol(m_trait_no_na)]
+#m_name = gsub("X\\.[0-9]*\\.\\.", "", m_name)
+#m_name = gsub("\\.\\.[0-9].*", "", m_name)
+#colnames(m_trait_no_na)[2:ncol(m_trait_no_na)] = m_name
+m_trait_no_na_t = t(m_trait_no_na[,-1])
+m_trait_no_na_t = as.data.frame(m_trait_no_na_t)
+m_trait_no_na_t$trait = row.names(m_trait_no_na_t)
+metabolite_name = fread("largedata/metabolite_name.txt")
 
-colnames(m_trait_no_na)[2:ncol(m_trait_no_na)] = m_name
+m_trait_no_na_t = merge(m_trait_no_na_t, pheno_name, by.x = "trait", by.y = "code_name")
+row.names(m_trait_no_na_t) = m_trait_no_na_t$name
+m_trait_no_na_t = m_trait_no_na_t[,-c(1,63)]
+m_trait_no_na = t(m_trait_no_na_t)
 
-cor_metabolites = cor(m_trait_no_na[,2:ncol(m_trait_no_na)])
+#cor_metabolites = cor(m_trait_no_na[,2:ncol(m_trait_no_na)])
+cor_metabolites = cor(m_trait_no_na)
+
+
 cor_metabolites_plot = ggcorrplot(cor_metabolites,method = "circle", title = "metabolites", type = "lower", outline.col = "white")+ 
   #stat_compare_means(aes(group = S2_235111374), label = "p.signif") +
     xlab("") +
