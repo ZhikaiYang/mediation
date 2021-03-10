@@ -187,3 +187,15 @@ dev.off()
 ```
 
 
+```{r}
+library(SuperExactTest)
+n=500; A=260; B=320; C=430; D=300; x=170
+(d=dpsets(x,c(A,B,C,D),n))
+(p=cpsets(x,c(A,B,C,D),n,lower.tail=FALSE))
+
+n=18226; A=length(shoot_root); B=length(l3base_tip); C=length(lmad_n); D=length(kern); x=1
+(d=dpsets(x,c(A,B,C,D),n))
+(p=cpsets(x,c(A,B,C,D),n,lower.tail=FALSE))
+
+```
+
