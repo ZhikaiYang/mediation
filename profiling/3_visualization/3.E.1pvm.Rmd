@@ -353,3 +353,105 @@ dev.off()
 
 
 ```
+```{r}
+pvm_s = subset(pvm, category == "Metabolite")
+
+pvm_s$tissue <- factor(pvm_s$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+pvm_s$category = as.factor(pvm_s$category)
+
+generate_label_df <- function(TUKEY, variable){
+
+  # Extract labels and factor levels from Tukey post-hoc 
+  Tukey.levels <- TUKEY[[variable]][,4]
+  Tukey.labels <- data.frame(multcompLetters(Tukey.levels)['Letters'])
+
+  #I need to put the labels in the same order as in the boxplot :
+  Tukey.labels$treatment=rownames(Tukey.labels)
+  Tukey.labels=Tukey.labels[order(Tukey.labels$treatment) , ]
+  return(Tukey.labels)
+}
+
+model=lm(pvm_s$pmed.pure~pvm_s$tissue )
+ANOVA=aov(model)
+
+# Tukey test to study each pair of treatment :
+TUKEY <- TukeyHSD(x=ANOVA, 'pvm_s$tissue', conf.level=0.95)
+
+library(multcompView)
+labels<-generate_label_df(TUKEY , "pvm_s$tissue")#generate labels using function
+
+names(labels)<-c('Letters','tissue')#rename columns for merging
+pvm_s = pvm_s[,c(11,2)]
+yvalue<-aggregate(.~tissue, data=pvm_s, mean)# obtain letter position for y axis using means
+
+final<-merge(labels,yvalue) #merge dataframes
+
+
+library(ggplot2)
+ggplot(pvm_s, aes(x = tissue, y = pmed.pure)) +
+  geom_blank() +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(x = 'Tissue', y = 'PVM(Proportion of Variance Mediated') +
+  ggtitle(expression(atop(bold("Tukey Test of PVM in 7 Tissues")))) +
+  theme(plot.title = element_text(hjust = 0.5, face='bold')) +
+  #annotate(geom = "rect", xmin = 1.5, xmax = 4.5, ymin = -Inf, ymax = Inf, alpha = 0.6, fill = "grey90") +
+  geom_boxplot(fill = 'green2', stat = "boxplot") +
+  geom_text(data = final, aes(x = tissue, y = pmed.pure, label = Letters),vjust=-3.5,hjust=-.5) +
+  #geom_vline(aes(xintercept=4.5), linetype="dashed") +
+  theme(plot.title = element_text(vjust=-0.6))
+```
+```{r}
+pvm_s = subset(pvm, category != "Metabolite")
+
+id1= which(pvm_s$category == "Flowering Time")
+id2 = which(pvm_s$trait == "PlantHeight")
+pvm_s = pvm_s[c(id1),]
+
+pvm_s$tissue <- factor(pvm_s$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+pvm_s$category = as.factor(pvm_s$category)
+
+generate_label_df <- function(TUKEY, variable){
+
+  # Extract labels and factor levels from Tukey post-hoc 
+  Tukey.levels <- TUKEY[[variable]][,4]
+  Tukey.labels <- data.frame(multcompLetters(Tukey.levels)['Letters'])
+
+  #I need to put the labels in the same order as in the boxplot :
+  Tukey.labels$treatment=rownames(Tukey.labels)
+  Tukey.labels=Tukey.labels[order(Tukey.labels$treatment) , ]
+  return(Tukey.labels)
+}
+
+model=lm(pvm_s$pmed.pure~pvm_s$tissue )
+ANOVA=aov(model)
+
+# Tukey test to study each pair of treatment :
+TUKEY <- TukeyHSD(x=ANOVA, 'pvm_s$tissue', conf.level=0.95)
+
+library(multcompView)
+labels<-generate_label_df(TUKEY , "pvm_s$tissue")#generate labels using function
+
+names(labels)<-c('Letters','tissue')#rename columns for merging
+pvm_s = pvm_s[,c(11,2)]
+yvalue<-aggregate(.~tissue, data=pvm_s, mean)# obtain letter position for y axis using means
+
+final<-merge(labels,yvalue) #merge dataframes
+
+
+library(ggplot2)
+ggplot(pvm_s, aes(x = tissue, y = pmed.pure)) +
+  geom_blank() +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(x = 'Tissue', y = 'PVM(Proportion of Variance Mediated') +
+  ggtitle(expression(atop(bold("Tukey Test of PVM in 7 Tissues")))) +
+  theme(plot.title = element_text(hjust = 0.5, face='bold')) +
+  #annotate(geom = "rect", xmin = 1.5, xmax = 4.5, ymin = -Inf, ymax = Inf, alpha = 0.6, fill = "grey90") +
+  geom_boxplot(fill = 'green2', stat = "boxplot") +
+  geom_text(data = final, aes(x = tissue, y = pmed.pure, label = Letters),vjust=-3.5,hjust=-.5) +
+  #geom_vline(aes(xintercept=4.5), linetype="dashed") +
+  theme(plot.title = element_text(vjust=-0.6))
+```
