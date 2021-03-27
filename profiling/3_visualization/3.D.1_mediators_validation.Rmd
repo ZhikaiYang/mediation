@@ -196,7 +196,15 @@ siggene_freq = arrange(siggene_freq, desc(Freq))
 mfixed_sig_num = merge(mfixed_sig, siggene_freq, by.x = "id", by.y = "Var1")
 mfixed_sig_num = arrange(mfixed_sig_num, desc(Freq))
 fwrite(mfixed_sig_num, "data/supplementary/mediators_mfixed_sig_num_932rows.csv" , sep=",", row.names=FALSE, quote=FALSE)
-mfixed_sig_num = merge(mfixed_sig_num, )
+mfixed_sig_num$id = gsub("\t| ", "", mfixed_sig_num$id)
+p2$id = gsub("\t| ", "", p2$id)
+mfixed_sig_num_4 = merge(mfixed_sig_num, p2[,c(1,3)], by.x = "id", by.y = "id", all.x = T )
+mfixed_sig_num_4_md = data.frame(v4_id = mfixed_sig_num_4$V2, v3_id = mfixed_sig_num_4$id, category = mfixed_sig_num_4$category, trait = mfixed_sig_num_4$trait, tissue = mfixed_sig_num_4$tissue, p_adjusted = mfixed_sig_num_4$padj, coef = mfixed_sig_num_4$coef, freq = mfixed_sig_num_4$Freq)
+fwrite(mfixed_sig_num_4_md, "data/supplementary/mediators_mfixed_sig_num_932rows.csv" , sep=",", row.names=FALSE, quote=FALSE)
+
+mfixed_sig_num_4_md_evidence = subset(mfixed_sig_num_4_md, v4_id %in% c("Zm00001d007716", "Zm00001d007718", "Zm00001d018573", "Zm00001d010661")) 
+fwrite(mfixed_sig_num_4_md_evidence, "data/supplementary/mediators_with_evidence.csv" , sep=",", row.names=FALSE, quote=FALSE)
+
 
 trait_medi_num = as.data.frame(table(mfixed$trait))
 trait_medi_num = arrange(trait_medi_num, desc(Freq))
