@@ -197,8 +197,8 @@ trait_var = rbind(ag_var, m_var)
 trait_var$trait = rownames(trait_var)
 pvm_stat = merge(pvm_stat, trait_var, by = "trait")
 ####
-
-
+h2_new_s = subset(h2_new, h2 != 0)
+pvm_h2 = merge(h2_new_s, pvm_stat, by.x = "trait", by.y = "trait")
 
 ######subset out other, bi cat###
 pvm_s = subset(pvm, category != "other")
