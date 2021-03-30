@@ -353,6 +353,8 @@ dev.off()
 
 
 ```
+
+
 ```{r}
 pvm_s = subset(pvm, category == "Metabolite")
 
@@ -402,6 +404,9 @@ ggplot(pvm_s, aes(x = tissue, y = pmed.pure)) +
   #geom_vline(aes(xintercept=4.5), linetype="dashed") +
   theme(plot.title = element_text(vjust=-0.6))
 ```
+
+
+
 ```{r}
 pvm_s = subset(pvm, category != "Metabolite")
 
@@ -455,3 +460,16 @@ ggplot(pvm_s, aes(x = tissue, y = pmed.pure)) +
   #geom_vline(aes(xintercept=4.5), linetype="dashed") +
   theme(plot.title = element_text(vjust=-0.6))
 ```
+```{r}
+pvm_s = subset(pvm, category == "Metabolite")
+
+pvm_s$tissue <- factor(pvm_s$tissue, levels = c( "L3Tip", "GRoot", "GShoot", "L3Base",  "LMAD", "LMAN","Kern"),
+                    labels =c( "Leaf 3 tip", "Germinating Root", "Germinating Shoot", "Leaf 3 base",  "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+pvm_s$category = as.factor(pvm_s$category)
+
+model=lm(pvm_s$pmed.pure~pvm_s$tissue )
+
+pair_c=  pairs(emmeans(model, "tissue"))
+
+```
+
