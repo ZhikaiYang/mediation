@@ -605,3 +605,108 @@ t5_368 <- t5_368[order(t5_368$Freq, decreasing=T),]
 ```
 
 
+
+
+
+
+
+##last section result
+
+```{r}
+library(data.table)
+
+ag_trait <- fread("data/geno_trait.txt")
+m_trait <- fread("data/metabolite_rep1_genotype_namecorrect.txt")
+trait_category <- data.frame(category = "other", trait = c(colnames(ag_trait)[-1], colnames(m_trait)[-1]))
+
+trait_category$category[c(3,4,11:13,38)]= "Flowering Time"
+trait_category$category[c(6,23)]= "Development"
+trait_category$category[c(15,16,36)]= "Leaf Morphology"
+trait_category$category[c(32,33)]= "Male Inflorescence"
+trait_category$category[c(1,7,9,8)]= "Female Inflorescence"
+trait_category$category[c(2,10,35,37,39,40)]= "Seed Traits"
+trait_category$category[41:106]= "Metabolite"
+
+
+#m <- read.csv("cache/mediators_23296rows.csv")
+m1 <- fread("largedata/mediator_5100rows_agronomics.txt")
+m2 <- fread("largedata/mediator_13712rows_metabolites.txt")
+m = rbind(m1, m2)
+
+trait_t = table(m$trait)
+trait_t = as.data.frame(trait_t)
+
+trait_c_t = table(trait_category$category)
+trait_c_t = as.data.frame(trait_c_t)
+
+m = merge(m, trait_category, by = "trait")
+
+lin = c("Zm00001d030968", "Zm00001d049305", "Zm00001d039589", "Zm00001d038644", "Zm00001d036801", "Zm00001d034964", "Zm00001d020157", "Zm00001d013863", "Zm00001d042319", "Zm00001d033680", "Zm00001d045481", "Zm00001d006131", "Zm00001d006198", "Zm00001d032894", "Zm00001d017193", "Zm00001d011748", "Zm00001d010625", "Zm00001d006918", "Zm00001d034313", "Zm00001d049543", "Zm00001d017241", "Zm00001d006212", "Zm00001d021291", "Zm00001d045944", "Zm00001d034038", "Zm00001d033799", "Zm00001d028905", "Zm00001d013402" )
+V3_V4 <- fread("./largedata/V3_V4.csv", header = FALSE , data.table=FALSE)
+V3_V4 <- V3_V4[,c(1,2)]
+Zea_mays.AGPv4_anno <- fread("./largedata/Zea_mays.AGPv4_anno.txt", header = TRUE, data.table = FALSE)
+Zea_mays.AGPv4_anno <- data.frame(chr = Zea_mays.AGPv4_anno$chromosome_name, gene4 = Zea_mays.AGPv4_anno$ensembl_gene_id_v4, start4 = Zea_mays.AGPv4_anno$start_position, end4 = Zea_mays.AGPv4_anno$end_position, name = Zea_mays.AGPv4_anno$description)
+Zea_mays.AGPv34_anno <- merge(V3_V4, Zea_mays.AGPv4_anno, by.x = "V2", by.y = "gene4")
+Zea_mays.AGPv34_anno_s = subset(Zea_mays.AGPv34_anno, V2 %in% lin)
+V3_V4_s = subset(V3_V4, V2 %in% lin)
+flowering = subset(m, category == "Flowering Time")
+id = which(flowering$id %in% V3_V4_s$V1)
+
+
+oldm = fread("data/input/mediators_23296rows_by_cat.csv")
+oldflowering = subset(oldm, category == "Flowering Time")
+which(oldflowering$id %in% V3_V4_s$V1)
+
+oldmads56 = subset(oldm, id == "GRMZM2G171650")
+
+length(which(m$id %in% oldm$id))
+#write.table(m, "data/input/mediators_23296rows_by_cat.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+write.table(m, "largedata/mediators_18812rows_by_cat.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+idx = which(m$id == "GRMZM2G171650")
+mads56 = m[idx,c(1,2,6,9,10,11)]
+mads56fixed = subset(mads56, method == "res.fixed")
+mads56fixeds = mads56fixed[,c(6,1,5,3)]
+library(dplyr)
+mads56fixeds = arrange(mads56fixeds, category, trait, tissue, padj)
+mads56fixeds_sig = subset(mads56fixeds, padj <= 0.05)
+
+
+idx = which(m$id == "AC148152.3_FG005")
+bx13 = m[idx,c(1,2,6,9,10,11)]
+bx13fixed = subset(bx13, method == "res.fixed")
+bx13fixeds = bx13fixed[,c(6,1,5,3)]
+
+bx13fixeds = arrange(bx13fixeds, category, trait, tissue, padj)
+bx13fixeds_sig = subset(bx13fixeds, padj <= 0.05)
+bx13fixeds_sig$trait_tissue = paste(bx13fixeds_sig$trait, bx13fixeds_sig$tissue, sep = "_")
+
+bx13_full = m[idx,]
+bx13fixed_full = subset(bx13_full, method == "res.fixed")
+bx13fixed_full = arrange(bx13fixed_full, category, trait, tissue, padj)
+bx13fixed_sig_full = subset(bx13fixed_full, padj <= 0.05)
+
+
+
+isnps <- fread("largedata/isnps_vs_feature/isnps_47143rows.csv")
+isnps_fixed <- subset(isnps, method == "res.fixed")
+isnps = merge(isnps, trait_category, by = "trait", all.x = T, sort = F)
+isnps_fixed <- subset(isnps, method == "res.fixed")
+
+idy = which(isnps_fixed$medi == "AC148152.3_FG005")
+isnps_fixed_bx13 = isnps_fixed[idy,]
+isnps_fixed_bx13$trait_tissue = paste(isnps_fixed_bx13$trait, isnps_fixed_bx13$tissue, sep = "_")
+
+
+isnps_fixed_sig_bx13 = subset(isnps_fixed_bx13, trait_tissue %in% bx13fixeds_sig$trait_tissue)
+
+# v3 Chr2:231952642-231954277
+
+# v4 (Chr2: 238142057..238146688)
+isnps_fixed_sig_bx13_cis = subset(isnps_fixed_sig_bx13, seq == 2)
+isnps_fixed_sig_bx13_cis = subset(isnps_fixed_sig_bx13_cis, 228142057 < Pos  )
+isnps_fixed_sig_bx13_cis = subset(isnps_fixed_sig_bx13_cis, Pos < 238146688  )
+
+```
+
