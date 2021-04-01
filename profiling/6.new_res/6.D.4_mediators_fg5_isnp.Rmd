@@ -1929,3 +1929,10 @@ dev.off()
 
 ```
 
+```{r}
+dsnps_qunic = subset(dsnps_fixed, (trait == "X.6508..quinic.acid..17.076..s100") & (tissue == "L3Tip"))
+isnps_qunic = subset(isnps_fixed, (trait == "X.6508..quinic.acid..17.076..s100") & (tissue == "L3Tip"))
+medi_qunic = subset(mfixed_sig, (trait == "X.6508..quinic.acid..17.076..s100") & (tissue == "L3Tip"))
+
+```
+
