@@ -86,6 +86,35 @@ table(out$trait)
 write.table(out, "largedata/dsnps_vs_gwas/dsnps_45112rows_microbiome_old_geno.csv", sep=",", row.names=FALSE, quote=FALSE)
 ```
 
+### new Geno Microbiom on HCC
+```{r}
+f <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/", pattern="dsnps_T[[0-9]", full.names = T)
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$file  <- gsub(".*\\/", "", out$file)
+
+library(data.table)
+
+snps_p7msnps <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned.bim", header = FALSE , data.table=FALSE)
+out <- merge(out, snps_p7msnps[,c(1,2,4)], by.x = "snp", by.y = "V2", sort = F, all.x = T)
+colnames(out)[c(5,6)] = c("chr", "pos")
+# method
+out$method <- gsub("_.*", "", out$file)
+# tissue type
+out$tissue <- gsub(".*_ts_|.csv", "", out$file)
+table(out$tissue)
+# trait
+out$trait <- gsub(".*dsnps_|_ts.*", "", out$file)
+table(out$trait)
+
+write.table(out, "largedata/dsnps_vs_gwas/dsnps_94329rows_microbiome_new_geno.csv", sep=",", row.names=FALSE, quote=FALSE)
+```
+
 ### New Geno on HCC
 
 ```{r}

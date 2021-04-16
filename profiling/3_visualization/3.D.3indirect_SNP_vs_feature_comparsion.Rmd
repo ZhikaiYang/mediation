@@ -47,6 +47,42 @@ write.table(out, "largedata/isnps_vs_feature/isnps_54015rows_microbiome_old_geno
 
 ```
 
+
+### NEW GENO MICROBIOM
+
+```{r}
+library(data.table)
+
+f <- list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/med_output/", pattern="indirect_T[[0-9]", full.names = T)
+
+
+out <- data.frame()
+for(i in 1:length(f)){
+  tem <- read.csv(f[i], header=TRUE)
+  tem$file <- f[i]
+  out <- rbind(out, tem)
+}
+
+out$file  <- gsub(".*\\/", "", out$file)
+# method
+out$method <- gsub("_.*", "", out$file)
+# tissue type
+out$tissue <- gsub(".*_ts_|.csv", "", out$file)
+table(out$tissue)
+# trait
+out$trait <- gsub(".*indirect_|_ts.*", "", out$file)
+table(out$trait)
+
+
+snps_p7msnps <- fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned.bim", header = FALSE , data.table=FALSE)
+out <- merge(out, snps_p7msnps[,c(1,2,4)], by.x = "snps_for_medi", by.y = "V2", sort = F, all.x = T)
+colnames(out)[c(8,9)] = c("chr", "pos")
+
+write.table(out, "largedata/isnps_vs_feature/isnps_47478rows_microbiome_new_geno.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+```
+
+
 ```{r}
 library(data.table)
 
