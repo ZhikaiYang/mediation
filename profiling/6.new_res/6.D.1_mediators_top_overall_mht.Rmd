@@ -34,7 +34,9 @@ table(m$method)
 
 ### only consider std nitrogen condition
 mi <- read.csv("cache/microbiome_mediators_34155rows.csv")
-
+### new result for microbiome
+library(data.table)
+mi <- fread("largedata/mediator_46652rows_microbiome.txt")
 # res.eq
 m1 <- subset(m, method %in% "res.fixed" & padj <= 0.05)
 m1$type <- "Morphology"
@@ -130,14 +132,14 @@ genes[order(genes$chr, genes$pos),]
 # count the number of mediated traits
 ptem <- ddply(df, .(id, type), nrow)
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 out1 <- merge(subset(p2, V1 >= 5), ptem, by="id")
 out1[order(out1$chr, out1$pos),]
 
 gid <- c("AC148152.3_FG001", "AC148152.3_FG005", "AC148152.3_FG008")
 out2 <- subset(df, id %in% gid[2])
-=======
-```{r}
+#=======
+
 #library(qqman)
 #p2new = data.frame(SNP = p2$V2, CHR = as.numeric(as.character(p2$chr)), BP = p2$pos, P = p2$V1)
 
@@ -150,9 +152,108 @@ x[p2new$pos] <- p2new$V1
 
 plot(x, type="h", col= "green", xlim = c(238043557,	238245188))
 rm(x)
->>>>>>> bb5f4e98862ac2307e30185f5780f2610a05cffa
+#>>>>>>> bb5f4e98862ac2307e30185f5780f2610a05cffa
 ```
 
 
+
+
+#Find the top mediators for microbiome
+#stdN
+```{r}
+library(plyr)
+library("data.table")
+
+df <- m2
+
+
+
+
+pall <- ddply(df, .(id), nrow)
+pall <- pall[order(pall$V1, decreasing = T),]
+
+v34 <- fread("cache/gene_v34_conversion.txt", data.table=FALSE)
+
+p2 <- merge(pall, v34[, 1:5], by.x="id", by.y="V1")
+p2 <- p2[order(p2$V1, decreasing = T),]
+```
+
+
+```{r}
+library(huskeR)
+
+names(p2)[4:5] <- c("chr", "pos")
+#mediator genes ploted in manhattan plot
+out <- plot_mht(inputdf=p2, hdf=NULL, col2plot = "V1", jmph = FALSE, pl = TRUE,
+  cl_file = "data/chr_length_B73v4.csv", cex = 1.5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="Number of mediated traits")
+
+pdf("graphs/mht_num_med_traits_microbiome_stdN.pdf", width = 15, height= 5)
+plot_mht(inputdf=p2, hdf=NULL, col2plot = "V1", jmph = FALSE, pl = TRUE,
+  cl_file = "data/chr_length_B73v4.csv", cex = 5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="Number of mediated traits")
+dev.off()
+
+
+
+
+
+```
+
+#Find the top mediators for microbiome
+#lowN
+```{r}
+
+m2 <- subset(mi, treatment %in% "lowN" & method %in% "res.fixed" & padj <= 0.05)
+m2$type <- "Microbiome"
+
+m2 <- m2[, c("type", "treatment", "tissue", "trait", "id", "method", "e2m", "m2y","e2m2y","padj","coef")]
+names(m2)[2] <- "category"
+
+df <-  m2
+
+
+
+pall <- ddply(df, .(id), nrow)
+pall <- pall[order(pall$V1, decreasing = T),]
+
+v34 <- fread("cache/gene_v34_conversion.txt", data.table=FALSE)
+
+p2 <- merge(pall, v34[, 1:5], by.x="id", by.y="V1")
+p2 <- p2[order(p2$V1, decreasing = T),]
+
+names(p2)[4:5] <- c("chr", "pos")
+#mediator genes ploted in manhattan plot
+out <- plot_mht(inputdf=p2, hdf=NULL, col2plot = "V1", jmph = FALSE, pl = TRUE,
+  cl_file = "data/chr_length_B73v4.csv", cex = 1.5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="Number of mediated traits")
+
+pdf("graphs/mht_num_med_traits_microbiome_lowN.pdf", width = 15, height= 5)
+plot_mht(inputdf=p2, hdf=NULL, col2plot = "V1", jmph = FALSE, pl = TRUE,
+  cl_file = "data/chr_length_B73v4.csv", cex = 5,
+  pch = 16, col = rep(c("slateblue", "cyan4"), 5), GAP = 5e+06,
+  yaxis = NULL, ylab="Number of mediated traits")
+dev.off()
+
+```
+
+
+```{r}
+mi_lowN = subset(mi, id %in% p2$id)
+mi_stdN = subset(mi, id %in% p2$id)
+mi_lowN = subset(mi_lowN, padj <= 0.05 & treatment == "lowN" & method == "res.fixed")
+mi_stdN = subset(mi_stdN, padj <= 0.05 & treatment == "stdN" & method == "res.fixed")
+mi_stdN = merge(mi_stdN, p2, by= "id")
+mi_lowN = merge(mi_lowN, p2, by= "id")
+colnames(mi_stdN)[c(12,13)] = c("Freq", "id_v4")
+fwrite(mi_stdN, "largedata/mediators_microbiome_stdN.txt", sep="\t", row.names = F, quote = F)
+
+colnames(mi_lowN)[c(12,13)] = c("Freq", "id_v4")
+fwrite(mi_lowN, "largedata/mediators_microbiome_lowN.txt", sep="\t", row.names = F, quote = F)
+
+```
 
 
