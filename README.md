@@ -13,7 +13,9 @@ For simplicity, the result files needed for manhattan plot for GWAS are moved in
 
 ### Trait category
 
-- phenotypic traits and their categories `data/`.
+- phenotypic traits and their categories `data/`
+- agronomy phenotype `data/geno_trait.txt`
+- metabolite phenotype `data/metabolite_rep1_genotype_namecorrect.txt
 
 ### Mediation analysis results
 
