@@ -89,6 +89,10 @@ fsize=18
 df$tissue <- factor(df$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
                     labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 
+set.seed(1234)
+cor_list = replicate(2000, cor.test(sample(df1$pmed.pure), sample(df1$h2))$estimat)
+sum(cor_list >= 0.665676)
+# 99
 
 df1 <- subset(df, tissue %in% "Adult leaf during the day")
 p1 <- ggplot(df1, aes(x=h2, y=pmed.pure, color=category)) +
