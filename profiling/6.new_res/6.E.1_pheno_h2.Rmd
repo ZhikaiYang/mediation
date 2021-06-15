@@ -89,8 +89,8 @@ fsize=18
 df$tissue <- factor(df$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
                     labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
 
-set.seed(1234)
-cor_list = replicate(2000, cor.test(sample(df1$pmed.pure), sample(df1$h2))$estimat)
+set.seed(12345)
+cor_list = replicate(1000, cor.test(sample(df1$pmed.pure), sample(df1$h2))$estimat)
 sum(cor_list >= 0.665676)
 # 99
 
