@@ -1,0 +1,35 @@
+---
+title: "Master Med genes"
+author: "Zhikai Yang"
+date: "09-17-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+### read in data
+
+```{r}
+s3 <- read.csv("data/supplementary/Supplemental_Table_S3.csv")
+library(data.table)
+anno = fread("largedata/Zea_mays.AGPv4_anno.txt", data.table = F, header = T)
+v3_v4 = fread("largedata/V3_V4.csv", data.table = F, header = F)
+v3_v4 = v3_v4[,1:2]
+anno = merge(v3_v4,anno, by.x = "V2", by.y = "ensembl_gene_id_v4")
+s3 = merge(s3, anno, by.x = "medi", by.y = "V1", all.x = T)
+colnames(s3)[10] ="medi_V4_name"
+fwrite(s3, "data/supplementary/Supplemental_Table_S3.csv", row.names = F, sep = ",", quote = F)
+
+
+
+s4 <- read.csv("data/supplementary/Supplemental_Table_S4.csv")
+s4 = merge(s4, anno, by.x = "v3_id", by.y = "V1", all.x = T)
+fwrite(s4, "data/supplementary/Supplemental_Table_S4.csv", row.names = F, sep = ",", quote = F)
+```
+
