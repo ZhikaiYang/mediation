@@ -161,5 +161,11 @@ pdf("graphs/med_h2_others.pdf", width = 10, height= 10)
 p2
 dev.off()
 
+cor.test(df$pmed.pure[which(df$tissue == "Germinating Root")],df$h2[which(df$tissue == "Germinating Root")])
+cor.test(df$pmed.pure[which(df$tissue == "Germinating Shoot")],df$h2[which(df$tissue == "Germinating Shoot")])
+cor.test(df$pmed.pure[which(df$tissue == "Leaf 3 base")],df$h2[which(df$tissue == "Leaf 3 base")])
+cor.test(df$pmed.pure[which(df$tissue == "Leaf 3 tip")],df$h2[which(df$tissue == "Leaf 3 tip")])
+cor.test(df$pmed.pure[which(df$tissue == "Adult leaf at night")],df$h2[which(df$tissue == "Adult leaf at night")])
+cor.test(df$pmed.pure[which(df$tissue == "Kernels after pollination")],df$h2[which(df$tissue == "Kernels after pollination")])
 
 ```
