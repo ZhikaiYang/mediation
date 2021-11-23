@@ -18,7 +18,7 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 ```{r}
 library(data.table)
 med_bic <- fread("largedata/simulation/mediation/qtl_100_qtlar_100/mediators_fixed_bic_sim_std.csv", sep = ",",header = T)
-
+med_bic = med_bic[which(med_bic$padj <= 0.05),]
 id = as.numeric(gsub("V", "", med_bic$id))
 
 alpha = fread("largedata/simulation/mediation/qtl_100_qtlar_100/alpha.txt",header = F)
@@ -40,8 +40,9 @@ com30 = intersect(id, alpha_sorted$id[1:360])
 com20 = intersect(id, alpha_sorted$id[1:240])
 com10 = intersect(id, alpha_sorted$id[1:120])
 
-Top_percent_mediators = 1:10/10
-True_positive_rate = c(11,17,21,21,23,23,25,27,27,27)/27
+Top_percent_mediators = 1:9/10
+True_positive_rate = c(11,15,17,17,19,19,21,21,21)/(120*c(1:9))
+False_positive_rate = c(21-c(11,15,17,17,19,19,21,21,21))/(1200-120*c(1:9))
 data = data.frame(Top_percent_mediators, True_positive_rate)
 library(ggplot2)
 fsize = 18
@@ -57,10 +58,25 @@ ggplot(data, aes(x=Top_percent_mediators, y=True_positive_rate)) +
           legend.title = element_text(size=fsize, face="bold"),
           legend.text = element_text(size=fsize))
   
+ggplot(data, aes(x=Top_percent_mediators, y=False_positive_rate)) +
+  geom_line( color="#69b3a2", size=2, alpha=0.9, linetype=2) +
+  ggtitle("False positive rate VS Top percent mediators")+
+  theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+ 
+
+
 qtlar = fread("largedata/simulation/mediation/qtl_100_qtlar_100/qtlar.txt",header = F)
 dsnps = fread("largedata/simulation/mediation/qtl_100_qtlar_100/dsnps_fixed_bic_sim_std.csv",header = T)
 dsnps_id = as.numeric(gsub("V","",dsnps$snp))-1
-com = intersect(as.integer(dsnps_id), qtlar$V1)
+
+com = intersect((as.integer(dsnps_id) %/% 4), qtlar$V1)
 
 
 qtl = fread("largedata/simulation/mediation/qtl_100_qtlar_100/qtl.txt",header = F)
@@ -74,10 +90,145 @@ qtl = as.matrix(qtl)
 comi=c(1:nrow(medi))
 
 for (m in 1:nrow(medi)) {
-  comi[m] = length(intersect(qtl[,medi$Var1[m]],isnps$snps_for_medi[which(isnps$medi == medi$Var1[m])]))
+  comi[m] = length(intersect(qtl[,medi$Var1[m]],(isnps$snps_for_medi[which(isnps$medi == medi$Var1[m])] %/% 4)))
 }
 
-true_positive_rate = comi/medi$Freq
+true_positive_rate = comi/100
+false_positive_rate = (medi$Freq-comi)/4900
 hist(true_positive_rate)
+hist(false_positive_rate)
 ```
 
+
+### read in corn data
+
+```{r}
+library(data.table)
+med_bic <- fread("largedata/simulation/mediation/qtl_100_qtlar_100/mediators_fixed_bic_sim_std_snp_is_5000_qtls_corn.csv", sep = ",",header = T)
+med_bic = med_bic[which(med_bic$padj <= 0.05),]
+id = as.numeric(gsub("V", "", med_bic$id))
+
+alpha = fread("largedata/simulation/mediation/qtl_100_qtlar_100/alpha_corn.txt",header = F)
+
+t.test(abs(alpha), abs(alpha[id]))
+
+alpha$id = 1:nrow(alpha)
+alpha$abs = abs(alpha$V1)
+
+library(dplyr)
+alpha_sorted = alpha %>% arrange(desc(abs))
+com90 = intersect(id, alpha_sorted$id[1:1080])
+com80 = intersect(id, alpha_sorted$id[1:960])
+com70 = intersect(id, alpha_sorted$id[1:840])
+com60 = intersect(id, alpha_sorted$id[1:720])
+com50 = intersect(id, alpha_sorted$id[1:600])
+com40 = intersect(id, alpha_sorted$id[1:480])
+com30 = intersect(id, alpha_sorted$id[1:360])
+com20 = intersect(id, alpha_sorted$id[1:240])
+com10 = intersect(id, alpha_sorted$id[1:120])
+
+Top_percent_mediators = 1:9/10
+True_positive_rate = c(1,3,4,5,5,5,5,5,5)/(120*c(1:9))
+False_positive_rate = c(5-c(1,3,4,5,5,5,5,5,5))/(1200-120*c(1:9))
+data = data.frame(Top_percent_mediators, True_positive_rate)
+library(ggplot2)
+fsize = 18
+ggplot(data, aes(x=Top_percent_mediators, y=True_positive_rate)) +
+  geom_line( color="#69b3a2", size=2, alpha=0.9, linetype=2) +
+  ggtitle("True positive rate VS Top percent mediators")+
+  theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+  
+ggplot(data, aes(x=Top_percent_mediators, y=False_positive_rate)) +
+  geom_line( color="#69b3a2", size=2, alpha=0.9, linetype=2) +
+  ggtitle("False positive rate VS Top percent mediators")+
+  theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+ 
+
+
+qtlar = fread("largedata/simulation/mediation/qtl_100_qtlar_100/qtlar_corn.txt",header = F)
+dsnps = fread("largedata/simulation/mediation/qtl_100_qtlar_100/dsnps_fixed_bic_sim_std_snp_is_5000_qtls_corn.csv",header = T)
+#dsnps_id = as.numeric(gsub("V","",dsnps$snp))-1
+dsnps_name = fread("largedata/simulation/mediation/qtl_100_qtlar_100/colnamesZ_std_snp_is_5000_qtls_corn.csv", header = F, data.table = F)
+dsnps_name = as.vector(as.matrix(dsnps_name))
+dsnps_id = dsnps_name[sort(qtlar$V1)]
+
+library(dplyr)
+library(tidyr)
+library(stringr)
+
+
+dsnps_split = data.frame(str_split_fixed(dsnps$snp, "-",2))
+colnames(dsnps_split)= c("chr", "pos")
+dsnps_split$chr = as.integer(dsnps_split$chr)
+dsnps_split$pos = as.integer(dsnps_split$pos)
+dsnps_split$up = as.integer(dsnps_split$pos -10000000)
+dsnps_split$down = as.integer(dsnps_split$pos +10000000)
+dsnps_split$id = dsnps$snp
+
+dsnps_id_split = data.frame(str_split_fixed(dsnps_id, "-",2))
+colnames(dsnps_id_split)= c("chr", "pos")
+dsnps_id_split$chr = as.integer(dsnps_id_split$chr)
+dsnps_id_split$pos = as.integer(dsnps_id_split$pos)
+
+#library("GenomicRanges")
+#library("plyr")
+
+
+grc <- with(dsnps_id_split, GRanges(seqnames=chr, IRanges(start=pos, end=pos)))
+
+grf <- with(dsnps_split, GRanges(seqnames=chr, IRanges(start=up, end=down), geneid=id))
+
+### find overlaps between the two
+tb <- findOverlaps(query=grf, subject=grc)
+tb <- as.matrix(tb)
+
+out1 <- as.data.frame(grf[tb[,1]])
+out2 <- as.data.frame(grc[tb[,2]])
+### for each genomic feature, find the sites with non-missing data
+colnames(out2)[1:2] = c("seq", "pos")
+out <- cbind(out1, out2[, 1:2]) 
+out$seqnames = as.integer(as.character(out$seqnames))
+out$seq = as.integer(as.character(out$seq))
+
+
+com = intersect(as.vector(as.matrix(dsnps$snp)), dsnps_id)
+
+
+
+
+com = intersect((as.integer(dsnps_id) %/% 4), qtlar$V1)
+
+
+qtl = fread("largedata/simulation/mediation/qtl_100_qtlar_100/qtl_corn.txt",header = F)
+isnps = fread("largedata/simulation/mediation/qtl_100_qtlar_100/isnps_fixed_bic_sim_std_snp_is_5000_qtls_corn.csv",header = T)
+isnps$medi = as.numeric(gsub("V","",isnps$medi))
+isnps$snps_for_medi = as.numeric(gsub("V","",isnps$snps_for_medi))-1
+
+medi = as.data.frame(table(isnps$medi))
+medi$Var1 = as.numeric(as.character(medi$Var1))
+qtl = as.matrix(qtl)
+comi=c(1:nrow(medi))
+
+for (m in 1:nrow(medi)) {
+  comi[m] = length(intersect(qtl[,medi$Var1[m]],(isnps$snps_for_medi[which(isnps$medi == medi$Var1[m])] %/% 4)))
+}
+
+true_positive_rate = comi/100
+false_positive_rate = (medi$Freq-comi)/4900
+hist(true_positive_rate)
+hist(false_positive_rate)
+```

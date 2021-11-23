@@ -155,6 +155,45 @@ fwrite(as.list(colnames(Z)), "largedata/geno/colnamesZ_gs.csv", sep=",", row.nam
 ```
 
 
+```{bash}
+########### New Genotype for simulation study #############
 
+plink -bfile hmp321_282_agpv4_maf005_miss03_pruned --indep-pairwise 100 kb 10 0.005 --out hmp321_282_agpv4_maf005_miss03_pruned_further
+#769690 to 
+plink -bfile hmp321_282_agpv4_maf005_miss03_pruned --extract hmp321_282_agpv4_maf005_miss03_pruned_further.prune.in --make-bed --out hmp321_282_agpv4_maf005_miss03_pruned_further
+
+plink --bfile hmp321_282_agpv4_maf005_miss03_pruned_further --recode vcf-iid --out hmp321_282_agpv4_maf005_miss03_pruned_further
+
+module load perl
+perl subs_NA_0.pl
+
+```
+
+
+
+
+#preparation for the new geno data
+```{r}
+
+library(data.table)
+library(Ropt)
+
+trait=fread("trait_GDDDaystoSilk.txt", header=T,data.table=F)
+#pheno <- fread("/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/phenotype_282_GEMMA_sure.txt")
+#trait$GDDDaystoSilk <- as.vector(unlist(pheno[,12]))
+d=fread("hmp321_282_agpv4_maf005_miss03_pruned_further.vcf1", header=F,data.table=F)
+d1=t(d)
+mk=colnames(d1)=d1[1,]
+colnames(d1)[1]="Genotype"
+d1=d1[-1,]
+d2=as.data.frame(d1,stringsAsFactors =F)
+d3=as.data.frame(d1)
+id = which(d3$Genotype == "W64a")
+d3$Genotype = as.character(d3$Genotype)
+d3$Genotype[id] = "W64A"
+d4=merge(trait, d3, by="Genotype")
+fwrite(d4,"gddtosilk_22ksnps_matrix_new.txt",sep="\t",col.names = T,row.names = F,quote=F)
+
+```
 
 

@@ -166,5 +166,15 @@ plink -bfile  hmp321_282_agpv4_maf005_miss03 --extract hmp321_282_agpv4_maf005_m
 
 ```
 
+```{bash}
+########### New Genotype #############
 
+plink -bfile hmp321_282_agpv4_maf005_miss03_pruned --indep-pairwise 100 kb 10 0.005 --out hmp321_282_agpv4_maf005_miss03_pruned_further
+#769690 to 
+plink -bfile hmp321_282_agpv4_maf005_miss03_pruned --extract hmp321_282_agpv4_maf005_miss03_pruned_further.prune.in --make-bed --out hmp321_282_agpv4_maf005_miss03_pruned_further
+
+plink --bfile hmp321_282_agpv4_maf005_miss03_pruned_further --recode vcf-iid --out hmp321_282_agpv4_maf005_miss03_pruned_further
+
+
+```
 
