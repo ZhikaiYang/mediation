@@ -29,12 +29,12 @@ write.table(df, "profiling/8.simulation/df_job_control_medmix.csv", sep=",", row
 
 ```{r}
 library("huskeR")
-run_Rcode(inputdf=data.frame(file=1:4, out=1), outdir="slurm-script", cmdno = 1, 
+run_Rcode(inputdf=data.frame(file=1:3, out=0), outdir="slurm-script", cmdno = 1, 
           rcodes = "profiling/8.simulation/8.A.1_setup_medmix_job.R",
           rversion="3.6",
           base_shid = "medmix",
           email="yangjl0930@gmail.com", 
-          runinfo = c(TRUE, "batch", 4, "10G", "30:00:00"))
+          runinfo = c(TRUE, "batch", 4, "60G", "12:00:00"))
 ###>>> In this path: cd /common/jyanglab/zhikaiyang/projects/mediation
 ###>>> RUN: sbatch -p batch --licenses=common --nodes=1 --ntasks=16 --mem 200G --time=30:00:00 slurm-script/med_test_array.sh
 ```
