@@ -25,7 +25,7 @@ df <- read.csv("profiling/8.simulation/df_job_control_medmix.csv")
 mediation_run(nQTLperM=as.numeric(as.character(df$nQTLper[JOBID])), 
               nQTLar=as.numeric(as.character(df$nQTLar[JOBID])), 
               h2_as=as.numeric(as.character(df$h2_as[JOBID])), 
-              seedas.numeric(as.character(df$seed[JOBID])), 
+              seed=as.numeric(as.character(df$seed[JOBID])), 
               ncores = 4)
 #####
 
