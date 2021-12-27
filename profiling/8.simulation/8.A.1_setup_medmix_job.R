@@ -18,7 +18,7 @@ library(doParallel)
 library(CompQuadForm)
 source('lib/highmed2019.r')
 source('lib/fromSKAT.R')
-source("profiling/8.simulation/8.A.1_setup_medmix_job.R")
+source("profiling/8.simulation/simulation_corn_data_mediation_test_h2_mix_args.R")
 
 df <- read.csv("profiling/8.simulation/df_job_control_medmix.csv")
 
