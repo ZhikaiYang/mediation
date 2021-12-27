@@ -169,7 +169,79 @@ perl subs_NA_0.pl
 
 ```
 
+#SNP stat
+```{bash}
+module load plink
 
+plink -bfile hmp321_282_agpv4_maf005_miss03_pruned_further --freq --missing --out hmp321_282_agpv4_maf005_miss03_pruned_further
+
+plink --bfile hmp321_282_agpv4_maf005_miss03_pruned_further  --ld-window 10 --ld-window-kb 100 --r2 --ld-window-r2 0  --out hmp321_282_agpv4_maf005_miss03_pruned_further
+
+```
+
+
+```{r}
+library(data.table)
+
+
+maf <- fread("hmp321_282_agpv4_maf005_miss03_pruned_further.frq", header=TRUE)
+lmiss <- fread("hmp321_282_agpv4_maf005_miss03_pruned_further.lmiss", header=TRUE)
+
+
+pdf("hmp321_282_agpv4_maf005_miss03_pruned_further_maf_lmiss.pdf", width = 10, height=5)
+par(mfrow=c(1,2))
+hist(maf$MAF, breaks=100, col="#cdb79e", main="MAF (SNP = 22k)", xlab="Minor Allele Freq")
+abline(v=0.01, lty=2, col="black", lwd=3)
+abline(v=0.05, lty=2, col="red", lwd=3)
+
+hist(lmiss$F_MISS, breaks=100, col="#cdb79e", main="Missingness (SNP = 22k)", xlab="Missing Rate")
+abline(v=0.6, lty=2, col="red", lwd=3)
+abline(v=0.2, lty=2, col="red", lwd=3)
+dev.off()
+
+
+
+
+ld <- fread("hmp321_282_agpv4_maf005_miss03_pruned_further.ld", data.table=FALSE)
+ld$dis <- ld$BP_B - ld$BP_A
+# summarize for each bp distance, the mean R2 
+ld <- as.data.table(ld)
+
+df <- ld[,.(meanr2=mean(R2), sd=sd(R2)), by=dis]
+write.table(df, "hmp321_282_agpv4_maf005_miss03_pruned_further_ld_mean_sd.csv", sep=",", quote=FALSE)
+
+df <- read.csv("hmp321_282_agpv4_maf005_miss03_pruned_further_ld_mean_sd.csv")
+library(ggplot2)
+
+pdf("hmp321_282_agpv4_maf005_miss03_pruned_further_LD_decay.pdf", width = 10, height=5)
+par(mfrow=c(1,2))
+p1 <- ggplot(df, aes(x=dis, y=meanr2)) +
+    #facet_grid(. ~ type) +
+    geom_point(size=2) +
+    geom_smooth(method='gam') +
+    theme_bw() +
+    xlab("physitcal distance") +
+    ylab("LD (r2)") +
+    theme(axis.text=element_text(size=12), axis.title=element_text(size=15) )
+  #########
+p1
+
+df <- as.data.frame(df)
+df <- subset(df, dis < 5000)
+p2 <- ggplot(df, aes(x=dis, y=meanr2)) +
+    #facet_grid(. ~ type) +
+    geom_point(size=2) +
+    geom_smooth(method='loess') +
+    theme_bw() +
+    xlab("physitcal distance") +
+    ylab("LD (r2)") +
+    theme(axis.text=element_text(size=12), axis.title=element_text(size=15) )
+  #########
+p2
+dev.off()
+
+
+```
 
 
 #preparation for the new geno data
