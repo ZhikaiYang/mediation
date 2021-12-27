@@ -1,32 +1,6 @@
-setwd('/common/jyanglab/zhikaiyang/projects/mediation')
-
-options(echo=TRUE) # if you want see commands in output file
-args <- commandArgs(trailingOnly = TRUE)
-
-
-
-nQTLperM <- as.numeric(as.character(args[1]))
-nQTLar <- as.numeric(as.character(args[2]))
-h2_as <- as.numeric(as.character(args[3]))
-seed <- as.numeric(as.character(args[4]))
-
-
-
-library(data.table)
-
 
 
 trait = "sim"
-
-library(glmnet)
-library(MASS)
-library(rrBLUP)
-library(parallel)
-library(doParallel)
-library(CompQuadForm)
-source('lib/highmed2019.r')
-source('lib/fromSKAT.R')
-
 
 ###' New wrapper functions for each method, they source the function script highmed2019.r
 
@@ -138,7 +112,7 @@ e2mFixed <- function(mod,ncores=8){ ## calculate the exposure to mediator effect
 }
 
 
-ncores = 4
+
 
 
 
@@ -167,7 +141,8 @@ reportMediator <- function(mod=mod.fixed, tst=tests.fixed){
   return(med)
 }
 
-reportINDirectSNPs <- function(mod=mod.fixed, e2m=e2m.fixed, tst=tests.fixed, pval.cut=pval.cut, Z=Z, colnames_X=colnames(X)){
+reportINDirectSNPs <- function(mod=mod.fixed, e2m=e2m.fixed, tst=tests.fixed, 
+                               pval.cut=pval.cut, Z=Z, colnames_X=colnames(X)){
   med = tst[['med.individual']]
   ix.output = med$padj <= pval.cut
   idx <- c(1:length(ix.output))[ix.output]
@@ -191,10 +166,9 @@ reportINDirectSNPs <- function(mod=mod.fixed, e2m=e2m.fixed, tst=tests.fixed, pv
 
 
 
-mediation_run = function(nQTLperM=10, nQTLar=10, h2_as=0.75, seed=1231){
+mediation_run = function(nQTLperM=10, nQTLar=10, h2_as=0.75, seed=1231, ncores = 4){
   
   for (topi in 1:12) {
-    
     
     a = fread("/common/jyanglab/zhikaiyang/projects/mediation/largedata/geno/gddtosilk_22ksnps_matrix_new.txt",header = T, data.table = F)
     geno = cbind(1:nrow(a), a[,3:ncol(a)])
@@ -211,7 +185,6 @@ mediation_run = function(nQTLperM=10, nQTLar=10, h2_as=0.75, seed=1231){
     nloci=20000
     inter=4
     pos=which(1:nloci %% inter ==0)
-    
     
     
     pathname = paste("largedata/simulation/mediationh2/M_corn_s0_top_", topi, "_qtl_",nQTLperM,"_qtlar_",nQTLar,"_h2_",h2_as,"_seed_",seed,".txt",sep = "")
@@ -283,15 +256,9 @@ mediation_run = function(nQTLperM=10, nQTLar=10, h2_as=0.75, seed=1231){
     pathname = paste("largedata/simulation/mediationh2/resulth2/res_mix_shrink_corn_s0_top_", topi, "_qtl_",nQTLperM,"_qtlar_",nQTLar,"_h2_",h2_as,"_seed_",seed,".csv",sep = "")
     fwrite(as.list(res.mix.shrink.pcut), pathname, sep=",", row.names=FALSE, quote=FALSE)
     
-    
-    
     ###' Report the mediators selected by each method
     
     #############
-    
-    
-    
-    
     
     mediators.mix.linear = reportMediator(mod=mod.mix.linear, tst=tests.mix.linear)
     pathname = paste("largedata/simulation/mediationh2/resulth2/mediators_mix_linear_corn_s0_top_", topi, "_qtl_",nQTLperM,"_qtlar_",nQTLar,"_h2_",h2_as,"_seed_",seed,".csv",sep = "")
@@ -303,14 +270,8 @@ mediation_run = function(nQTLperM=10, nQTLar=10, h2_as=0.75, seed=1231){
     pathname = paste("largedata/simulation/mediationh2/resulth2/mediators_mix_shrink_corn_s0_top_", topi, "_qtl_",nQTLperM,"_qtlar_",nQTLar,"_h2_",h2_as,"_seed_",seed,".csv",sep = "")
     if(nrow(mediators.mix.shrink) >= 1){fwrite(mediators.mix.shrink, pathname, sep=",", row.names=FALSE, quote=FALSE)}
     
-    
-    
   }
-  
-  
   
 }
 
-
-mediation_run(nQTLperM, nQTLar, h2_as, seed)
 

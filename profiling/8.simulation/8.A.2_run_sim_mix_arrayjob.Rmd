@@ -1,0 +1,46 @@
+---
+title: "Run array job for MedMix Simulation"
+output: NULL
+author: Jinliang Yang
+date: 12-27-2021
+---
+
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+#library(tidyverse)
+```
+
+
+### Run an array job!
+
+```{r}
+df <- data.frame(nQTLper=c(10, 50, 100), 
+                 nQTLar=c(10, 50, 100),
+                 h2_as=c(0.25, 0.5, 0.75),
+                 seed=c(1231,1232, 1233)
+                 )
+write.table(df, "profiling/8.simulation/df_job_control_medmix.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+```
+
+
+
+```{r}
+library("huskeR")
+run_Rcode(inputdf=data.frame(file=1:nrow(df), out=1), outdir="slurm-script", cmdno = 1, 
+          rcodes = "profiling/8.simulation/8.A.1_setup_medmix_job.R",
+          rversion="3.5",
+          base_shid = "medmix",
+          email="yangjl0930@gmail.com", 
+          runinfo = c(FALSE, "batch", 4, "10G", "30:00:00"))
+###>>> In this path: cd /common/jyanglab/zhikaiyang/projects/mediation
+###>>> RUN: sbatch -p batch --licenses=common --nodes=1 --ntasks=16 --mem 200G --time=30:00:00 slurm-script/med_test_array.sh
+```
+
+
+
+
+
+
