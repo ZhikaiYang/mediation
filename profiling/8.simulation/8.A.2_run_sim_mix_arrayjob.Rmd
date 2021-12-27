@@ -16,10 +16,10 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 ### Run an array job!
 
 ```{r}
-df <- data.frame(nQTLper=c(10, 50, 100), 
-                 nQTLar=c(10, 50, 100),
-                 h2_as=c(0.25, 0.5, 0.75),
-                 seed=c(1231,1232, 1233)
+df <- data.frame(nQTLper=c(rep(10,90), rep(50,90), rep(100,90)), 
+                 nQTLar=rep(c(rep(10,30), rep(50,30), rep(100,30)),3),
+                 h2_as=rep(c(rep(0.25,10), rep(0.5,10), rep(0.75,10)),9),
+                 seed=rep(1231:1240,27)
                  )
 write.table(df, "profiling/8.simulation/df_job_control_medmix.csv", sep=",", row.names=FALSE, quote=FALSE)
 
