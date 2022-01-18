@@ -1,0 +1,29 @@
+---
+title: "Master Med genes"
+author: "Zhikai Yang"
+date: "09-17-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+### read in data
+
+```{r}
+library(data.table)
+met <- fread("largedata/metabolite.txt", sep = "\t",header = T)
+mets = fread("data/supplementary/Supplemental_Table_S1.csv", sep = ",",header = T)
+overlap = fread("largedata/overlap_met.txt", sep = "\t", header = F)
+overlap$id = as.integer(gsub("M-","",overlap$V1))
+c = cbind(met[overlap$id,], mets[overlap$V2,])
+meto = fread("largedata/metos.txt", sep = "\t",header = T)
+meto$`Metabolite ID` = gsub("m/z", "",meto$`Metabolite ID`)
+meto$mass = as.numeric(gsub(".*_","",meto$`Metabolite ID`))
+
+```
