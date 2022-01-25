@@ -1,0 +1,46 @@
+---
+title: "dSNPs and iSNPs and PVM"
+author: "Zhikai Yang"
+date: "01-24-2021"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+```{r}
+library(data.table)
+dSNPs = fread("data/supplementary/Supplemental_Table_S2.csv",sep=",")
+iSNPs = fread("largedata/isnps.txt",sep="\t")
+id = which(dSNPs$snp %in% iSNPs$snps_for_medi)
+id2 = which(iSNPs$snps_for_medi %in% dSNPs$snp)
+dSNPs = dSNPs[id,]
+iSNPs = iSNPs[id2,]
+
+tissue = unique(dSNPs$tissue)
+trait = unique(dSNPs$trait)
+
+overlap = NULL
+for (itrait in trait) {
+  
+  for (itissue in tissue) {
+  idx = which(dSNPs$trait == itrait & dSNPs$tissue == itissue)
+  idy = which(iSNPs$trait == itrait & iSNPs$tissue == itissue)
+  
+  tem = length(intersect(dSNPs$snp[idx], iSNPs$snps_for_medi[idy]))
+  overlap = rbind(overlap, c(itrait, itissue, tem))
+  }
+}
+
+
+overlap = as.data.frame(overlap)
+colnames(overlap) = c("trait", "tissue", "num_overlap")
+overlap$num_overlap = as.integer(overlap$num_overlap)
+sum(overlap$num_overlap)
+```
+
