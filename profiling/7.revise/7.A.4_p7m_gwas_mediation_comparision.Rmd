@@ -1,0 +1,366 @@
+---
+title: "Collect mediation analysis results"
+author: "Zhikai Yang "
+date: "11-2-2020"
+output: NULL
+---
+
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+### on local
+
+```{r}
+library(data.table)
+dsnps <- fread("largedata/dsnps_vs_gwas/dsnps_34013rows.csv")
+all_gwas_5kb <- fread("largedata/dsnps_gwas_p7m/all_traits.all_res_5k.txt")
+idx <- grep("X\\.", all_gwas_5kb$date)
+all_gwas_5kb$date[idx] <- gsub("\\.$", "", all_gwas_5kb$date[idx])
+id = which(is.na(dsnps$pos))
+dsnps=dsnps[-id,]
+
+dsnps$gwas_overlap <- 0
+
+#idx <- grep("P368\\.", dsnps$trait)
+#dsnps = dsnps[- idx,]
+
+for (i in 1:nrow(dsnps)) {
+  if (length(which(all_gwas_5kb$Chr == dsnps$chr[i] & all_gwas_5kb$start < dsnps$pos[i] & all_gwas_5kb$end > dsnps$pos[i] & all_gwas_5kb$date == dsnps$trait[i])) != 0) {
+    dsnps$gwas_overlap[i] = which(all_gwas_5kb$Chr == dsnps$chr[i] & all_gwas_5kb$start < dsnps$pos[i] & all_gwas_5kb$end > dsnps$pos[i] & all_gwas_5kb$date == dsnps$trait[i])
+  }
+  
+}
+
+write.table(dsnps, "largedata/dsnps_gwas_p7m/dsnps_5kb_comparsion.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+dsnps <- fread("largedata/dsnps_gwas_p7m/dsnps_5kb_comparsion.csv")
+
+dsnps_fixed <- subset(dsnps, method == "res.fixed")
+
+
+i_trait_fixed <- unique(dsnps_fixed$trait)
+i_tissue_fixed <- unique(dsnps_fixed$tissue)
+gwas_overlap_fixed = NULL
+for (trait in i_trait_fixed) {
+  
+  for (tissue in i_tissue_fixed) {
+    t = intersect(which(dsnps_fixed$trait == trait ), which( dsnps_fixed$tissue == tissue))
+    if (length(t) > 0) {
+      tem = dsnps_fixed[t, ]
+      o_ratio = length(which(tem$gwas_overlap != 0))/nrow(tem)
+      gwas_overlap_fixed = rbind(gwas_overlap_fixed, c(trait, tissue, o_ratio, length(which(tem$gwas_overlap != 0)), nrow(tem) ))
+    }
+    
+  }
+  
+}
+```
+
+```{r}
+ag_trait <- fread("data/geno_trait.txt")
+m_trait <- fread("data/metabolite_rep1_genotype_namecorrect.txt")
+trait_category <- data.frame(category = "other", trait = c(colnames(ag_trait)[-1], colnames(m_trait)[-1]))
+
+trait_category$category[c(3,4,11:13,38)]= "Flowering Time"
+trait_category$category[c(6,23)]= "Development"
+trait_category$category[c(15,16,36)]= "Leaf Morphology"
+trait_category$category[c(32,33)]= "Male Inflorescence"
+trait_category$category[c(1,7,9,8)]= "Female Inflorescence"
+trait_category$category[c(2,10,35,37,39,40)]= "Seed Traits"
+trait_category$category[41:106]= "Metabolite"
+
+dsnps = merge(dsnps, trait_category, by = "trait", all.x = T, sort = F)
+dsnps_fixed <- subset(dsnps, method == "res.fixed")
+id = which(dsnps_fixed$pval < 0.05)
+#fwrite(dsnps_fixed[id,], "data/supplementary/dsnps_18369rows_fixed.csv" , sep=",", row.names=FALSE, quote=FALSE)
+
+gwas_overlap_fixed = as.data.frame(gwas_overlap_fixed)
+colnames(gwas_overlap_fixed) = c("trait", "tissue", "o_ratio", "num_o", "N_dsnps")
+
+gwas_overlap_fixed = merge(gwas_overlap_fixed, trait_category, by = "trait", all.x = T, sort = F)
+
+```
+
+### all plot
+```{r}
+fsize=18
+gwas_overlap_fixed$tissue <- factor(gwas_overlap_fixed$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+gwas_overlap_fixed$o_ratio = as.numeric(gwas_overlap_fixed$o_ratio)
+
+library(ggplot2)
+
+#df0 <- subset(df, cat != "1")
+pall <- ggplot(gwas_overlap_fixed, aes(x=tissue, y=o_ratio, fill=category)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=1, notch=FALSE) +
+    # scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("Overlap ratio with GWAS signals") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/overlap_ratio_gwas_p7m_5kb_all_traits_fixed.pdf", width = 9, height= 6)
+pall
+dev.off()
+
+```
+### all plot_ subset out other and metabolite
+```{r}
+fsize=18
+
+gwas_overlap_fixed_s = subset(gwas_overlap_fixed, !(category %in% c("other", "Metabolite")))
+gwas_overlap_fixed_s$category <- factor(gwas_overlap_fixed_s$category, levels = c( "Seed Traits", "Female Inflorescence", "Leaf Morphology", "Development", "Flowering Time", "Male Inflorescence"),
+                    labels =c( "Seed Traits", "Female Inflorescence", "Leaf Morphology", "Development", "Flowering Time", "Male Inflorescence"))
+
+
+gwas_overlap_fixed_s$o_ratio = as.numeric(gwas_overlap_fixed_s$o_ratio)
+
+library(ggplot2)
+library(ggpubr)
+library(dplyr)
+library(agricolae)
+
+#df0 <- subset(df, cat != "1")
+pall <- ggplot(gwas_overlap_fixed_s, aes(x=tissue, y=o_ratio, fill=category)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=1, notch=FALSE) +
+    # scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("Overlap ratio with GWAS signals") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=11, face="bold"),
+          strip.text.x = element_text(size = 11, face = "bold"),
+          axis.title=element_text(size=13, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=11, face="bold"),
+          legend.text = element_text(size=11))
+pall
+
+
+p <- ggboxplot(gwas_overlap_fixed_s, x = "tissue", y = "o_ratio",
+          color = "category", palette = "jco",
+          add = "jitter")
+p_tissue = p + #stat_compare_means(aes(group = category), label = "p.signif")+
+  xlab("Tissue") +
+    ylab("Overlap ratio with GWAS signals ") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "top", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=15))
+
+
+
+pdf("graphs/overlap_ratio_gwas_5kb_all_traits_fixed_s_h2order.pdf", width = 9, height= 6)
+p_tissue
+dev.off()
+
+```
+
+
+### enrichment test
+
+```{r}
+index = unique(all_gwas_5kb$date)
+
+gwas_nsig = NULL
+for (trait in index) {
+  idx = which(all_gwas_5kb$date == trait)
+  tem = all_gwas_5kb[idx,c(1,7)]
+  gwas_nsig = rbind(gwas_nsig, c(trait, sum(tem$N), 769690))
+}
+
+gwas_nsig = as.data.frame(gwas_nsig)
+colnames(gwas_nsig) = c("trait", "N_sig", "N_total")
+gwas_nsig$N_sig = as.numeric(gwas_nsig$N_sig)
+gwas_nsig$N_total = as.numeric(gwas_nsig$N_total)
+gwas_nsig$p_sig = gwas_nsig$N_sig/gwas_nsig$N_total
+
+gwas_overlap_fixed = merge(gwas_overlap_fixed, gwas_nsig, by = "trait", all.x = T, sort = F)
+#gwas_overlap_fixed = gwas_overlap_fixed[-(which(is.na(gwas_overlap_fixed$N_sig))),]
+
+gwas_overlap_fixed$num_o = as.numeric(gwas_overlap_fixed$num_o)
+gwas_overlap_fixed$N_dsnps = as.numeric(gwas_overlap_fixed$N_dsnps)
+
+
+gwas_overlap_fixed$p_val_chi = 0.0
+gwas_overlap_fixed$p_val_chi_adj = 0.0
+gwas_overlap_fixed$statistic_chi = 0.0
+for (i in 1:nrow(gwas_overlap_fixed)) {
+  t = chisq.test(c(gwas_overlap_fixed$num_o[i], gwas_overlap_fixed$N_dsnps[i]-gwas_overlap_fixed$num_o[i]),p=c(gwas_overlap_fixed$p_sig[i], 1-gwas_overlap_fixed$p_sig[i]))
+  gwas_overlap_fixed$statistic_chi[i] = t$statistic
+  gwas_overlap_fixed$p_val_chi[i] = t$p.value
+  gwas_overlap_fixed$p_val_chi_adj[i] = p.adjust(gwas_overlap_fixed$p_val_chi[i], method = "fdr", n= nrow(gwas_overlap_fixed))
+}
+
+length(which(gwas_overlap_fixed$p_val_chi_adj > 0.05))
+
+
+
+
+hist(gwas_overlap_fixed$p_val_chi_adj[- which(gwas_overlap_fixed$p_val_chi_adj > 0.05)], main = "Distribution of adjusted p-value by FDR (Medfix.bic)", xlab = "adjusted p-value")
+
+write.table(gwas_overlap_fixed, "largedata/dsnps_gwas_p7m/gwas_5kb_overlap_fixed.csv", sep=",", row.names=FALSE, quote=FALSE)
+
+```
+
+### dsnps overlap visual
+```{r}
+gwas_overlap_fixed_100kb =  fread( "largedata/dsnps_gwas_p7m/gwas_100kb_overlap_fixed.csv")
+
+gwas_overlap_fixed_50kb =  fread( "largedata/dsnps_gwas_p7m/gwas_50kb_overlap_fixed.csv")
+
+gwas_overlap_fixed_10kb =  fread( "largedata/dsnps_gwas_p7m/gwas_10kb_overlap_fixed.csv")
+
+gwas_overlap_fixed_5kb =  fread( "largedata/dsnps_gwas_p7m/gwas_5kb_overlap_fixed.csv")
+
+
+library(ggplot2)
+library(Hmisc)
+
+gwas_overlap_fixed_all = data.frame(o_ratio = gwas_overlap_fixed_100kb$o_ratio, category = gwas_overlap_fixed_100kb$category, win_size = "100kb")
+id = which(gwas_overlap_fixed_all$category != "Metabolite")
+gwas_overlap_fixed_all$category[id] = "Morphology"
+
+
+tem1 = data.frame(o_ratio = gwas_overlap_fixed_50kb$o_ratio, category = gwas_overlap_fixed_50kb$category, win_size = "50kb")
+id = which(tem1$category != "Metabolite")
+tem1$category[id] = "Morphology"
+
+tem2 = data.frame(o_ratio = gwas_overlap_fixed_10kb$o_ratio, category = gwas_overlap_fixed_10kb$category, win_size = "10kb")
+id = which(tem2$category != "Metabolite")
+tem2$category[id] = "Morphology"
+
+tem3 = data.frame(o_ratio = gwas_overlap_fixed_5kb$o_ratio, category = gwas_overlap_fixed_5kb$category, win_size = "5kb")
+id = which(tem3$category != "Metabolite")
+tem3$category[id] = "Morphology"
+
+gwas_overlap_fixed_all = rbind(gwas_overlap_fixed_all, tem1, tem2, tem3)
+
+gwas_overlap_fixed_all$category = as.factor(gwas_overlap_fixed_all$category)
+gwas_overlap_fixed_all$win_size <- factor(gwas_overlap_fixed_all$win_size, levels = c( "5kb", "10kb", "50kb", "100kb"),
+                    labels =c( "5kb", "10kb", "50kb", "100kb"))
+
+p<-ggplot(gwas_overlap_fixed_all, aes(x=win_size, y=o_ratio, fill=category)) +
+  geom_violin(position=position_dodge(1))
+
+p #+ stat_summary(fun.data= "mean_sdl", mult=1, geom="pointrange", color="red")
+
+p_o = p + xlab("window size") +
+    ylab("Overlap ratio with GWAS signals") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+pdf("graphs/overlap_ratio_gwas_all_win_all_traits_fixed.pdf", width = 9, height= 6)
+p_o
+dev.off()
+
+
+p <-ggplot(gwas_overlap_fixed_all, aes(x=win_size, y=o_ratio, fill=category)) +
+  geom_boxplot(outlier.colour="black", outlier.shape=16, outlier.size=1, notch=FALSE) +
+   xlab("window size") +
+    ylab("Overlap ratio with GWAS signals") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+
+p <- ggboxplot(gwas_overlap_fixed_all, x = "win_size", y = "o_ratio",
+          color = "category", palette = "jco",
+          add = "jitter")
+p_win = p + #stat_compare_means(aes(group = category), label = "p.signif")+
+  xlab("Window size") +
+    ylab("Overlap ratio with GWAS signals ") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 1)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 0, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+
+
+id1 = which(gwas_overlap_fixed_100kb$category != "Metabolite")
+length(which(gwas_overlap_fixed_100kb$p_val_chi_adj[id1] <= 0.05))/length(id1)
+length(which(gwas_overlap_fixed_100kb$p_val_chi_adj[-id1] <= 0.05))/ (737 - length(id1) )
+
+id1 = which(gwas_overlap_fixed_50kb$category != "Metabolite")
+length(which(gwas_overlap_fixed_50kb$p_val_chi_adj[id1] <= 0.05))/length(id1)
+length(which(gwas_overlap_fixed_50kb$p_val_chi_adj[-id1] <= 0.05))/ (737 - length(id1) )
+
+id1 = which(gwas_overlap_fixed_10kb$category != "Metabolite")
+length(which(gwas_overlap_fixed_10kb$p_val_chi_adj[id1] <= 0.05))/length(id1)
+length(which(gwas_overlap_fixed_10kb$p_val_chi_adj[-id1] <= 0.05))/ (737 - length(id1) )
+
+id1 = which(gwas_overlap_fixed_5kb$category != "Metabolite")
+length(which(gwas_overlap_fixed_5kb$p_val_chi_adj[id1] <= 0.05))/length(id1)
+length(which(gwas_overlap_fixed_5kb$p_val_chi_adj[-id1] <= 0.05))/ (737 - length(id1) )
+
+pdf("graphs/overlap_ratio_gwas_p7m_all_win_all_traits_fixed_box_dot.pdf", width = 9, height= 6)
+p_win
+dev.off()
+
+
+```
+

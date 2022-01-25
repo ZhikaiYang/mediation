@@ -1,10 +1,10 @@
-setwd('/common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas')
+setwd('/common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_gwas_p7m')
 library(data.table)
-f=list.files(path="/common/jyanglab/shared/Gen_Xu/282_metabolite/output",patt=".sig.txt")
+f=list.files(path="/common/jyanglab/zhikaiyang/projects/mediation/largedata/gwas_new/output",patt=".assoc.txt")
 for(ff in f)
 {
-out=gsub("sig.txt","sig.region.txt",ff)
-ff = paste("/common/jyanglab/shared/Gen_Xu/282_metabolite/output/", ff, sep="")
+out=gsub("assoc.txt","sig.region.txt",ff)
+ff = paste("/common/jyanglab/zhikaiyang/projects/mediation/largedata/gwas_new/output/", ff, sep="")
 d1=fread(ff,head=T,data.table=F)
 d1=d1[d1[,13]<=1e-5,]
 s=d1[,3]-100000;e=d1[,3]+100000
@@ -48,7 +48,7 @@ for(i in f)
   d1=cbind(date,d)
   r=rbind(r,d1)
 }
-write.table(r,"all_traits.all_res.txt",col.na=T,row.na=F,quote=F,sep="\t")
+write.table(r,"all_traits.all_res_100k.txt",col.na=T,row.na=F,quote=F,sep="\t")
 
 
 
