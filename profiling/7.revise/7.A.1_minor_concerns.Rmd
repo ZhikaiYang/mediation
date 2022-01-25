@@ -40,5 +40,106 @@ Zea_mays.AGPv4_anno <- fread("./largedata/Zea_mays.AGPv4_anno.txt", header = TRU
 Zea_mays.AGPv4_anno <- data.frame(chr = Zea_mays.AGPv4_anno$chromosome_name, gene4 = Zea_mays.AGPv4_anno$ensembl_gene_id_v4, start4 = Zea_mays.AGPv4_anno$start_position, end4 = Zea_mays.AGPv4_anno$end_position, name = Zea_mays.AGPv4_anno$description)
 Zea_mays.AGPv34_anno <- merge(V3_V4, Zea_mays.AGPv4_anno, by.x = "V2", by.y = "gene4")
 bx10_12 = Zea_mays.AGPv34_anno[15082:15084,]
+mediators = fread("largedata/mediators.txt", sep = "\t")
+which(mediators$v3_id %in% bx10_12$V1)
+
+
+```
+##on HCC
+```{r}
+library(data.table)
+
+rna <- fread("/common/jyanglab/shared/dbcenter/Kremling_Nature3RNASeq282_March2018/Expression_matrix/df_STAR_HTSeq_counts_B73_match_based_on_genet_dist_DESeq2_normed_fpm_rounded_origNames_and_Altnames.txt", data.table=FALSE)
+
+
+tissue <- table(rna$TissueWODate)
+tissue <- tissue[tissue > 100]
+ts <- data.frame(tissue)
+
+#################  change 1 to 7 
+i=1
+
+gs <- subset(rna, TissueWODate %in% ts$Var1[i])
+#dim(gs) # 295 37136
+gs0 <- gs[!duplicated(gs$HMP32Name), ]
+
+#determine the first column of the gene expression
+idx1 <- which(names(gs0) == "AC148152.3_FG001")
+
+M <- gs0[, c(6, idx1:ncol(gs0))]
+M$HMP32Name <- gsub("282set_", "", M$HMP32Name)
+
+idbx = which(names(M) %in% c(bx10_12$V1,"AC148152.3_FG005"))
+t1 = M[,c(1,idbx) ]
+
+t1$tissue = ts$Var1[i]
+##################
+out = rbind(t1, t2, t3, t4, t5, t6, t7)
+fwrite(out, "largedata/bx10_13_rna.txt", sep="\t", row.names=FALSE, quote=FALSE)
+
+
+
+variances <- apply(t1[, 2:ncol(t1)], 2, var)
+means <- apply(t1[, 2:ncol(t1)], 2, mean)
+
+#t1[,2:5] = mutate_all(t1[,2:5], scale)
+
+
+M <- M[, -(which(variances <= 0.05) + 1)] # 278 25038
+message(sprintf("###>>> after removing [variances < %s], [ row: %s, col: %s ] remaning", cutoff_var, nrow(M), ncol(M)-1))
+   
+means <- apply(M[,2:ncol(M)], 2, mean)
+M <- M[, -(which(means <=1 ) + 1)] #278 19357
+message(sprintf("###>>> after removing [mean < %s], [ row: %s, col: %s ] remaning", cutoff_mean, nrow(M), ncol(M)-1))
+
+
+```
+
+```{r}
+rna_bx10_13 = fread("data/bx10_13_rna.txt", sep="\t")
+
+rna_bx10_13_g1 = data.frame(genotype = rna_bx10_13$HMP32Name, gene_expression = rna_bx10_13$AC148152.3_FG005, gene = "Bx13", tissue = rna_bx10_13$tissue )
+rna_bx10_13_g2 = data.frame(genotype = rna_bx10_13$HMP32Name, gene_expression = rna_bx10_13$GRMZM2G023325, gene = "Bx12",tissue = rna_bx10_13$tissue )
+rna_bx10_13_g3 = data.frame(genotype = rna_bx10_13$HMP32Name, gene_expression = rna_bx10_13$GRMZM2G336824, gene = "Bx11",tissue = rna_bx10_13$tissue )
+rna_bx10_13_g4 = data.frame(genotype = rna_bx10_13$HMP32Name, gene_expression = rna_bx10_13$GRMZM2G311036, gene = "Bx10",tissue = rna_bx10_13$tissue )
+
+rna_bx10_13_g = rbind(rna_bx10_13_g1, rna_bx10_13_g2, rna_bx10_13_g3, rna_bx10_13_g4)
+
+fsize=18
+rna_bx10_13_g$tissue <- factor(rna_bx10_13_g$tissue, levels = c( "GRoot", "GShoot", "L3Base", "L3Tip", "LMAD", "LMAN","Kern"),
+                    labels =c( "Germinating Root", "Germinating Shoot", "Leaf 3 base", "Leaf 3 tip", "Adult leaf during the day", "Adult leaf at night","Kernels after pollination"))
+
+
+library(ggplot2)
+
+#df0 <- subset(df, cat != "1")
+pall <- ggplot(rna_bx10_13_g[which(rna_bx10_13_g$tissue == "Kernels after pollination"),], aes(x=tissue, y=gene_expression, fill=gene)) +
+    #geom_bar(stat="identity", position=position_dodge()) +
+    geom_boxplot(outlier.colour="black", outlier.shape=16, 
+             outlier.size=1, notch=FALSE) +
+    # scale_fill_manual(values=c("#69b3a2", "#cdc0b0")) +
+    # scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+    # geom_jitter(color="#cc4141", size=2, alpha=0.9) +
+    xlab("") +
+    ylab("Bx10 TO BX13 gene expression") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous(limits = c(-0.01, 10)) +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 15, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+pall
+
+pdf("graphs/bx10_13_gene_expression.pdf", width = 9, height= 6)
+pall
+dev.off()
+
+
 ```
 

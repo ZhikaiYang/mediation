@@ -15,8 +15,8 @@ knitr::opts_knit$set(root.dir=normalizePath('../../'))
 
 ```{r}
 library(data.table)
-dSNPs = fread("data/supplementary/Supplemental_Table_S2.csv",sep=",")
-iSNPs = fread("largedata/isnps.txt",sep="\t")
+dSNPs = fread("data/supplementary/Supplemental_Table_S2_direct_SNPs.csv",sep=",")
+iSNPs = fread("data/isnps.txt",sep="\t")
 id = which(dSNPs$snp %in% iSNPs$snps_for_medi)
 id2 = which(iSNPs$snps_for_medi %in% dSNPs$snp)
 dSNPs = dSNPs[id,]
