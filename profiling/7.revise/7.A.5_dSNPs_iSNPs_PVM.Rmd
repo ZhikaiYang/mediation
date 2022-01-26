@@ -44,3 +44,12 @@ overlap$num_overlap = as.integer(overlap$num_overlap)
 sum(overlap$num_overlap)
 ```
 
+```{r}
+overlap_gen = fread("largedata/Overlap_dir_indir_SNP.txt")
+sum(overlap_gen$`N(Overlap)`)
+id1=which(overlap_gen$`N(Overlap)` >=1)
+id2=which(overlap$num_overlap >=1)
+which(paste(overlap$trait[id2], overlap$tissue[id2], sep = "-") %in% overlap_gen$Trait[id1])
+
+```
+
