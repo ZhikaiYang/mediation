@@ -364,3 +364,43 @@ dev.off()
 
 ```
 
+```{r}
+
+gwas_overlap_fixed_100kb$win_size = "100kb"
+gwas_overlap_fixed_50kb$win_size = "50kb"
+gwas_overlap_fixed_10kb$win_size = "10kb"
+gwas_overlap_fixed_5kb$win_size = "5kb"
+
+gwas_overlap_fixed_total = rbind(gwas_overlap_fixed_100kb,gwas_overlap_fixed_50kb,gwas_overlap_fixed_10kb,gwas_overlap_fixed_5kb)
+id = which(gwas_overlap_fixed_total$category != "Metabolite")
+gwas_overlap_fixed_total$category[id] = "Morphology"
+
+
+gwas_overlap_fixed_total$category = as.factor(gwas_overlap_fixed_total$category)
+gwas_overlap_fixed_total$win_size <- factor(gwas_overlap_fixed_total$win_size, levels = c( "5kb", "10kb", "50kb", "100kb"),
+                    labels =c( "5kb", "10kb", "50kb", "100kb"))
+
+
+p <- ggboxplot(gwas_overlap_fixed_total, x = "win_size", y = "num_o",
+          color = "category", palette = "jco",
+          add = "jitter")
+p_win = p + #stat_compare_means(aes(group = category), label = "p.signif")+
+  xlab("Window size") +
+    ylab("Number of overlapped dSNPs with GWAS signals ") +
+    ggtitle("") +
+    theme_classic() +
+    labs(fill = "") +
+    scale_y_continuous() +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          axis.text.x = element_text(angle = 0, hjust=0.8),
+          legend.position = "right", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+chisq.test(c(mean(gwas_overlap_fixed_100kb$num_o), mean(gwas_overlap_fixed_100kb$N_dsnps - gwas_overlap_fixed_100kb$num_o)),p=c(mean(gwas_overlap_fixed_100kb$p_sig), mean(1 - gwas_overlap_fixed_100kb$p_sig)))
+
+```
+

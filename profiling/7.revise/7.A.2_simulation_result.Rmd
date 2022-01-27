@@ -765,15 +765,15 @@ i =1
 for (qtlari in c(10, 50, 100)) {
   for (qtli in c(10, 50, 100)) {
     
-    plist[[i]] = ggplot(TPall_h2p25_stat[which((TPall_h2p25_stat$qtl == qtli)&(TPall_h2p25_stat$qtlar == qtlari)),], aes(x=top, y=True_positive_rate, group=method, color=method)) + 
+    plist[[i]] = ggplot(TPall_h2p75_stat[which((TPall_h2p75_stat$qtl == qtli)&(TPall_h2p75_stat$qtlar == qtlari)),], aes(x=top, y=True_positive_rate, group=method, color=method)) + 
     geom_errorbar(aes(ymin=True_positive_rate-sd, ymax=True_positive_rate+sd), width=.1, 
     position=position_dodge(0.05)) +
     geom_line() + geom_point()+
     theme_minimal()+
-    xlab("Top N mediators") +
+    xlab("") +
     ylim(0, 1.5)+
-    ylab("True Positive Rate") +
-    ggtitle(paste("QTL_", qtlari, "_eQTL_",qtli)) +
+    ylab("") +
+    ggtitle(paste("QTL = ", qtlari, ", eQTL = ",qtli)) +
     theme_classic() +
     labs(fill = "") +
     theme(plot.title = element_text(size=20, face = "bold"), 
@@ -795,14 +795,84 @@ figure <- ggarrange(plist[[1]], plist[[2]],plist[[3]],plist[[4]],plist[[5]],plis
 figure
 
 
-pdf("graphs/sim_h2p25_qtl_50_eqtl_50.pdf", width = 12, height= 7.5)
+pdf("graphs/sim_h2p75_noname.pdf", width = 12, height= 7.5)
 figure
 dev.off()
 
 
-pdf("graphs/sim_h2p25_qtl_50_eqtl_50.pdf", width = 10, height= 5)
+pdf("graphs/sim_h2p75_qtl_50_eqtl_50.pdf", width = 10, height= 5)
 plist[[5]]
 dev.off()
+
+
+plist2 = list()
+i =1
+for (qtlari in c(10, 50, 100)) {
+  for (qtli in c(10, 50, 100)) {
+    
+    plist2[[i]] = ggplot(TPall_h2p5_stat[which((TPall_h2p5_stat$qtl == qtli)&(TPall_h2p5_stat$qtlar == qtlari)),], aes(x=top, y=True_positive_rate, group=method, color=method)) + 
+    geom_errorbar(aes(ymin=True_positive_rate-sd, ymax=True_positive_rate+sd), width=.1, 
+    position=position_dodge(0.05)) +
+    geom_line() + geom_point()+
+    theme_minimal()+
+    xlab("") +
+    ylim(0, 1.5)+
+    ylab("") +
+    ggtitle(paste("QTL = ", qtlari, ", eQTL = ",qtli)) +
+    theme_classic() +
+    labs(fill = "") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+    i=i+1
+  }
+}
+
+
+
+plist3 = list()
+i =1
+for (qtlari in c(10, 50, 100)) {
+  for (qtli in c(10, 50, 100)) {
+    
+    plist3[[i]] = ggplot(TPall_h2p25_stat[which((TPall_h2p25_stat$qtl == qtli)&(TPall_h2p25_stat$qtlar == qtlari)),], aes(x=top, y=True_positive_rate, group=method, color=method)) + 
+    geom_errorbar(aes(ymin=True_positive_rate-sd, ymax=True_positive_rate+sd), width=.1, 
+    position=position_dodge(0.05)) +
+    geom_line() + geom_point()+
+    theme_minimal()+
+    xlab("") +
+    ylim(0, 1.5)+
+    ylab("") +
+    ggtitle(paste("QTL = ", qtlari, ", eQTL = ",qtli)) +
+    theme_classic() +
+    labs(fill = "") +
+    theme(plot.title = element_text(size=20, face = "bold"), 
+          axis.text=element_text(size=16, face="bold"),
+          strip.text.x = element_text(size = 16, face = "bold"),
+          axis.title=element_text(size=fsize, face="bold"),
+          #axis.text.x = element_text(angle = 20, hjust=0.6),
+          legend.position = "none", 
+          legend.title = element_text(size=fsize, face="bold"),
+          legend.text = element_text(size=fsize))
+
+    i=i+1
+  }
+}
+
+
+figure3 <- ggarrange(plist[[5]], plist2[[5]],plist3[[5]], ncol = 3, nrow = 1)
+figure3
+
+pdf("graphs/sim_h2_noname.pdf", width = 12, height= 2.5)
+figure3
+dev.off()
+
 
 ```
 
