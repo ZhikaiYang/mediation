@@ -1,0 +1,50 @@
+﻿Gene ID,Chromosome,Start,End,Category,Trait,Tissue,Gene name,Annotation,With Direct SNP
+Zm00001d048050,9,148903155,148910943,Metabolite,X.444212..trans.aconitic.acid..15.842..s100,L3Base,gln3,Glutamine synthetase3,No
+Zm00001d023994,10,35174831,35179918,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,Kern,glu1,Beta-glucosidase,No
+Zm00001d024037,10,38844199,38849055,Female Inflorescence,EarRowNumber,L3Tip,glu2,Beta-glucosidase2,No
+Zm00001d033222,1,255021507,255023321,Metabolite,X.444266..maleic.acid..10.323,L3Tip,vp14,vp14;viviparous14: viviparous; yellow endosperm; abscisic acid biosynthesis,No
+Zm00001d032502,1,228680490,228685551,Metabolite,X.5984..fructose.1..17.18..s100,GShoot,yab10,yab12;C2C2-YABBY-transcription factor 12,No
+Zm00001d008882,8,23705985,23714926,Metabolite,X.5988..Sucrose..23.988..s100,L3Tip,zmm2,MADS2,No
+Zm00001d008882,8,23705985,23714926,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,zmm2,MADS2,No
+Zm00001d042315,3,160591489,160591701,other,SouthernLeafBlight,GShoot,ZmMADS69,MADS-box transcription factor 69,Yes
+Zm00001d042315,3,160591489,160591701,other,SouthernLeafBlight,L3Base,ZmMADS69,MADS-box transcription factor 69,Yes
+Zm00001d007718,2,238143557,238145188,Flowering Time,AnthesistoSilkInterval,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Development,EarHeight,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Female Inflorescence,EarLength,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Female Inflorescence,EarRankNumber,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Flowering Time,GDDAnthesis.SilkingInterval,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Flowering Time,GDDDaystoSilk,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,other,GerminationCount,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Leaf Morphology,LeafWidth,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,other,MiddleLeafAngle,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,other,Spikelets.MainSpike,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,other,StandCount,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,other,TasselBranchLength,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Male Inflorescence,TasselPrimaryBranches,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Seed Traits,TotalKernelVolume,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Seed Traits,TotalSeedWeight,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.1549111..caffeic.acid..19.755,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.3037582..mucic.acid..18.907,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.311..citric.acid..16.615..s100,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.439183..3.phosphoglyceric.acid..16.504,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.439958..D.glucose.6.phosphate.1..21.394,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.444212..trans.aconitic.acid..15.842..s100,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.444212..trans.aconitic.acid..15.842..s100,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.444266..maleic.acid..10.323,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.444266..maleic.acid..10.323,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.5280450..linoleic.acid..20.399,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.5321515..stigmasterol..28.442,L3Tip,Bx13,benzoxazinone synthesis13,Yes
+Zm00001d007718,2,238143557,238145188,Metabolite,X.5460407..threonic.acid..13.652,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.6057..tyrosine.2..17.871,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.60961..adenosine..23.825,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.6255..maltose..2..24.915,L3Tip,Bx13,benzoxazinone synthesis13,Yes
+Zm00001d007718,2,238143557,238145188,Metabolite,X.6287..L.valine.2..9.151,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,GShoot,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.6508..quinic.acid..17.076..s100,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.6912..xylitol..15.376,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.738..L.glutamine.2..14.083,L3Base,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.791..DL.isoleucine.2..10.225,GShoot,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.892..myo.inositol..19.354..s100,L3Tip,Bx13,benzoxazinone synthesis13,Yes
+Zm00001d007718,2,238143557,238145188,Metabolite,X.92824..D.malic.acid..12.794..s100,L3Tip,Bx13,benzoxazinone synthesis13,No
+Zm00001d007718,2,238143557,238145188,Metabolite,X.92824..D.malic.acid..12.794..s100,L3Base,Bx13,benzoxazinone synthesis13,No
