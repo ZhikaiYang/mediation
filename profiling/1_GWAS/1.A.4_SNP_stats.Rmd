@@ -26,6 +26,9 @@ plink -bfile allchr_bisnp_n282_snpid_maf01_geno2_pruned --freq --missing --out a
 
 plink -bfile hmp321_282_agpv4_maf005_miss03_pruned --freq --missing --out hmp321_282_agpv4_maf005_miss03_pruned
 
+###sample 20000 out of 0.7M new geno
+plink -bfile hmp321_282_agpv4_maf005_miss03_pruned_sam20000 --freq --missing --out hmp321_282_agpv4_maf005_miss03_pruned_sam20000
+
 ```
 
 ```{r}
@@ -65,6 +68,22 @@ abline(v=0.6, lty=2, col="red", lwd=3)
 abline(v=0.2, lty=2, col="red", lwd=3)
 dev.off()
 
+###sample 20000 out of 0.7M new geno
+maf <- fread("largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned_sam20000.frq", header=TRUE)
+lmiss <- fread("largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned_sam20000.lmiss", header=TRUE)
+
+
+pdf("largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned_sam20000_maf_lmiss.pdf", width = 10, height=5)
+par(mfrow=c(1,2))
+hist(maf$MAF, breaks=100, col="#cdb79e", main="MAF (sample 20,000 out of 769,690 SNPs)", xlab="Minor Allele Freq")
+abline(v=0.01, lty=2, col="black", lwd=3)
+abline(v=0.05, lty=2, col="red", lwd=3)
+
+hist(lmiss$F_MISS, breaks=100, col="#cdb79e", main="Missingness (sample 20,000 out of 769,690 SNPs)", xlab="Missing Rate")
+abline(v=0.6, lty=2, col="red", lwd=3)
+abline(v=0.2, lty=2, col="red", lwd=3)
+dev.off()
+
 ```
 ----
 ```{bash, eval=FALSE}
@@ -73,6 +92,9 @@ plink --bfile allchr_bisnp_n282_snpid_maf01_geno2_pruned  --ld-window 10 --ld-wi
 
 ######## NEW GENOTYPE #############
 plink --bfile hmp321_282_agpv4_maf005_miss03_pruned  --ld-window 10 --ld-window-kb 100 --r2 --ld-window-r2 0  --out hmp321_282_agpv4_maf005_miss03_pruned
+
+###sample 20000 out of 0.7M new geno
+plink --bfile hmp321_282_agpv4_maf005_miss03_pruned_sam20000  --ld-window 10 --ld-window-kb 100 --r2 --ld-window-r2 0  --out hmp321_282_agpv4_maf005_miss03_pruned_sam20000
 
 ```
 
@@ -160,6 +182,45 @@ p2 <- ggplot(df, aes(x=dis, y=meanr2)) +
 p2
 dev.off()
 
+###sample 20000 out of 0.7M new geno
+
+ld <- fread("largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned_sam20000.ld", data.table=FALSE)
+ld$dis <- ld$BP_B - ld$BP_A
+# summarize for each bp distance, the mean R2 
+ld <- as.data.table(ld)
+
+df <- ld[,.(meanr2=mean(R2), sd=sd(R2)), by=dis]
+write.table(df, "largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned_sam20000_ld_mean_sd.csv", sep=",", quote=FALSE)
+
+df <- read.csv("largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned_sam20000_ld_mean_sd.csv")
+library(ggplot2)
+
+pdf("largedata/geno/hmp321_282_agpv4_maf005_miss03_pruned_sam20000_LD_decay.pdf", width = 10, height=5)
+par(mfrow=c(1,2))
+p1 <- ggplot(df, aes(x=dis, y=meanr2)) +
+    #facet_grid(. ~ type) +
+    geom_point(size=2) +
+    geom_smooth(method='gam') +
+    theme_bw() +
+    xlab("physitcal distance") +
+    ylab("LD (r2)") +
+    theme(axis.text=element_text(size=12), axis.title=element_text(size=15) )
+  #########
+p1
+
+df <- as.data.frame(df)
+df <- subset(df, dis < 5000)
+p2 <- ggplot(df, aes(x=dis, y=meanr2)) +
+    #facet_grid(. ~ type) +
+    geom_point(size=2) +
+    geom_smooth(method='loess') +
+    theme_bw() +
+    xlab("physitcal distance") +
+    ylab("LD (r2)") +
+    theme(axis.text=element_text(size=12), axis.title=element_text(size=15) )
+  #########
+p2
+dev.off()
 
 
 ```

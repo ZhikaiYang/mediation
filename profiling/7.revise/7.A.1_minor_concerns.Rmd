@@ -221,3 +221,14 @@ pall_2 <- ggplot(rna_bx10_13_g[which(rna_bx10_13_g$gene == "Bx12"),], aes(x=tiss
 
 ```
 
+```{r}
+isnps = fread("data/supplementary/Supplemental_Table_S3_indirect_SNPs.csv")
+mediators = fread("data/supplementary/Supplemental_Table_S4_mediating_genes.csv")
+mads = mediators[which(mediators$v3_id == "GRMZM2G171650"),]
+isnps$id = paste(isnps$medi_v3_name,isnps$trait,isnps$tissue,sep = "_")
+mediators$id = paste(mediators$v3_id,mediators$trait,mediators$tissue,sep = "_")
+mads2 = isnps[which(isnps$medi_v3_name == "GRMZM2G171650"),]
+mads2 = mads2[which(mads2$id %in% mediators$id),]
+fwrite(mads2, "largedata/mads69_isnps.txt", sep = "\t", row.names = F,quote = F)
+```
+

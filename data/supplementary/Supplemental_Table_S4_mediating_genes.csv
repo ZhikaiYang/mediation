@@ -3,74 +3,74 @@ AC148152.3_FG001,Zm00001d007725,Metabolite,X.5321342..beta.sitosterol..28.848,GR
 AC148152.3_FG001,Zm00001d007725,other,NIRProtein,GRoot,0.000371389,0.136961893,8,2,238219444,238221798,Ankyrin repeat family protein
 AC148152.3_FG001,Zm00001d007725,Metabolite,X.8742..shikimic.acid..16.433..s100,GRoot,0.033770462,-0.001651339,8,2,238219444,238221798,Ankyrin repeat family protein
 AC148152.3_FG001,Zm00001d007725,Flowering Time,GDDAnthesis.SilkingInterval,GRoot,0.000247938,1.970306882,8,2,238219444,238221798,Ankyrin repeat family protein
-AC148152.3_FG001,Zm00001d007725,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,GRoot,1.26E-12,0.002991932,8,2,238219444,238221798,Ankyrin repeat family protein
+AC148152.3_FG001,Zm00001d007725,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,GRoot,1.26e-12,0.002991932,8,2,238219444,238221798,Ankyrin repeat family protein
 AC148152.3_FG001,Zm00001d007725,other,Spikelets.MainSpike,GRoot,0.001244116,-0.490947037,8,2,238219444,238221798,Ankyrin repeat family protein
 AC148152.3_FG001,Zm00001d007725,Flowering Time,AnthesistoSilkInterval,GRoot,0.009677492,0.128334151,8,2,238219444,238221798,Ankyrin repeat family protein
 AC148152.3_FG001,Zm00001d007725,Leaf Morphology,LeafWidth,GRoot,0.000166962,-1.218879545,8,2,238219444,238221798,Ankyrin repeat family protein
 AC148152.3_FG005,Zm00001d007718,Female Inflorescence,EarLength,L3Base,0.000408409,-1.89679969,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Metabolite,X.444212..trans.aconitic.acid..15.842..s100,L3Base,0.000939374,0.002053122,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Leaf Morphology,LeafWidth,L3Tip,4.60E-14,1.904702314,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Leaf Morphology,LeafWidth,L3Tip,4.6e-14,1.904702314,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,other,GerminationCount,L3Base,0.0246048,-0.143265867,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Metabolite,X.5321515..stigmasterol..28.442,L3Tip,2.02E-06,9.01E-05,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Metabolite,X.5321515..stigmasterol..28.442,L3Tip,2.02e-06,9.01e-05,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,other,Spikelets.MainSpike,L3Base,0.001657133,0.403347315,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Metabolite,X.6255..maltose..2..24.915,L3Tip,1.43E-13,0.000447407,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Metabolite,X.6255..maltose..2..24.915,L3Tip,1.43e-13,0.000447407,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Metabolite,X.6287..L.valine.2..9.151,L3Base,0.000503154,-0.001160988,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Flowering Time,AnthesistoSilkInterval,L3Base,0.018053779,0.114590987,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Flowering Time,GDDAnthesis.SilkingInterval,L3Base,0.006228589,1.586255159,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,GShoot,0.000532788,-3.83E-05,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Metabolite,X.738..L.glutamine.2..14.083,L3Base,9.91E-08,-8.69E-05,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,GShoot,0.000532788,-3.83e-05,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Metabolite,X.738..L.glutamine.2..14.083,L3Base,9.91e-08,-8.69e-05,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Metabolite,X.892..myo.inositol..19.354..s100,L3Tip,0.002239524,0.002948321,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Metabolite,X.439958..D.glucose.6.phosphate.1..21.394,L3Tip,0.036458955,-0.000602982,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Metabolite,X.5280450..linoleic.acid..20.399,L3Base,0.016149973,5.36E-05,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Metabolite,X.3037582..mucic.acid..18.907,L3Base,4.61E-06,-0.000567742,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Metabolite,X.5280450..linoleic.acid..20.399,L3Base,0.016149973,5.36e-05,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Metabolite,X.3037582..mucic.acid..18.907,L3Base,4.61e-06,-0.000567742,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Seed Traits,TotalSeedWeight,L3Tip,0.002766368,1.386354851,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Metabolite,X.6508..quinic.acid..17.076..s100,L3Tip,3.31E-07,0.007208016,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Metabolite,X.6508..quinic.acid..17.076..s100,L3Tip,3.31e-07,0.007208016,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Female Inflorescence,EarRankNumber,L3Base,0.000363919,-0.278845089,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Metabolite,X.92824..D.malic.acid..12.794..s100,L3Tip,0.000233285,0.002265558,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Metabolite,X.60961..adenosine..23.825,L3Base,0.000700648,-5.49E-05,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Metabolite,X.60961..adenosine..23.825,L3Base,0.000700648,-5.49e-05,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,other,StandCount,L3Base,0.000309522,-0.082537457,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,other,MiddleLeafAngle,L3Base,0.016374705,-0.696452401,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Metabolite,X.444266..maleic.acid..10.323,L3Base,8.32E-10,6.92E-06,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Metabolite,X.444266..maleic.acid..10.323,L3Base,8.32e-10,6.92e-06,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Metabolite,X.6057..tyrosine.2..17.871,L3Base,0.005829859,0.001342658,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Development,EarHeight,L3Tip,0.011510691,1.532755877,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Metabolite,X.791..DL.isoleucine.2..10.225,GShoot,0.003906735,-0.000563735,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Metabolite,X.444266..maleic.acid..10.323,L3Tip,0.002017723,3.02E-06,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Metabolite,X.444266..maleic.acid..10.323,L3Tip,0.002017723,3.02e-06,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Metabolite,X.439183..3.phosphoglyceric.acid..16.504,L3Base,0.021319396,0.000356718,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Male Inflorescence,TasselPrimaryBranches,L3Base,0.000604234,0.666997764,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,other,TasselBranchLength,L3Base,0.022843075,-3.088158331,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,L3Tip,1.21E-05,0.000329895,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,L3Tip,1.21e-05,0.000329895,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Seed Traits,TotalKernelVolume,L3Base,0.00549534,-1.020320829,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Metabolite,X.5460407..threonic.acid..13.652,L3Tip,0.014361734,0.000367803,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Metabolite,X.6912..xylitol..15.376,L3Tip,3.62E-06,0.00028675,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Metabolite,X.6912..xylitol..15.376,L3Tip,3.62e-06,0.00028675,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Metabolite,X.1549111..caffeic.acid..19.755,L3Tip,0.010593393,-0.000483911,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Metabolite,X.444212..trans.aconitic.acid..15.842..s100,L3Tip,0.004076973,0.001499152,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG005,Zm00001d007718,Metabolite,X.92824..D.malic.acid..12.794..s100,L3Base,7.15E-05,0.002164809,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
+AC148152.3_FG005,Zm00001d007718,Metabolite,X.92824..D.malic.acid..12.794..s100,L3Base,7.15e-05,0.002164809,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Flowering Time,GDDDaystoSilk,L3Tip,0.002833577,8.312824836,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
 AC148152.3_FG005,Zm00001d007718,Metabolite,X.311..citric.acid..16.615..s100,L3Tip,0.003992097,0.00127261,40,2,238143557,238145188,bx13;benzoxazinone synthesis13: encodes a 2-oxoglutarate-dependent dioxygenase that catalyzes the conversion of DIMBOA-Glc into a new benzoxazinoid intermediate (TRIMBOA-Glc) by an uncommon reaction involving a hydroxylation and a likely ortho-rearrangement of a methoxy group.
-AC148152.3_FG008,Zm00001d007716,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Tip,8.14E-06,0.001022111,7,2,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic
+AC148152.3_FG008,Zm00001d007716,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Tip,8.14e-06,0.001022111,7,2,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic
 AC148152.3_FG008,Zm00001d007716,other,Spikelets.PrimaryBranch,GShoot,0.03975114,-0.355052991,7,2,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic
-AC148152.3_FG008,Zm00001d007716,Metabolite,X.311..citric.acid..16.615..s100,LMAD,1.82E-06,-0.002058277,7,2,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic
+AC148152.3_FG008,Zm00001d007716,Metabolite,X.311..citric.acid..16.615..s100,LMAD,1.82e-06,-0.002058277,7,2,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic
 AC148152.3_FG008,Zm00001d007716,Metabolite,X.6508..quinic.acid..17.076..s100,LMAD,0.000784119,-0.00336899,7,2,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic
-AC148152.3_FG008,Zm00001d007716,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,5.06E-13,-0.000120121,7,2,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic
-AC148152.3_FG008,Zm00001d007716,Metabolite,X.60961..adenosine..23.825,L3Tip,0.012005134,3.06E-05,7,2,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic
-AC148152.3_FG008,Zm00001d007716,Metabolite,X.439194..glyceric.acid..10.735,L3Tip,1.55E-06,0.001257806,7,2,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic
+AC148152.3_FG008,Zm00001d007716,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,5.06e-13,-0.000120121,7,2,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic
+AC148152.3_FG008,Zm00001d007716,Metabolite,X.60961..adenosine..23.825,L3Tip,0.012005134,3.06e-05,7,2,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic
+AC148152.3_FG008,Zm00001d007716,Metabolite,X.439194..glyceric.acid..10.735,L3Tip,1.55e-06,0.001257806,7,2,238069977,238074569,Galactolipid galactosyltransferase SFR2 chloroplastic
 AC148167.6_FG001,Zm00001d018986,Metabolite,X.835..dehydroascorbic.acid..1..16.863,LMAN,0.004838397,0.00017096,6,7,12037670,12043615,Protein WVD2-like 3
 AC148167.6_FG001,Zm00001d018986,other,NIROil,GShoot,0.007335551,-0.090099023,6,7,12037670,12043615,Protein WVD2-like 3
 AC148167.6_FG001,Zm00001d018986,Metabolite,X.3037582..mucic.acid..18.907,GShoot,0.002717335,-0.000468641,6,7,12037670,12043615,Protein WVD2-like 3
 AC148167.6_FG001,Zm00001d018986,Female Inflorescence,EarRowNumber,LMAN,0.018481222,0.149985451,6,7,12037670,12043615,Protein WVD2-like 3
-AC148167.6_FG001,Zm00001d018986,Metabolite,X.5321342..beta.sitosterol..28.848,L3Base,7.04E-06,-0.000206555,6,7,12037670,12043615,Protein WVD2-like 3
+AC148167.6_FG001,Zm00001d018986,Metabolite,X.5321342..beta.sitosterol..28.848,L3Base,7.04e-06,-0.000206555,6,7,12037670,12043615,Protein WVD2-like 3
 AC148167.6_FG001,Zm00001d018986,other,RowQuality,GRoot,0.000999373,-0.015181822,6,7,12037670,12043615,Protein WVD2-like 3
 AC149475.2_FG002,Zm00001d048402,other,RowQuality,L3Base,0.00025085,-0.017367458,1,9,155629914,155633305,HR-like lesion-inducing protein-related
-AC149475.2_FG003,Zm00001d048403,Metabolite,X.204..allantoin.1..17.293,L3Tip,3.38E-06,-0.001710297,7,9,155635584,155640617,Proteasome subunit alpha type
+AC149475.2_FG003,Zm00001d048403,Metabolite,X.204..allantoin.1..17.293,L3Tip,3.38e-06,-0.001710297,7,9,155635584,155640617,Proteasome subunit alpha type
 AC149475.2_FG003,Zm00001d048403,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,L3Tip,0.007058836,0.002304566,7,9,155635584,155640617,Proteasome subunit alpha type
 AC149475.2_FG003,Zm00001d048403,Metabolite,X.6057..tyrosine.2..17.871,L3Tip,0.002775466,-0.001503146,7,9,155635584,155640617,Proteasome subunit alpha type
 AC149475.2_FG003,Zm00001d048403,Metabolite,X.642609..trans.caftaric.acid.2..25.529,LMAN,0.008813335,0.000337966,7,9,155635584,155640617,Proteasome subunit alpha type
-AC149475.2_FG003,Zm00001d048403,Metabolite,X.5280450..linoleic.acid..20.399,LMAD,0.04966055,-5.45E-05,7,9,155635584,155640617,Proteasome subunit alpha type
+AC149475.2_FG003,Zm00001d048403,Metabolite,X.5280450..linoleic.acid..20.399,LMAD,0.04966055,-5.45e-05,7,9,155635584,155640617,Proteasome subunit alpha type
 AC149475.2_FG003,Zm00001d048403,other,Spikelets.PrimaryBranch,L3Base,0.004725443,-0.292906221,7,9,155635584,155640617,Proteasome subunit alpha type
 AC149475.2_FG003,Zm00001d048403,Metabolite,X.5951..L.serine.2..11.174..s100,L3Tip,0.019614094,-0.011053339,7,9,155635584,155640617,Proteasome subunit alpha type
 AC149810.2_FG008,Zm00001d048342,other,MainSpikeLength,LMAD,0.000411836,2.808695657,2,9,154782716,154785521,Probable serine/threonine-protein kinase Cx32 chloroplastic
 AC149810.2_FG008,Zm00001d048342,other,NumberofTilleringPlants,LMAD,0.000800158,0.029794769,2,9,154782716,154785521,Probable serine/threonine-protein kinase Cx32 chloroplastic
-AC149818.2_FG001,Zm00001d048393,Metabolite,X.8742..shikimic.acid..16.433..s100,LMAN,3.52E-06,-0.002313332,1,9,155557499,155563185,Ras-related protein RABC2a
+AC149818.2_FG001,Zm00001d048393,Metabolite,X.8742..shikimic.acid..16.433..s100,LMAN,3.52e-06,-0.002313332,1,9,155557499,155563185,Ras-related protein RABC2a
 AC149818.2_FG005,Zm00001d048396,Seed Traits,TotalKernelVolume,Kern,0.036429366,0.769868471,1,9,155583306,155585060,
 AC149818.2_FG006,Zm00001d048397,Seed Traits,EarWeight,L3Tip,0.00539458,1.621968606,1,9,155585504,155588310,Ubiquitin-conjugating enzyme E2 4
 AC193598.3_FG002,Zm00001d035125,Metabolite,X.9750..citrulline.2..16.691,GRoot,0.038057061,-0.000305293,1,6,6267547,6271653,Disease resistance RPP13-like protein 4
@@ -78,31 +78,31 @@ AC194970.5_FG005,Zm00001d006679,other,TilleringIndex,GRoot,0.023067634,0.0069404
 AC194970.5_FG005,Zm00001d006679,other,TilleringIndex,GShoot,0.048798403,0.005317497,2,2,214112550,214117471,UDP-galactose transporter 2
 AC195340.3_FG001,Zm00001d013159,Metabolite,X.5460673..D.saccharic.acid..18.614,GRoot,0.001081272,0.000165218,1,5,5560312,5563194,tua3;alpha tubulin3: alpha tubulin family; mRNA expressed in all dividing cells examined; gene specific cDNA probe
 AC198353.5_FG004,Zm00001d005972,Seed Traits,CobWeight,L3Tip,0.002847725,0.645326465,1,2,194430643,194444880,
-AC198494.3_FG002,Zm00001d009949,Metabolite,X.5321515..stigmasterol..28.442,L3Tip,0.012150901,6.46E-05,1,8,91941258,91943246,Zinc finger CCCH domain-containing protein 14
+AC198494.3_FG002,Zm00001d009949,Metabolite,X.5321515..stigmasterol..28.442,L3Tip,0.012150901,6.46e-05,1,8,91941258,91943246,Zinc finger CCCH domain-containing protein 14
 AC203570.4_FG005,,Metabolite,X.5951..L.serine.2..11.174..s100,L3Base,0.028038401,0.005305502,1,,,,
 AC204611.4_FG001,Zm00001d049178,other,Spikelets.PrimaryBranch,LMAD,0.016342495,0.352112456,1,4,19296978,19299347,Pyridoxal phosphate (PLP)-dependent transferases superfamily protein
-AC206999.1_FG002,Zm00001d031037,Metabolite,X.5321342..beta.sitosterol..28.848,L3Tip,4.90E-05,0.000210589,1,1,174657813,174661816,
-AC207265.3_FG002,Zm00001d045154,Metabolite,X.311..citric.acid..16.615..s100,GRoot,2.63E-08,0.001637795,1,9,14550796,14559105,Putative clathrin assembly protein
+AC206999.1_FG002,Zm00001d031037,Metabolite,X.5321342..beta.sitosterol..28.848,L3Tip,4.9e-05,0.000210589,1,1,174657813,174661816,
+AC207265.3_FG002,Zm00001d045154,Metabolite,X.311..citric.acid..16.615..s100,GRoot,2.63e-08,0.001637795,1,9,14550796,14559105,Putative clathrin assembly protein
 AC207722.2_FG009,Zm00001d021435,Flowering Time,DaysToTassel,LMAD,0.043736375,-1.186220805,1,7,152283433,152284280,Chlorophyll a-b binding protein 1%2C chloroplastic
-AC208031.3_FG002,Zm00001d020820,Metabolite,X.3037582..mucic.acid..18.907,L3Base,4.30E-05,-0.00052165,1,7,133907684,133908130,
+AC208031.3_FG002,Zm00001d020820,Metabolite,X.3037582..mucic.acid..18.907,L3Base,4.3e-05,-0.00052165,1,7,133907684,133908130,
 AC208337.2_FG003,Zm00001d018970,Metabolite,X.439958..D.glucose.6.phosphate.1..21.394,Kern,0.00340412,0.00090349,1,7,11068462,11072400,40S ribosomal protein S23-2
-AC210003.2_FG015,Zm00001d002001,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.021472145,4.59E-05,2,2,4156560,4157278,
-AC210003.2_FG015,Zm00001d002001,Metabolite,X.6262..L.ornithine.2..16.632,L3Base,4.79E-05,0.001072363,2,2,4156560,4157278,
+AC210003.2_FG015,Zm00001d002001,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.021472145,4.59e-05,2,2,4156560,4157278,
+AC210003.2_FG015,Zm00001d002001,Metabolite,X.6262..L.ornithine.2..16.632,L3Base,4.79e-05,0.001072363,2,2,4156560,4157278,
 AC210848.3_FG004,Zm00001d015469,Metabolite,X.6106..L.leucine.2..9.945,LMAN,0.005276582,-0.000710223,1,5,91973542,91980501,dsy2;desynaptic2: synapsis and recombination reduced; RAD51 complexes abnormal
 AC215260.3_FG004,Zm00001d039841,other,Spikelets.MainSpike,L3Tip,0.019352486,0.303818843,1,3,16413698,16414265,Putative 4-hydroxy-4-methyl-2-oxoglutarate aldolase 2
 AC217965.2_FG012,Zm00001d008641,Metabolite,X.5460673..D.saccharic.acid..18.614,L3Tip,0.003992755,0.000134162,1,8,15544170,15545233,Tha8%3B Thylakoid assembly8
-AC233883.1_FG006,Zm00001d052690,Metabolite,X.5951..L.serine.2..11.174..s100,LMAN,6.24E-10,0.02314756,9,4,197459890,197461683,UPF0481 protein
-AC233883.1_FG006,Zm00001d052690,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,LMAN,4.61E-21,0.00412905,9,4,197459890,197461683,UPF0481 protein
+AC233883.1_FG006,Zm00001d052690,Metabolite,X.5951..L.serine.2..11.174..s100,LMAN,6.24e-10,0.02314756,9,4,197459890,197461683,UPF0481 protein
+AC233883.1_FG006,Zm00001d052690,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,LMAN,4.61e-21,0.00412905,9,4,197459890,197461683,UPF0481 protein
 AC233883.1_FG006,Zm00001d052690,Metabolite,X.239..Beta..alanine..1..12.044,L3Tip,0.003042734,0.000538424,9,4,197459890,197461683,UPF0481 protein
 AC233883.1_FG006,Zm00001d052690,Metabolite,X.5951..L.serine.2..11.174..s100,L3Tip,0.021002421,0.010920455,9,4,197459890,197461683,UPF0481 protein
-AC233883.1_FG006,Zm00001d052690,Metabolite,X.12647..L.homoserine.2..12.359,LMAN,1.35E-21,0.000750203,9,4,197459890,197461683,UPF0481 protein
-AC233883.1_FG006,Zm00001d052690,Metabolite,X.239..Beta..alanine..1..12.044,LMAN,1.36E-21,0.002685815,9,4,197459890,197461683,UPF0481 protein
+AC233883.1_FG006,Zm00001d052690,Metabolite,X.12647..L.homoserine.2..12.359,LMAN,1.35e-21,0.000750203,9,4,197459890,197461683,UPF0481 protein
+AC233883.1_FG006,Zm00001d052690,Metabolite,X.239..Beta..alanine..1..12.044,LMAN,1.36e-21,0.002685815,9,4,197459890,197461683,UPF0481 protein
 AC233883.1_FG006,Zm00001d052690,Metabolite,X.439958..D.glucose.6.phosphate.1..21.394,L3Tip,0.000117863,0.001128039,9,4,197459890,197461683,UPF0481 protein
-AC233883.1_FG006,Zm00001d052690,Metabolite,X.6288..L.threonine.2..11.464,LMAN,3.38E-14,0.003187737,9,4,197459890,197461683,UPF0481 protein
-AC233883.1_FG006,Zm00001d052690,Metabolite,X.33032..L.glutamic.acid.3..dehydrated...13.232..s100,LMAN,1.27E-07,0.000860661,9,4,197459890,197461683,UPF0481 protein
+AC233883.1_FG006,Zm00001d052690,Metabolite,X.6288..L.threonine.2..11.464,LMAN,3.38e-14,0.003187737,9,4,197459890,197461683,UPF0481 protein
+AC233883.1_FG006,Zm00001d052690,Metabolite,X.33032..L.glutamic.acid.3..dehydrated...13.232..s100,LMAN,1.27e-07,0.000860661,9,4,197459890,197461683,UPF0481 protein
 AC233885.1_FG002,Zm00001d013660,Metabolite,X.791..DL.isoleucine.2..10.225,GShoot,0.004690553,0.000534484,1,5,16642355,16642990,
-GRMZM2G000052,Zm00001d002266,Metabolite,X.1060..pyruvic.acid..6.714,L3Tip,3.20E-07,0.001298116,1,2,9167395,9172599,Lysine-specific histone demethylase 1
-GRMZM2G000231,Zm00001d044907,Flowering Time,AnthesistoSilkInterval,L3Base,5.54E-05,0.205700318,1,9,6897020,6904501,alpha/beta-Hydrolases superfamily protein
+GRMZM2G000052,Zm00001d002266,Metabolite,X.1060..pyruvic.acid..6.714,L3Tip,3.2e-07,0.001298116,1,2,9167395,9172599,Lysine-specific histone demethylase 1
+GRMZM2G000231,Zm00001d044907,Flowering Time,AnthesistoSilkInterval,L3Base,5.54e-05,0.205700318,1,9,6897020,6904501,alpha/beta-Hydrolases superfamily protein
 GRMZM2G000326,Zm00001d035684,Flowering Time,DaysToTassel,LMAD,0.000224134,-0.732971644,1,6,41090605,41090817,Subtilisin-chymotrypsin inhibitor CI-1B%3B Subtilisin-chymotrypsin inhibitor CI-1B isoform 1%3B Subtilisin-chymotrypsin inhibitor CI-1B isoform 2
 GRMZM2G000665,Zm00001d006115,other,SecondaryBranchNumber,GRoot,0.001554035,0.106184091,1,2,198986664,198998001,Anthocyanin-related membrane protein 1 (Anm1)-like
 GRMZM2G000764,Zm00001d052213,other,TilleringIndex,L3Base,0.000721001,0.00819119,1,4,183434198,183439948,Probable pectin methyltransferase QUA2
@@ -113,34 +113,34 @@ GRMZM2G002420,Zm00001d053367,Seed Traits,CobWeight,L3Tip,0.033985671,0.540876523
 GRMZM2G002606,,other,Spikelets.MainSpike,L3Tip,0.006397294,0.331992363,1,,,,
 GRMZM2G003124,Zm00001d026122,Male Inflorescence,TasselLength,LMAN,0.037287751,-5.568633238,1,10,138963838,138968153,Syntaxin-81
 GRMZM2G003409,Zm00001d007187,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Base,0.000305716,0.000175994,2,2,224120990,224123245,hydroxyproline-rich glycoprotein family protein
-GRMZM2G003409,Zm00001d007187,Metabolite,X.6255..maltose..2..24.915,L3Tip,2.13E-10,0.000346667,2,2,224120990,224123245,hydroxyproline-rich glycoprotein family protein
+GRMZM2G003409,Zm00001d007187,Metabolite,X.6255..maltose..2..24.915,L3Tip,2.13e-10,0.000346667,2,2,224120990,224123245,hydroxyproline-rich glycoprotein family protein
 GRMZM2G003640,Zm00001d033371,other,NIROil,L3Tip,0.001050629,0.083758948,1,1,260861765,260871429,Dual specificity protein phosphatase 1B
-GRMZM2G003750,Zm00001d023374,Metabolite,X.6255..maltose..2..24.915,L3Tip,2.02E-06,0.000272062,1,10,4263636,4265759,CAAX amino terminal protease family protein
-GRMZM2G004079,Zm00001d031844,Metabolite,X.444266..maleic.acid..10.323,L3Tip,0.003298368,2.57E-06,1,1,203695884,203699106,Serine/threonine-protein kinase PEPKR2
+GRMZM2G003750,Zm00001d023374,Metabolite,X.6255..maltose..2..24.915,L3Tip,2.02e-06,0.000272062,1,10,4263636,4265759,CAAX amino terminal protease family protein
+GRMZM2G004079,Zm00001d031844,Metabolite,X.444266..maleic.acid..10.323,L3Tip,0.003298368,2.57e-06,1,1,203695884,203699106,Serine/threonine-protein kinase PEPKR2
 GRMZM2G004703,Zm00001d010650,Metabolite,X.6255..maltose..2..24.915,L3Tip,0.00861647,-0.000152385,1,8,122947080,122947421,Calmodulin
 GRMZM2G005350,Zm00001d011037,Metabolite,X.750..glycine..10.456..s100,GShoot,0.004748143,-0.020038679,1,8,137163480,137166111,MAP kinase phosphatase isoform 1%3B MAP kinase phosphatase isoform 2
-GRMZM2G005461,,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,LMAD,0.002648387,5.89E-05,1,,,,
+GRMZM2G005461,,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,LMAD,0.002648387,5.89e-05,1,,,,
 GRMZM2G005640,Zm00001d053283,Male Inflorescence,TasselLength,LMAN,0.038798969,-5.284911233,1,4,223933580,223937015,Putative ribosomal protein S4 (RPS4A) family protein isoform 1%3B Putative ribosomal protein S4 (RPS4A) family protein isoform 2%3B Putative ribosomal protein S4 (RPS4A) family protein isoform 3
 GRMZM2G005938,Zm00001d024248,Metabolite,X.51..alpha.ketoglutaric.acid..13.859,GShoot,0.001861573,0.000267003,1,10,59441463,59446450,ppr*-59040;pentatricopeptide repeat*-59040: pentatricopeptide repeat-containing protein orthologous to At3g59040
 GRMZM2G006377,Zm00001d038650,Male Inflorescence,TasselPrimaryBranches,GShoot,0.023015904,0.495395737,1,6,161720010,161726844,xylem bark cysteine peptidase 3
 GRMZM2G006753,,other,SouthernLeafBlight,L3Tip,0.001083054,-0.163465447,2,,,,
 GRMZM2G006753,,Metabolite,X.204..allantoin.1..17.293,L3Tip,0.030972234,0.00115995,2,,,,
-GRMZM2G007486,Zm00001d028109,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,0.000986997,5.47E-05,1,1,23110479,23114096,Peptidyl-prolyl cis-trans isomerase CYP65
+GRMZM2G007486,Zm00001d028109,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,0.000986997,5.47e-05,1,1,23110479,23114096,Peptidyl-prolyl cis-trans isomerase CYP65
 GRMZM2G008123,Zm00001d041049,Metabolite,X.6255..maltose..2..24.915,L3Base,0.013687927,-0.00014474,1,3,92907263,92913722,E3 ubiquitin-protein ligase SINA-like 10
-GRMZM2G008247,Zm00001d024037,Female Inflorescence,EarRowNumber,L3Tip,3.86E-05,-0.314643292,1,10,38844199,38849055,Beta-glucosidase2
-GRMZM2G009139,Zm00001d045130,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,7.76E-05,0.00047738,1,9,13727597,13729390,Putative UPF0481 protein
+GRMZM2G008247,Zm00001d024037,Female Inflorescence,EarRowNumber,L3Tip,3.86e-05,-0.314643292,1,10,38844199,38849055,Beta-glucosidase2
+GRMZM2G009139,Zm00001d045130,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,7.76e-05,0.00047738,1,9,13727597,13729390,Putative UPF0481 protein
 GRMZM2G009232,Zm00001d029183,Metabolite,X.6537496..chlorogenic.acid.2..27.18._alt,LMAN,0.002414521,0.002911866,2,1,61469815,61472476,cytochrome P450 family 81 subfamily D polypeptide 8
 GRMZM2G009232,Zm00001d029183,Metabolite,X.8742..shikimic.acid..16.433..s100,LMAN,0.019821484,0.001351381,2,1,61469815,61472476,cytochrome P450 family 81 subfamily D polypeptide 8
-GRMZM2G009282,Zm00001d039994,other,NumberofTilleringPlants,Kern,4.13E-12,0.044865801,1,3,22276219,22281890,Alpha-xylosidase 1
-GRMZM2G009719,Zm00001d009118,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.013406287,4.46E-05,1,8,37520293,37521579,Adenine nucleotide alpha hydrolases-like superfamily protein
+GRMZM2G009282,Zm00001d039994,other,NumberofTilleringPlants,Kern,4.13e-12,0.044865801,1,3,22276219,22281890,Alpha-xylosidase 1
+GRMZM2G009719,Zm00001d009118,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.013406287,4.46e-05,1,8,37520293,37521579,Adenine nucleotide alpha hydrolases-like superfamily protein
 GRMZM2G010054,Zm00001d033734,Seed Traits,TotalSeedWeight,LMAD,0.000573739,-2.05736086,2,1,272416586,272421931,Coatomer subunit alpha-1
 GRMZM2G010054,Zm00001d033734,Seed Traits,EarWeight,LMAD,0.019939673,-2.024668665,2,1,272416586,272421931,Coatomer subunit alpha-1
 GRMZM2G010095,Zm00001d024049,Female Inflorescence,EarRankNumber,L3Base,0.017782771,-0.189271811,1,10,39765508,39781464,BEST Arabidopsis thaliana protein match is: nucleolar protein gar2-related (TAIR:AT2G42320.2); Has 3163 Blast hits to 2460 proteins in 357 species: Archae - 16; Bacteria - 291; Metazoa - 841; Fungi - 335; Plants - 248; Viruses - 72; Other Eukaryotes /.../0 (source: NCBI BLink).
-GRMZM2G010433,Zm00001d037229,Metabolite,X.444266..maleic.acid..10.323,LMAN,0.002151507,6.41E-06,3,6,116920317,116926344,Transmembrane amino acid transporter family protein
+GRMZM2G010433,Zm00001d037229,Metabolite,X.444266..maleic.acid..10.323,LMAN,0.002151507,6.41e-06,3,6,116920317,116926344,Transmembrane amino acid transporter family protein
 GRMZM2G010433,Zm00001d037229,Metabolite,X.12647..L.homoserine.2..12.359,GRoot,0.022887698,0.00016261,3,6,116920317,116926344,Transmembrane amino acid transporter family protein
 GRMZM2G010433,Zm00001d037229,Metabolite,X.6288..L.threonine.2..11.464,GRoot,0.012422884,0.001599835,3,6,116920317,116926344,Transmembrane amino acid transporter family protein
 GRMZM2G010685,Zm00001d030827,Metabolite,X.9750..citrulline.2..16.691,L3Tip,0.007408072,0.000411146,1,1,162050269,162052045,MMS19 nucleotide excision repair protein homolog
-GRMZM2G010927,Zm00001d010693,Metabolite,X.5984..fructose.1..17.18..s100,L3Tip,2.54E-05,0.008601914,1,8,124738149,124740137,21.7 kDa class VI heat shock protein
+GRMZM2G010927,Zm00001d010693,Metabolite,X.5984..fructose.1..17.18..s100,L3Tip,2.54e-05,0.008601914,1,8,124738149,124740137,21.7 kDa class VI heat shock protein
 GRMZM2G011469,Zm00001d052295,other,TasselBranchLength,LMAN,0.029123281,-3.368337904,1,4,186310057,186316348,Probable inactive poly [ADP-ribose] polymerase SRO1
 GRMZM2G011523,,Metabolite,X.1001..phenethylamine..13.742,Kern,0.024302886,-0.000350827,1,,,,
 GRMZM2G012685,Zm00001d037080,Seed Traits,CobWeight,L3Tip,0.000581502,0.70457083,1,6,111637292,111640270,Putative leucine-rich repeat receptor-like protein kinase family protein
@@ -150,30 +150,30 @@ GRMZM2G013324,Zm00001d017036,Metabolite,X.311..citric.acid..16.615..s100,LMAN,0.
 GRMZM2G013378,Zm00001d040393,other,GerminationCount,LMAN,0.001055819,-0.150448298,1,3,41209163,41210950,BSD domain-containing protein
 GRMZM2G013546,Zm00001d049162,other,MiddleLeafAngle,Kern,0.000972584,-1.306799838,1,4,18524687,18525670,Expressed protein;  protein
 GRMZM2G013634,Zm00001d027385,other,SouthernLeafBlight,GShoot,0.000835806,-0.153338305,1,1,4118697,4120755,2-oxoglutarate (2OG) and Fe(II)-dependent oxygenase superfamily protein
-GRMZM2G014392,Zm00001d033222,Metabolite,X.444266..maleic.acid..10.323,L3Tip,0.001032483,-2.98E-06,1,1,255021507,255023321,vp14;viviparous14: viviparous; yellow endosperm; abscisic acid biosynthesis; SSR umc1218
-GRMZM2G014580,,other,SouthernLeafBlight,LMAN,2.10E-08,-0.215642676,1,,,,
+GRMZM2G014392,Zm00001d033222,Metabolite,X.444266..maleic.acid..10.323,L3Tip,0.001032483,-2.98e-06,1,1,255021507,255023321,vp14;viviparous14: viviparous; yellow endosperm; abscisic acid biosynthesis; SSR umc1218
+GRMZM2G014580,,other,SouthernLeafBlight,LMAN,2.1e-08,-0.215642676,1,,,,
 GRMZM2G014797,Zm00001d040786,Metabolite,X.439183..3.phosphoglyceric.acid..16.504,L3Tip,0.034552768,-0.000413297,1,3,65871460,65871780,
 GRMZM2G015067,Zm00001d028113,Female Inflorescence,EarRowNumber,L3Tip,0.008004833,0.204415697,1,1,23243301,23250772,SURF1
 GRMZM2G015127,Zm00001d017516,other,TasselBranchLength,Kern,0.000386257,-5.696301249,1,5,198490145,198492974,Actin-depolymerizing factor
-GRMZM2G015280,Zm00001d047514,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,GRoot,6.70E-08,7.00E-05,1,9,133158891,133160539,Peroxidase 52
-GRMZM2G015908,Zm00001d043621,Metabolite,X.5321515..stigmasterol..28.442,GShoot,4.46E-08,9.05E-05,1,3,205387381,205388211,Phosphatase phospho1
+GRMZM2G015280,Zm00001d047514,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,GRoot,6.7e-08,7e-05,1,9,133158891,133160539,Peroxidase 52
+GRMZM2G015908,Zm00001d043621,Metabolite,X.5321515..stigmasterol..28.442,GShoot,4.46e-08,9.05e-05,1,3,205387381,205388211,Phosphatase phospho1
 GRMZM2G016275,Zm00001d044781,Metabolite,X.236..L.asparagine.2..14.984,L3Tip,0.006372204,-0.004343708,1,9,2214013,2216380,Putative thiol-disulphide oxidoreductase DCC
-GRMZM2G016346,Zm00001d024799,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Tip,5.12E-07,0.000715937,1,10,88684061,88684357,
-GRMZM2G016890,Zm00001d023994,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,Kern,9.27E-06,0.000227029,1,10,35174831,35179918,Beta-glucosidase%2C chloroplastic
+GRMZM2G016346,Zm00001d024799,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Tip,5.12e-07,0.000715937,1,10,88684061,88684357,
+GRMZM2G016890,Zm00001d023994,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,Kern,9.27e-06,0.000227029,1,10,35174831,35179918,Beta-glucosidase%2C chloroplastic
 GRMZM2G016948,Zm00001d052234,Metabolite,X.6262..L.ornithine.2..16.632,GRoot,0.01562247,0.000605649,2,4,184184459,184186027,
-GRMZM2G016948,Zm00001d052234,Metabolite,X.239..Beta..alanine..1..12.044,GRoot,3.73E-05,0.001174201,2,4,184184459,184186027,
+GRMZM2G016948,Zm00001d052234,Metabolite,X.239..Beta..alanine..1..12.044,GRoot,3.73e-05,0.001174201,2,4,184184459,184186027,
 GRMZM2G017159,Zm00001d051832,Development,EarHeight,LMAD,0.003689111,2.742908375,1,4,171496173,171497630,
-GRMZM2G017550,Zm00001d022067,other,TilleringIndex,L3Base,2.29E-07,0.013405588,2,7,169289768,169291428,Glycerophosphodiester phosphodiesterase GDPD5
-GRMZM2G017550,Zm00001d022067,other,NumberofTilleringPlants,L3Base,1.12E-10,0.059861123,2,7,169289768,169291428,Glycerophosphodiester phosphodiesterase GDPD5
-GRMZM2G017629,Zm00001d031345,Metabolite,X.9750..citrulline.2..16.691,L3Tip,1.80E-05,0.000616908,1,1,186945218,186946580,bnlg2057; :
+GRMZM2G017550,Zm00001d022067,other,TilleringIndex,L3Base,2.29e-07,0.013405588,2,7,169289768,169291428,Glycerophosphodiester phosphodiesterase GDPD5
+GRMZM2G017550,Zm00001d022067,other,NumberofTilleringPlants,L3Base,1.12e-10,0.059861123,2,7,169289768,169291428,Glycerophosphodiester phosphodiesterase GDPD5
+GRMZM2G017629,Zm00001d031345,Metabolite,X.9750..citrulline.2..16.691,L3Tip,1.8e-05,0.000616908,1,1,186945218,186946580,bnlg2057; :
 GRMZM2G017894,Zm00001d022428,Seed Traits,TotalKernelVolume,L3Tip,0.000137929,1.50902016,1,7,177456153,177465116,Probable galacturonosyltransferase 7
 GRMZM2G017923,Zm00001d018360,other,RowQuality,LMAD,0.003936098,-0.016542739,1,5,219161503,219165844,Zinc finger CCCH domain-containing protein 22
 GRMZM2G017961,Zm00001d006214,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,L3Base,0.00181066,-0.000284207,1,2,201993607,202010674,Lon protease homolog 2 peroxisomal
 GRMZM2G018417,Zm00001d027578,Metabolite,X.6255..maltose..2..24.915,L3Base,0.014211008,0.00017666,1,1,8363014,8365720,ommp1;outer mitochondrial membrane porin1:
 GRMZM2G018955,Zm00001d005503,Leaf Morphology,LeafLength,L3Tip,0.003873669,11.70371343,1,2,176562853,176567171,
-GRMZM2G019090,Zm00001d041772,Female Inflorescence,EarRowNumber,GShoot,5.36E-06,0.278097243,1,3,136996989,137007669,gst18;glutathione transferase18:
+GRMZM2G019090,Zm00001d041772,Female Inflorescence,EarRowNumber,GShoot,5.36e-06,0.278097243,1,3,136996989,137007669,gst18;glutathione transferase18:
 GRMZM2G019596,Zm00001d010495,Metabolite,X.6288..L.threonine.2..11.464,L3Base,0.001226854,0.001416851,1,8,118000011,118007378,Vesicle-associated protein 2-2
-GRMZM2G019641,,Metabolite,X.439194..glyceric.acid..10.735,L3Base,3.67E-07,0.001280464,1,,,,
+GRMZM2G019641,,Metabolite,X.439194..glyceric.acid..10.735,L3Base,3.67e-07,0.001280464,1,,,,
 GRMZM2G019686,Zm00001d042217,Metabolite,X.5984..fructose.1..17.18..s100,GShoot,0.003030927,0.005721048,1,3,156522883,156523445,FPF1-like protein 1
 GRMZM2G020148,Zm00001d008305,Seed Traits,TotalSeedWeight,LMAD,0.003490616,1.772822581,2,8,4713419,4715161,TRAM LAG1 and CLN8 (TLC) lipid-sensing domain containing protein
 GRMZM2G020148,Zm00001d008305,Seed Traits,EarWeight,LMAD,0.049724319,1.770316209,2,8,4713419,4715161,TRAM LAG1 and CLN8 (TLC) lipid-sensing domain containing protein
@@ -183,7 +183,7 @@ GRMZM2G021410,Zm00001d039701,Metabolite,X.204..allantoin.1..17.293,GShoot,0.0029
 GRMZM2G021802,Zm00001d025304,Flowering Time,GDDAnthesis.SilkingInterval,LMAD,0.000110826,-2.122832126,1,10,113471249,113475000,DNA cross-link repair protein SNM1
 GRMZM2G022347,Zm00001d003877,Metabolite,X.6537496..chlorogenic.acid.2..27.18._alt,LMAN,0.012531199,0.002682716,1,2,64525595,64526098,Pollen-specific protein-like
 GRMZM2G022563,Zm00001d002103,Seed Traits,TotalKernelVolume,L3Base,0.00549534,-1.188485316,1,2,5981831,5989287,3-oxoacyl-[acyl-carrier-protein] synthase III chloroplastic
-GRMZM2G022679,Zm00001d043411,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,2.32E-09,0.00089817,1,3,199019233,199021284,ga2ox3;gibberellin 2-oxidase3:
+GRMZM2G022679,Zm00001d043411,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,2.32e-09,0.00089817,1,3,199019233,199021284,ga2ox3;gibberellin 2-oxidase3:
 GRMZM2G023059,Zm00001d031946,other,TasselBranchLength,L3Tip,0.00500874,-4.258334611,1,1,207701153,207705140,
 GRMZM2G023946,Zm00001d003848,other,SouthernLeafBlight,L3Tip,0.000575607,-0.159625703,1,2,62255456,62263760,
 GRMZM2G024655,Zm00001d008356,Metabolite,X.6508..quinic.acid..17.076..s100,L3Tip,0.000750832,0.005670643,1,8,6168205,6172172,C2H2 and C2HC zinc fingers superfamily protein
@@ -192,54 +192,54 @@ GRMZM2G025742,,Seed Traits,TotalSeedWeight,LMAN,0.000303673,1.861151112,2,,,,
 GRMZM2G025742,,Seed Traits,TotalKernelNum,L3Tip,0.000963737,0.426448934,2,,,,
 GRMZM2G025882,Zm00001d009929,Development,EarHeight,LMAD,0.024843563,2.279713988,1,8,90224127,90225398,Beta-propeller domain of methanol dehydrogenase type%3B Beta-propeller domains of methanol dehydrogenase type
 GRMZM2G026470,Zm00001d010171,Metabolite,X.6255..maltose..2..24.915,L3Tip,0.0333131,-0.000156281,1,8,102865067,102866878,Soluble inorganic pyrophosphatase 1
-GRMZM2G026780,Zm00001d033846,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Tip,6.13E-06,0.000641183,1,1,275610676,275610975,
+GRMZM2G026780,Zm00001d033846,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Tip,6.13e-06,0.000641183,1,1,275610676,275610975,
 GRMZM2G026869,,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,L3Base,0.031669728,0.000224593,1,,,,
 GRMZM2G027021,Zm00001d048944,Seed Traits,CobWeight,L3Tip,0.010498931,0.594546718,1,4,10376067,10385318,GTP-binding protein hflX
 GRMZM2G027135,Zm00001d014080,Metabolite,X.439451..galactinol.2..26.479,L3Base,0.020345635,0.000885227,1,5,31726007,31729760,
 GRMZM2G027479,Zm00001d053007,Metabolite,X.835..dehydroascorbic.acid..1..16.863,GRoot,0.048067765,0.000188636,1,4,208796971,208799934,
-GRMZM2G027857,Zm00001d011984,Metabolite,X.239..Beta..alanine..1..12.044,GShoot,2.98E-05,-0.001075201,1,8,165880817,165889059,Beclin-1-like protein
+GRMZM2G027857,Zm00001d011984,Metabolite,X.239..Beta..alanine..1..12.044,GShoot,2.98e-05,-0.001075201,1,8,165880817,165889059,Beclin-1-like protein
 GRMZM2G028218,Zm00001d013111,Female Inflorescence,CobDiameter,GRoot,0.010771366,0.317668506,1,5,4796152,4799203,DnaJ protein
 GRMZM2G028438,Zm00001d051461,other,EarDiameter,Kern,0.04198825,-0.29070919,1,4,159541879,159543702,Chitin-inducible gibberellin-responsive protein 2
-GRMZM2G028721,Zm00001d040442,Metabolite,X.204..allantoin.1..17.293,L3Tip,1.57E-05,0.001404634,1,3,43569410,43571119,Presenilin-like protein
-GRMZM2G028758,Zm00001d035736,Metabolite,X.239..Beta..alanine..1..12.044,L3Base,4.31E-05,-0.00095291,1,6,44288172,44292160,MACPF domain-containing protein
+GRMZM2G028721,Zm00001d040442,Metabolite,X.204..allantoin.1..17.293,L3Tip,1.57e-05,0.001404634,1,3,43569410,43571119,Presenilin-like protein
+GRMZM2G028758,Zm00001d035736,Metabolite,X.239..Beta..alanine..1..12.044,L3Base,4.31e-05,-0.00095291,1,6,44288172,44292160,MACPF domain-containing protein
 GRMZM2G030293,Zm00001d047697,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,Kern,0.016241994,-0.000173589,1,9,139474060,139475702,40S ribosomal protein S28
 GRMZM2G030444,,Metabolite,X.9750..citrulline.2..16.691,GShoot,0.00244208,0.000225709,1,,,,
-GRMZM2G031065,Zm00001d031801,other,MiddleLeafAngle,L3Base,9.08E-05,1.213297288,1,1,202184534,202185601,Probable carboxylesterase 2
-GRMZM2G031261,Zm00001d023385,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,L3Tip,6.08E-08,0.002455,1,10,4347611,4348392,psk4;phytosulfokine4:
+GRMZM2G031065,Zm00001d031801,other,MiddleLeafAngle,L3Base,9.08e-05,1.213297288,1,1,202184534,202185601,Probable carboxylesterase 2
+GRMZM2G031261,Zm00001d023385,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,L3Tip,6.08e-08,0.002455,1,10,4347611,4348392,psk4;phytosulfokine4:
 GRMZM2G031311,Zm00001d037784,Metabolite,X.1001..phenethylamine..13.742,L3Tip,0.006546611,0.000260852,1,6,137680490,137684176,sm1;salmon silks1: silks salmon color with P1-rr and P1-wr
-GRMZM2G031825,Zm00001d029036,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,8.99E-09,-0.00063963,1,1,55560773,55565406,Hydroxyacylglutathione hydrolase cytoplasmic
+GRMZM2G031825,Zm00001d029036,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,8.99e-09,-0.00063963,1,1,55560773,55565406,Hydroxyacylglutathione hydrolase cytoplasmic
 GRMZM2G032218,Zm00001d002503,Flowering Time,GDDDaystoSilk,LMAD,0.04934639,-11.69940974,2,2,14159122,14168043,ABC transporter C family member 9
 GRMZM2G032218,Zm00001d002503,Flowering Time,DaystoSilk,LMAD,0.049985497,-0.846994541,2,2,14159122,14168043,ABC transporter C family member 9
 GRMZM2G033515,Zm00001d044021,Female Inflorescence,EarRankNumber,L3Tip,0.001919708,-0.332438804,1,3,216967820,216972096,Isocitrate dehydrogenase [NADP]
 GRMZM2G034313,Zm00001d025222,Metabolite,X.2724705..1.6.anhydro.glucose..15.326,L3Tip,0.001128694,0.000142179,1,10,109967184,109969328,splicing factor-related
-GRMZM2G034471,Zm00001d006193,Metabolite,X.3037582..mucic.acid..18.907,L3Tip,5.25E-07,0.000772783,1,2,201255021,201257277,cytochrome P450 family 78 subfamily A polypeptide 8
+GRMZM2G034471,Zm00001d006193,Metabolite,X.3037582..mucic.acid..18.907,L3Tip,5.25e-07,0.000772783,1,2,201255021,201257277,cytochrome P450 family 78 subfamily A polypeptide 8
 GRMZM2G034848,Zm00001d005674,Metabolite,X.3037582..mucic.acid..18.907,L3Base,0.046773808,0.000329304,1,2,182914026,182928799,Enolase
-GRMZM2G035134,Zm00001d044395,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,1.99E-10,0.000156302,1,3,227055572,227057360,Phosphoethanolamine/phosphocholine phosphatase
-GRMZM2G035248,Zm00001d013210,Metabolite,X.204..allantoin.1..17.293,LMAD,2.73E-07,0.004597788,1,5,6604879,6605949,
+GRMZM2G035134,Zm00001d044395,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,1.99e-10,0.000156302,1,3,227055572,227057360,Phosphoethanolamine/phosphocholine phosphatase
+GRMZM2G035248,Zm00001d013210,Metabolite,X.204..allantoin.1..17.293,LMAD,2.73e-07,0.004597788,1,5,6604879,6605949,
 GRMZM2G035502,Zm00001d035595,Metabolite,X.12647..L.homoserine.2..12.359,L3Base,0.045966831,0.000196873,1,6,35975616,35978715,dhar3;dehydroascorbate reductase like3:
-GRMZM2G035944,Zm00001d010730,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Base,6.80E-05,0.000177894,1,8,126238922,126239749,Transcription factor TCP5
-GRMZM2G036365,Zm00001d053001,Metabolite,X.6255..maltose..2..24.915,LMAN,3.79E-15,0.000623757,1,4,208310715,208311971,Eukaryotic aspartyl protease family protein
-GRMZM2G036916,Zm00001d020325,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,0.000269599,5.58E-05,1,7,106755372,106760086,Putative potassium transporter 12
-GRMZM2G036980,Zm00001d010661,Metabolite,X.5951..L.serine.2..11.174..s100,L3Base,9.91E-13,0.010910957,8,8,123211885,123212355,
+GRMZM2G035944,Zm00001d010730,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Base,6.8e-05,0.000177894,1,8,126238922,126239749,Transcription factor TCP5
+GRMZM2G036365,Zm00001d053001,Metabolite,X.6255..maltose..2..24.915,LMAN,3.79e-15,0.000623757,1,4,208310715,208311971,Eukaryotic aspartyl protease family protein
+GRMZM2G036916,Zm00001d020325,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,0.000269599,5.58e-05,1,7,106755372,106760086,Putative potassium transporter 12
+GRMZM2G036980,Zm00001d010661,Metabolite,X.5951..L.serine.2..11.174..s100,L3Base,9.91e-13,0.010910957,8,8,123211885,123212355,
 GRMZM2G036980,Zm00001d010661,Metabolite,X.6288..L.threonine.2..11.464,L3Tip,0.007127275,0.001500746,8,8,123211885,123212355,
-GRMZM2G036980,Zm00001d010661,Metabolite,X.12647..L.homoserine.2..12.359,L3Base,6.27E-09,0.000406564,8,8,123211885,123212355,
+GRMZM2G036980,Zm00001d010661,Metabolite,X.12647..L.homoserine.2..12.359,L3Base,6.27e-09,0.000406564,8,8,123211885,123212355,
 GRMZM2G036980,Zm00001d010661,Metabolite,X.5321342..beta.sitosterol..28.848,L3Tip,0.000818797,0.00020127,8,8,123211885,123212355,
-GRMZM2G036980,Zm00001d010661,Metabolite,X.239..Beta..alanine..1..12.044,L3Base,9.14E-12,0.001985348,8,8,123211885,123212355,
-GRMZM2G036980,Zm00001d010661,Metabolite,X.6288..L.threonine.2..11.464,L3Base,5.36E-12,0.003367558,8,8,123211885,123212355,
-GRMZM2G036980,Zm00001d010661,Metabolite,X.754..glycerol.1.phosphate..16.056,L3Base,2.21E-05,0.001656029,8,8,123211885,123212355,
-GRMZM2G036980,Zm00001d010661,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,L3Base,2.37E-07,0.00313766,8,8,123211885,123212355,
+GRMZM2G036980,Zm00001d010661,Metabolite,X.239..Beta..alanine..1..12.044,L3Base,9.14e-12,0.001985348,8,8,123211885,123212355,
+GRMZM2G036980,Zm00001d010661,Metabolite,X.6288..L.threonine.2..11.464,L3Base,5.36e-12,0.003367558,8,8,123211885,123212355,
+GRMZM2G036980,Zm00001d010661,Metabolite,X.754..glycerol.1.phosphate..16.056,L3Base,2.21e-05,0.001656029,8,8,123211885,123212355,
+GRMZM2G036980,Zm00001d010661,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,L3Base,2.37e-07,0.00313766,8,8,123211885,123212355,
 GRMZM2G037128,Zm00001d054080,Seed Traits,X20KernelWeight,LMAN,0.004584416,0.093210747,1,4,246034945,246038140,Trihelix transcription factor GTL2
 GRMZM2G037209,Zm00001d040780,Metabolite,X.6288..L.threonine.2..11.464,GRoot,0.03592425,0.001266559,1,3,65423933,65426147,
-GRMZM2G037617,,Metabolite,X.5460935..turanose.1..24.81,L3Base,7.68E-05,0.000629995,1,,,,
-GRMZM2G037627,Zm00001d020791,Development,PlantHeight,GShoot,9.07E-05,2.80873159,2,7,132829319,132830404,RING-H2 finger protein ATL5F
-GRMZM2G037627,Zm00001d020791,Development,EarHeight,GShoot,3.89E-06,2.451084623,2,7,132829319,132830404,RING-H2 finger protein ATL5F
+GRMZM2G037617,,Metabolite,X.5460935..turanose.1..24.81,L3Base,7.68e-05,0.000629995,1,,,,
+GRMZM2G037627,Zm00001d020791,Development,PlantHeight,GShoot,9.07e-05,2.80873159,2,7,132829319,132830404,RING-H2 finger protein ATL5F
+GRMZM2G037627,Zm00001d020791,Development,EarHeight,GShoot,3.89e-06,2.451084623,2,7,132829319,132830404,RING-H2 finger protein ATL5F
 GRMZM2G037882,Zm00001d019374,Metabolite,X.8742..shikimic.acid..16.433..s100,LMAN,0.009546477,0.0015563,1,7,30595029,30598300,
 GRMZM2G039278,Zm00001d034104,Metabolite,X.938..nicotinic.acid..10.27,L3Tip,0.002533994,0.000109199,1,1,284067665,284068684,Cytochrome P450 CYP81A4
-GRMZM2G039542,Zm00001d013966,Metabolite,X.439194..glyceric.acid..10.735,L3Base,1.49E-06,-0.001183466,2,5,26539982,26542353,Succinate dehydrogenase subunit 3
+GRMZM2G039542,Zm00001d013966,Metabolite,X.439194..glyceric.acid..10.735,L3Base,1.49e-06,-0.001183466,2,5,26539982,26542353,Succinate dehydrogenase subunit 3
 GRMZM2G039542,Zm00001d013966,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Base,0.00732757,0.000143783,2,5,26539982,26542353,Succinate dehydrogenase subunit 3
 GRMZM2G039580,Zm00001d048771,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,L3Base,0.042586174,0.000227452,1,4,5258510,5260332,Putative polyol transporter 1
 GRMZM2G040079,Zm00001d021145,Seed Traits,CobWeight,GRoot,0.002186156,0.587028564,1,7,144088215,144096509,Bromodomain protein 103
-GRMZM2G040278,Zm00001d048185,Seed Traits,TotalKernelNum,L3Base,5.34E-05,0.518733269,2,9,151986704,151987246,F-box protein SNE
+GRMZM2G040278,Zm00001d048185,Seed Traits,TotalKernelNum,L3Base,5.34e-05,0.518733269,2,9,151986704,151987246,F-box protein SNE
 GRMZM2G040278,Zm00001d048185,Seed Traits,TotalKernelVolume,L3Base,0.002471957,1.273604714,2,9,151986704,151987246,F-box protein SNE
 GRMZM2G040991,Zm00001d000035,other,RowQuality,L3Tip,0.044118377,-0.006403404,1,B73V4_ctg182,384330,387202,
 GRMZM2G041463,Zm00001d038048,Metabolite,X.236..L.asparagine.2..14.984,LMAN,0.011052146,0.004704759,1,6,146337395,146338774,CBL-interacting serine/threonine-protein kinase 15%3B Putative CBL-interacting protein kinase family protein
@@ -248,10 +248,10 @@ GRMZM2G042245,Zm00001d015200,Flowering Time,GDDDaystoSilk,Kern,0.023571552,-9.80
 GRMZM2G042438,Zm00001d017935,Metabolite,X.6255..maltose.1..24.702,L3Base,0.005206548,0.000184619,1,5,210378851,210382756,zinc ion binding
 GRMZM2G043238,Zm00001d009270,Metabolite,X.6288..L.threonine.2..11.464,GRoot,0.01951128,0.001312845,1,8,49685540,49721525,Protein HASTY 1
 GRMZM2G043584,Zm00001d028317,other,SecondaryBranchNumber,GRoot,0.029215522,-0.084397799,1,1,30517819,30521296,Leucine-rich repeat receptor-like serine/threonine-protein kinase BAM3
-GRMZM2G043843,Zm00001d044669,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.015388709,5.01E-05,1,3,234440135,234442192,Calcium uniporter protein 5 mitochondrial
+GRMZM2G043843,Zm00001d044669,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.015388709,5.01e-05,1,3,234440135,234442192,Calcium uniporter protein 5 mitochondrial
 GRMZM2G044354,Zm00001d030620,Seed Traits,TotalKernelVolume,GShoot,0.034204201,-0.839858109,1,1,148968958,148978546,Protein OS-9 homolog
 GRMZM2G044788,Zm00001d016651,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,LMAN,0.002291734,0.000122599,1,5,171267921,171268872,
-GRMZM2G045303,Zm00001d049357,Metabolite,X.128869..galactonic.acid.2..18.504,L3Tip,0.00244337,4.58E-05,1,4,27754839,27761380,26S proteasome non-ATPase regulatory subunit 1 homolog B
+GRMZM2G045303,Zm00001d049357,Metabolite,X.128869..galactonic.acid.2..18.504,L3Tip,0.00244337,4.58e-05,1,4,27754839,27761380,26S proteasome non-ATPase regulatory subunit 1 homolog B
 GRMZM2G045404,Zm00001d017863,other,MiddleLeafAngle,GShoot,0.006528475,1.016953439,1,5,209096527,209100036,Protein-tyrosine-phosphatase IBR5
 GRMZM2G045753,Zm00001d048970,other,TasselBranchLength,Kern,0.036551976,-3.929660974,1,4,11115645,11121173,Glycerophosphodiester phosphodiesterase GDPD4
 GRMZM2G046601,Zm00001d048050,Metabolite,X.444212..trans.aconitic.acid..15.842..s100,L3Base,0.001030604,0.001996803,1,9,148903155,148910943,Glutamine synthetase3 isoform 1%3B Glutamine synthetase3 isoform 2
@@ -263,7 +263,7 @@ GRMZM2G047299,Zm00001d034521,Metabolite,X.9750..citrulline.2..16.691,Kern,0.0405
 GRMZM2G047299,Zm00001d034521,Metabolite,X.9750..citrulline.2..16.691,L3Base,0.000133164,0.000550541,2,1,295609893,295612648,Brain protein 44-like protein
 GRMZM2G047365,Zm00001d034600,Male Inflorescence,TasselLength,GShoot,0.000386953,-5.577991605,1,1,297593232,297596522,Sphingomyelin synthetase family protein
 GRMZM2G047590,Zm00001d001946,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,GRoot,0.000129854,-0.000155466,1,2,3397867,3402119,
-GRMZM2G048274,Zm00001d053109,Metabolite,X.92824..D.malic.acid..12.794..s100,GShoot,8.17E-11,0.003642123,1,4,214211925,214218577,DUF724 domain-containing protein 2
+GRMZM2G048274,Zm00001d053109,Metabolite,X.92824..D.malic.acid..12.794..s100,GShoot,8.17e-11,0.003642123,1,4,214211925,214218577,DUF724 domain-containing protein 2
 GRMZM2G048277,Zm00001d020438,Male Inflorescence,TasselPrimaryBranches,GRoot,0.004004024,0.601821657,1,7,114216529,114218933,Peptidyl-prolyl cis-trans isomerase NIMA-interacting 4
 GRMZM2G048411,Zm00001d005958,Metabolite,X.827..ribitol..15.66,LMAN,0.001086195,0.000202195,1,2,193814484,193820330,mbd117;methyl binding domain117:
 GRMZM2G048910,Zm00001d037334,other,TasselBranchLength,L3Tip,0.00039941,4.669229313,1,6,121922624,121924231,Odorant 1 protein%3B Putative MYB DNA-binding domain superfamily protein
@@ -274,14 +274,14 @@ GRMZM2G050305,,other,MiddleLeafAngle,LMAN,0.008054297,-0.968602713,1,,,,
 GRMZM2G050684,Zm00001d033397,Metabolite,X.5960..aspartic.acid.2..13.207,L3Tip,0.028940692,-0.00188489,1,1,261810539,261821065,CBS domain containing protein
 GRMZM2G050701,Zm00001d036656,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Tip,0.02604242,0.000172273,1,6,96573395,96579915,Protein kinase superfamily protein
 GRMZM2G050714,Zm00001d006227,Metabolite,X.311..citric.acid..16.615..s100,L3Base,0.012767502,0.001356617,1,2,202364747,202368567,Protein XAP5 CIRCADIAN TIMEKEEPER
-GRMZM2G050730,Zm00001d023395,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Tip,2.43E-05,0.000768644,1,10,4672326,4673327,Stress-response A/B barrel domain-containing protein
+GRMZM2G050730,Zm00001d023395,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Tip,2.43e-05,0.000768644,1,10,4672326,4673327,Stress-response A/B barrel domain-containing protein
 GRMZM2G050933,Zm00001d021745,Female Inflorescence,EarRowNumber,L3Tip,0.037338999,0.177040004,1,7,162090191,162092437,CYCD6
 GRMZM2G050984,Zm00001d029626,Metabolite,X.6912..xylitol..15.376,LMAD,0.00195378,-0.000195596,1,1,80234015,80259023,Xanthine dehydrogenase 1
-GRMZM2G051185,Zm00001d053288,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Tip,2.24E-10,0.00090968,1,4,224314851,224315663,Fasciclin-like arabinogalactan protein 6
+GRMZM2G051185,Zm00001d053288,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Tip,2.24e-10,0.00090968,1,4,224314851,224315663,Fasciclin-like arabinogalactan protein 6
 GRMZM2G051917,Zm00001d001803,Metabolite,X.6508..quinic.acid..17.076..s100,L3Tip,0.024653259,0.004369169,1,2,1245474,1250143,Plasma-membrane choline transporter family protein
-GRMZM2G052507,Zm00001d007372,Metabolite,X.6508..quinic.acid..17.076..s100,LMAD,1.14E-09,0.005734195,2,2,230050799,230054726,Serine carboxypeptidase 1
-GRMZM2G052507,Zm00001d007372,Metabolite,X.3037582..mucic.acid..18.907,LMAD,2.63E-14,0.000874813,2,2,230050799,230054726,Serine carboxypeptidase 1
-GRMZM2G052571,Zm00001d042099,Metabolite,X.128869..galactonic.acid.2..18.504,L3Base,0.000503638,5.52E-05,1,3,150690594,150691502,Glutathione S-transferase
+GRMZM2G052507,Zm00001d007372,Metabolite,X.6508..quinic.acid..17.076..s100,LMAD,1.14e-09,0.005734195,2,2,230050799,230054726,Serine carboxypeptidase 1
+GRMZM2G052507,Zm00001d007372,Metabolite,X.3037582..mucic.acid..18.907,LMAD,2.63e-14,0.000874813,2,2,230050799,230054726,Serine carboxypeptidase 1
+GRMZM2G052571,Zm00001d042099,Metabolite,X.128869..galactonic.acid.2..18.504,L3Base,0.000503638,5.52e-05,1,3,150690594,150691502,Glutathione S-transferase
 GRMZM2G052713,Zm00001d041778,Seed Traits,TotalKernelVolume,L3Base,0.008571509,0.965802328,1,3,137460338,137470304,AP-2 complex subunit sigma
 GRMZM2G053284,Zm00001d042731,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,L3Base,0.006168918,0.00262168,1,3,178454661,178457447,Actin-7
 GRMZM2G054109,,other,Spikelets.PrimaryBranch,GRoot,0.030810704,-0.374010681,1,,,,
@@ -289,12 +289,12 @@ GRMZM2G054522,,Metabolite,X.642609..trans.caftaric.acid.2..25.529,GShoot,0.02527
 GRMZM2G055437,Zm00001d025375,Development,EarHeight,L3Base,0.007621039,1.802782646,1,10,116183302,116188328,Transducin/WD40 repeat-like superfamily protein
 GRMZM2G055660,Zm00001d026301,other,TilleringIndex,L3Tip,0.010856128,0.007369437,1,10,143204083,143209377,Protein FAR1-RELATED SEQUENCE 5
 GRMZM2G055699,Zm00001d037918,Metabolite,X.750..glycine..10.456..s100,GShoot,0.001151774,0.023188359,1,6,141972442,141976417,Non-cyanogenic beta-glucosidase
-GRMZM2G055880,Zm00001d027354,Metabolite,X.938..nicotinic.acid..10.27,L3Base,0.001363143,-9.90E-05,1,1,3544521,3549369,Mitochondrial inner membrane protein OXA1
+GRMZM2G055880,Zm00001d027354,Metabolite,X.938..nicotinic.acid..10.27,L3Base,0.001363143,-9.9e-05,1,1,3544521,3549369,Mitochondrial inner membrane protein OXA1
 GRMZM2G056462,Zm00001d029048,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Tip,0.003631957,0.000215835,1,1,56094245,56104240,Eukaryotic translation initiation factor 2 beta subunit
 GRMZM2G056697,Zm00001d024083,Male Inflorescence,TasselLength,LMAN,0.004309386,6.594078179,1,10,42507737,42511403,
 GRMZM2G056702,Zm00001d042279,other,SouthernLeafBlight,L3Base,0.007705562,0.117970206,1,3,158645568,158648768,Probable beta-14-xylosyltransferase IRX10L
-GRMZM2G057044,Zm00001d042433,Metabolite,X.60961..adenosine..23.825,L3Base,2.16E-06,7.56E-05,1,3,167045705,167049086,Histone deacetylase HDT1
-GRMZM2G057950,Zm00001d048325,Metabolite,X.6255..maltose..2..24.915,L3Base,5.48E-11,-0.000306478,1,9,154499835,154502260,Ribosomal protein L32 containing protein isoform 1%3B Ribosomal protein L32 containing protein isoform 2
+GRMZM2G057044,Zm00001d042433,Metabolite,X.60961..adenosine..23.825,L3Base,2.16e-06,7.56e-05,1,3,167045705,167049086,Histone deacetylase HDT1
+GRMZM2G057950,Zm00001d048325,Metabolite,X.6255..maltose..2..24.915,L3Base,5.48e-11,-0.000306478,1,9,154499835,154502260,Ribosomal protein L32 containing protein isoform 1%3B Ribosomal protein L32 containing protein isoform 2
 GRMZM2G058451,Zm00001d021701,other,NIROil,Kern,0.000290778,0.116257985,1,7,160737172,160741199,Transcription factor ILR3
 GRMZM2G058970,,Metabolite,X.204..allantoin.1..17.293,L3Tip,0.000586854,0.001306369,1,,,,
 GRMZM2G059026,Zm00001d049138,Metabolite,X.444972..fumaric.acid..10.94,L3Base,0.030768232,0.000543611,1,4,17366184,17386441,ATP-dependent protease La (LON) domain protein
@@ -302,161 +302,161 @@ GRMZM2G059671,Zm00001d016675,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3B
 GRMZM2G059706,Zm00001d053055,Metabolite,X.439742..beta.cyano.L.alanine..11.288,LMAN,0.024191905,0.001204164,2,4,211054808,211055547,Dirigent protein 23
 GRMZM2G059706,Zm00001d053055,Metabolite,X.5962..L.lysine.2..17.643,LMAN,0.014393156,0.000194563,2,4,211054808,211055547,Dirigent protein 23
 GRMZM2G060296,Zm00001d027293,Metabolite,X.9750..citrulline.2..16.691,L3Tip,0.000228338,0.00054409,1,1,2026825,2034154,spr9;signal recognition particle protein subunit 9:
-GRMZM2G060311,Zm00001d046834,Metabolite,X.8742..shikimic.acid..16.433..s100,L3Tip,7.74E-07,0.004092551,1,9,107877247,107878091,Low temperature and salt responsive protein
-GRMZM2G060690,Zm00001d030849,other,NumberofTilleringPlants,Kern,9.79E-05,0.02441261,1,1,163154468,163156940,Cyclin-A2
+GRMZM2G060311,Zm00001d046834,Metabolite,X.8742..shikimic.acid..16.433..s100,L3Tip,7.74e-07,0.004092551,1,9,107877247,107878091,Low temperature and salt responsive protein
+GRMZM2G060690,Zm00001d030849,other,NumberofTilleringPlants,Kern,9.79e-05,0.02441261,1,1,163154468,163156940,Cyclin-A2
 GRMZM2G060726,Zm00001d038805,Metabolite,X.6508..quinic.acid..17.076..s100,GShoot,0.002520238,-0.005555125,1,6,164801102,164807892,Probable transcriptional regulatory protein
-GRMZM2G060943,Zm00001d000143,Metabolite,X.5321342..beta.sitosterol..28.848,L3Tip,3.76E-09,0.000315579,1,B73V4_ctg193,266240,271023,Expressed protein;  protein
+GRMZM2G060943,Zm00001d000143,Metabolite,X.5321342..beta.sitosterol..28.848,L3Tip,3.76e-09,0.000315579,1,B73V4_ctg193,266240,271023,Expressed protein;  protein
 GRMZM2G061283,Zm00001d046073,Metabolite,X.439958..D.glucose.6.phosphate.1..21.394,L3Base,0.036053028,-0.000890385,1,9,61597161,61601700,Protein trichome birefringence-like 26
 GRMZM2G061396,Zm00001d012109,other,StandCount,L3Base,0.017124637,0.062804091,1,8,168378132,168379047,BCL-2 binding anthanogene-1
-GRMZM2G061922,Zm00001d022541,Metabolite,X.5280450..linoleic.acid..20.399,GRoot,1.21E-06,0.000142751,1,7,179741780,179745492,SNARE-like superfamily protein
-GRMZM2G062391,Zm00001d029064,Metabolite,X.5951..L.serine.2..11.174..s100,L3Base,7.93E-05,0.008113304,1,1,56911430,56916805,basic leucine-zipper 52
-GRMZM2G062531,Zm00001d040979,Metabolite,X.6912..xylitol..15.376,L3Tip,3.82E-05,0.000298429,1,3,87676828,87677700,Methylsterol monooxygenase 1-2
-GRMZM2G063517,Zm00001d020810,Metabolite,X.5321342..beta.sitosterol..28.848,L3Tip,9.15E-08,0.000411926,1,7,133596384,133609425,S-adenosyl-L-methionine-dependent methyltransferases superfamily protein
+GRMZM2G061922,Zm00001d022541,Metabolite,X.5280450..linoleic.acid..20.399,GRoot,1.21e-06,0.000142751,1,7,179741780,179745492,SNARE-like superfamily protein
+GRMZM2G062391,Zm00001d029064,Metabolite,X.5951..L.serine.2..11.174..s100,L3Base,7.93e-05,0.008113304,1,1,56911430,56916805,basic leucine-zipper 52
+GRMZM2G062531,Zm00001d040979,Metabolite,X.6912..xylitol..15.376,L3Tip,3.82e-05,0.000298429,1,3,87676828,87677700,Methylsterol monooxygenase 1-2
+GRMZM2G063517,Zm00001d020810,Metabolite,X.5321342..beta.sitosterol..28.848,L3Tip,9.15e-08,0.000411926,1,7,133596384,133609425,S-adenosyl-L-methionine-dependent methyltransferases superfamily protein
 GRMZM2G064197,Zm00001d020019,other,NumberofTilleringPlants,L3Tip,0.000297779,0.028067785,1,7,86094098,86099698,Protein PHR1-LIKE 3
-GRMZM2G064382,Zm00001d036965,Metabolite,X.3037582..mucic.acid..18.907,GShoot,2.89E-15,0.001143891,1,6,107624423,107627557,Zinc transporter 4
-GRMZM2G064537,Zm00001d052093,Metabolite,X.12647..L.homoserine.2..12.359,L3Base,2.56E-08,0.000390976,5,4,179375071,179380872,Chaperone DnaJ-domain superfamily protein
+GRMZM2G064382,Zm00001d036965,Metabolite,X.3037582..mucic.acid..18.907,GShoot,2.89e-15,0.001143891,1,6,107624423,107627557,Zinc transporter 4
+GRMZM2G064537,Zm00001d052093,Metabolite,X.12647..L.homoserine.2..12.359,L3Base,2.56e-08,0.000390976,5,4,179375071,179380872,Chaperone DnaJ-domain superfamily protein
 GRMZM2G064537,Zm00001d052093,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,L3Base,0.00052709,0.002182481,5,4,179375071,179380872,Chaperone DnaJ-domain superfamily protein
-GRMZM2G064537,Zm00001d052093,Metabolite,X.239..Beta..alanine..1..12.044,GShoot,7.59E-12,0.001603666,5,4,179375071,179380872,Chaperone DnaJ-domain superfamily protein
-GRMZM2G064537,Zm00001d052093,Metabolite,X.12647..L.homoserine.2..12.359,GShoot,3.71E-13,0.000451167,5,4,179375071,179380872,Chaperone DnaJ-domain superfamily protein
-GRMZM2G064537,Zm00001d052093,Metabolite,X.6288..L.threonine.2..11.464,GShoot,8.24E-07,0.002265603,5,4,179375071,179380872,Chaperone DnaJ-domain superfamily protein
-GRMZM2G065284,Zm00001d025682,other,NumberofTilleringPlants,Kern,3.66E-06,0.029620679,1,10,126118595,126120725,Serine/arginine-rich splicing factor RS2Z32
+GRMZM2G064537,Zm00001d052093,Metabolite,X.239..Beta..alanine..1..12.044,GShoot,7.59e-12,0.001603666,5,4,179375071,179380872,Chaperone DnaJ-domain superfamily protein
+GRMZM2G064537,Zm00001d052093,Metabolite,X.12647..L.homoserine.2..12.359,GShoot,3.71e-13,0.000451167,5,4,179375071,179380872,Chaperone DnaJ-domain superfamily protein
+GRMZM2G064537,Zm00001d052093,Metabolite,X.6288..L.threonine.2..11.464,GShoot,8.24e-07,0.002265603,5,4,179375071,179380872,Chaperone DnaJ-domain superfamily protein
+GRMZM2G065284,Zm00001d025682,other,NumberofTilleringPlants,Kern,3.66e-06,0.029620679,1,10,126118595,126120725,Serine/arginine-rich splicing factor RS2Z32
 GRMZM2G065388,,Seed Traits,TotalKernelVolume,L3Base,0.047176663,-0.849918275,1,,,,
 GRMZM2G065394,Zm00001d046778,Metabolite,X.5988..Sucrose..23.988..s100,L3Base,0.000313763,0.101130145,1,9,105591027,105593488,IQ-domain 33
 GRMZM2G065451,Zm00001d053890,Metabolite,X.439242..Raffinose..29.282,L3Tip,0.00803286,0.00247811,1,4,243050411,243053629,Squamosa promoter-binding-like protein 2
 GRMZM2G065496,Zm00001d030907,Seed Traits,CobWeight,GShoot,0.019769883,0.534270681,1,1,166741910,166744810,B3 domain-containing protein
 GRMZM2G066234,Zm00001d033318,Female Inflorescence,EarLength,GRoot,0.019149977,-2.211450413,1,1,258854604,258874451,Protein OSB2 chloroplastic
-GRMZM2G066290,Zm00001d018961,Seed Traits,TotalSeedWeight,LMAN,8.37E-07,2.191820669,1,7,10795045,10799314,Pyruvate kinase
-GRMZM2G066362,Zm00001d039675,Metabolite,X.1060..pyruvic.acid..6.714,L3Tip,8.80E-06,0.001135711,1,3,11578624,11583177,Dol-P-Man:Man(5)GlcNAc(2)-PP-Dol alpha-13-mannosyltransferase
+GRMZM2G066290,Zm00001d018961,Seed Traits,TotalSeedWeight,LMAN,8.37e-07,2.191820669,1,7,10795045,10799314,Pyruvate kinase
+GRMZM2G066362,Zm00001d039675,Metabolite,X.1060..pyruvic.acid..6.714,L3Tip,8.8e-06,0.001135711,1,3,11578624,11583177,Dol-P-Man:Man(5)GlcNAc(2)-PP-Dol alpha-13-mannosyltransferase
 GRMZM2G066636,Zm00001d022254,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,Kern,0.016573442,0.002082002,3,7,173713829,173715713,Haloacid dehalogenase-like hydrolase (HAD) superfamily protein
-GRMZM2G066636,Zm00001d022254,Metabolite,X.6537496..chlorogenic.acid.1..26.37,Kern,8.60E-13,0.002012826,3,7,173713829,173715713,Haloacid dehalogenase-like hydrolase (HAD) superfamily protein
-GRMZM2G066636,Zm00001d022254,Metabolite,X.6106..L.leucine.2..9.945,Kern,3.51E-09,0.000762891,3,7,173713829,173715713,Haloacid dehalogenase-like hydrolase (HAD) superfamily protein
-GRMZM2G068382,Zm00001d023756,Flowering Time,GDDDaystoTassel,L3Tip,4.31E-06,-8.786679896,1,10,18981329,18992718,
+GRMZM2G066636,Zm00001d022254,Metabolite,X.6537496..chlorogenic.acid.1..26.37,Kern,8.6e-13,0.002012826,3,7,173713829,173715713,Haloacid dehalogenase-like hydrolase (HAD) superfamily protein
+GRMZM2G066636,Zm00001d022254,Metabolite,X.6106..L.leucine.2..9.945,Kern,3.51e-09,0.000762891,3,7,173713829,173715713,Haloacid dehalogenase-like hydrolase (HAD) superfamily protein
+GRMZM2G068382,Zm00001d023756,Flowering Time,GDDDaystoTassel,L3Tip,4.31e-06,-8.786679896,1,10,18981329,18992718,
 GRMZM2G068755,Zm00001d012525,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,L3Tip,0.041514096,0.001081213,1,8,176068190,176095819,Protein MOR1
-GRMZM2G069078,Zm00001d012528,Metabolite,X.6288..L.threonine.2..11.464,L3Tip,2.00E-05,0.00214952,3,8,176106383,176108142,Pentatricopeptide repeat-containing protein  mitochondrial
+GRMZM2G069078,Zm00001d012528,Metabolite,X.6288..L.threonine.2..11.464,L3Tip,2e-05,0.00214952,3,8,176106383,176108142,Pentatricopeptide repeat-containing protein  mitochondrial
 GRMZM2G069078,Zm00001d012528,Metabolite,X.204..allantoin.1..17.293,L3Tip,0.035409204,0.000985746,3,8,176106383,176108142,Pentatricopeptide repeat-containing protein  mitochondrial
 GRMZM2G069078,Zm00001d012528,Metabolite,X.5962..L.lysine.2..17.643,L3Tip,0.006024451,0.000151583,3,8,176106383,176108142,Pentatricopeptide repeat-containing protein  mitochondrial
 GRMZM2G069208,Zm00001d040314,Metabolite,X.3037582..mucic.acid..18.907,L3Tip,0.030532151,0.000396612,1,3,37618168,37622190,Transcription factor Pur-alpha 1
 GRMZM2G069260,Zm00001d012464,other,EarDiameter,Kern,0.010609286,-0.318646517,1,8,174970601,174974661,npi414a; : similar to Arabidopsis NADH dehydrogenase
-GRMZM2G070041,Zm00001d035715,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.028257181,3.96E-05,1,6,42371956,42377078,
-GRMZM2G070087,Zm00001d027700,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,GRoot,0.002832103,5.05E-05,1,1,11409287,11410861,pht9;phosphate transporter protein9:
-GRMZM2G070211,,Metabolite,X.9750..citrulline.2..16.691,GRoot,3.99E-05,0.000484154,2,,,,
+GRMZM2G070041,Zm00001d035715,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.028257181,3.96e-05,1,6,42371956,42377078,
+GRMZM2G070087,Zm00001d027700,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,GRoot,0.002832103,5.05e-05,1,1,11409287,11410861,pht9;phosphate transporter protein9:
+GRMZM2G070211,,Metabolite,X.9750..citrulline.2..16.691,GRoot,3.99e-05,0.000484154,2,,,,
 GRMZM2G070211,,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,L3Base,0.034229265,0.001513771,2,,,,
 GRMZM2G070500,Zm00001d035713,Metabolite,X.444972..fumaric.acid..10.94,L3Tip,0.015525247,0.000516216,1,6,42066918,42068999,WAT1-related protein
 GRMZM2G071468,Zm00001d017507,Seed Traits,TotalKernelNum,Kern,0.001514823,-0.417264939,1,5,197864412,197884322,Homeodomain-like superfamily protein
-GRMZM2G072205,Zm00001d022144,Metabolite,X.444266..maleic.acid..10.323,L3Tip,0.003298368,2.74E-06,1,7,171127550,171132481,3-oxoacyl-[acyl-carrier-protein] synthase II chloroplastic
+GRMZM2G072205,Zm00001d022144,Metabolite,X.444266..maleic.acid..10.323,L3Tip,0.003298368,2.74e-06,1,7,171127550,171132481,3-oxoacyl-[acyl-carrier-protein] synthase II chloroplastic
 GRMZM2G072298,Zm00001d040265,other,MainSpikeLength,L3Tip,0.026052694,4.925160003,1,3,35056424,35060100,Glycerol-3-phosphate acyltransferase 1
 GRMZM2G072383,,Metabolite,X.439242..Raffinose..29.282,L3Base,0.010855481,0.00244186,1,,,,
 GRMZM2G073023,Zm00001d036084,Metabolite,X.5960..aspartic.acid.2..13.207,L3Tip,0.034585791,-0.001834381,1,6,71123570,71130979,ER-derived vesicles protein ERV14%3B ER-derived vesicles protein ERV14 isoform 1%3B ER-derived vesicles protein ERV14 isoform 2
-GRMZM2G073826,,Male Inflorescence,TasselLength,L3Tip,4.88E-06,7.179709518,1,,,,
+GRMZM2G073826,,Male Inflorescence,TasselLength,L3Tip,4.88e-06,7.179709518,1,,,,
 GRMZM2G074053,Zm00001d017557,Metabolite,X.700..ethanolamine..9.879,LMAD,0.002387638,-0.000365571,1,5,199518262,199519560,Amino acid transporter ANTL2
-GRMZM2G074761,Zm00001d002435,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.001213724,-6.27E-05,1,2,12596887,12598336,Alternative oxidase
+GRMZM2G074761,Zm00001d002435,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.001213724,-6.27e-05,1,2,12596887,12598336,Alternative oxidase
 GRMZM2G074946,Zm00001d029525,Metabolite,X.239..Beta..alanine..1..12.044,L3Tip,0.003445425,0.000621889,1,1,74653797,74658730,Probable 6-phosphogluconolactonase 1
 GRMZM2G075150,Zm00001d014179,Metabolite,X.204..allantoin.1..17.293,L3Tip,0.008561999,-0.001183577,1,5,35149066,35151432,Exocyst complex component SEC15A
 GRMZM2G075562,Zm00001d017885,other,Spikelets.MainSpike,L3Tip,0.029320654,-0.324091561,1,5,209614260,209620254,Zinc finger protein CONSTANS-LIKE 9
 GRMZM2G075624,Zm00001d014954,other,SecondaryBranchNumber,GShoot,0.046939985,-0.090509575,1,5,69765432,69768123,tct1;translationally controlled tumor1: vegetative meristem cDNA 7C02C06 similar to protein conserved in yeast
 GRMZM2G075943,,Metabolite,X.1549111..caffeic.acid..19.755,LMAN,0.04530336,0.000608832,1,,,,
 GRMZM2G076410,,Metabolite,X.444972..fumaric.acid..10.94,GRoot,0.008008848,0.000610464,1,,,,
-GRMZM2G076542,Zm00001d019447,Metabolite,X.92824..D.malic.acid..12.794..s100,L3Tip,1.85E-05,0.00259549,1,7,34301167,34302974,
+GRMZM2G076542,Zm00001d019447,Metabolite,X.92824..D.malic.acid..12.794..s100,L3Tip,1.85e-05,0.00259549,1,7,34301167,34302974,
 GRMZM2G076943,Zm00001d035400,Metabolite,X.5951..L.serine.2..11.174..s100,L3Tip,0.040902596,0.010634063,2,6,24389981,24393065,
 GRMZM2G076943,Zm00001d035400,Metabolite,X.239..Beta..alanine..1..12.044,L3Tip,0.000341166,0.000732192,2,6,24389981,24393065,
-GRMZM2G076989,Zm00001d030767,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.008904558,4.99E-05,1,1,159023195,159024457,
+GRMZM2G076989,Zm00001d030767,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.008904558,4.99e-05,1,1,159023195,159024457,
 GRMZM2G077197,Zm00001d039469,other,NIROil,L3Tip,0.034162884,0.069809589,1,3,5145889,5150710,Regulatory protein NPR1
-GRMZM2G077293,Zm00001d043675,Metabolite,X.92824..D.malic.acid..12.794..s100,Kern,8.79E-08,0.003946197,1,3,206997386,207000397,rtl2;reversion-to-ethylene sensitivity1 like2: Over-expression reduces ethylene responses
+GRMZM2G077293,Zm00001d043675,Metabolite,X.92824..D.malic.acid..12.794..s100,Kern,8.79e-08,0.003946197,1,3,206997386,207000397,rtl2;reversion-to-ethylene sensitivity1 like2: Over-expression reduces ethylene responses
 GRMZM2G077420,Zm00001d003047,Seed Traits,TotalKernelNum,LMAD,0.002680578,0.335635559,1,2,30304175,30307240,Pentatricopeptide repeat-containing protein  mitochondrial
-GRMZM2G077811,Zm00001d002727,other,SeedSetLength,L3Base,3.30E-06,2.352123277,1,2,20534714,20537080,Acyl-acyl carrier protein thioesterase ATL3 chloroplastic
+GRMZM2G077811,Zm00001d002727,other,SeedSetLength,L3Base,3.3e-06,2.352123277,1,2,20534714,20537080,Acyl-acyl carrier protein thioesterase ATL3 chloroplastic
 GRMZM2G078779,Zm00001d020875,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,Kern,0.000108908,0.002785232,1,7,135220239,135221598,burp4;BURP domain-containing protein-RD22-like4:
-GRMZM2G078820,Zm00001d036768,Metabolite,X.5460935..turanose.1..24.81,Kern,7.25E-10,0.000650799,1,6,100159664,100160590,Transcription factor MYB44
+GRMZM2G078820,Zm00001d036768,Metabolite,X.5460935..turanose.1..24.81,Kern,7.25e-10,0.000650799,1,6,100159664,100160590,Transcription factor MYB44
 GRMZM2G079281,,Metabolite,X.5962..L.lysine.2..17.643,GShoot,0.015011716,0.000165726,2,,,,
-GRMZM2G079281,,Metabolite,X.9750..citrulline.2..16.691,GShoot,1.95E-08,0.000334563,2,,,,
+GRMZM2G079281,,Metabolite,X.9750..citrulline.2..16.691,GShoot,1.95e-08,0.000334563,2,,,,
 GRMZM2G080001,Zm00001d022434,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Base,0.017142535,-0.000683999,1,7,177646176,177649676,Ribosomal protein S6 kinase
 GRMZM2G080168,Zm00001d049158,other,NIROil,L3Tip,0.028633874,0.066391412,1,4,18372576,18374628,Transcription factor bHLH62
 GRMZM2G080349,Zm00001d020845,Metabolite,X.444212..trans.aconitic.acid..15.842..s100,L3Tip,0.001408021,0.001852067,1,7,134486165,134489807,
 GRMZM2G081017,Zm00001d006009,Seed Traits,TotalKernelVolume,L3Base,0.002566594,1.034995059,1,2,195217954,195218745,Fasciclin-like arabinogalactan protein 7
 GRMZM2G081239,Zm00001d044826,Male Inflorescence,TasselPrimaryBranches,L3Tip,0.004144131,0.567614111,1,9,4090119,4093538,nip2c;NOD26-like membrane intrinsic protein2:
-GRMZM2G081848,Zm00001d008679,other,TasselBranchLength,L3Tip,4.09E-06,6.014087919,1,8,16965852,16973486,Nucleotide/sugar transporter family protein
+GRMZM2G081848,Zm00001d008679,other,TasselBranchLength,L3Tip,4.09e-06,6.014087919,1,8,16965852,16973486,Nucleotide/sugar transporter family protein
 GRMZM2G081928,Zm00001d035336,Metabolite,X.5460935..turanose.1..24.81,L3Tip,0.013376831,0.000449282,1,6,21911375,21912966,Peroxidase superfamily protein
 GRMZM2G081943,Zm00001d034534,Metabolite,X.827..ribitol..15.66,L3Base,0.020002571,0.00018468,2,1,295789807,295791193,
 GRMZM2G081943,Zm00001d034534,Metabolite,X.827..ribitol..15.66,L3Tip,0.021671414,0.000163605,2,1,295789807,295791193,
-GRMZM2G082181,Zm00001d002663,Metabolite,X.938..nicotinic.acid..10.27,Kern,0.003933817,-5.23E-05,1,2,18761204,18766099,Protein LAZ1
-GRMZM2G082346,Zm00001d029217,Metabolite,X.1060..pyruvic.acid..6.714,L3Tip,6.34E-05,-0.000977291,1,1,62743193,62743990,Probable F-box protein At1g60180
-GRMZM2G083076,Zm00001d014436,other,Spikelets.PrimaryBranch,LMAD,2.79E-06,0.544251439,1,5,46815072,46820700,26S proteasome non-ATPase regulatory subunit 13 homolog A
+GRMZM2G082181,Zm00001d002663,Metabolite,X.938..nicotinic.acid..10.27,Kern,0.003933817,-5.23e-05,1,2,18761204,18766099,Protein LAZ1
+GRMZM2G082346,Zm00001d029217,Metabolite,X.1060..pyruvic.acid..6.714,L3Tip,6.34e-05,-0.000977291,1,1,62743193,62743990,Probable F-box protein At1g60180
+GRMZM2G083076,Zm00001d014436,other,Spikelets.PrimaryBranch,LMAD,2.79e-06,0.544251439,1,5,46815072,46820700,26S proteasome non-ATPase regulatory subunit 13 homolog A
 GRMZM2G083130,Zm00001d041763,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Tip,0.000865223,0.000579307,1,3,136454209,136455684,Cytokinin-O-glucosyltransferase 2
 GRMZM2G083427,Zm00001d047854,Flowering Time,AnthesistoSilkInterval,Kern,0.003290034,-0.160178412,1,9,143512868,143522027,LAG1 longevity assurance homolog 2
 GRMZM2G084173,Zm00001d036079,other,MiddleLeafAngle,GRoot,0.001188484,1.070849237,1,6,70988040,70992940,
 GRMZM2G085198,Zm00001d029747,Metabolite,X.12647..L.homoserine.2..12.359,LMAN,0.003358381,0.000202602,1,1,85172704,85174464,Peroxidase 64
-GRMZM2G085602,Zm00001d012640,Metabolite,X.3037582..mucic.acid..18.907,L3Base,8.48E-07,0.000624975,1,8,177653401,177663257,Jacalin-related lectin 3
+GRMZM2G085602,Zm00001d012640,Metabolite,X.3037582..mucic.acid..18.907,L3Base,8.48e-07,0.000624975,1,8,177653401,177663257,Jacalin-related lectin 3
 GRMZM2G086971,Zm00001d003589,Metabolite,X.5951..L.serine.2..11.174..s100,L3Tip,0.010608554,0.012670722,1,2,49078847,49082055,ypt1;ypt homolog1: cDNAs obtained by homology to GTP-binding domain of ras-protein family and mouse ypt protein
-GRMZM2G087226,Zm00001d053802,Metabolite,X.448388..D.allose.1..17.278,L3Tip,0.002240506,-6.28E-05,1,4,241403906,241405327,dek10;defective kernel10: collapsed endosperm; lethal; cultured embryos green
+GRMZM2G087226,Zm00001d053802,Metabolite,X.448388..D.allose.1..17.278,L3Tip,0.002240506,-6.28e-05,1,4,241403906,241405327,dek10;defective kernel10: collapsed endosperm; lethal; cultured embryos green
 GRMZM2G087870,,Metabolite,X.5984..fructose.1..17.18..s100,L3Base,0.029618107,0.005508244,1,,,,
 GRMZM2G088132,Zm00001d011135,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,LMAN,0.002534427,0.000132916,1,8,140019374,140028075,Mitochondrial outer membrane protein porin 3
 GRMZM2G088409,,Metabolite,X.444972..fumaric.acid..10.94,L3Base,0.011609042,0.000632727,1,,,,
 GRMZM2G088539,Zm00001d024016,Metabolite,X.3037582..mucic.acid..18.907,L3Tip,0.020825836,0.000410622,1,10,37077737,37083244,zinc finger (Ran-binding) family protein
 GRMZM2G089365,Zm00001d040084,Seed Traits,CobWeight,GRoot,0.001453513,-0.587089033,1,3,26931529,26935231,Fructose-bisphosphate aldolase
 GRMZM2G090043,Zm00001d033909,other,Spikelets.PrimaryBranch,LMAN,0.021839699,0.408797151,1,1,278287593,278288252,Expressed protein;  protein
-GRMZM2G090262,Zm00001d038100,Female Inflorescence,EarRowNumber,GShoot,6.25E-06,0.253232883,1,6,147934926,147945863,CPL3
+GRMZM2G090262,Zm00001d038100,Female Inflorescence,EarRowNumber,GShoot,6.25e-06,0.253232883,1,6,147934926,147945863,CPL3
 GRMZM2G090872,Zm00001d002408,Metabolite,X.3037582..mucic.acid..18.907,LMAN,0.009106774,0.000572106,1,2,12112262,12114644,CHL-CPN10
 GRMZM2G091003,Zm00001d051509,Metabolite,X.5988..Sucrose..23.988..s100,GShoot,0.045931895,0.067590033,1,4,160961176,160963697,Putative HLH DNA-binding domain superfamily protein
 GRMZM2G091176,,Metabolite,X.6106..L.leucine.2..9.945,L3Base,0.003191819,0.00089295,2,,,,
-GRMZM2G091176,,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Base,8.76E-15,0.001801751,2,,,,
-GRMZM2G091233,Zm00001d048214,Metabolite,X.444266..maleic.acid..10.323,L3Tip,0.000280769,3.32E-06,1,9,152581965,152582732,CHP-rich zinc finger protein-like;  protein
+GRMZM2G091176,,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Base,8.76e-15,0.001801751,2,,,,
+GRMZM2G091233,Zm00001d048214,Metabolite,X.444266..maleic.acid..10.323,L3Tip,0.000280769,3.32e-06,1,9,152581965,152582732,CHP-rich zinc finger protein-like;  protein
 GRMZM2G092281,Zm00001d048463,Metabolite,X.700..ethanolamine..9.879,L3Tip,0.011795883,0.000445596,1,9,156771660,156777465,Hemolysin
 GRMZM2G092588,Zm00001d016731,other,TilleringIndex,LMAN,0.000106819,-0.010566325,1,5,174487970,174493164,Digalactosyldiacylglycerol synthase 1 chloroplastic
 GRMZM2G093139,Zm00001d013398,other,NIRStarch,L3Base,0.005909662,0.314776004,1,5,10354488,10356964,
 GRMZM2G093902,Zm00001d022111,other,SouthernLeafBlight,GShoot,0.008732252,-0.137561803,1,7,170578902,170582501,40S ribosomal protein S3-1
 GRMZM2G094050,Zm00001d008500,other,StandCount,L3Tip,0.001480346,0.086799107,1,8,10485507,10486334,Sarcoplasmic reticulum histidine-rich calcium-binding protein
-GRMZM2G094304,Zm00001d008587,Metabolite,X.6255..maltose..2..24.915,L3Tip,9.43E-09,0.000358472,1,8,13681436,13683379,Class I glutamine amidotransferase-like superfamily protein
+GRMZM2G094304,Zm00001d008587,Metabolite,X.6255..maltose..2..24.915,L3Tip,9.43e-09,0.000358472,1,8,13681436,13683379,Class I glutamine amidotransferase-like superfamily protein
 GRMZM2G094390,Zm00001d030031,Seed Traits,TotalSeedWeight,LMAN,0.038679899,1.448539096,1,1,100836103,100840993,ADP-ribosylation factor GTPase-activating protein AGD10
-GRMZM2G095280,Zm00001d008795,Leaf Morphology,LeafWidth,LMAD,8.92E-05,-1.463788121,1,8,20660019,20662322,UDP-glycosyltransferase 74B1
+GRMZM2G095280,Zm00001d008795,Leaf Morphology,LeafWidth,LMAD,8.92e-05,-1.463788121,1,8,20660019,20662322,UDP-glycosyltransferase 74B1
 GRMZM2G095595,Zm00001d008720,Metabolite,X.439194..glyceric.acid..10.735,L3Base,0.038083549,0.000761378,1,8,17728577,17733628,Adenine nucleotide alpha hydrolases-like superfamily protein
 GRMZM2G095807,Zm00001d010802,other,SouthernLeafBlight,L3Tip,0.023588875,-0.126439034,1,8,128255294,128257515,UDP-glycosyltransferase 88A1
-GRMZM2G097297,Zm00001d052683,Metabolite,X.642609..trans.caftaric.acid.2..25.529,GShoot,3.83E-13,0.000939578,1,4,197237690,197239606,O-methyltransferase ZRP4
+GRMZM2G097297,Zm00001d052683,Metabolite,X.642609..trans.caftaric.acid.2..25.529,GShoot,3.83e-13,0.000939578,1,4,197237690,197239606,O-methyltransferase ZRP4
 GRMZM2G097967,Zm00001d007935,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,LMAN,0.020664917,0.001481691,1,2,243395122,243395787,Disease resistance response protein 206
 GRMZM2G098434,Zm00001d041510,Metabolite,X.236..L.asparagine.2..14.984,L3Tip,0.000106102,0.00539598,1,3,125020876,125028056,Probable galacturonosyltransferase 13
 GRMZM2G099097,Zm00001d051932,Metabolite,X.204..allantoin.1..17.293,L3Tip,0.015810875,0.001095686,1,4,174800177,174804263,Protein ECERIFERUM 1
 GRMZM2G099528,Zm00001d028375,Metabolite,X.6912..xylitol..15.376,L3Tip,0.047153912,0.000170651,1,1,32602769,32606650,B-cell receptor-associated 31-like
 GRMZM2G099628,Zm00001d028218,Metabolite,X.439958..D.glucose.6.phosphate.1..21.394,L3Base,0.035898613,0.000827578,1,1,26887363,26899704,Methionine--tRNA ligase cytoplasmic
-GRMZM2G099989,Zm00001d016956,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,GShoot,1.40E-07,0.002579338,2,5,181173273,181178545,
+GRMZM2G099989,Zm00001d016956,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,GShoot,1.4e-07,0.002579338,2,5,181173273,181178545,
 GRMZM2G099989,Zm00001d016956,Metabolite,X.6288..L.threonine.2..11.464,L3Base,0.012577039,0.001237176,2,5,181173273,181178545,
 GRMZM2G100058,Zm00001d021294,Metabolite,X.439451..galactinol.2..26.479,L3Base,0.023152196,-0.000834568,1,7,148128045,148129250,Pentatricopeptide repeat-containing protein  mitochondrial
-GRMZM2G100246,,Metabolite,X.938..nicotinic.acid..10.27,LMAD,0.045128066,-6.41E-05,1,,,,
+GRMZM2G100246,,Metabolite,X.938..nicotinic.acid..10.27,LMAD,0.045128066,-6.41e-05,1,,,,
 GRMZM2G100641,Zm00001d038321,Seed Traits,TotalSeedWeight,LMAN,0.003257845,1.703222585,1,6,154392522,154396794,Protein S-acyltransferase 8
-GRMZM2G100858,Zm00001d036598,Metabolite,X.827..ribitol..15.66,Kern,3.03E-05,0.00022098,1,6,94023965,94028647,Geranylgeranyl transferase type-2 subunit alpha 1
+GRMZM2G100858,Zm00001d036598,Metabolite,X.827..ribitol..15.66,Kern,3.03e-05,0.00022098,1,6,94023965,94028647,Geranylgeranyl transferase type-2 subunit alpha 1
 GRMZM2G100889,Zm00001d039870,Metabolite,X.5984..fructose.1..17.18..s100,L3Base,0.029618107,-0.005400386,1,3,17281142,17286871,RHOMBOID-like protein 1
-GRMZM2G101282,Zm00001d038753,Metabolite,X.444266..maleic.acid..10.323,L3Tip,0.003298368,2.79E-06,1,6,163895782,163898198,Ubiquitin domain-containing protein
-GRMZM2G101769,Zm00001d006860,Leaf Morphology,UpperLeafAngle,L3Tip,9.39E-06,-2.577219805,1,2,218018545,218021082,Protein TIFY 10B
-GRMZM2G102138,Zm00001d006775,Metabolite,X.60961..adenosine..23.825,L3Base,4.61E-06,7.18E-05,1,2,216401157,216401651,hydroxyproline-rich glycoprotein family protein
+GRMZM2G101282,Zm00001d038753,Metabolite,X.444266..maleic.acid..10.323,L3Tip,0.003298368,2.79e-06,1,6,163895782,163898198,Ubiquitin domain-containing protein
+GRMZM2G101769,Zm00001d006860,Leaf Morphology,UpperLeafAngle,L3Tip,9.39e-06,-2.577219805,1,2,218018545,218021082,Protein TIFY 10B
+GRMZM2G102138,Zm00001d006775,Metabolite,X.60961..adenosine..23.825,L3Base,4.61e-06,7.18e-05,1,2,216401157,216401651,hydroxyproline-rich glycoprotein family protein
 GRMZM2G102657,Zm00001d047547,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,L3Base,0.009586457,0.000256928,1,9,134960043,134962640,fringe-related protein
 GRMZM2G102845,Zm00001d015243,Metabolite,X.700..ethanolamine..9.879,LMAN,0.011765485,0.000557283,1,5,80676960,80685239,Auxin response factor 20
-GRMZM2G103166,Zm00001d036092,Metabolite,X.6508..quinic.acid..17.076..s100,LMAD,1.08E-08,0.005667792,1,6,71924402,71928562,Transcription factor GTE1
+GRMZM2G103166,Zm00001d036092,Metabolite,X.6508..quinic.acid..17.076..s100,LMAD,1.08e-08,0.005667792,1,6,71924402,71928562,Transcription factor GTE1
 GRMZM2G103258,Zm00001d031933,Female Inflorescence,EarRowNumber,L3Base,0.002289572,0.240072522,1,1,207276632,207281619,Signal peptide peptidase-like 1
-GRMZM2G103512,Zm00001d008210,Metabolite,X.5962..L.lysine.2..17.643,GRoot,2.92E-05,0.00026314,1,8,1296796,1298016,Germin-like protein subfamily 2 member 1
+GRMZM2G103512,Zm00001d008210,Metabolite,X.5962..L.lysine.2..17.643,GRoot,2.92e-05,0.00026314,1,8,1296796,1298016,Germin-like protein subfamily 2 member 1
 GRMZM2G103805,Zm00001d046936,other,Spikelets.MainSpike,L3Tip,0.000635811,0.363645582,1,9,111778714,111784103,Core-2/I-branching beta-16-N-acetylglucosaminyltransferase family protein
 GRMZM2G103840,Zm00001d006327,Flowering Time,DaystoSilk,L3Tip,0.001325265,-0.712252243,1,2,204637780,204641095,Probable purine permease 5
 GRMZM2G103884,Zm00001d016181,Metabolite,X.9750..citrulline.2..16.691,GShoot,0.030917848,-0.000161998,2,5,148921887,148924910,
 GRMZM2G103884,Zm00001d016181,other,Spikelets.MainSpike,L3Tip,0.024511142,-0.304252494,2,5,148921887,148924910,
-GRMZM2G104231,Zm00001d019422,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Base,2.00E-08,0.000228498,1,7,32997937,33000120,Nucleotide-diphospho-sugar transferase family protein
+GRMZM2G104231,Zm00001d019422,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Base,2e-08,0.000228498,1,7,32997937,33000120,Nucleotide-diphospho-sugar transferase family protein
 GRMZM2G104449,Zm00001d052922,Metabolite,X.92824..D.malic.acid..12.794..s100,L3Base,0.046269425,0.001405384,1,4,204942596,204947439,BEST Arabidopsis thaliana protein match is: Polyketide cyclase/dehydrase and lipid transport superfamily protein (TAIR:AT3G11720.3); Has 155 Blast hits to 153 proteins in 39 species: Archae - 0; Bacteria - 4; Metazoa - 5; Fungi - 6; Plants - 101; Vi /.../- 0; Other Eukaryotes - 39 (source: NCBI BLink).
 GRMZM2G105207,Zm00001d006714,Metabolite,X.1001..phenethylamine..13.742,GRoot,0.023296339,-0.00026696,1,2,215023176,215029253,NADH dehydrogenase [ubiquinone] iron-sulfur protein 4 mitochondrial
 GRMZM2G105869,Zm00001d006369,Metabolite,X.5951..L.serine.2..11.174..s100,L3Tip,0.021002421,0.011121269,4,2,205908412,205911375,sdg116;set domain gene116:
 GRMZM2G105869,Zm00001d006369,Metabolite,X.12647..L.homoserine.2..12.359,L3Tip,0.003639344,0.000236633,4,2,205908412,205911375,sdg116;set domain gene116:
-GRMZM2G105869,Zm00001d006369,Metabolite,X.239..Beta..alanine..1..12.044,L3Tip,7.93E-09,0.000871963,4,2,205908412,205911375,sdg116;set domain gene116:
+GRMZM2G105869,Zm00001d006369,Metabolite,X.239..Beta..alanine..1..12.044,L3Tip,7.93e-09,0.000871963,4,2,205908412,205911375,sdg116;set domain gene116:
 GRMZM2G105869,Zm00001d006369,Metabolite,X.6288..L.threonine.2..11.464,L3Tip,0.001588448,0.001727827,4,2,205908412,205911375,sdg116;set domain gene116:
-GRMZM2G106393,Zm00001d002158,Metabolite,X.971..oxalic.acid..7.883,L3Tip,7.77E-05,3.18E-05,2,2,6886753,6887019,Wound-responsive family protein
-GRMZM2G106393,Zm00001d002158,Metabolite,X.5460935..turanose.1..24.81,L3Tip,6.82E-07,0.001352933,2,2,6886753,6887019,Wound-responsive family protein
+GRMZM2G106393,Zm00001d002158,Metabolite,X.971..oxalic.acid..7.883,L3Tip,7.77e-05,3.18e-05,2,2,6886753,6887019,Wound-responsive family protein
+GRMZM2G106393,Zm00001d002158,Metabolite,X.5460935..turanose.1..24.81,L3Tip,6.82e-07,0.001352933,2,2,6886753,6887019,Wound-responsive family protein
 GRMZM2G106790,,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,GRoot,0.006661241,0.001396182,1,,,,
 GRMZM2G107597,Zm00001d029098,Metabolite,X.5988..Sucrose..23.988..s100,GShoot,0.000410382,0.09654365,1,1,57988733,57991597,sweet16;sugars will eventually be exported transporter16:
 GRMZM2G107731,Zm00001d028730,Metabolite,X.3037582..mucic.acid..18.907,GRoot,0.012516375,0.00051879,1,1,44532354,44536303,CONTAINS InterPro DOMAIN/s: Taxilin (InterPro:IPR019132); Has 30201 Blast hits to 17322 proteins in 780 species: Archae - 12; Bacteria - 1396; Metazoa - 17338; Fungi - 3422; Plants - 5037; Viruses - 0; Other Eukaryotes - 2996 (source: NCBI BLink).
 GRMZM2G107774,Zm00001d028185,Metabolite,X.439183..3.phosphoglyceric.acid..16.504,L3Base,0.045915935,0.000332518,1,1,25738664,25741208,rem6.3;remorin6.3:
-GRMZM2G108225,Zm00001d013048,Metabolite,X.311..citric.acid..16.615..s100,LMAN,1.17E-05,0.001248488,1,5,3760185,3771088,sqs1;squalene synthase1:
-GRMZM2G108514,Zm00001d033024,Metabolite,X.1001..phenethylamine..13.742,L3Tip,1.61E-07,0.001154639,1,1,247476007,247477503,Tyrosine decarboxylase 1
+GRMZM2G108225,Zm00001d013048,Metabolite,X.311..citric.acid..16.615..s100,LMAN,1.17e-05,0.001248488,1,5,3760185,3771088,sqs1;squalene synthase1:
+GRMZM2G108514,Zm00001d033024,Metabolite,X.1001..phenethylamine..13.742,L3Tip,1.61e-07,0.001154639,1,1,247476007,247477503,Tyrosine decarboxylase 1
 GRMZM2G108530,Zm00001d029234,other,NIRStarch,L3Tip,0.030313256,0.247636521,1,1,63275727,63280169,Protein Mo25
 GRMZM2G108615,Zm00001d021605,Metabolite,X.2724705..1.6.anhydro.glucose..15.326,L3Base,0.001041179,0.000125436,1,7,157873556,157874881,
 GRMZM2G110195,Zm00001d042619,other,NumberofTilleringPlants,L3Tip,0.006492775,0.024549541,1,3,174091744,174095154,Amino acid permease 2
 GRMZM2G110198,Zm00001d030256,Development,PlantHeight,GRoot,0.000157926,-3.174204742,2,1,117002474,117006192,alpha/beta-Hydrolases superfamily protein
-GRMZM2G110198,Zm00001d030256,Development,EarHeight,GRoot,7.66E-06,-2.967691747,2,1,117002474,117006192,alpha/beta-Hydrolases superfamily protein
-GRMZM2G110412,Zm00001d005682,Metabolite,X.8742..shikimic.acid..16.433..s100,L3Tip,9.12E-05,0.00342993,1,2,183194823,183197373,Protein kinase superfamily protein
+GRMZM2G110198,Zm00001d030256,Development,EarHeight,GRoot,7.66e-06,-2.967691747,2,1,117002474,117006192,alpha/beta-Hydrolases superfamily protein
+GRMZM2G110412,Zm00001d005682,Metabolite,X.8742..shikimic.acid..16.433..s100,L3Tip,9.12e-05,0.00342993,1,2,183194823,183197373,Protein kinase superfamily protein
 GRMZM2G110714,Zm00001d012702,other,NumberofTilleringPlants,GRoot,0.000216906,0.027282292,1,8,178935008,178947931,Phosphoenolpyruvate carboxylase 3
-GRMZM2G111208,Zm00001d029443,Metabolite,X.5988..Sucrose..23.988..s100,GShoot,4.83E-06,0.124649972,1,1,70817727,70829834,1-phosphatidylinositol-3-phosphate 5-kinase FAB1B
+GRMZM2G111208,Zm00001d029443,Metabolite,X.5988..Sucrose..23.988..s100,GShoot,4.83e-06,0.124649972,1,1,70817727,70829834,1-phosphatidylinositol-3-phosphate 5-kinase FAB1B
 GRMZM2G111529,Zm00001d016155,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,Kern,0.000860919,0.000161114,1,5,147482562,147503560,Putative callose synthase 8
 GRMZM2G111713,Zm00001d022352,Seed Traits,CobWeight,Kern,0.003349942,0.656275985,1,7,176050452,176065009,Mitochondrial inner membrane translocase complex subunit Tim44-related protein
 GRMZM2G113002,Zm00001d028616,Metabolite,X.6262..L.ornithine.2..16.632,GShoot,0.006235178,0.000614234,1,1,40942152,40945320,Putative E3 ubiquitin-protein ligase XBAT31
@@ -466,91 +466,91 @@ GRMZM2G113396,,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Tip,0.00
 GRMZM2G113415,,Flowering Time,GDDAnthesis.SilkingInterval,L3Base,0.048686196,1.329674078,1,,,,
 GRMZM2G114681,Zm00001d005726,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,L3Base,0.035789227,-0.002311143,1,2,184842614,184845272,Protein TIFY 6B
 GRMZM2G114801,Zm00001d037385,Seed Traits,TotalKernelNum,LMAD,0.02790386,-0.295160265,1,6,123966376,123968604,Adenine nucleotide alpha hydrolases-like superfamily protein
-GRMZM2G115598,Zm00001d002169,Metabolite,X.1549111..caffeic.acid..19.755,GShoot,3.21E-11,0.001143563,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
-GRMZM2G115598,Zm00001d002169,Metabolite,X.5988..Sucrose..23.988..s100,L3Base,4.24E-07,0.13604886,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
-GRMZM2G115598,Zm00001d002169,Metabolite,X.1549111..caffeic.acid..19.755,LMAD,1.31E-08,0.001161786,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
+GRMZM2G115598,Zm00001d002169,Metabolite,X.1549111..caffeic.acid..19.755,GShoot,3.21e-11,0.001143563,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
+GRMZM2G115598,Zm00001d002169,Metabolite,X.5988..Sucrose..23.988..s100,L3Base,4.24e-07,0.13604886,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
+GRMZM2G115598,Zm00001d002169,Metabolite,X.1549111..caffeic.acid..19.755,LMAD,1.31e-08,0.001161786,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
 GRMZM2G115598,Zm00001d002169,Metabolite,X.311..citric.acid..16.615..s100,LMAD,0.000150309,0.001595535,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
 GRMZM2G115598,Zm00001d002169,Metabolite,X.5984..fructose.1..17.18..s100,Kern,0.000134115,0.007447983,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
-GRMZM2G115598,Zm00001d002169,Metabolite,X.448388..D.allose.1..17.278,GShoot,0.001798383,5.68E-05,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
+GRMZM2G115598,Zm00001d002169,Metabolite,X.448388..D.allose.1..17.278,GShoot,0.001798383,5.68e-05,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
 GRMZM2G115598,Zm00001d002169,Metabolite,X.311..citric.acid..16.615..s100,LMAN,0.008266011,0.001912209,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
-GRMZM2G115598,Zm00001d002169,Metabolite,X.311..citric.acid..16.615..s100,GShoot,4.08E-05,0.001225507,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
-GRMZM2G115598,Zm00001d002169,Metabolite,X.311..citric.acid..16.615..s100,Kern,1.04E-09,0.001929447,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
+GRMZM2G115598,Zm00001d002169,Metabolite,X.311..citric.acid..16.615..s100,GShoot,4.08e-05,0.001225507,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
+GRMZM2G115598,Zm00001d002169,Metabolite,X.311..citric.acid..16.615..s100,Kern,1.04e-09,0.001929447,9,2,7094303,7100353,Eukaryotic translation initiation factor 3 subunit C
 GRMZM2G117281,,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,GRoot,0.028456139,0.000112099,1,,,,
 GRMZM2G117878,Zm00001d019256,other,NumberofTilleringPlants,L3Tip,0.016650217,0.021411225,1,7,24211071,24212860,UDP-glycosyltransferase 76C1
 GRMZM2G118286,Zm00001d023538,Male Inflorescence,TasselLength,L3Base,0.003442593,-4.70079775,2,10,9347497,9371362,Long chain acyl-CoA synthetase 9 chloroplastic
 GRMZM2G118286,Zm00001d023538,Male Inflorescence,TasselLength,LMAN,0.006542344,-6.3323737,2,10,9347497,9371362,Long chain acyl-CoA synthetase 9 chloroplastic
 GRMZM2G118441,Zm00001d043031,other,MainSpikeLength,L3Tip,0.000289928,-6.784972642,1,3,187050348,187052568,Nodulin-like protein
-GRMZM2G118714,Zm00001d023629,Metabolite,X.738..L.glutamine.2..14.083,GShoot,0.00298473,7.70E-05,1,10,12733959,12741378,Putative DUF827 domain containing family protein
+GRMZM2G118714,Zm00001d023629,Metabolite,X.738..L.glutamine.2..14.083,GShoot,0.00298473,7.7e-05,1,10,12733959,12741378,Putative DUF827 domain containing family protein
 GRMZM2G118766,Zm00001d051128,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,GShoot,0.001805022,0.000310815,1,4,144753085,144753555,embryo sac development arrest 6
 GRMZM2G118950,Zm00001d003025,Seed Traits,X20KernelWeight,GRoot,0.034649175,-0.083998711,1,2,29747763,29749475,amt3;ammonium transporter3:
 GRMZM2G119272,Zm00001d004015,Seed Traits,TotalSeedWeight,Kern,0.009456276,1.7052698,4,2,75789250,75791994,
 GRMZM2G119272,Zm00001d004015,other,EarDiameter,Kern,0.012733519,0.313754926,4,2,75789250,75791994,
-GRMZM2G119272,Zm00001d004015,Seed Traits,TotalKernelVolume,Kern,1.87E-05,1.646736331,4,2,75789250,75791994,
+GRMZM2G119272,Zm00001d004015,Seed Traits,TotalKernelVolume,Kern,1.87e-05,1.646736331,4,2,75789250,75791994,
 GRMZM2G119272,Zm00001d004015,Seed Traits,EarWeight,Kern,0.000172526,2.723046046,4,2,75789250,75791994,
 GRMZM2G119345,Zm00001d008512,Female Inflorescence,EarLength,LMAD,0.02569509,1.417857498,1,8,11119067,11126014,ABC-2 type transporter family protein
 GRMZM2G119485,Zm00001d017491,Metabolite,X.439451..galactinol.2..26.479,L3Base,0.000151695,0.001201292,1,5,197432144,197434405,
 GRMZM2G120257,Zm00001d049921,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,L3Base,0.004755393,0.002605677,1,4,52808632,52818558,
-GRMZM2G120975,Zm00001d048338,Seed Traits,X20KernelWeight,L3Tip,1.15E-05,-0.129202025,1,9,154675604,154690065,Calcium-binding EF hand family protein
+GRMZM2G120975,Zm00001d048338,Seed Traits,X20KernelWeight,L3Tip,1.15e-05,-0.129202025,1,9,154675604,154690065,Calcium-binding EF hand family protein
 GRMZM2G121070,Zm00001d002191,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,GRoot,0.00019167,0.000177169,1,2,7656052,7658947,Organic cation/carnitine transporter 4
 GRMZM2G121312,Zm00001d031434,Metabolite,X.92824..D.malic.acid..12.794..s100,LMAN,0.000167547,0.002367298,1,1,190080839,190081984,DNA-damage-repair/toleration protein DRT100
 GRMZM2G121404,Zm00001d040311,Metabolite,X.6262..L.ornithine.2..16.632,LMAD,0.010215468,-0.000583953,1,3,37403121,37412755,5'-3' exoribonuclease 3
 GRMZM2G121960,Zm00001d028901,Metabolite,X.239..Beta..alanine..1..12.044,L3Tip,0.007493497,0.000520151,1,1,50190087,50200187,hcf3;high chlorophyll fluorescence3: (aka hcf9
-GRMZM2G121990,,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Tip,1.28E-05,0.000751627,1,,,,
+GRMZM2G121990,,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Tip,1.28e-05,0.000751627,1,,,,
 GRMZM2G122108,Zm00001d034718,Female Inflorescence,EarLength,GShoot,0.004385346,-2.125228807,1,1,300613074,300615633,SPX domain-containing protein 4
 GRMZM2G122276,Zm00001d017033,Metabolite,X.5460673..D.saccharic.acid..18.614,L3Tip,0.032761407,0.000119142,1,5,183229185,183230047,Glycine-rich cell wall structural protein
 GRMZM2G122443,Zm00001d041603,Metabolite,X.1001..phenethylamine..13.742,L3Base,0.004755966,0.000309347,1,3,129427114,129430257,Protein OS-9 homolog
-GRMZM2G122481,,Metabolite,X.1001..phenethylamine..13.742,GShoot,5.23E-06,0.000553016,1,,,,
-GRMZM2G122712,Zm00001d038180,other,NumberofTilleringPlants,L3Base,3.87E-10,0.046252127,1,6,150718378,150719322,Protein NRT1/ PTR FAMILY 3.1
+GRMZM2G122481,,Metabolite,X.1001..phenethylamine..13.742,GShoot,5.23e-06,0.000553016,1,,,,
+GRMZM2G122712,Zm00001d038180,other,NumberofTilleringPlants,L3Base,3.87e-10,0.046252127,1,6,150718378,150719322,Protein NRT1/ PTR FAMILY 3.1
 GRMZM2G122811,Zm00001d051741,other,NIRStarch,L3Tip,0.03932313,0.238561708,1,4,168606581,168612438,Protein NSP-INTERACTING KINASE 1
 GRMZM2G122954,Zm00001d000299,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,L3Base,0.044217561,0.000209746,1,B73V4_ctg103,50560,54085,Endosomal targeting BRO1-like domain-containing protein
 GRMZM2G123014,Zm00001d026350,Metabolite,X.204..allantoin.1..17.293,L3Tip,0.00019612,0.001453881,1,10,144091288,144093948,Pentatricopeptide repeat-containing protein
 GRMZM2G123544,Zm00001d051901,Metabolite,X.6255..maltose..2..24.915,L3Tip,0.008622996,0.000199316,2,4,173983536,173988094,P-loop NTPase domain-containing protein LPA1 homolog 1
 GRMZM2G123544,Zm00001d051901,Metabolite,X.204..allantoin.1..17.293,L3Tip,0.000208614,0.001405433,2,4,173983536,173988094,P-loop NTPase domain-containing protein LPA1 homolog 1
 GRMZM2G123719,Zm00001d025948,other,NIRStarch,LMAN,0.001440876,-0.361339916,1,10,134519364,134523011,Putative translation elongation factor family protein
-GRMZM2G124799,Zm00001d038703,Metabolite,X.60961..adenosine..23.825,L3Base,0.04327539,4.84E-05,1,6,162999184,163000694,O-methyltransferase ZRP4
+GRMZM2G124799,Zm00001d038703,Metabolite,X.60961..adenosine..23.825,L3Base,0.04327539,4.84e-05,1,6,162999184,163000694,O-methyltransferase ZRP4
 GRMZM2G125314,Zm00001d029387,Metabolite,X.3037582..mucic.acid..18.907,L3Tip,0.001245227,0.000569399,1,1,68548473,68551087,LOL3
-GRMZM2G125812,Zm00001d012891,other,NIRProtein,Kern,8.23E-05,0.217917498,1,5,1622705,1631341,Biotin/lipoate A/B protein ligase family
-GRMZM2G126002,Zm00001d023652,Metabolite,X.60961..adenosine..23.825,L3Base,0.004012372,5.33E-05,2,10,13697131,13701454,Putative oxidoreductase%2C aldo/keto reductase family protein
+GRMZM2G125812,Zm00001d012891,other,NIRProtein,Kern,8.23e-05,0.217917498,1,5,1622705,1631341,Biotin/lipoate A/B protein ligase family
+GRMZM2G126002,Zm00001d023652,Metabolite,X.60961..adenosine..23.825,L3Base,0.004012372,5.33e-05,2,10,13697131,13701454,Putative oxidoreductase%2C aldo/keto reductase family protein
 GRMZM2G126002,Zm00001d023652,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,L3Tip,0.002399183,0.001850905,2,10,13697131,13701454,Putative oxidoreductase%2C aldo/keto reductase family protein
 GRMZM2G126603,Zm00001d044255,Metabolite,X.8742..shikimic.acid..16.433..s100,L3Tip,0.020923502,0.002177637,1,3,223099275,223102092,Ribosomal protein L34
-GRMZM2G127067,Zm00001d029810,Metabolite,X.6255..maltose..2..24.915,LMAD,3.04E-09,0.000478856,1,1,88015144,88023582,Methylsterol monooxygenase 1-2
+GRMZM2G127067,Zm00001d029810,Metabolite,X.6255..maltose..2..24.915,LMAD,3.04e-09,0.000478856,1,1,88015144,88023582,Methylsterol monooxygenase 1-2
 GRMZM2G127309,Zm00001d034729,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Base,0.000424163,0.000165363,1,1,300852251,300854480,Carbohydrate-binding X8 domain superfamily protein
-GRMZM2G127548,Zm00001d051702,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,Kern,8.54E-06,0.00016867,1,4,167217231,167220804,BSD domain-containing protein
+GRMZM2G127548,Zm00001d051702,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,Kern,8.54e-06,0.00016867,1,4,167217231,167220804,BSD domain-containing protein
 GRMZM2G128160,Zm00001d045084,Seed Traits,TotalKernelNum,L3Base,0.000782853,0.418483271,1,9,12042437,12047675,
 GRMZM2G128189,Zm00001d016835,Metabolite,X.92824..D.malic.acid..12.794..s100,L3Base,0.005198936,-0.001836034,1,5,177815935,177822681,Ligatin
-GRMZM2G129311,Zm00001d021799,Metabolite,X.239..Beta..alanine..1..12.044,LMAD,1.68E-07,0.000956752,1,7,163131766,163135920,Protein FAR1-RELATED SEQUENCE 5
-GRMZM2G129431,Zm00001d037034,Metabolite,X.439451..galactinol.2..26.479,L3Base,8.90E-05,-0.00119727,1,6,109810848,109824120,PHD finger protein-related
+GRMZM2G129311,Zm00001d021799,Metabolite,X.239..Beta..alanine..1..12.044,LMAD,1.68e-07,0.000956752,1,7,163131766,163135920,Protein FAR1-RELATED SEQUENCE 5
+GRMZM2G129431,Zm00001d037034,Metabolite,X.439451..galactinol.2..26.479,L3Base,8.9e-05,-0.00119727,1,6,109810848,109824120,PHD finger protein-related
 GRMZM2G129860,,Metabolite,X.204..allantoin.1..17.293,L3Tip,0.019703047,0.001158052,1,,,,
 GRMZM2G129987,Zm00001d015839,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,LMAN,0.001124782,0.00188472,1,5,124936314,124940355,Chaperone protein dnaJ 6
 GRMZM2G130055,,Metabolite,X.5460935..turanose.1..24.81,GRoot,0.010043534,-0.00031867,1,,,,
 GRMZM2G130305,Zm00001d044288,other,NIRStarch,L3Base,0.00019139,-0.384403332,2,3,224349905,224352639,alpha/beta-Hydrolases superfamily protein
-GRMZM2G130305,Zm00001d044288,other,NIRStarch,LMAD,2.02E-14,-0.376267709,2,3,224349905,224352639,alpha/beta-Hydrolases superfamily protein
+GRMZM2G130305,Zm00001d044288,other,NIRStarch,LMAD,2.02e-14,-0.376267709,2,3,224349905,224352639,alpha/beta-Hydrolases superfamily protein
 GRMZM2G131070,Zm00001d036759,Seed Traits,CobWeight,L3Tip,0.040108366,-0.505940369,1,6,99946589,99956871,Phox (PX) domain-containing protein
 GRMZM2G131321,Zm00001d003539,Female Inflorescence,CobDiameter,L3Base,0.000354703,0.357860887,1,2,47409183,47414816,
 GRMZM2G131784,Zm00001d037665,Metabolite,X.239..Beta..alanine..1..12.044,L3Tip,0.0280669,-0.000419745,1,6,133519989,133523664,
 GRMZM2G132568,Zm00001d018938,Metabolite,X.2116..alpha.tocophereol..27.379,LMAN,0.043780818,-0.000101661,1,7,9823783,9828061,Bax inhibitor-1 family protein
 GRMZM2G132628,Zm00001d036387,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Tip,0.000279937,0.000299883,2,6,86348564,86354695,plant/F20M13-60 protein
-GRMZM2G132628,Zm00001d036387,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Tip,3.10E-09,0.000718498,2,6,86348564,86354695,plant/F20M13-60 protein
+GRMZM2G132628,Zm00001d036387,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Tip,3.1e-09,0.000718498,2,6,86348564,86354695,plant/F20M13-60 protein
 GRMZM2G132811,Zm00001d008440,Seed Traits,X20KernelWeight,GRoot,0.042194082,0.08058892,1,8,8699528,8700941,Putative peptidyl-prolyl cis-trans isomerase family protein
 GRMZM2G132862,Zm00001d053824,Metabolite,X.5960..aspartic.acid.2..13.207,L3Tip,0.042924205,0.001725517,1,4,241806773,241807078,
 GRMZM2G133314,Zm00001d039448,Metabolite,X.92824..D.malic.acid..12.794..s100,L3Base,0.000570659,-0.002147593,1,3,4599630,4609909,Transducin/WD40 repeat-like superfamily protein
 GRMZM2G133434,Zm00001d014606,Metabolite,X.827..ribitol..15.66,L3Tip,0.040178058,0.000141784,1,5,55056929,55058534,Peroxidase 45
-GRMZM2G133573,Zm00001d028328,other,TasselBranchLength,L3Tip,1.02E-05,-5.68224161,1,1,30969605,30971412,
-GRMZM2G133746,,Metabolite,X.60961..adenosine..23.825,L3Base,3.43E-05,7.74E-05,2,,,,
-GRMZM2G133746,,Metabolite,X.5280450..linoleic.acid..20.399,L3Base,1.74E-11,0.000155878,2,,,,
-GRMZM2G134044,Zm00001d025075,Metabolite,X.971..oxalic.acid..7.883,LMAN,0.00175151,2.27E-05,1,10,102770463,102774619,BEST Arabidopsis thaliana protein match is: Integral membrane protein hemolysin-III homolog (TAIR:AT2G45250.1); Has 65 Blast hits to 65 proteins in 13 species: Archae - 0; Bacteria - 0; Metazoa - 0; Fungi - 2; Plants - 63; Viruses - 0; Other Eukaryo /.../0 (source: NCBI BLink).
+GRMZM2G133573,Zm00001d028328,other,TasselBranchLength,L3Tip,1.02e-05,-5.68224161,1,1,30969605,30971412,
+GRMZM2G133746,,Metabolite,X.60961..adenosine..23.825,L3Base,3.43e-05,7.74e-05,2,,,,
+GRMZM2G133746,,Metabolite,X.5280450..linoleic.acid..20.399,L3Base,1.74e-11,0.000155878,2,,,,
+GRMZM2G134044,Zm00001d025075,Metabolite,X.971..oxalic.acid..7.883,LMAN,0.00175151,2.27e-05,1,10,102770463,102774619,BEST Arabidopsis thaliana protein match is: Integral membrane protein hemolysin-III homolog (TAIR:AT2G45250.1); Has 65 Blast hits to 65 proteins in 13 species: Archae - 0; Bacteria - 0; Metazoa - 0; Fungi - 2; Plants - 63; Viruses - 0; Other Eukaryo /.../0 (source: NCBI BLink).
 GRMZM2G134054,Zm00001d034839,Metabolite,X.791..DL.isoleucine.2..10.225,L3Tip,0.002389994,0.000664958,1,1,303573712,303576362,Purple acid phosphatase 15
 GRMZM2G134227,Zm00001d034575,other,TasselBranchLength,GRoot,0.000364903,-4.633304123,1,1,296750495,296755871,Probable protein phosphatase 2C 55
-GRMZM2G134716,Zm00001d021528,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,L3Base,3.23E-06,0.003586542,1,7,155175215,155183115,MATH domain containing protein; Os10g0478500 protein
-GRMZM2G134731,Zm00001d047037,Metabolite,X.92824..D.malic.acid..12.794..s100,GRoot,1.71E-05,0.002802846,1,9,116292816,116293433,Abscisic acid receptor PYR1
+GRMZM2G134716,Zm00001d021528,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,L3Base,3.23e-06,0.003586542,1,7,155175215,155183115,MATH domain containing protein; Os10g0478500 protein
+GRMZM2G134731,Zm00001d047037,Metabolite,X.92824..D.malic.acid..12.794..s100,GRoot,1.71e-05,0.002802846,1,9,116292816,116293433,Abscisic acid receptor PYR1
 GRMZM2G135095,Zm00001d042233,other,SouthernLeafBlight,L3Tip,0.009978914,0.127744812,1,3,157012964,157021930,Ribosomal protein S18
-GRMZM2G135120,,Metabolite,X.5962..L.lysine.2..17.643,L3Tip,1.74E-05,0.000213207,3,,,,
-GRMZM2G135120,,Metabolite,X.448388..D.allose.1..17.278,L3Tip,0.002490145,6.06E-05,3,,,,
+GRMZM2G135120,,Metabolite,X.5962..L.lysine.2..17.643,L3Tip,1.74e-05,0.000213207,3,,,,
+GRMZM2G135120,,Metabolite,X.448388..D.allose.1..17.278,L3Tip,0.002490145,6.06e-05,3,,,,
 GRMZM2G135120,,Metabolite,X.12647..L.homoserine.2..12.359,L3Tip,0.039740895,0.00017545,3,,,,
 GRMZM2G135256,Zm00001d019947,Metabolite,X.754..glycerol.1.phosphate..16.056,L3Tip,0.001879038,-0.001757538,1,7,78818456,78858726,hydrolases acting on ester bonds
 GRMZM2G135446,Zm00001d004875,Metabolite,X.6288..L.threonine.2..11.464,L3Base,0.046062116,0.001097311,1,2,145683678,145688881,Two-component response regulator-like APRR9
 GRMZM2G135568,Zm00001d049718,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,Kern,0.000130847,0.003029676,1,4,41325126,41329646,Protein transporter%3B Putative VHS/GAT domain containing family protein isoform 1%3B Putative VHS/GAT domain containing family protein isoform 2
-GRMZM2G135617,Zm00001d031639,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Tip,1.73E-11,0.001365077,1,1,197105593,197108840,ACR4
+GRMZM2G135617,Zm00001d031639,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Tip,1.73e-11,0.001365077,1,1,197105593,197108840,ACR4
 GRMZM2G135763,Zm00001d020615,Metabolite,X.750..glycine..10.456..s100,L3Base,0.000819966,-0.019422166,1,7,125162651,125167090,Pectin lyase-like superfamily protein
 GRMZM2G135960,Zm00001d044874,Metabolite,X.33032..L.glutamic.acid.3..dehydrated...13.232..s100,LMAN,0.005578351,0.00055621,1,9,6096248,6097444,23.6 kDa heat shock protein mitochondrial
 GRMZM2G136158,Zm00001d008266,Metabolite,X.5460935..turanose.1..24.81,GShoot,0.003546118,-0.000321654,1,8,3527558,3529941,Peroxidase 24
@@ -566,36 +566,36 @@ GRMZM2G138125,Zm00001d002950,Metabolite,X.439183..3.phosphoglyceric.acid..16.504
 GRMZM2G138125,Zm00001d002950,Metabolite,X.5962..L.lysine.2..17.643,L3Base,0.007848207,0.000102375,2,2,27929335,27938858,Protein CHROMATIN REMODELING 24
 GRMZM2G138245,Zm00001d013868,Metabolite,X.791..DL.isoleucine.2..10.225,L3Tip,0.024496257,0.000546301,4,5,23311089,23316157,CDPK-related kinase 3
 GRMZM2G138245,Zm00001d013868,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Tip,0.000135498,0.000933049,4,5,23311089,23316157,CDPK-related kinase 3
-GRMZM2G138245,Zm00001d013868,Metabolite,X.754..glycerol.1.phosphate..16.056,L3Tip,8.07E-05,0.002290023,4,5,23311089,23316157,CDPK-related kinase 3
-GRMZM2G138245,Zm00001d013868,Metabolite,X.6288..L.threonine.2..11.464,L3Tip,5.79E-05,0.002095221,4,5,23311089,23316157,CDPK-related kinase 3
+GRMZM2G138245,Zm00001d013868,Metabolite,X.754..glycerol.1.phosphate..16.056,L3Tip,8.07e-05,0.002290023,4,5,23311089,23316157,CDPK-related kinase 3
+GRMZM2G138245,Zm00001d013868,Metabolite,X.6288..L.threonine.2..11.464,L3Tip,5.79e-05,0.002095221,4,5,23311089,23316157,CDPK-related kinase 3
 GRMZM2G138421,Zm00001d012916,other,NumberofTilleringPlants,LMAN,0.010039384,0.017918369,1,5,1908305,1915026,Squamosa promoter-binding-like protein 1
 GRMZM2G138496,Zm00001d044657,Leaf Morphology,UpperLeafAngle,GShoot,0.000587648,1.994133964,1,3,234224132,234238691,ENTH/VHS family protein
-GRMZM2G139284,,other,NumberofTilleringPlants,L3Tip,4.75E-08,0.045467397,1,,,,
+GRMZM2G139284,,other,NumberofTilleringPlants,L3Tip,4.75e-08,0.045467397,1,,,,
 GRMZM2G139522,Zm00001d020713,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Tip,0.004048049,0.000814932,2,7,129773310,129774515,
 GRMZM2G139522,Zm00001d020713,Metabolite,X.236..L.asparagine.2..14.984,L3Tip,0.008079392,0.004627703,2,7,129773310,129774515,
 GRMZM2G139880,Zm00001d049188,Metabolite,X.311..citric.acid..16.615..s100,LMAN,0.001864299,0.001135008,1,4,19758370,19765128,Bifunctional dihydrofolate reductase-thymidylate synthase
-GRMZM2G139973,Zm00001d046613,Metabolite,X.5951..L.serine.2..11.174..s100,L3Base,9.95E-09,0.009390464,2,9,98839260,98845509,Elongator complex protein 4
+GRMZM2G139973,Zm00001d046613,Metabolite,X.5951..L.serine.2..11.174..s100,L3Base,9.95e-09,0.009390464,2,9,98839260,98845509,Elongator complex protein 4
 GRMZM2G139973,Zm00001d046613,Metabolite,X.12647..L.homoserine.2..12.359,L3Base,0.008178626,0.000218778,2,9,98839260,98845509,Elongator complex protein 4
 GRMZM2G140082,Zm00001d046616,Metabolite,X.6262..L.ornithine.2..16.632,L3Tip,0.007917644,0.000928696,1,9,98847757,98851557,Protein kinase superfamily protein
-GRMZM2G140095,Zm00001d050575,Metabolite,X.439194..glyceric.acid..10.735,L3Tip,9.96E-05,0.000951464,1,4,101589397,101597227,Serine/threonine-protein kinase PBS1
+GRMZM2G140095,Zm00001d050575,Metabolite,X.439194..glyceric.acid..10.735,L3Tip,9.96e-05,0.000951464,1,4,101589397,101597227,Serine/threonine-protein kinase PBS1
 GRMZM2G140448,Zm00001d024875,other,SecondaryBranchNumber,GRoot,0.030511083,0.113988947,1,10,91796481,91798115,Putative cytochrome P450 superfamily protein
-GRMZM2G140651,Zm00001d018028,Metabolite,X.738..L.glutamine.2..14.083,LMAN,0.018162821,8.04E-05,1,5,212372579,212374838,NEP1-interacting protein-like 2
+GRMZM2G140651,Zm00001d018028,Metabolite,X.738..L.glutamine.2..14.083,LMAN,0.018162821,8.04e-05,1,5,212372579,212374838,NEP1-interacting protein-like 2
 GRMZM2G140811,Zm00001d022594,Metabolite,X.5962..L.lysine.2..17.643,L3Tip,0.001382369,0.000185177,1,7,180721223,180728877,pld11;phospholipase D11:
-GRMZM2G141034,Zm00001d049467,Metabolite,X.5460935..turanose.1..24.81,LMAD,4.57E-05,0.000399455,1,4,31378981,31380525,mstr2;monosaccharide transporter2:
+GRMZM2G141034,Zm00001d049467,Metabolite,X.5460935..turanose.1..24.81,LMAD,4.57e-05,0.000399455,1,4,31378981,31380525,mstr2;monosaccharide transporter2:
 GRMZM2G141607,Zm00001d031808,Flowering Time,GDDAnthesis.SilkingInterval,L3Base,0.001200333,1.769451758,1,1,202464156,202467819,NAD(P)-binding Rossmann-fold superfamily protein
-GRMZM2G141810,Zm00001d037674,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,GRoot,0.000128743,5.78E-05,1,6,133714246,133717685,tar3;tryptophan aminotransferase related3:
+GRMZM2G141810,Zm00001d037674,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,GRoot,0.000128743,5.78e-05,1,6,133714246,133717685,tar3;tryptophan aminotransferase related3:
 GRMZM2G141848,Zm00001d023853,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Base,0.022203585,0.000632415,1,10,25081643,25084377,aprl6;adenosine 5'-phosphosulfate reductase6: member of protein disulfide isomerase family involved in protein folding
-GRMZM2G142011,Zm00001d014601,Metabolite,X.6255..maltose..2..24.915,L3Tip,1.10E-10,0.000463316,2,5,54849718,54851421,Peroxidase 16
-GRMZM2G142011,Zm00001d014601,Metabolite,X.5321342..beta.sitosterol..28.848,L3Tip,8.86E-07,0.000263105,2,5,54849718,54851421,Peroxidase 16
+GRMZM2G142011,Zm00001d014601,Metabolite,X.6255..maltose..2..24.915,L3Tip,1.1e-10,0.000463316,2,5,54849718,54851421,Peroxidase 16
+GRMZM2G142011,Zm00001d014601,Metabolite,X.5321342..beta.sitosterol..28.848,L3Tip,8.86e-07,0.000263105,2,5,54849718,54851421,Peroxidase 16
 GRMZM2G142088,Zm00001d017197,Metabolite,X.444212..trans.aconitic.acid..15.842..s100,GShoot,0.000706689,0.001885366,1,5,188621089,188627758,LOCATED IN: cytosol chloroplast; EXPRESSED IN: 24 plant structures; EXPRESSED DURING: 14 growth stages; BEST Arabidopsis thaliana protein match is: Tudor/PWWP/MBT superfamily protein (TAIR:AT1G15940.1); Has 137162 Blast hits to 70781 proteins in 29 /.../cies: Archae - 289; Bacteria - 24182; Metazoa - 56725; Fungi - 20130; Plants - 6559; Viruses - 758; Other Eukaryotes - 28519 (source: NCBI BLink).
 GRMZM2G142334,Zm00001d044393,Flowering Time,GDDAnthesis.SilkingInterval,L3Tip,0.022933108,-1.11015079,1,3,226945825,226954001,Serine/threonine protein phosphatase 2A 55 kDa regulatory subunit B beta isoform
 GRMZM2G143469,Zm00001d011256,Flowering Time,DaysToTassel,L3Tip,0.003237448,-0.770517202,2,8,144697819,144699023,OHP2
 GRMZM2G143469,Zm00001d011256,Flowering Time,GDDDaystoTassel,L3Tip,0.047417985,-5.416044607,2,8,144697819,144699023,OHP2
 GRMZM2G143886,,Female Inflorescence,EarRowNumber,GShoot,0.000833821,-0.209027207,1,,,,
-GRMZM2G144020,Zm00001d012955,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Tip,8.92E-06,0.000629887,1,5,2345664,2348616,Fes1A
+GRMZM2G144020,Zm00001d012955,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Tip,8.92e-06,0.000629887,1,5,2345664,2348616,Fes1A
 GRMZM2G144841,Zm00001d047058,Metabolite,X.6057..tyrosine.2..17.871,LMAN,0.03359098,-0.001583306,1,9,116826647,116829561,Tobamovirus multiplication protein 2B
 GRMZM2G145065,Zm00001d028965,Metabolite,X.700..ethanolamine..9.879,LMAD,0.022349375,0.000427651,1,1,53169397,53176921,MADS box interactor-like
-GRMZM2G145213,Zm00001d048868,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,1.95E-05,0.000498433,1,4,6760654,6765415,14-3-3-like protein GF14 epsilon
+GRMZM2G145213,Zm00001d048868,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,1.95e-05,0.000498433,1,4,6760654,6765415,14-3-3-like protein GF14 epsilon
 GRMZM2G145720,Zm00001d045728,Metabolite,X.311..citric.acid..16.615..s100,L3Base,0.01333758,0.001479374,1,9,35557580,35561282,Protein NSP-INTERACTING KINASE 1
 GRMZM2G146234,Zm00001d051896,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Tip,0.023334346,0.000401733,1,4,173895439,173897086,Protein DOWNY MILDEW RESISTANCE 6
 GRMZM2G147191,Zm00001d020727,other,SouthernLeafBlight,LMAN,0.04030013,-0.097602258,1,7,130345805,130357946,ARP protein (REF)
@@ -603,146 +603,146 @@ GRMZM2G147221,Zm00001d010039,Metabolite,X.6255..maltose.1..24.702,LMAN,0.0001222
 GRMZM2G147408,,other,NIRStarch,LMAD,0.02268187,-0.185743669,7,,,,
 GRMZM2G147408,,Metabolite,X.204..allantoin.1..17.293,LMAD,0.006962112,0.002493539,7,,,,
 GRMZM2G147408,,Metabolite,X.439958..D.glucose.6.phosphate.1..21.394,LMAD,0.007124944,0.000772304,7,,,,
-GRMZM2G147408,,Metabolite,X.5988..Sucrose..23.988..s100,LMAD,7.26E-11,0.089746113,7,,,,
-GRMZM2G147408,,Metabolite,X.6262..L.ornithine.2..16.632,LMAD,2.54E-16,0.001455088,7,,,,
-GRMZM2G147408,,Metabolite,X.938..nicotinic.acid..10.27,LMAD,2.01E-05,0.000101469,7,,,,
-GRMZM2G147408,,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,LMAD,9.11E-11,6.55E-05,7,,,,
+GRMZM2G147408,,Metabolite,X.5988..Sucrose..23.988..s100,LMAD,7.26e-11,0.089746113,7,,,,
+GRMZM2G147408,,Metabolite,X.6262..L.ornithine.2..16.632,LMAD,2.54e-16,0.001455088,7,,,,
+GRMZM2G147408,,Metabolite,X.938..nicotinic.acid..10.27,LMAD,2.01e-05,0.000101469,7,,,,
+GRMZM2G147408,,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,LMAD,9.11e-11,6.55e-05,7,,,,
 GRMZM2G147481,Zm00001d028008,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,L3Base,0.000791543,0.000312828,1,1,20133912,20136948,Probable mitochondrial adenine nucleotide transporter BTL2
 GRMZM2G147503,Zm00001d049265,Metabolite,X.5988..Sucrose..23.988..s100,L3Base,0.010173186,0.082266305,1,4,23633672,23635389,O-methyltransferase ZRP4
 GRMZM2G147809,Zm00001d013303,Metabolite,X.5460935..turanose.1..24.81,L3Tip,0.010143404,0.000457846,1,5,8163573,8168474,Protein binding protein
 GRMZM2G148249,Zm00001d022313,Metabolite,X.8742..shikimic.acid..16.433..s100,LMAN,0.027020975,-0.001337006,1,7,174972193,174977307,DNA/RNA helicase protein
-GRMZM2G149286,Zm00001d010476,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.028257181,-3.88E-05,2,8,117146840,117163644,
+GRMZM2G149286,Zm00001d010476,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.028257181,-3.88e-05,2,8,117146840,117163644,
 GRMZM2G149286,Zm00001d010476,Metabolite,X.5321342..beta.sitosterol..28.848,L3Tip,0.003699416,-0.000179925,2,8,117146840,117163644,
-GRMZM2G149392,Zm00001d038080,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,7.56E-05,0.000483527,1,6,147037411,147040562,agenet domain protein
+GRMZM2G149392,Zm00001d038080,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,7.56e-05,0.000483527,1,6,147037411,147040562,agenet domain protein
 GRMZM2G149700,Zm00001d037426,Metabolite,X.92824..D.malic.acid..12.794..s100,Kern,0.035571156,0.001987724,1,6,125166233,125166723,
 GRMZM2G151015,,Metabolite,X.2116..alpha.tocophereol..27.379,GShoot,0.028505528,0.00010129,1,,,,
 GRMZM2G151245,Zm00001d011740,Metabolite,X.51..alpha.ketoglutaric.acid..13.859,L3Base,0.03786095,-0.000315611,1,8,160440621,160442292,Senescence-associated protein 12
 GRMZM2G152105,,other,TasselBranchLength,GShoot,0.004378219,4.223209101,1,,,,
-GRMZM2G152179,Zm00001d022092,other,NumberofTilleringPlants,LMAN,1.25E-17,0.075839515,1,7,170115656,170116687,Cytosolic sulfotransferase 17
-GRMZM2G152438,Zm00001d005188,Metabolite,X.1549111..caffeic.acid..19.755,L3Base,8.05E-06,0.001020478,1,2,163003511,163010881,Cytochrome b5 domain-containing protein RLF
-GRMZM2G152638,Zm00001d019934,Metabolite,X.444266..maleic.acid..10.323,L3Base,0.041490992,3.29E-06,1,7,77376492,77379346,O-Glycosyl hydrolases family 17 protein
+GRMZM2G152179,Zm00001d022092,other,NumberofTilleringPlants,LMAN,1.25e-17,0.075839515,1,7,170115656,170116687,Cytosolic sulfotransferase 17
+GRMZM2G152438,Zm00001d005188,Metabolite,X.1549111..caffeic.acid..19.755,L3Base,8.05e-06,0.001020478,1,2,163003511,163010881,Cytochrome b5 domain-containing protein RLF
+GRMZM2G152638,Zm00001d019934,Metabolite,X.444266..maleic.acid..10.323,L3Base,0.041490992,3.29e-06,1,7,77376492,77379346,O-Glycosyl hydrolases family 17 protein
 GRMZM2G152777,Zm00001d036175,Metabolite,X.204..allantoin.1..17.293,L3Tip,0.024585064,0.001215752,1,6,75713940,75715842,GDSL esterase/lipase APG
 GRMZM2G153017,Zm00001d026465,Metabolite,X.5988..Sucrose..23.988..s100,LMAD,0.016628329,0.059931072,1,10,146390292,146400543,
-GRMZM2G153178,Zm00001d015116,other,NumberofTilleringPlants,GRoot,6.03E-06,0.032437214,1,5,76324123,76328085,
+GRMZM2G153178,Zm00001d015116,other,NumberofTilleringPlants,GRoot,6.03e-06,0.032437214,1,5,76324123,76328085,
 GRMZM2G153611,Zm00001d028285,Metabolite,X.5321342..beta.sitosterol..28.848,LMAN,0.00198309,-0.000190147,1,1,29171324,29180599,Probable E3 ubiquitin-protein ligase ARI2
 GRMZM2G153920,Zm00001d028144,Seed Traits,CobWeight,L3Tip,0.01429519,-0.6125248,1,1,24012254,24014074,Putative polyol transporter 1
-GRMZM2G153945,Zm00001d031689,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Tip,2.48E-05,0.000950407,1,1,198655372,198659835,PTI1-like tyrosine-protein kinase 3
-GRMZM2G153961,,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,LMAN,5.71E-15,0.000105194,1,,,,
+GRMZM2G153945,Zm00001d031689,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Tip,2.48e-05,0.000950407,1,1,198655372,198659835,PTI1-like tyrosine-protein kinase 3
+GRMZM2G153961,,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,LMAN,5.71e-15,0.000105194,1,,,,
 GRMZM2G154048,,Metabolite,X.3037582..mucic.acid..18.907,L3Base,0.000161515,0.000500884,1,,,,
 GRMZM2G154156,Zm00001d004407,Metabolite,X.439194..glyceric.acid..10.735,L3Base,0.044639601,0.000684067,1,2,110120314,110125179,Zinc finger CCCH domain-containing protein 59
 GRMZM2G154316,Zm00001d047746,Metabolite,X.6106..L.leucine.2..9.945,Kern,0.001214434,0.000547437,1,9,140703529,140707440,CONTAINS InterPro DOMAIN/s: Cytochrome B561-related N-terminal (InterPro:IPR019176); Has 215 Blast hits to 213 proteins in 79 species: Archae - 0; Bacteria - 6; Metazoa - 131; Fungi - 22; Plants - 42; Viruses - 0; Other Eukaryotes - 14 (source: NCB /.../k).
 GRMZM2G154626,Zm00001d039026,other,TasselBranchLength,L3Tip,0.03751797,-3.323425109,1,6,168872299,168875758,F-box protein family-like protein
-GRMZM2G154839,Zm00001d044358,Metabolite,X.8742..shikimic.acid..16.433..s100,Kern,1.73E-06,0.003504657,1,3,225841652,225863873,Regulator of telomere elongation helicase 1
+GRMZM2G154839,Zm00001d044358,Metabolite,X.8742..shikimic.acid..16.433..s100,Kern,1.73e-06,0.003504657,1,3,225841652,225863873,Regulator of telomere elongation helicase 1
 GRMZM2G155002,Zm00001d049256,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,L3Base,0.000865734,0.002957723,1,4,23084615,23087441,
 GRMZM2G155073,Zm00001d041690,other,Spikelets.PrimaryBranch,GRoot,0.001037216,0.50827097,1,3,133491020,133493729,aprl7;adenosine 5'-phosphosulfate reductase-like7:
 GRMZM2G155565,,other,RowQuality,LMAD,0.002269927,0.017356577,1,,,,
-GRMZM2G155729,Zm00001d024307,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,L3Tip,1.45E-07,0.002055077,1,10,63091728,63097838,UDP-N-acetylglucosamine diphosphorylase 2
+GRMZM2G155729,Zm00001d024307,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,L3Tip,1.45e-07,0.002055077,1,10,63091728,63097838,UDP-N-acetylglucosamine diphosphorylase 2
 GRMZM2G155753,Zm00001d032127,other,RowQuality,L3Tip,0.015368697,-0.007562621,1,1,213895961,213901572,Peptidyl-prolyl cis-trans isomerase
 GRMZM2G155767,Zm00001d033786,Metabolite,X.754..glycerol.1.phosphate..16.056,LMAN,0.009212719,-0.00100969,1,1,273671338,273678008,hk4;histidine kinase4:
-GRMZM2G155998,Zm00001d041709,Metabolite,X.12647..L.homoserine.2..12.359,GRoot,6.55E-13,-0.000281709,1,3,134442050,134444575,ARM repeat superfamily protein
+GRMZM2G155998,Zm00001d041709,Metabolite,X.12647..L.homoserine.2..12.359,GRoot,6.55e-13,-0.000281709,1,3,134442050,134444575,ARM repeat superfamily protein
 GRMZM2G156026,Zm00001d053513,Metabolite,X.700..ethanolamine..9.879,L3Tip,0.023856222,0.000457828,2,4,232561161,232562672,UDP-glycosyltransferase 72B1
 GRMZM2G156026,Zm00001d053513,Metabolite,X.700..ethanolamine..9.879,LMAD,0.000331404,0.000423007,2,4,232561161,232562672,UDP-glycosyltransferase 72B1
 GRMZM2G156816,Zm00001d039837,Metabolite,X.239..Beta..alanine..1..12.044,L3Base,0.00112932,0.000862573,1,3,16287892,16290203,Spermidine hydroxycinnamoyl transferase
 GRMZM2G157522,Zm00001d051917,Metabolite,X.827..ribitol..15.66,LMAN,0.008961953,0.000187389,1,4,174623848,174629371,Phosphatidylinositol N-acetyglucosaminlytransferase subunit P-related
 GRMZM2G157616,Zm00001d044420,other,StandCount,Kern,0.001356866,-0.089507249,1,3,227506923,227511292,ATP binding microtubule motor family protein
 GRMZM2G158736,Zm00001d015611,other,NumberofTilleringPlants,GRoot,0.003350533,0.02186682,1,5,101017647,101019586,Cyclin-dependent kinases regulatory subunit 1
-GRMZM2G158890,Zm00001d032003,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,3.45E-09,0.000696629,1,1,209210225,209211202,
+GRMZM2G158890,Zm00001d032003,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,3.45e-09,0.000696629,1,1,209210225,209211202,
 GRMZM2G159119,Zm00001d023402,Metabolite,X.5988..Sucrose..23.988..s100,LMAN,0.002570535,0.077430206,1,10,4740647,4742679,Putative MYB DNA-binding domain superfamily protein
 GRMZM2G159937,Zm00001d043706,other,SouthernLeafBlight,L3Base,0.007705562,-0.106644008,1,3,207941097,207942500,DNA binding protein
 GRMZM2G160178,,other,NumberofTilleringPlants,L3Base,0.02014956,0.022770225,1,,,,
-GRMZM2G160515,Zm00001d007381,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,LMAN,0.002802413,5.61E-05,1,2,230304901,230306029,
-GRMZM2G160710,Zm00001d017019,Metabolite,X.444972..fumaric.acid..10.94,L3Tip,1.14E-07,0.001015455,1,5,182804219,182805136,ATFP4
+GRMZM2G160515,Zm00001d007381,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,LMAN,0.002802413,5.61e-05,1,2,230304901,230306029,
+GRMZM2G160710,Zm00001d017019,Metabolite,X.444972..fumaric.acid..10.94,L3Tip,1.14e-07,0.001015455,1,5,182804219,182805136,ATFP4
 GRMZM2G160842,Zm00001d045182,Seed Traits,TotalKernelVolume,L3Base,0.000323549,-1.197111903,1,9,15338520,15348572,Adenylyltransferase and sulfurtransferase MOCS3 1 Molybdopterin-synthase adenylyltransferase Molybdopterin-synthase sulfurtransferase
 GRMZM2G161004,Zm00001d031450,Metabolite,X.439742..beta.cyano.L.alanine..11.288,LMAN,0.002119623,0.001213047,1,1,190370386,190373502,D111/G-patch domain-containing protein
 GRMZM2G161302,Zm00001d020902,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Tip,0.002252963,0.000196373,1,7,136115418,136125608,
-GRMZM2G161521,Zm00001d049288,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,LMAN,1.98E-20,0.000268602,1,4,24524855,24525593,
-GRMZM2G162154,,Metabolite,X.128869..galactonic.acid.2..18.504,LMAD,6.79E-06,3.57E-05,1,,,,
+GRMZM2G161521,Zm00001d049288,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,LMAN,1.98e-20,0.000268602,1,4,24524855,24525593,
+GRMZM2G162154,,Metabolite,X.128869..galactonic.acid.2..18.504,LMAD,6.79e-06,3.57e-05,1,,,,
 GRMZM2G162453,Zm00001d040466,Female Inflorescence,EarRowNumber,LMAD,0.008701409,-0.119834403,1,3,44985546,44989066,CO(2)-response secreted protease
 GRMZM2G163159,Zm00001d011570,other,NIRStarch,LMAD,0.000330541,0.212862904,1,8,154700939,154705547,RING/U-box superfamily protein
-GRMZM2G163296,Zm00001d034279,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.000249748,7.23E-05,1,1,288410720,288412651,
-GRMZM2G164761,Zm00001d032909,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,LMAN,6.64E-05,0.000154152,1,1,242794262,242797695,Cellulose synthase-like protein D3
-GRMZM2G165778,Zm00001d051180,Metabolite,X.827..ribitol..15.66,L3Base,7.50E-07,0.000325098,1,4,147443012,147450623,Putative homeodomain-like transcription factor superfamily protein
-GRMZM2G165919,Zm00001d028931,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,GRoot,6.62E-07,9.34E-05,1,1,51977839,51979551,gols1;galactinol synthase1: Similar to water stress-induced protein of rice (per Baysdorfer
+GRMZM2G163296,Zm00001d034279,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.000249748,7.23e-05,1,1,288410720,288412651,
+GRMZM2G164761,Zm00001d032909,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,LMAN,6.64e-05,0.000154152,1,1,242794262,242797695,Cellulose synthase-like protein D3
+GRMZM2G165778,Zm00001d051180,Metabolite,X.827..ribitol..15.66,L3Base,7.5e-07,0.000325098,1,4,147443012,147450623,Putative homeodomain-like transcription factor superfamily protein
+GRMZM2G165919,Zm00001d028931,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,GRoot,6.62e-07,9.34e-05,1,1,51977839,51979551,gols1;galactinol synthase1: Similar to water stress-induced protein of rice (per Baysdorfer
 GRMZM2G166348,,other,TasselBranchLength,L3Tip,0.03751797,-3.415206301,1,,,,
 GRMZM2G166671,Zm00001d044620,Metabolite,X.5962..L.lysine.2..17.643,L3Tip,0.001117502,0.000202543,1,3,233480561,233489917,DCD (Development and Cell Death) domain protein
 GRMZM2G166767,Zm00001d047796,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Tip,0.000590451,0.00070636,1,9,141979586,141983345,Trifunctional UDP-glucose 46-dehydratase/UDP-4-keto-6-deoxy-D-glucose 35-epimerase/UDP-4-keto-L-rhamnose-reductase RHM2
-GRMZM2G167283,Zm00001d043473,other,NIRStarch,L3Base,1.91E-07,0.473845424,1,3,201240323,201248398,Probable sugar phosphate/phosphate translocator
+GRMZM2G167283,Zm00001d043473,other,NIRStarch,L3Base,1.91e-07,0.473845424,1,3,201240323,201248398,Probable sugar phosphate/phosphate translocator
 GRMZM2G167591,Zm00001d021642,other,SecondaryBranchNumber,L3Base,0.000213856,0.194364422,1,7,158942190,158945366,
 GRMZM2G167787,Zm00001d032503,Metabolite,X.9750..citrulline.2..16.691,GRoot,0.042158435,0.000296706,1,1,228688981,228690393,DUF641 family protein
-GRMZM2G167824,Zm00001d032502,Metabolite,X.5984..fructose.1..17.18..s100,GShoot,0.017764439,-0.004469296,1,1,228680490,228685551,yab12;C2C2-YABBY-transcription factor 12: Locus designated and assigned to a transcription factor family by the GRASSIUS project (Yilmaz et al 2009) 
+GRMZM2G167824,Zm00001d032502,Metabolite,X.5984..fructose.1..17.18..s100,GShoot,0.017764439,-0.004469296,1,1,228680490,228685551,yab12;C2C2-YABBY-transcription factor 12: Locus designated and assigned to a transcription factor family by the GRASSIUS project (Yilmaz et al 2009)
 GRMZM2G167872,Zm00001d011792,other,EarDiameter,GShoot,0.039381429,-0.3807889,1,8,161705740,161709095,UDP-D-apiose/UDP-D-xylose synthase 2
 GRMZM2G168917,Zm00001d002802,other,Spikelets.MainSpike,L3Tip,0.003006453,-0.364667805,1,2,23113153,23114211,Leucine-rich repeat receptor protein kinase EXS
 GRMZM2G168959,Zm00001d040920,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,L3Base,0.037864218,0.000223667,1,3,79222601,79256661,tRNA (guanine(37)-N1)-methyltransferase 2
-GRMZM2G169152,Zm00001d039918,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,Kern,3.25E-05,-0.002856236,1,3,19350843,19355642,cytochrome P450 family 77 subfamily A polypeptide 5 pseudogene
-GRMZM2G169270,Zm00001d031487,Metabolite,X.444212..trans.aconitic.acid..15.842..s100,L3Base,0.002105975,-0.002096138,1,1,191766320,191771809,sbp16;SBP-transcription factor16: NCBI: squamosa promoter-binding-like protein 15 Locus designated and assigned to a transcription factor family by the GRASSIUS project (Yilmaz et al 2009) 
+GRMZM2G169152,Zm00001d039918,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,Kern,3.25e-05,-0.002856236,1,3,19350843,19355642,cytochrome P450 family 77 subfamily A polypeptide 5 pseudogene
+GRMZM2G169270,Zm00001d031487,Metabolite,X.444212..trans.aconitic.acid..15.842..s100,L3Base,0.002105975,-0.002096138,1,1,191766320,191771809,sbp16;SBP-transcription factor16: NCBI: squamosa promoter-binding-like protein 15 Locus designated and assigned to a transcription factor family by the GRASSIUS project (Yilmaz et al 2009)
 GRMZM2G169825,Zm00001d033941,Seed Traits,EarWeight,GRoot,0.037853747,1.854755629,2,1,279275948,279278883,BTB/POZ domain-containing protein
 GRMZM2G169825,Zm00001d033941,Metabolite,X.750..glycine..10.456..s100,L3Tip,0.001441921,0.024786906,2,1,279275948,279278883,BTB/POZ domain-containing protein
 GRMZM2G169931,Zm00001d030040,Male Inflorescence,TasselPrimaryBranches,GRoot,0.03720286,-0.510017,1,1,101466317,101468065,nonsense-mediated mRNA decay NMD3 family protein
-GRMZM2G170400,Zm00001d038891,Flowering Time,DaystoSilk,L3Tip,5.37E-07,0.92773846,2,6,166502169,166507064,Phosphoethanolamine N-methyltransferase 3
-GRMZM2G170400,Zm00001d038891,Flowering Time,DaysToTassel,L3Tip,2.99E-05,0.869640486,2,6,166502169,166507064,Phosphoethanolamine N-methyltransferase 3
+GRMZM2G170400,Zm00001d038891,Flowering Time,DaystoSilk,L3Tip,5.37e-07,0.92773846,2,6,166502169,166507064,Phosphoethanolamine N-methyltransferase 3
+GRMZM2G170400,Zm00001d038891,Flowering Time,DaysToTassel,L3Tip,2.99e-05,0.869640486,2,6,166502169,166507064,Phosphoethanolamine N-methyltransferase 3
 GRMZM2G170602,Zm00001d017801,other,TasselBranchLength,L3Tip,0.008982749,3.700907714,1,5,207142340,207144828,Formate dehydrogenase chloroplastic/mitochondrial
 GRMZM2G170742,Zm00001d016625,other,RowQuality,L3Tip,0.0022234,0.007213457,1,5,170513382,170514256,Os02g0519800 protein
-GRMZM2G171559,Zm00001d032533,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Tip,1.77E-08,0.000668103,1,1,229829797,229830137,
+GRMZM2G171559,Zm00001d032533,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Tip,1.77e-08,0.000668103,1,1,229829797,229830137,
 GRMZM2G171600,Zm00001d042313,other,TasselBranchLength,LMAN,0.001527265,-4.253075927,1,3,160480671,160486892,Calmodulin-binding transcription activator 4
 GRMZM2G171604,Zm00001d015788,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Tip,0.015235492,-0.000664375,1,5,119713521,119721731,prc4;proteasome component4: endosperm cDNA 5C01A07
-GRMZM2G171644,,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,L3Base,0.005552449,5.85E-05,1,,,,
-GRMZM2G171650,Zm00001d042315,other,SouthernLeafBlight,GShoot,0.042693779,-0.118448268,2,3,160591489,160591701,MADS-box transcription factor 56
-GRMZM2G171650,Zm00001d042315,other,SouthernLeafBlight,L3Base,0.023008362,-0.104673282,2,3,160591489,160591701,MADS-box transcription factor 56
-GRMZM2G171961,Zm00001d013274,Development,PlantHeight,Kern,4.24E-06,3.283105857,1,5,7548071,7559215,Probable helicase MAGATAMA 3
+GRMZM2G171644,,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,L3Base,0.005552449,5.85e-05,1,,,,
+GRMZM2G171650,Zm00001d042315,other,SouthernLeafBlight,GShoot,0.042693779,-0.118448268,2,3,160591489,160591701,MADS-box transcription factor 69
+GRMZM2G171650,Zm00001d042315,other,SouthernLeafBlight,L3Base,0.023008362,-0.104673282,2,3,160591489,160591701,MADS-box transcription factor 69
+GRMZM2G171961,Zm00001d013274,Development,PlantHeight,Kern,4.24e-06,3.283105857,1,5,7548071,7559215,Probable helicase MAGATAMA 3
 GRMZM2G172098,Zm00001d030220,Metabolite,X.6255..maltose..2..24.915,LMAN,0.019596744,0.000147781,1,1,113769645,113772634,alpha/beta-Hydrolases superfamily protein
 GRMZM2G172159,,other,Spikelets.MainSpike,L3Tip,0.00092131,0.382117121,1,,,,
-GRMZM2G173563,Zm00001d038012,other,MainSpikeLength,L3Tip,8.17E-05,-7.244246644,1,6,145094748,145101745,DUF538 family protein
+GRMZM2G173563,Zm00001d038012,other,MainSpikeLength,L3Tip,8.17e-05,-7.244246644,1,6,145094748,145101745,DUF538 family protein
 GRMZM2G173612,,Metabolite,X.444212..trans.aconitic.acid..15.842..s100,L3Base,0.004743046,0.001964801,1,,,,
-GRMZM2G174568,Zm00001d053931,Metabolite,X.754..glycerol.1.phosphate..16.056,Kern,1.31E-05,0.002677334,1,4,243761987,243766788,Peroxisome biogenesis protein 16
+GRMZM2G174568,Zm00001d053931,Metabolite,X.754..glycerol.1.phosphate..16.056,Kern,1.31e-05,0.002677334,1,4,243761987,243766788,Peroxisome biogenesis protein 16
 GRMZM2G175031,Zm00001d039268,Seed Traits,TotalSeedWeight,LMAN,0.000219227,-1.866233897,1,3,857137,857796,
-GRMZM2G175860,Zm00001d038250,Metabolite,X.642609..trans.caftaric.acid.2..25.529,LMAN,2.63E-09,0.00062877,1,6,152371396,152373310,HSP40/DnaJ peptide-binding protein
+GRMZM2G175860,Zm00001d038250,Metabolite,X.642609..trans.caftaric.acid.2..25.529,LMAN,2.63e-09,0.00062877,1,6,152371396,152373310,HSP40/DnaJ peptide-binding protein
 GRMZM2G175989,Zm00001d035081,Leaf Morphology,LeafWidth,Kern,0.046000812,-1.373963522,1,6,4037971,4039290,Beta-carotene isomerase D27 chloroplastic
-GRMZM2G176085,Zm00001d013212,Metabolite,X.938..nicotinic.acid..10.27,L3Tip,0.007681226,-9.98E-05,1,5,6625547,6627076,Peroxidase 16
-GRMZM2G176998,Zm00001d024885,Metabolite,X.6255..maltose..2..24.915,L3Tip,1.15E-07,0.00030663,1,10,92330298,92332490,Putative WD40-like beta propeller repeat family protein
+GRMZM2G176085,Zm00001d013212,Metabolite,X.938..nicotinic.acid..10.27,L3Tip,0.007681226,-9.98e-05,1,5,6625547,6627076,Peroxidase 16
+GRMZM2G176998,Zm00001d024885,Metabolite,X.6255..maltose..2..24.915,L3Tip,1.15e-07,0.00030663,1,10,92330298,92332490,Putative WD40-like beta propeller repeat family protein
 GRMZM2G177340,Zm00001d026657,Metabolite,X.754..glycerol.1.phosphate..16.056,LMAN,0.021815978,0.001031929,1,10,149524994,149525893,Probable CCR4-associated factor 1 homolog 11
-GRMZM2G177812,Zm00001d002871,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Tip,5.88E-05,0.00051226,1,2,25171106,25176433,abcg11;ABC transporter G family member 11: Ortholog of Arabidopsis ABCG11/COF1/WBC11. Plasma membrane-localized ATP-binding cassette transporter; cutin transport to extracellular matrix. (A. Barkan
+GRMZM2G177812,Zm00001d002871,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Tip,5.88e-05,0.00051226,1,2,25171106,25176433,abcg11;ABC transporter G family member 11: Ortholog of Arabidopsis ABCG11/COF1/WBC11. Plasma membrane-localized ATP-binding cassette transporter; cutin transport to extracellular matrix. (A. Barkan
 GRMZM2G177863,Zm00001d014597,Metabolite,X.2724705..1.6.anhydro.glucose..15.326,L3Tip,0.001141123,0.000150391,1,5,54724080,54729044,
 GRMZM2G177937,Zm00001d002854,Flowering Time,GDDAnthesis.SilkingInterval,L3Base,0.002202222,-1.718006582,1,2,24772447,24776140,Thioredoxin M1 chloroplastic
-GRMZM2G178681,Zm00001d003007,Metabolite,X.9750..citrulline.2..16.691,L3Base,2.19E-07,0.000701743,1,2,29298796,29300202,Pentatricopeptide repeat (PPR) superfamily protein
+GRMZM2G178681,Zm00001d003007,Metabolite,X.9750..citrulline.2..16.691,L3Base,2.19e-07,0.000701743,1,2,29298796,29300202,Pentatricopeptide repeat (PPR) superfamily protein
 GRMZM2G179002,Zm00001d006102,Metabolite,X.5321342..beta.sitosterol..28.848,GShoot,0.008087452,-0.000210148,1,2,198166081,198172199,Probable protein S-acyltransferase 7
 GRMZM2G179253,Zm00001d003376,Metabolite,X.204..allantoin.1..17.293,LMAD,0.032228873,0.002180763,1,2,42138897,42145159,
 GRMZM2G179507,Zm00001d026562,Metabolite,X.754..glycerol.1.phosphate..16.056,LMAN,0.003404147,0.000982526,1,10,148133688,148137515,
-GRMZM2G179679,Zm00001d010440,Metabolite,X.1001..phenethylamine..13.742,L3Base,1.76E-07,0.000556546,1,8,115240665,115242366,sweet3a;sugars will eventually be exported transporter3a:
+GRMZM2G179679,Zm00001d010440,Metabolite,X.1001..phenethylamine..13.742,L3Base,1.76e-07,0.000556546,1,8,115240665,115242366,sweet3a;sugars will eventually be exported transporter3a:
 GRMZM2G180262,Zm00001d023269,other,TilleringIndex,LMAD,0.0060279,0.008557141,1,10,1698336,1698995,VQ
 GRMZM2G180419,,Metabolite,X.204..allantoin.1..17.293,L3Tip,0.000135429,0.001571006,1,,,,
 GRMZM2G180435,,other,NIRStarch,LMAN,0.001781844,0.33703675,1,,,,
-GRMZM2G180903,Zm00001d015817,Metabolite,X.6537496..chlorogenic.acid.1..26.37,LMAD,1.07E-08,0.000882703,2,5,123620508,123624088,40S ribosomal protein S4-3
-GRMZM2G180903,Zm00001d015817,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,LMAD,1.18E-06,0.004489689,2,5,123620508,123624088,40S ribosomal protein S4-3
+GRMZM2G180903,Zm00001d015817,Metabolite,X.6537496..chlorogenic.acid.1..26.37,LMAD,1.07e-08,0.000882703,2,5,123620508,123624088,40S ribosomal protein S4-3
+GRMZM2G180903,Zm00001d015817,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,LMAD,1.18e-06,0.004489689,2,5,123620508,123624088,40S ribosomal protein S4-3
 GRMZM2G181227,Zm00001d023779,other,EarDiameter,Kern,0.006049812,-0.321522197,1,10,19912191,19918231,3-hydroxyisobutyryl-CoA hydrolase 1
 GRMZM2G181371,Zm00001d020910,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,L3Tip,0.000600314,0.00325388,2,7,136264881,136266357,Induced stolen tip protein TUB8
 GRMZM2G181371,Zm00001d020910,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Tip,0.002036364,0.000524627,2,7,136264881,136266357,Induced stolen tip protein TUB8
-GRMZM2G303728,Zm00001d050272,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Tip,1.56E-06,0.000291738,1,4,77692886,77695103,UPF0503 protein  chloroplastic
+GRMZM2G303728,Zm00001d050272,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Tip,1.56e-06,0.000291738,1,4,77692886,77695103,UPF0503 protein  chloroplastic
 GRMZM2G304362,,Development,PlantHeight,LMAD,0.030520443,-1.465245591,1,,,,
 GRMZM2G304745,Zm00001d002835,Metabolite,X.5460407..threonic.acid..13.652,L3Tip,0.000353156,0.000534486,1,2,24248332,24253472,Probable LRR receptor-like serine/threonine-protein kinase
 GRMZM2G305060,Zm00001d039380,Metabolite,X.1001..phenethylamine..13.742,LMAN,0.001001905,0.00029376,1,3,2938833,2959820,Probable pre-mRNA-splicing factor ATP-dependent RNA helicase DEAH9
-GRMZM2G306597,,Metabolite,X.439451..galactinol.2..26.479,L3Base,1.67E-05,0.001327837,2,,,,
+GRMZM2G306597,,Metabolite,X.439451..galactinol.2..26.479,L3Base,1.67e-05,0.001327837,2,,,,
 GRMZM2G306597,,Metabolite,X.5984..fructose.1..17.18..s100,GShoot,0.030950669,0.004491416,2,,,,
-GRMZM2G307404,,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Base,4.76E-05,0.000174027,1,,,,
-GRMZM2G308365,Zm00001d026488,Metabolite,X.444266..maleic.acid..10.323,L3Base,0.045741837,2.92E-06,1,10,146938408,146939628,OSJNBb0022F16.11 protein;  protein
+GRMZM2G307404,,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Base,4.76e-05,0.000174027,1,,,,
+GRMZM2G308365,Zm00001d026488,Metabolite,X.444266..maleic.acid..10.323,L3Base,0.045741837,2.92e-06,1,10,146938408,146939628,OSJNBb0022F16.11 protein;  protein
 GRMZM2G309479,Zm00001d042014,Metabolite,X.791..DL.isoleucine.2..10.225,L3Tip,0.003289822,0.000681525,1,3,147402693,147402905,
 GRMZM2G311898,Zm00001d009568,Metabolite,X.439451..galactinol.2..26.479,Kern,0.009716353,0.002060046,1,8,70849400,70849804,Glutaredoxin-C9
 GRMZM2G317738,Zm00001d017721,Flowering Time,GDDAnthesis.SilkingInterval,L3Base,0.010495609,-1.497095102,1,5,205190183,205198427,Tudor/PWWP/MBT superfamily protein
 GRMZM2G318213,Zm00001d037757,Metabolite,X.439451..galactinol.2..26.479,LMAN,0.014026369,0.001639179,1,6,136409991,136410359,Grx_C15-glutaredoxin subgroup III
 GRMZM2G320298,Zm00001d018857,Metabolite,X.5962..L.lysine.2..17.643,L3Tip,0.029297627,0.000138882,1,7,7501793,7502779,Probable carboxylesterase 15
 GRMZM2G320399,Zm00001d038916,other,MainSpikeLength,LMAN,0.023703608,-4.61407085,1,6,166888284,166895783,zinc finger protein-related
-GRMZM2G320705,Zm00001d049204,Metabolite,X.5321515..stigmasterol..28.442,L3Tip,0.000469505,6.80E-05,1,4,20550938,20553827,
-GRMZM2G321413,Zm00001d034454,Metabolite,X.60961..adenosine..23.825,L3Base,1.40E-06,6.77E-05,1,1,293440270,293444841,Guanylate-binding family protein
-GRMZM2G322819,Zm00001d002678,Metabolite,X.750..glycine..10.456..s100,LMAN,1.33E-06,0.035168713,1,2,19071690,19082040,Prolyl oligopeptidase family protein
+GRMZM2G320705,Zm00001d049204,Metabolite,X.5321515..stigmasterol..28.442,L3Tip,0.000469505,6.8e-05,1,4,20550938,20553827,
+GRMZM2G321413,Zm00001d034454,Metabolite,X.60961..adenosine..23.825,L3Base,1.4e-06,6.77e-05,1,1,293440270,293444841,Guanylate-binding family protein
+GRMZM2G322819,Zm00001d002678,Metabolite,X.750..glycine..10.456..s100,LMAN,1.33e-06,0.035168713,1,2,19071690,19082040,Prolyl oligopeptidase family protein
 GRMZM2G323287,Zm00001d052657,Metabolite,X.3037582..mucic.acid..18.907,LMAN,0.010562665,0.000542318,1,4,196129556,196129822,
 GRMZM2G324544,Zm00001d007872,Development,PlantHeight,GRoot,0.034625556,2.275874167,1,2,241407634,241407864,
 GRMZM2G327263,,Metabolite,X.6106..L.leucine.2..9.945,GShoot,0.000795373,-0.000736179,1,,,,
-GRMZM2G328133,Zm00001d037003,other,NIROil,L3Base,8.22E-08,0.154594586,1,6,108768745,108769776,
+GRMZM2G328133,Zm00001d037003,other,NIROil,L3Base,8.22e-08,0.154594586,1,6,108768745,108769776,
 GRMZM2G328742,Zm00001d052591,Seed Traits,TotalKernelVolume,GShoot,0.000479433,-1.173535389,1,4,193980224,193982206,B3 domain-containing protein
 GRMZM2G331250,Zm00001d002890,Female Inflorescence,EarLength,GShoot,0.042622278,1.97077222,1,2,25943853,25944443,
 GRMZM2G331701,Zm00001d003554,other,NumberofTilleringPlants,L3Tip,0.001273653,0.030568426,1,2,47866673,47867299,22.0 kDa heat shock protein
 GRMZM2G336326,Zm00001d023693,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Tip,0.003491244,0.000212774,1,10,15732463,15734798,
 GRMZM2G337330,Zm00001d013825,Metabolite,X.5988..Sucrose..23.988..s100,L3Base,0.023014398,0.089641454,1,5,21493210,21493920,
-GRMZM2G337594,,Metabolite,X.239..Beta..alanine..1..12.044,L3Tip,4.64E-06,0.000897245,2,,,,
+GRMZM2G337594,,Metabolite,X.239..Beta..alanine..1..12.044,L3Tip,4.64e-06,0.000897245,2,,,,
 GRMZM2G337594,,Metabolite,X.12647..L.homoserine.2..12.359,L3Tip,0.023591057,0.000210353,2,,,,
 GRMZM2G340065,Zm00001d026577,other,Spikelets.MainSpike,LMAN,0.000593941,0.555855037,1,10,148261491,148265297,Probable cysteine protease RD21B
 GRMZM2G342033,Zm00001d002479,Metabolite,X.239..Beta..alanine..1..12.044,GShoot,0.003188882,0.000713706,4,2,13604789,13605838,S-norcoclaurine synthase
@@ -757,52 +757,52 @@ GRMZM2G351716,Zm00001d013165,Metabolite,X.239..Beta..alanine..1..12.044,L3Base,0
 GRMZM2G352678,Zm00001d028486,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,GRoot,0.000160662,0.000168454,1,1,36754520,36755618,Chemocyanin
 GRMZM2G353905,Zm00001d035841,other,SecondaryBranchNumber,LMAD,0.017940049,0.114700922,1,6,54772197,54798925,Callose synthase 5
 GRMZM2G354834,Zm00001d026297,Metabolite,X.2116..alpha.tocophereol..27.379,Kern,0.00846819,0.000152214,1,10,143164305,143165139,Proline-rich family protein
-GRMZM2G355773,Zm00001d025406,Metabolite,X.439242..Raffinose..29.282,LMAN,8.45E-09,0.003769009,1,10,117441376,117441837,Histone H3.2
+GRMZM2G355773,Zm00001d025406,Metabolite,X.439242..Raffinose..29.282,LMAN,8.45e-09,0.003769009,1,10,117441376,117441837,Histone H3.2
 GRMZM2G356817,,Metabolite,X.5962..L.lysine.2..17.643,L3Tip,0.004543049,0.000171367,1,,,,
 GRMZM2G356938,Zm00001d018485,Seed Traits,TotalKernelNum,L3Tip,0.036942119,0.296436461,1,5,221680806,221687059,Probable voltage-gated potassium channel subunit beta
 GRMZM2G359952,Zm00001d008882,Metabolite,X.5988..Sucrose..23.988..s100,L3Tip,0.011939222,0.080174842,2,8,23705985,23714926,tub6;beta tubulin6:
-GRMZM2G359952,Zm00001d008882,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,0.002599671,6.42E-05,2,8,23705985,23714926,tub6;beta tubulin6:
+GRMZM2G359952,Zm00001d008882,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,0.002599671,6.42e-05,2,8,23705985,23714926,tub6;beta tubulin6:
 GRMZM2G361993,Zm00001d014774,Seed Traits,TotalKernelNum,L3Tip,0.036880111,0.309909886,1,5,62765407,62765844,Auxin-responsive protein SAUR32
 GRMZM2G362470,Zm00001d044731,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,0.01372185,0.000325958,1,9,650593,652094,
-GRMZM2G362857,Zm00001d051795,Metabolite,X.3037582..mucic.acid..18.907,LMAD,1.67E-12,0.001242843,1,4,169925585,169926118,Polcalcin Jun o 2
+GRMZM2G362857,Zm00001d051795,Metabolite,X.3037582..mucic.acid..18.907,LMAD,1.67e-12,0.001242843,1,4,169925585,169926118,Polcalcin Jun o 2
 GRMZM2G366142,Zm00001d042425,Metabolite,X.6508..quinic.acid..17.076..s100,LMAN,0.008610502,0.004415578,1,3,166836824,166837759,
 GRMZM2G371271,,other,SeedSetLength,L3Base,0.000165242,1.866526704,1,,,,
-GRMZM2G371462,Zm00001d030498,Metabolite,X.5962..L.lysine.2..17.643,GShoot,3.47E-07,0.000324586,1,1,139331871,139332113,
+GRMZM2G371462,Zm00001d030498,Metabolite,X.5962..L.lysine.2..17.643,GShoot,3.47e-07,0.000324586,1,1,139331871,139332113,
 GRMZM2G373396,Zm00001d003799,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,L3Tip,0.000155991,0.000317117,1,2,59795962,59796495,
-GRMZM2G374263,,Metabolite,X.6288..L.threonine.2..11.464,L3Base,4.58E-06,0.001849571,1,,,,
+GRMZM2G374263,,Metabolite,X.6288..L.threonine.2..11.464,L3Base,4.58e-06,0.001849571,1,,,,
 GRMZM2G375002,Zm00001d018573,Metabolite,X.12647..L.homoserine.2..12.359,L3Tip,0.000577277,0.000246216,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
-GRMZM2G375002,Zm00001d018573,Metabolite,X.938..nicotinic.acid..10.27,L3Tip,0.022771943,8.73E-05,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
-GRMZM2G375002,Zm00001d018573,Metabolite,X.448388..D.allose.1..17.278,L3Tip,1.15E-09,0.00011425,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
-GRMZM2G375002,Zm00001d018573,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Tip,5.25E-06,0.001017615,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
-GRMZM2G375002,Zm00001d018573,Metabolite,X.6262..L.ornithine.2..16.632,L3Tip,1.48E-06,0.001385864,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
+GRMZM2G375002,Zm00001d018573,Metabolite,X.938..nicotinic.acid..10.27,L3Tip,0.022771943,8.73e-05,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
+GRMZM2G375002,Zm00001d018573,Metabolite,X.448388..D.allose.1..17.278,L3Tip,1.15e-09,0.00011425,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
+GRMZM2G375002,Zm00001d018573,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Tip,5.25e-06,0.001017615,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
+GRMZM2G375002,Zm00001d018573,Metabolite,X.6262..L.ornithine.2..16.632,L3Tip,1.48e-06,0.001385864,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
 GRMZM2G375002,Zm00001d018573,other,SouthernLeafBlight,L3Tip,0.045017259,-0.1099612,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
-GRMZM2G375002,Zm00001d018573,Metabolite,X.236..L.asparagine.2..14.984,L3Tip,7.57E-05,0.005658956,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
-GRMZM2G375002,Zm00001d018573,Metabolite,X.204..allantoin.1..17.293,L3Tip,5.32E-17,0.003484488,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
+GRMZM2G375002,Zm00001d018573,Metabolite,X.236..L.asparagine.2..14.984,L3Tip,7.57e-05,0.005658956,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
+GRMZM2G375002,Zm00001d018573,Metabolite,X.204..allantoin.1..17.293,L3Tip,5.32e-17,0.003484488,8,5,223568967,223577082,rop4;Rho-related protein from plants 4: cDNA sequence; expression in mammalian cells associated with superoxide production
 GRMZM2G377311,Zm00001d027790,Metabolite,X.439958..D.glucose.6.phosphate.1..21.394,LMAD,0.006674298,0.000788002,1,1,13576388,13580832,Cyclin-T1-5
 GRMZM2G378121,Zm00001d006756,other,NIRStarch,LMAD,0.000748306,0.21046303,1,2,215978477,215979001,WPP domain-containing protein 2
 GRMZM2G381842,Zm00001d012859,other,NumberofTilleringPlants,GRoot,0.000251086,0.025692625,1,5,1221504,1223598,Hyaluronan / mRNA binding family
 GRMZM2G382323,,Metabolite,X.5988..Sucrose..23.988..s100,L3Tip,0.011939222,0.067305344,1,,,,
 GRMZM2G386817,Zm00001d016568,other,SecondaryBranchNumber,GRoot,0.000244027,-0.120739375,1,5,167817324,167817819,
-GRMZM2G387383,Zm00001d007202,Metabolite,X.5460935..turanose.1..24.81,LMAN,1.54E-11,0.000833112,1,2,224615447,224646665,Lon protease homolog 2 peroxisomal
+GRMZM2G387383,Zm00001d007202,Metabolite,X.5460935..turanose.1..24.81,LMAN,1.54e-11,0.000833112,1,2,224615447,224646665,Lon protease homolog 2 peroxisomal
 GRMZM2G387394,Zm00001d034925,Metabolite,X.5460407..threonic.acid..13.652,L3Base,0.003740149,0.000512233,1,1,305698918,305700369,Transferase
 GRMZM2G398668,Zm00001d012918,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Tip,0.002518032,0.000796594,1,5,1940928,1956957,Flap endonuclease 1
 GRMZM2G401062,Zm00001d003710,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Tip,0.011423551,0.000731003,2,2,55847268,55852437,Protein SET DOMAIN GROUP 41
 GRMZM2G401062,Zm00001d003710,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Base,0.013419051,-0.000124999,2,2,55847268,55852437,Protein SET DOMAIN GROUP 41
-GRMZM2G402002,Zm00001d039165,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,5.94E-07,0.000578476,1,6,171554081,171582712,DNA damage-binding protein 1a
-GRMZM2G402417,Zm00001d005472,Metabolite,X.5321515..stigmasterol..28.442,L3Tip,0.002127192,8.99E-05,1,2,175349736,175351455,Expressed protein; Mannose-specific jacalin-related lectin;  protein
+GRMZM2G402002,Zm00001d039165,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Base,5.94e-07,0.000578476,1,6,171554081,171582712,DNA damage-binding protein 1a
+GRMZM2G402417,Zm00001d005472,Metabolite,X.5321515..stigmasterol..28.442,L3Tip,0.002127192,8.99e-05,1,2,175349736,175351455,Expressed protein; Mannose-specific jacalin-related lectin;  protein
 GRMZM2G402675,Zm00001d034561,Metabolite,X.2116..alpha.tocophereol..27.379,GRoot,0.025060362,0.000137489,1,1,296363993,296366195,
 GRMZM2G403149,Zm00001d013767,Metabolite,X.637542..4.hydroxycinnamic.acid..17.854,LMAN,0.017488857,0.00020095,1,5,19727228,19732921,Guanine nucleotide-binding protein-like NSN1
 GRMZM2G403162,Zm00001d006861,Leaf Morphology,UpperLeafAngle,Kern,0.027180008,-1.585381817,1,2,218041355,218048937,
 GRMZM2G403218,Zm00001d013768,Female Inflorescence,EarRankNumber,L3Base,0.000134049,0.314201185,1,5,19733215,19740908,Expressed protein;  protein
-GRMZM2G403590,Zm00001d005787,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Tip,7.63E-08,0.000874136,3,2,188526504,188526917,Zinc finger protein 2
-GRMZM2G403590,Zm00001d005787,Metabolite,X.6106..L.leucine.2..9.945,L3Tip,1.62E-07,0.001026329,3,2,188526504,188526917,Zinc finger protein 2
+GRMZM2G403590,Zm00001d005787,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Tip,7.63e-08,0.000874136,3,2,188526504,188526917,Zinc finger protein 2
+GRMZM2G403590,Zm00001d005787,Metabolite,X.6106..L.leucine.2..9.945,L3Tip,1.62e-07,0.001026329,3,2,188526504,188526917,Zinc finger protein 2
 GRMZM2G403590,Zm00001d005787,Metabolite,X.791..DL.isoleucine.2..10.225,L3Tip,0.019766354,0.000576037,3,2,188526504,188526917,Zinc finger protein 2
 GRMZM2G403915,Zm00001d050851,other,Spikelets.MainSpike,L3Tip,0.000347049,-0.387654421,1,4,126959985,126984791,CMP-sialic acid transporter 5
 GRMZM2G405474,Zm00001d046921,Metabolite,X.754..glycerol.1.phosphate..16.056,L3Tip,0.00012964,0.002109955,1,9,110797888,110799072,F-box protein AFR
 GRMZM2G406014,Zm00001d018848,Flowering Time,DaystoSilk,L3Tip,0.001325265,-0.688531958,1,7,7297846,7298853,Probable carboxylesterase 15
-GRMZM2G408703,Zm00001d044766,Metabolite,X.204..allantoin.1..17.293,L3Tip,1.01E-08,0.001815889,1,9,1857759,1867122,O-fucosyltransferase family protein
-GRMZM2G409635,Zm00001d012563,Metabolite,X.8742..shikimic.acid..16.433..s100,L3Tip,5.95E-05,0.003555967,1,8,176683821,176684273,
-GRMZM2G409934,Zm00001d015557,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.029461115,4.03E-05,1,5,97437119,97444093,Protein S-acyltransferase 24
+GRMZM2G408703,Zm00001d044766,Metabolite,X.204..allantoin.1..17.293,L3Tip,1.01e-08,0.001815889,1,9,1857759,1867122,O-fucosyltransferase family protein
+GRMZM2G409635,Zm00001d012563,Metabolite,X.8742..shikimic.acid..16.433..s100,L3Tip,5.95e-05,0.003555967,1,8,176683821,176684273,
+GRMZM2G409934,Zm00001d015557,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.029461115,4.03e-05,1,5,97437119,97444093,Protein S-acyltransferase 24
 GRMZM2G414141,Zm00001d022564,Metabolite,X.439242..Raffinose..29.282,L3Tip,0.00026817,0.003242254,1,7,180078570,180085192,BRCT domain-containing protein
 GRMZM2G414423,Zm00001d022500,Metabolite,X.12647..L.homoserine.2..12.359,GRoot,0.002759875,0.000173853,1,7,178894022,178895945,Zinc finger protein CONSTANS-LIKE 13
 GRMZM2G417223,Zm00001d013712,Female Inflorescence,EarRowNumber,GRoot,0.034828787,-0.166126798,1,5,18266523,18272776,Nucleic acid binding protein
@@ -810,117 +810,117 @@ GRMZM2G418415,Zm00001d006611,other,NIRStarch,L3Base,0.002490905,0.329944143,1,2,
 GRMZM2G418689,Zm00001d012177,other,RowQuality,L3Tip,0.013811526,0.007595314,1,8,169573763,169577154,Serine/threonine-protein kinase
 GRMZM2G420357,Zm00001d027998,other,Spikelets.MainSpike,LMAD,0.003833449,-0.302556544,1,1,19887017,19887754,VQ motif-containing protein 9
 GRMZM2G420758,Zm00001d018630,other,SouthernLeafBlight,L3Tip,0.00241075,-0.148195744,1,7,1373357,1373758,Disease resistance response protein 206
-GRMZM2G420823,,Metabolite,X.6537496..chlorogenic.acid.1..26.37,GRoot,1.72E-07,0.000677152,1,,,,
+GRMZM2G420823,,Metabolite,X.6537496..chlorogenic.acid.1..26.37,GRoot,1.72e-07,0.000677152,1,,,,
 GRMZM2G422303,,Metabolite,X.5460935..turanose.1..24.81,L3Tip,0.010143404,0.00041828,1,,,,
 GRMZM2G425920,Zm00001d025589,Seed Traits,EarWeight,LMAN,0.007933001,2.008364682,2,10,123303091,123307977,Transcription factor HY5-like
 GRMZM2G425920,Zm00001d025589,Seed Traits,TotalSeedWeight,LMAN,0.015042882,1.372441566,2,10,123303091,123307977,Transcription factor HY5-like
 GRMZM2G427815,Zm00001d022457,Female Inflorescence,EarLength,GRoot,0.048315633,-1.938864319,1,7,178107698,178109315,px3;peroxidase3: electrophoretic mobility
 GRMZM2G429169,Zm00001d008412,Metabolite,X.827..ribitol..15.66,L3Base,0.013640978,0.000194917,1,8,8059900,8062959,DNAJ heat shock N-terminal domain-containing protein
 GRMZM2G429759,Zm00001d030796,Seed Traits,TotalKernelVolume,LMAN,0.019253644,-0.954532113,1,1,160087365,160092610,Serine-threonine protein kinase plant-type
-GRMZM2G429842,Zm00001d020627,Metabolite,X.1549111..caffeic.acid..19.755,L3Tip,2.83E-08,0.001039034,1,7,125486269,125489055,Subtilisin-like protease SBT1.8
+GRMZM2G429842,Zm00001d020627,Metabolite,X.1549111..caffeic.acid..19.755,L3Tip,2.83e-08,0.001039034,1,7,125486269,125489055,Subtilisin-like protease SBT1.8
 GRMZM2G429955,Zm00001d044399,Metabolite,X.439242..Raffinose..29.282,LMAN,0.003223016,0.001961227,1,3,227152688,227153783,photosystem II light harvesting complex gene B1B2
 GRMZM2G430266,Zm00001d044302,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,GRoot,0.026640713,0.000126133,1,3,224594170,224597019,
 GRMZM2G430455,Zm00001d031460,Seed Traits,CobWeight,L3Tip,0.00024988,0.765593022,1,1,191032599,191034959,40S ribosomal protein S4-3
-GRMZM2G430807,Zm00001d035659,Metabolite,X.700..ethanolamine..9.879,LMAD,2.44E-05,0.001115754,2,6,39829333,39830358,Metallothionein-like protein 2C
+GRMZM2G430807,Zm00001d035659,Metabolite,X.700..ethanolamine..9.879,LMAD,2.44e-05,0.001115754,2,6,39829333,39830358,Metallothionein-like protein 2C
 GRMZM2G430807,Zm00001d035659,Metabolite,X.700..ethanolamine..9.879,L3Tip,0.001785891,0.000596473,2,6,39829333,39830358,Metallothionein-like protein 2C
-GRMZM2G431703,Zm00001d015473,Metabolite,X.938..nicotinic.acid..10.27,L3Base,0.021202658,7.76E-05,1,5,92107583,92115114,Protein transport protein SEC61 gamma subunit
+GRMZM2G431703,Zm00001d015473,Metabolite,X.938..nicotinic.acid..10.27,L3Base,0.021202658,7.76e-05,1,5,92107583,92115114,Protein transport protein SEC61 gamma subunit
 GRMZM2G432060,Zm00001d051302,Development,EarHeight,L3Base,0.007938408,1.707666165,1,4,152451610,152452209,SAUR11-auxin-responsive SAUR family member
 GRMZM2G432560,,Female Inflorescence,EarRowNumber,L3Tip,0.016314697,-0.191961825,1,,,,
 GRMZM2G434669,Zm00001d003775,Metabolite,X.1060..pyruvic.acid..6.714,L3Base,0.014215148,0.000624579,1,2,58629387,58630133,OJ000126_13.10 protein;  protein
 GRMZM2G438400,Zm00001d013175,other,TilleringIndex,L3Tip,0.030040297,0.006660729,1,5,5935831,5936304,
 GRMZM2G441906,Zm00001d008843,Metabolite,X.439194..glyceric.acid..10.735,GRoot,0.030151508,0.00092543,1,8,22462215,22462577,Grx_A2-glutaredoxin subgroup III
-GRMZM2G445783,Zm00001d027715,other,NumberofTilleringPlants,L3Base,4.73E-13,0.054429644,1,1,11952380,11984542,Armadillo/beta-catenin repeat family protein / kinesin motor family protein
+GRMZM2G445783,Zm00001d027715,other,NumberofTilleringPlants,L3Base,4.73e-13,0.054429644,1,1,11952380,11984542,Armadillo/beta-catenin repeat family protein / kinesin motor family protein
 GRMZM2G446218,Zm00001d036652,Metabolite,X.1001..phenethylamine..13.742,LMAD,0.047145943,0.000244496,1,6,96447949,96450464,Aluminum-activated malate transporter 12
-GRMZM2G447691,Zm00001d003310,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,LMAN,9.86E-06,0.000177799,1,2,39700454,39702802,
+GRMZM2G447691,Zm00001d003310,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,LMAN,9.86e-06,0.000177799,1,2,39700454,39702802,
 GRMZM2G447976,Zm00001d012880,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,L3Base,0.009403885,0.002468552,1,5,1564032,1566921,BTB/POZ domain-containing protein
 GRMZM2G448258,Zm00001d032078,Metabolite,X.439742..beta.cyano.L.alanine..11.288,L3Base,0.000250487,0.001224334,1,1,211772301,211796592,Cell division cycle 2-related protein kinase 7
-GRMZM2G448701,Zm00001d027477,Metabolite,X.439451..galactinol.2..26.479,L3Tip,6.68E-05,0.002855996,1,1,6237666,6238642,
-GRMZM2G458448,Zm00001d039148,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.022130598,5.17E-05,1,6,171049832,171050563,Late embryogenesis abundant (LEA) hydroxyproline-rich glycoprotein family
-GRMZM2G459052,Zm00001d036740,Metabolite,X.239..Beta..alanine..1..12.044,L3Tip,3.32E-05,0.000643057,1,6,99520465,99521070,Sterile alpha motif (SAM) domain-containing protein
+GRMZM2G448701,Zm00001d027477,Metabolite,X.439451..galactinol.2..26.479,L3Tip,6.68e-05,0.002855996,1,1,6237666,6238642,
+GRMZM2G458448,Zm00001d039148,Metabolite,X.738..L.glutamine.2..14.083,L3Base,0.022130598,5.17e-05,1,6,171049832,171050563,Late embryogenesis abundant (LEA) hydroxyproline-rich glycoprotein family
+GRMZM2G459052,Zm00001d036740,Metabolite,X.239..Beta..alanine..1..12.044,L3Tip,3.32e-05,0.000643057,1,6,99520465,99521070,Sterile alpha motif (SAM) domain-containing protein
 GRMZM2G459291,Zm00001d032652,Metabolite,X.3037582..mucic.acid..18.907,L3Base,0.023018043,0.000376157,1,1,233135301,233138366,Metal-dependent phosphohydrolase
-GRMZM2G460566,Zm00001d011938,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,0.026518574,4.59E-05,1,8,164854178,164855277,
+GRMZM2G460566,Zm00001d011938,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,0.026518574,4.59e-05,1,8,164854178,164855277,
 GRMZM2G461186,,other,NumberofTilleringPlants,GRoot,0.001168539,0.023654662,1,,,,
 GRMZM2G463904,Zm00001d018261,Metabolite,X.439183..3.phosphoglyceric.acid..16.504,L3Tip,0.039108972,0.000412949,2,5,217575060,217588003,LRR receptor-like serine/threonine-protein kinase ERECTA
 GRMZM2G463904,Zm00001d018261,Female Inflorescence,EarRankNumber,L3Tip,0.010952933,0.275056989,2,5,217575060,217588003,LRR receptor-like serine/threonine-protein kinase ERECTA
-GRMZM2G464043,,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,GRoot,0.00856635,5.76E-05,1,,,,
+GRMZM2G464043,,Metabolite,X.637775..3.5.dimethoxy.4.hydroxycinnamic.acid.2..20.65,GRoot,0.00856635,5.76e-05,1,,,,
 GRMZM2G464985,Zm00001d020858,Metabolite,X.439183..3.phosphoglyceric.acid..16.504,L3Tip,0.010023324,-0.000443436,1,7,134901536,134904779,Serine/threonine-protein kinase D6PKL1
-GRMZM2G466298,Zm00001d017821,other,NumberofTilleringPlants,L3Tip,4.11E-09,0.047720782,1,5,207742585,207746674,Probable L-type lectin-domain containing receptor kinase S.5
+GRMZM2G466298,Zm00001d017821,other,NumberofTilleringPlants,L3Tip,4.11e-09,0.047720782,1,5,207742585,207746674,Probable L-type lectin-domain containing receptor kinase S.5
 GRMZM2G466848,Zm00001d011345,Metabolite,X.444212..trans.aconitic.acid..15.842..s100,L3Base,0.000539556,0.002148735,1,8,147384452,147384742,
-GRMZM2G467435,Zm00001d040725,other,RowQuality,L3Tip,8.67E-07,-0.010304031,1,3,60285344,60288098,Polygalacturonase
-GRMZM2G468535,,Metabolite,X.60961..adenosine..23.825,GShoot,0.0002551,4.24E-05,2,,,,
+GRMZM2G467435,Zm00001d040725,other,RowQuality,L3Tip,8.67e-07,-0.010304031,1,3,60285344,60288098,Polygalacturonase
+GRMZM2G468535,,Metabolite,X.60961..adenosine..23.825,GShoot,0.0002551,4.24e-05,2,,,,
 GRMZM2G468535,,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Base,0.000337002,-0.000154311,2,,,,
 GRMZM2G468661,Zm00001d025917,Metabolite,X.5988..Sucrose..23.988..s100,L3Tip,0.001305053,0.084442467,1,10,133750731,133751762,Probable galacturonosyltransferase-like 3
 GRMZM2G469175,Zm00001d019413,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Tip,0.034326659,0.000163901,1,7,32721365,32723419,L-type lectin-domain containing receptor kinase V.9
-GRMZM2G469477,Zm00001d007836,Metabolite,X.3037582..mucic.acid..18.907,LMAD,3.67E-05,0.000373331,1,2,240565474,240565986,
+GRMZM2G469477,Zm00001d007836,Metabolite,X.3037582..mucic.acid..18.907,LMAD,3.67e-05,0.000373331,1,2,240565474,240565986,
 GRMZM2G470974,Zm00001d023286,Metabolite,X.439242..Raffinose..29.282,L3Base,0.000388331,0.00318015,1,10,2213583,2213879,Mini zinc finger protein 3
-GRMZM2G470981,Zm00001d040216,Metabolite,X.738..L.glutamine.2..14.083,LMAD,0.00246879,7.87E-05,2,3,32393165,32395998,CMV 1a interacting protein 1
+GRMZM2G470981,Zm00001d040216,Metabolite,X.738..L.glutamine.2..14.083,LMAD,0.00246879,7.87e-05,2,3,32393165,32395998,CMV 1a interacting protein 1
 GRMZM2G470981,Zm00001d040216,Metabolite,X.5988..Sucrose..23.988..s100,LMAD,0.020234561,0.05463236,2,3,32393165,32395998,CMV 1a interacting protein 1
 GRMZM2G471089,Zm00001d039434,Metabolite,X.6262..L.ornithine.2..16.632,L3Base,0.006276362,0.00074832,1,3,4140509,4150100,Agamous-like MADS-box protein AGL5
-GRMZM2G473310,Zm00001d047079,Metabolite,X.204..allantoin.1..17.293,L3Tip,3.38E-10,-0.001923313,1,9,117675464,117689598,G2484-1 protein
-GRMZM2G473511,Zm00001d008477,Metabolite,X.60961..adenosine..23.825,L3Tip,0.014792247,3.49E-05,1,8,9807195,9830853,ptk5;receptor-like kinase4:
-GRMZM2G477221,Zm00001d009059,other,NumberofTilleringPlants,LMAN,1.67E-06,0.034271709,1,8,33810189,33812308,
+GRMZM2G473310,Zm00001d047079,Metabolite,X.204..allantoin.1..17.293,L3Tip,3.38e-10,-0.001923313,1,9,117675464,117689598,G2484-1 protein
+GRMZM2G473511,Zm00001d008477,Metabolite,X.60961..adenosine..23.825,L3Tip,0.014792247,3.49e-05,1,8,9807195,9830853,ptk5;receptor-like kinase4:
+GRMZM2G477221,Zm00001d009059,other,NumberofTilleringPlants,LMAN,1.67e-06,0.034271709,1,8,33810189,33812308,
 GRMZM2G477325,Zm00001d022264,Metabolite,X.239..Beta..alanine..1..12.044,L3Tip,0.016407999,0.000511477,1,7,173953537,173954457,pmpm5;proteolipid membrane potential regulator5: encodes plasma membrane proteolipid involved in ion homeostasis and response to salinity
 GRMZM2G481103,Zm00001d012030,Metabolite,X.5280450..linoleic.acid..20.399,L3Tip,0.000435961,0.00012042,1,8,166780698,166784066,E2 protein isoform 5
 GRMZM2G481362,Zm00001d044460,Metabolite,X.439183..3.phosphoglyceric.acid..16.504,L3Tip,0.008734439,0.000487408,1,3,228716052,228718962,alpha/beta-Hydrolases superfamily protein
 GRMZM2G483779,,other,NIRStarch,LMAD,0.001004395,0.207885272,1,,,,
 GRMZM2G495626,Zm00001d044672,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,LMAD,0.022486322,0.002241354,1,3,234545897,234549775,
-GRMZM2G544469,,other,NumberofTilleringPlants,L3Tip,4.71E-07,0.040952214,3,,,,
+GRMZM2G544469,,other,NumberofTilleringPlants,L3Tip,4.71e-07,0.040952214,3,,,,
 GRMZM2G544469,,other,NIROil,L3Tip,0.007542859,0.077660037,3,,,,
-GRMZM2G544469,,Metabolite,X.642609..trans.caftaric.acid.2..25.529,LMAD,5.57E-09,0.000831448,3,,,,
+GRMZM2G544469,,Metabolite,X.642609..trans.caftaric.acid.2..25.529,LMAD,5.57e-09,0.000831448,3,,,,
 GRMZM2G556515,,Metabolite,X.5951..L.serine.2..11.174..s100,L3Base,0.012183104,0.005492784,1,,,,
 GRMZM2G571316,,Metabolite,X.3037582..mucic.acid..18.907,GShoot,0.02983648,0.000445924,1,,,,
 GRMZM2G575305,,Metabolite,X.700..ethanolamine..9.879,LMAD,0.000229293,0.000477409,1,,,,
-GRMZM2G591605,Zm00001d012568,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Base,2.77E-05,0.000203798,1,8,176781292,176785729,Putative O-Glycosyl hydrolase superfamily protein
+GRMZM2G591605,Zm00001d012568,Metabolite,X.5810..trans.4.hydroxy.L.proline.2..13.267,L3Base,2.77e-05,0.000203798,1,8,176781292,176785729,Putative O-Glycosyl hydrolase superfamily protein
 GRMZM2G700788,,other,NIROil,LMAN,0.003479418,0.095739028,4,,,,
 GRMZM2G700788,,Metabolite,X.6255..maltose.1..24.702,Kern,0.008330674,0.000220361,4,,,,
 GRMZM2G700788,,other,NumberofTilleringPlants,LMAN,0.000287943,0.025586112,4,,,,
 GRMZM2G700788,,Metabolite,X.6255..maltose.1..24.702,LMAD,0.000808453,0.000322603,4,,,,
 GRMZM2G701746,,other,GerminationCount,GRoot,0.040203015,-0.119793133,1,,,,
-GRMZM2G704093,,other,RowQuality,L3Tip,1.08E-05,0.009497474,1,,,,
+GRMZM2G704093,,other,RowQuality,L3Tip,1.08e-05,0.009497474,1,,,,
 GRMZM2G704347,,other,TasselBranchLength,GShoot,0.01983208,3.646005224,1,,,,
-GRMZM5G809078,Zm00001d021365,Metabolite,X.33032..L.glutamic.acid.3..dehydrated...13.232..s100,GRoot,2.28E-05,0.000925455,1,7,150013061,150027380,DNA primases
+GRMZM5G809078,Zm00001d021365,Metabolite,X.33032..L.glutamic.acid.3..dehydrated...13.232..s100,GRoot,2.28e-05,0.000925455,1,7,150013061,150027380,DNA primases
 GRMZM5G812270,Zm00001d044429,Metabolite,X.311..citric.acid..16.615..s100,GShoot,0.00138761,0.001133685,5,3,227740769,227744629,Thioredoxin superfamily protein
-GRMZM5G812270,Zm00001d044429,Metabolite,X.5962..L.lysine.2..17.643,Kern,9.19E-09,0.000310951,5,3,227740769,227744629,Thioredoxin superfamily protein
+GRMZM5G812270,Zm00001d044429,Metabolite,X.5962..L.lysine.2..17.643,Kern,9.19e-09,0.000310951,5,3,227740769,227744629,Thioredoxin superfamily protein
 GRMZM5G812270,Zm00001d044429,Metabolite,X.204..allantoin.1..17.293,Kern,0.0001377,0.003823676,5,3,227740769,227744629,Thioredoxin superfamily protein
 GRMZM5G812270,Zm00001d044429,Metabolite,X.791..DL.isoleucine.2..10.225,Kern,0.00255241,0.000768056,5,3,227740769,227744629,Thioredoxin superfamily protein
 GRMZM5G812270,Zm00001d044429,Metabolite,X.754..glycerol.1.phosphate..16.056,Kern,0.000699832,0.002113103,5,3,227740769,227744629,Thioredoxin superfamily protein
 GRMZM5G813124,Zm00001d033803,Metabolite,X.5321342..beta.sitosterol..28.848,L3Tip,0.000149754,0.000198441,1,1,274190393,274191331,Ankyrin repeat-containing protein
-GRMZM5G813892,Zm00001d029875,other,RowQuality,L3Tip,3.21E-05,-0.009465131,1,1,91421593,91425126,myb-like transcription factor family protein
+GRMZM5G813892,Zm00001d029875,other,RowQuality,L3Tip,3.21e-05,-0.009465131,1,1,91421593,91425126,myb-like transcription factor family protein
 GRMZM5G815851,Zm00001d050250,Metabolite,X.642609..trans.caftaric.acid.2..25.529,LMAN,0.006592257,0.000347394,1,4,76349533,76351893,
 GRMZM5G816453,,Female Inflorescence,EarRowNumber,L3Tip,0.019262231,0.185615307,1,,,,
-GRMZM5G819919,Zm00001d023303,Metabolite,X.1001..phenethylamine..13.742,L3Tip,2.46E-05,0.000336156,1,10,2432325,2439208,
+GRMZM5G819919,Zm00001d023303,Metabolite,X.1001..phenethylamine..13.742,L3Tip,2.46e-05,0.000336156,1,10,2432325,2439208,
 GRMZM5G821828,Zm00001d032555,other,NIRStarch,L3Base,0.001510667,-0.337350995,1,1,230382672,230388742,bnlg1564; :
 GRMZM5G822449,Zm00001d023299,Metabolite,X.439194..glyceric.acid..10.735,GRoot,0.003425136,0.001154278,1,10,2352030,2356262,Zinc finger CCCH domain-containing protein 46
-GRMZM5G824137,,Metabolite,X.5460935..turanose.1..24.81,L3Base,1.11E-05,0.000788101,1,,,,
+GRMZM5G824137,,Metabolite,X.5460935..turanose.1..24.81,L3Base,1.11e-05,0.000788101,1,,,,
 GRMZM5G825909,Zm00001d002819,Metabolite,X.439194..glyceric.acid..10.735,GRoot,0.001662249,0.001181336,1,2,23558116,23563958,atg13c;autophagy13c:
-GRMZM5G831577,Zm00001d022069,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,3.97E-06,6.57E-05,1,7,169295747,169298138,Ninja-family protein 5
+GRMZM5G831577,Zm00001d022069,Metabolite,X.738..L.glutamine.2..14.083,L3Tip,3.97e-06,6.57e-05,1,7,169295747,169298138,Ninja-family protein 5
 GRMZM5G833406,Zm00001d011687,Metabolite,X.700..ethanolamine..9.879,GRoot,0.00055724,0.000483986,1,8,158767824,158774077,IAA-amino acid hydrolase ILR1-like 4
 GRMZM5G833747,Zm00001d039221,other,SecondaryBranchNumber,GRoot,0.00416332,-0.096192101,1,6,173160217,173162244,Nucleoside diphosphate kinase
 GRMZM5G834837,Zm00001d008283,Metabolite,X.3037582..mucic.acid..18.907,L3Base,0.024702225,0.000367871,2,8,3990366,3991796,Serpin-Z1
 GRMZM5G834837,Zm00001d008283,other,SouthernLeafBlight,L3Tip,0.027991228,0.117068304,2,8,3990366,3991796,Serpin-Z1
-GRMZM5G836471,Zm00001d026706,other,SecondaryBranchNumber,GRoot,4.36E-05,0.126834661,1,10,150556801,150562630,ABC transporter G family member 5
+GRMZM5G836471,Zm00001d026706,other,SecondaryBranchNumber,GRoot,4.36e-05,0.126834661,1,10,150556801,150562630,ABC transporter G family member 5
 GRMZM5G836683,Zm00001d013035,Metabolite,X.6537496..chlorogenic.acid.2..27.18._alt,GRoot,0.006185978,0.002396533,1,5,3537738,3542307,Cycloartenol-C-24-methyltransferase
-GRMZM5G842695,Zm00001d033062,Metabolite,X.1001..phenethylamine..13.742,Kern,9.99E-05,0.000449578,1,1,249131104,249134119,Transparent testa 12 protein
-GRMZM5G845129,Zm00001d014446,Metabolite,X.6537496..chlorogenic.acid.1..26.37,LMAD,4.81E-07,0.000847468,1,5,47422446,47427572,Protein kinase superfamily protein
+GRMZM5G842695,Zm00001d033062,Metabolite,X.1001..phenethylamine..13.742,Kern,9.99e-05,0.000449578,1,1,249131104,249134119,Transparent testa 12 protein
+GRMZM5G845129,Zm00001d014446,Metabolite,X.6537496..chlorogenic.acid.1..26.37,LMAD,4.81e-07,0.000847468,1,5,47422446,47427572,Protein kinase superfamily protein
 GRMZM5G850092,Zm00001d052798,Metabolite,X.6537496..chlorogenic.acid.2..27.18..s100,LMAN,0.000129903,0.002292945,2,4,201305242,201306120,Homeodomain-like superfamily protein
 GRMZM5G850092,Zm00001d052798,Metabolite,X.6537496..chlorogenic.acid.1..26.37,LMAN,0.000797618,0.000891891,2,4,201305242,201306120,Homeodomain-like superfamily protein
 GRMZM5G851485,Zm00001d028916,Metabolite,X.827..ribitol..15.66,LMAN,0.003129743,0.000190146,1,1,51361873,51362499,Transcription factor bHLH148
 GRMZM5G856653,Zm00001d043511,other,StandCount,L3Tip,0.031509478,0.067128748,1,3,202355009,202361480,hex5;hexokinase5:
 GRMZM5G860469,Zm00001d002817,Metabolite,X.6537496..chlorogenic.acid.1..26.37,L3Base,0.011825737,0.00064724,1,2,23520867,23532848,Kinesin-like protein KIN-7G
-GRMZM5G861997,Zm00001d032566,Metabolite,X.6255..maltose..2..24.915,L3Base,7.73E-06,0.000217822,1,1,230666267,230672973,
+GRMZM5G861997,Zm00001d032566,Metabolite,X.6255..maltose..2..24.915,L3Base,7.73e-06,0.000217822,1,1,230666267,230672973,
 GRMZM5G864847,Zm00001d037691,Metabolite,X.6508..quinic.acid..17.076..s100,LMAN,0.040585129,0.00424015,1,6,134088831,134092670,IAA16-auxin-responsive Aux/IAA family member
 GRMZM5G865298,Zm00001d014060,other,MiddleLeafAngle,LMAN,0.029200095,-0.827506179,1,5,31079371,31083342,Protein NRT1/ PTR FAMILY 5.2
-GRMZM5G866910,Zm00001d052972,Metabolite,X.448388..D.allose.1..17.278,L3Tip,0.001394829,6.49E-05,2,4,206764024,206767895,
+GRMZM5G866910,Zm00001d052972,Metabolite,X.448388..D.allose.1..17.278,L3Tip,0.001394829,6.49e-05,2,4,206764024,206767895,
 GRMZM5G866910,Zm00001d052972,Metabolite,X.5984..fructose.1..17.18..s100,L3Tip,0.002216188,0.006529816,2,4,206764024,206767895,
 GRMZM5G868875,Zm00001d013138,other,SecondaryBranchNumber,L3Base,0.001455103,-0.170557467,1,5,5339098,5339871,protein; Tyrosine specific protein phosphatase-like
 GRMZM5G871262,Zm00001d045505,Flowering Time,DaystoSilk,LMAD,0.029430678,0.770374366,1,9,24930065,24935418,LIMR family protein
 GRMZM5G873277,Zm00001d007111,other,SouthernLeafBlight,GShoot,0.008732252,0.133310968,1,2,222481037,222485565,
 GRMZM5G876773,Zm00001d021123,Metabolite,X.439451..galactinol.2..26.479,GShoot,0.049734599,-0.001592496,1,7,143285797,143288834,Plasma membrane
 GRMZM5G891656,Zm00001d048416,Metabolite,X.6106..L.leucine.2..9.945,L3Tip,0.007151506,0.000505623,3,9,155900011,155902009,FAD/NAD(P)-binding oxidoreductase family protein
-GRMZM5G891656,Zm00001d048416,Metabolite,X.700..ethanolamine..9.879,L3Tip,6.65E-06,0.000655843,3,9,155900011,155902009,FAD/NAD(P)-binding oxidoreductase family protein
-GRMZM5G891656,Zm00001d048416,Metabolite,X.60961..adenosine..23.825,L3Tip,1.54E-13,8.69E-05,3,9,155900011,155902009,FAD/NAD(P)-binding oxidoreductase family protein
+GRMZM5G891656,Zm00001d048416,Metabolite,X.700..ethanolamine..9.879,L3Tip,6.65e-06,0.000655843,3,9,155900011,155902009,FAD/NAD(P)-binding oxidoreductase family protein
+GRMZM5G891656,Zm00001d048416,Metabolite,X.60961..adenosine..23.825,L3Tip,1.54e-13,8.69e-05,3,9,155900011,155902009,FAD/NAD(P)-binding oxidoreductase family protein
 GRMZM5G893649,Zm00001d045282,other,NIRStarch,L3Tip,0.005676779,0.272383963,1,9,17930725,17933275,Splicing factor 45
-GRMZM5G894582,,Metabolite,X.835..dehydroascorbic.acid..1..16.863,L3Base,1.25E-05,0.000319289,2,,,,
+GRMZM5G894582,,Metabolite,X.835..dehydroascorbic.acid..1..16.863,L3Base,1.25e-05,0.000319289,2,,,,
 GRMZM5G894582,,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,L3Base,0.00011979,0.003471165,2,,,,
 GRMZM5G896756,Zm00001d035313,Metabolite,X.5321342..beta.sitosterol..28.848,L3Tip,0.008458983,0.00017917,1,6,20661472,20668061,
 GRMZM6G161711,Zm00001d041962,Metabolite,X.6255..maltose..2..24.915,GShoot,0.013073989,0.000246506,1,3,145905008,145908254,Glycerol-3-phosphate dehydrogenase [NAD(+)] 1 chloroplastic
@@ -928,6 +928,6 @@ GRMZM6G810942,Zm00001d022544,Metabolite,X.3037582..mucic.acid..18.907,L3Tip,0.00
 GRMZM6G911845,,Metabolite,X.642609..trans.caftaric.acid.2..25.529,L3Tip,0.026032172,0.000322226,1,,,,
 GRMZM6G915669,Zm00001d001825,Metabolite,X.119..gamma.aminobutyric.acid..GABA...13.326,GRoot,0.048230113,0.001836493,1,2,1530585,1535057,Transducin/WD40 repeat-like superfamily protein
 GRMZM6G945840,,other,TasselBranchLength,LMAD,0.03017839,4.383980279,1,,,,
-zma.MIR528a,,Metabolite,X.835..dehydroascorbic.acid..1..16.863,L3Base,1.10E-09,0.000578627,3,,,,
+zma.MIR528a,,Metabolite,X.835..dehydroascorbic.acid..1..16.863,L3Base,1.1e-09,0.000578627,3,,,,
 zma.MIR528a,,Metabolite,X.439242..Raffinose..29.282,L3Base,0.009929548,0.002363687,3,,,,
-zma.MIR528a,,Metabolite,X.835..dehydroascorbic.acid..1..16.863,L3Tip,3.59E-09,0.000902217,3,,,,
+zma.MIR528a,,Metabolite,X.835..dehydroascorbic.acid..1..16.863,L3Tip,3.59e-09,0.000902217,3,,,,
