@@ -25,12 +25,12 @@ For simplicity, the result files needed for manhattan plot for GWAS are moved in
 
 ### GWAS results
 raw data:
-- agronomic traits GWAS :`/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/output`
-- metabolomics traits GWAS : `/common/jyanglab/shared/Gen_Xu/282_metabolite/output`
+- agronomic traits GWAS: `/common/jyanglab/zhikaiyang/projects/mediation-analysis/largedata/geno_282/output`
+- metabolomics traits GWAS: `/common/jyanglab/shared/Gen_Xu/282_metabolite/output`
 
 processed data:
 
--all traits GWAS in merged significant SNPs region within 100kb: `/common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/all_traits.all_res.txt`
+- Significant GWAS SNPs region within 100kb: `/common/jyanglab/zhikaiyang/projects/mediation/largedata/dsnps_vs_gwas/all_traits.all_res.txt`
 
 # For Mediation analysis, the code is in 2_mediation folder;
 
