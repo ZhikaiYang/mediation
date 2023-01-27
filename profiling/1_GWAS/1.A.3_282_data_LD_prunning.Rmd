@@ -110,6 +110,15 @@ pid_maf01_geno2_pr1_10100.1
 
 plink -bfile hmp321_282_agpv4_maf005_miss03 --indep-pairwise 10 kb 10 0.1 --out hmp321_282_agpv4_maf005_miss03_pr1
 #769690
+plink -bfile hmp321_282_agpv4_maf005_miss03 --indep-pairwise 10 kb 10 0.01 --out hmp321_2
+#230336
+plink -bfile hmp321_282_agpv4_maf005_miss03 --indep-pairwise 10 kb 10 0.001 --out hmp321_2
+#195663
+plink -bfile hmp321_282_agpv4_maf005_miss03 --indep-pairwise 10 kb 10 0.0001 --out hmp321_2
+#189671
+plink -bfile hmp321_282_agpv4_maf005_miss03 --indep-pairwise 10 kb 10 0.000001 --out hmp321_2
+#187362
+
 ```
 
 
